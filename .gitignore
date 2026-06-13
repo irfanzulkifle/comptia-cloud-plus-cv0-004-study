@@ -1,0 +1,45 @@
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor / IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+*.tmp
+.vs/
+
+# OS noise
+$RECYCLE.BIN/
+*.lnk
+
+# Logs
+*.log
+logs/
+
+# Build / dependencies
+node_modules/
+dist/
+build/
+out/
+
+# Secrets (never commit)
+.env
+.env.*
+*.pem
+*.key
+*.pfx
+secrets.yaml
+credentials.json
+
+# Local progress / scratch
+progress/.local-*
+scratch/
+*.local.md
+
+# Backups
+*.bak
+*.backup
