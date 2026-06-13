@@ -7,7 +7,7 @@
 [![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](./LICENSE)
 [![Markdown](https://img.shields.io/badge/Docs-Markdown-000000?style=for-the-badge&logo=markdown)](https://commonmark.org)
 
-> A portfolio-grade, recruiter-ready study repository documenting preparation for the **CompTIA Cloud+ CV0-004** certification — built to demonstrate cloud engineering depth, documentation discipline, and continuous learning.
+> Study repository documenting preparation for the **CompTIA Cloud+ CV0-004** certification — built to demonstrate cloud engineering depth, documentation discipline, and continuous learning.
 
 ---
 
@@ -71,7 +71,9 @@ It is designed to be readable by **Cloud Engineers, DevOps Engineers, Network En
 │   │   ├── 1.6-containerization-concepts.md
 │   │   ├── 1.7-virtualization-concepts.md
 │   │   ├── 1.8-cost-considerations.md
-│   │   └── 1.9-database-concepts.md
+│   │   ├── 1.9-database-concepts.md
+│   │   ├── 1.10-methods-for-optimizing-workloads.md         ← source: ../CloudPlus_Objective_1.10_Notes.md
+│   │   └── 1.11-evolving-technologies-in-the-cloud.md       ← source: ../CloudPlus_Objective_1.11_Notes.md
 │   ├── domain-2/                          ← Cloud Operations (Coming)
 │   ├── domain-3/                          ← Cloud Security (Coming)
 │   ├── domain-4/                          ← DevOps Fundamentals (Coming)
@@ -113,7 +115,7 @@ It is designed to be readable by **Cloud Engineers, DevOps Engineers, Network En
 
 | Domain | Topic | Weight | Status | Notes |
 |---|---|---:|:---:|---|
-| **1.0** | Cloud Architecture & Design | 23% | ✅ Complete | 9 / 9 objectives |
+| **1.0** | Cloud Architecture & Design | 23% | ✅ Complete | 11 / 11 objectives |
 | **2.0** | Cloud Operations | 17% | ⏳ Planned | See [ROADMAP.md](./ROADMAP.md) |
 | **3.0** | Cloud Security | 20% | ⏳ Planned | |
 | **4.0** | DevOps Fundamentals | 17% | ⏳ Planned | |
@@ -152,6 +154,12 @@ CapEx vs OpEx, TCO, Reserved / On-Demand / Spot, right-sizing, tagging, FinOps, 
 
 ### 1.9 — Database Concepts
 Relational vs non-relational, OLTP vs OLAP, ACID vs BASE, replication, sharding, caching, connection pooling, managed databases. → [notes](./objectives/domain-1/1.9-database-concepts.md)
+
+### 1.10 — Methods for Optimizing Workloads
+Picking the right **compute model** (VM / Container / Serverless), tuning **storage IOPS vs throughput**, **container orchestration**, **workflow** orchestration, optimizing **network latency vs throughput**, and leveraging **managed services** to cut ops overhead. → [notes](./CloudPlus_Objective_1.10_Notes.md)
+
+### 1.11 — Evolving Technologies in the Cloud
+The 7 **AI/ML** capabilities (text recognition, translation, visual recognition, sentiment, voice-to-text, text-to-voice, generative AI) and the 4 **IoT** components (sensors, gateways, communication, transmission protocols). → [notes](./CloudPlus_Objective_1.11_Notes.md)
 
 ---
 

@@ -6,12 +6,12 @@
 
 | Domain | Weight | Objectives | Completed | Progress |
 |---|---:|---:|---:|:---:|
-| 1 — Cloud Architecture & Design | 23% | 9 | 9 | ▓▓▓▓▓▓▓▓▓▓ 100% |
+| 1 — Cloud Architecture & Design | 23% | 11 | 11 | ▓▓▓▓▓▓▓▓▓▓ 100% |
 | 2 — Cloud Operations | 17% | TBD | 0 | ░░░░░░░░░░ 0% |
 | 3 — Cloud Security | 20% | TBD | 0 | ░░░░░░░░░░ 0% |
 | 4 — DevOps Fundamentals | 17% | TBD | 0 | ░░░░░░░░░░ 0% |
 | 5 — Troubleshooting | 23% | TBD | 0 | ░░░░░░░░░░ 0% |
-| **Total** | **100%** | **9+** | **9** | **~23%** |
+| **Total** | **100%** | **11+** | **11** | **~23%** |
 
 ## Domain 1 Detail
 
@@ -26,18 +26,22 @@
 | 1.7 | Virtualization Concepts | [1.7-virtualization-concepts.md](../objectives/domain-1/1.7-virtualization-concepts.md) | ✅ |
 | 1.8 | Cost Considerations | [1.8-cost-considerations.md](../objectives/domain-1/1.8-cost-considerations.md) | ✅ |
 | 1.9 | Database Concepts | [1.9-database-concepts.md](../objectives/domain-1/1.9-database-concepts.md) | ✅ |
+| 1.10 | Methods for Optimizing Workloads | [CloudPlus_Objective_1.10_Notes.md](../CloudPlus_Objective_1.10_Notes.md) | ✅ |
+| 1.11 | Evolving Technologies in the Cloud | [CloudPlus_Objective_1.11_Notes.md](../CloudPlus_Objective_1.11_Notes.md) | ✅ |
 
 ## Study Aids Status
 
 | Aid | Status |
 |---|:---:|
-| Domain 1 cheatsheet | ✅ |
+| Domain 1 cheatsheet | 🟡 partial (1.1–1.9; 1.10 & 1.11 not yet added) |
 | Shared responsibility matrix | ✅ |
 | Exam-day quick reference | ✅ |
-| Domain 1 flashcards | ✅ |
-| Domain 1 practice questions | ✅ |
+| Domain 1 flashcards (central file) | 🟡 partial (1.1–1.9; 1.10 & 1.11 cards live inside the source notes) |
+| Domain 1 practice questions (central file) | 🟡 partial (1.1–1.9; 1.10 & 1.11 questions live inside the source notes) |
 | Anki export (`.apkg`) | ⏳ |
 | GitHub Pages quiz | ⏳ |
+
+> **Note (2026-06-14):** Objectives 1.10 and 1.11 (`CloudPlus_Objective_1.10_Notes.md`, `CloudPlus_Objective_1.11_Notes.md`) each include their own **inline flashcards (Section 10)** and **practice questions (Section 11)**. They have **not yet** been mirrored into the central `flashcards/` and `practice-questions/` files, and the central `cheatsheets/domain-1-cheatsheet.md` does not yet have entries for 1.10 / 1.11. See `progress/sync-2026-06-14.md` for the recommended manual follow-up.
 
 ## Legend
 
