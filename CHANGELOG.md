@@ -18,6 +18,8 @@ All notable changes to this repository are documented here. This file follows [K
 
 ### Fixed
 - `docs/GITHUB-OPTIMIZATION.md` removed; its content (recommended repo name, description, topics) is now covered by `.github/REPO-SETTINGS.md` and the README "Quick Links" / Repo metadata. **No references to the deleted file existed anywhere in the repo** — safe removal.
+- `README.md` repository tree corrected: `1.10` / `1.11` no longer falsely listed under `objectives/domain-1/` (they live at repo root as `CloudPlus_Objective_1.10_Notes.md` / `CloudPlus_Objective_1.11_Notes.md`), consistent with the Key Learning Areas links.
+- `.github/pull_request_template.md` broken relative links repaired: `../../CONTRIBUTING.md` and `../../CHANGELOG.md` → `../` (template is one level under root, not two). Repairs the pre-existing broken links flagged on 2026-06-14.
 
 ### Planned
 - Domain 2 — Cloud Operations notes (17%)
@@ -31,7 +33,7 @@ All notable changes to this repository are documented here. This file follows [K
 - File-naming inconsistency: 1.10 and 1.11 live at the repo root (`CloudPlus_Objective_1.10_Notes.md`), whereas 1.1–1.9 have mirrors in `objectives/domain-1/1.X-…md`. Recommend mirroring for consistency.
 - `cheatsheets/domain-1-cheatsheet.md`, `flashcards/domain-1-flashcards.md`, and `practice-questions/domain-1-practice.md` do not yet cover 1.10 / 1.11. The new notes carry inline cards and questions (Sections 10 & 11) but a central mirror would help recruiters.
 - Domain-mapping claim conflict: `CloudPlus_Objective_1.11_Notes.md` line 2909 says *"Domain 2.0 — Security (19%)"*. The official CV0-004 v5.0 blueprint (and the rest of the repo) states **Domain 2 = Cloud Operations 17%**, **Domain 3 = Cloud Security 20%**. The 1.11 file also references *"Domain 5 (DevOps)"* and *"Domain 6 (Troubleshooting)"*, whereas the blueprint has only 5 domains with DevOps = Domain 4 and Troubleshooting = Domain 5. Recommend author review of 1.11 to align with the official blueprint.
-- Pre-existing broken links in `.github/pull_request_template.md` (lines 19, 24) — `../../` should be `../`. Out of scope for this sync.
+- Pre-existing broken links in `.github/pull_request_template.md` (lines 19, 24) — **Resolved in this sync** (`../../` → `../`).
 
 ## [1.1.0] — 2025-XX-XX — Portfolio Restructure
 

@@ -16,9 +16,9 @@ E.g., `1.3 Cloud Networking`, `Domain 4 DevOps`.
 
 ## Checklist
 
-- [ ] I have read [CONTRIBUTING.md](../../CONTRIBUTING.md)
+- [ ] I have read [CONTRIBUTING.md](../CONTRIBUTING.md)
 - [ ] My change preserves the meaning of any original content
 - [ ] Markdown renders correctly (preview locally)
 - [ ] Mermaid diagrams use the existing class conventions
 - [ ] Cross-links use relative paths
-- [ ] I have updated the [CHANGELOG.md](../../CHANGELOG.md) (if user-facing)
+- [ ] I have updated the [CHANGELOG.md](../CHANGELOG.md) (if user-facing)

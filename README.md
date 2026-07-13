@@ -71,9 +71,9 @@ It is designed to be readable by **Cloud Engineers, DevOps Engineers, Network En
 │   │   ├── 1.6-containerization-concepts.md
 │   │   ├── 1.7-virtualization-concepts.md
 │   │   ├── 1.8-cost-considerations.md
-│   │   ├── 1.9-database-concepts.md
-│   │   ├── 1.10-methods-for-optimizing-workloads.md         ← source: ../CloudPlus_Objective_1.10_Notes.md
-│   │   └── 1.11-evolving-technologies-in-the-cloud.md       ← source: ../CloudPlus_Objective_1.11_Notes.md
+│   │   └── 1.9-database-concepts.md
+│   ├── CloudPlus_Objective_1.10_Notes.md  ← Domain 1.10 (Methods for Optimizing Workloads)
+│   ├── CloudPlus_Objective_1.11_Notes.md  ← Domain 1.11 (Evolving Technologies in the Cloud)
 │   ├── domain-2/                          ← Cloud Operations (Coming)
 │   ├── domain-3/                          ← Cloud Security (Coming)
 │   ├── domain-4/                          ← DevOps Fundamentals (Coming)
