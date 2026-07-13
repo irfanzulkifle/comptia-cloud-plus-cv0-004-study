@@ -148,80 +148,200 @@
 
 1. A workload runs only a few seconds per day and is unpredictable. Best compute choice?
    A. Reserved EC2  B. Lambda (serverless)  C. Always-on VM  D. GPU instance
-   Answer: B — Serverless scales to zero and bills per invocation.
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** Lambda (serverless) scales to zero and bills per invocation — ideal for short, unpredictable runs.
+> **Why A is wrong:** Reserved EC2 is for steady 24/7 load, not rare unpredictable runs.
+> **Why C is wrong:** Always-on VM bills continuously even when idle.
+> **Why D is wrong:** GPU instances are for specialized compute, not short spiky jobs.
 
 2. 10 TB of rarely accessed backups should use which storage class?
    A. S3 Standard  B. EBS SSD  C. S3 Glacier  D. EFS
-   Answer: C — Glacier/cold archive is cheapest for rare access.
+
+> [!note]- Reveal Answer
+> **Correct: C**
+> **Why correct:** S3 Glacier is the cold/archive tier, cheapest for rarely accessed backups.
+> **Why A is wrong:** S3 Standard is for frequent access — too costly for rare backups.
+> **Why B is wrong:** EBS SSD is block storage for running instances, not bulk backup archive.
+> **Why D is wrong:** EFS is shared file storage, not a cold archive tier.
 
 3. To survive a single data-center failure, deploy across:
    A. One AZ  B. Multiple AZs  C. One region only  D. One subnet
-   Answer: B — Multi-AZ design tolerates an AZ outage.
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** Multi-AZ design tolerates an Availability Zone outage (a DC failure).
+> **Why A is wrong:** One AZ fails entirely if that DC fails.
+> **Why C is wrong:** One region can still be a single AZ — region ≠ AZ redundancy.
+> **Why D is wrong:** One subnet is within a single AZ, so no failure tolerance.
 
 4. Encrypting data at rest on S3 is best done with:
    A. IAM roles  B. KMS keys  C. Security groups  D. NAT Gateway
-   Answer: B — KMS provides managed encryption keys at rest.
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** KMS provides managed encryption keys for S3 data at rest.
+> **Why A is wrong:** IAM controls access, not encryption at rest.
+> **Why C is wrong:** Security groups filter traffic, not encrypt data.
+> **Why D is wrong:** NAT Gateway provides outbound internet, not encryption.
 
 5. A hospital storing patient records must follow:
    A. GDPR  B. HIPAA  C. PCI-DSS  D. FedRAMP
-   Answer: B — HIPAA governs protected health information.
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** HIPAA governs protected health information (patient records) in the US.
+> **Why A is wrong:** GDPR governs EU personal data, not specifically health records.
+> **Why C is wrong:** PCI-DSS governs cardholder/payment data, not health.
+> **Why D is wrong:** FedRAMP governs US federal cloud authorization, not health records specifically.
 
 6. EU personal data that must not leave the EU reflects a:
    A. Performance requirement  B. Compliance/data-residency requirement  C. Cost requirement  D. Network bandwidth
-   Answer: B — GDPR data residency is a compliance constraint.
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** GDPR data-residency is a compliance constraint restricting where data may physically reside.
+> **Why A is wrong:** Performance is about speed/latency, not data location law.
+> **Why C is wrong:** Cost is budget, not a legal residency rule.
+> **Why D is wrong:** Network bandwidth is throughput, not data-residency law.
 
 7. For steady 24/7 database load, cheapest committed compute is:
    A. On-Demand  B. Spot  C. Reserved Instances  D. Lambda
-   Answer: C — Reserved/Savings Plans discount steady-state usage.
+
+> [!note]- Reveal Answer
+> **Correct: C**
+> **Why correct:** Reserved Instances / Savings Plans discount steady-state usage over a commitment term.
+> **Why A is wrong:** On-Demand has no discount for steady 24/7 use.
+> **Why B is wrong:** Spot can be interrupted — unsuitable for a steady DB.
+> **Why D is wrong:** Lambda isn't for a steady always-on database host.
 
 8. Distributing traffic across instances and enabling health checks uses a:
    A. NAT Gateway  B. Load Balancer  C. VPN  D. Subnet
-   Answer: B — Load balancers spread traffic and check health.
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** Load balancers (ALB/NLB) spread traffic across targets and perform health checks.
+> **Why A is wrong:** NAT Gateway provides outbound internet, not traffic distribution.
+> **Why C is wrong:** VPN is a secure tunnel, not a traffic distributor.
+> **Why D is wrong:** A subnet is a network segment, not a distribution mechanism.
 
 9. Public vs private subnets, route tables, and IGW are part of:
    A. IAM  B. VPC networking  C. S3  D. Lambda
-   Answer: B — These are core VPC network constructs.
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** Subnets, route tables, and Internet Gateways are core VPC networking constructs.
+> **Why A is wrong:** IAM is identity/access, not network topology.
+> **Why C is wrong:** S3 is object storage, unrelated to VPC subnets.
+> **Why D is wrong:** Lambda is compute, not networking.
 
 10. Global users needing low latency should add a:
     A. Single AZ  B. CDN (CloudFront)  C. NAT Gateway  D. Reserved instance
-    Answer: B — A CDN caches content at edge locations near users.
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** A CDN (CloudFront) caches content at edge locations near users, cutting global latency.
+> **Why A is wrong:** Single AZ increases latency for distant users.
+> **Why C is wrong:** NAT Gateway is for outbound internet, not latency optimization.
+> **Why D is wrong:** Reserved instance is a billing discount, not a latency tool.
 
 11. Fault-tolerant batch rendering that can be interrupted suits:
     A. On-Demand  B. Spot Instances  C. Reserved  D. Multi-AZ RDS
-    Answer: B — Spot offers deep discounts for interruptible work.
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** Spot Instances offer deep discounts for fault-tolerant, interruptible work like batch rendering.
+> **Why A is wrong:** On-Demand costs more with no interruption tolerance needed.
+> **Why C is wrong:** Reserved is for steady committed use, not interruptible batch.
+> **Why D is wrong:** Multi-AZ RDS is a database HA option, not for batch rendering.
 
 12. Stateful, instance-level firewall in AWS is a:
     A. NACL  B. Security Group  C. Route Table  D. IAM Policy
-    Answer: B — Security Groups are stateful, instance-level.
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** Security Groups are stateful and evaluated at the instance/ENI level.
+> **Why A is wrong:** NACLs are stateless (and subnet-level), the opposite attribute.
+> **Why C is wrong:** Route Tables direct traffic, not firewall it.
+> **Why D is wrong:** IAM Policy governs API/identity access, not network firewalling.
 
 13. Continuous evaluation of resource compliance is provided by:
     A. CloudTrail  B. AWS Config  C. S3  D. EC2
-    Answer: B — AWS Config evaluates and records compliance.
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** AWS Config continuously evaluates and records resource compliance against rules.
+> **Why A is wrong:** CloudTrail logs API activity (audit), not continuous config compliance.
+> **Why C is wrong:** S3 is storage, not a compliance evaluator.
+> **Why D is wrong:** EC2 is compute, not compliance evaluation.
 
 14. RPO/RTO are most directly tied to which requirement?
     A. Cost  B. Availability  C. Network  D. Compute
-    Answer: B — Recovery objectives define availability/resilience.
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** RPO/RTO define recovery objectives — the core of availability/resilience design.
+> **Why A is wrong:** Cost constrains the design but isn't what RPO/RTO measure.
+> **Why C is wrong:** Network is one enabler, not the requirement RPO/RTO define.
+> **Why D is wrong:** Compute is a building block, not the recovery-objective requirement.
 
 15. Shared Linux filesystem across many servers calls for:
     A. EBS  B. EFS (file storage)  C. S3  D. Glacier
-    Answer: B — EFS provides shared NFS-style file storage.
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** EFS is shared NFS-style file storage accessible concurrently by many servers.
+> **Why A is wrong:** EBS is block storage attached to a single instance.
+> **Why C is wrong:** S3 is object storage, not a mounted shared filesystem.
+> **Why D is wrong:** Glacier is cold archive, not a live shared filesystem.
 
 16. Low-latency, consistent database I/O is best met with:
     A. Standard S3  B. Provisioned IOPS EBS  C. Glacier  D. EFS IA
-    Answer: B — Provisioned IOPS SSD delivers consistent low latency.
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** Provisioned IOPS (io1/io2) EBS delivers consistent low-latency database performance.
+> **Why A is wrong:** S3 is object storage with higher latency, not a DB volume.
+> **Why C is wrong:** Glacier is cold archive, far too slow for a database.
+> **Why D is wrong:** EFS IA is infrequent-access file storage, not low-latency block I/O.
 
 17. Credit-card payment processing triggers which compliance set?
     A. HIPAA  B. PCI-DSS  C. GDPR  D. SOC 1
-    Answer: B — PCI-DSS governs cardholder data environments.
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** PCI-DSS governs cardholder-data environments (credit-card processing).
+> **Why A is wrong:** HIPAA governs health data, not payments.
+> **Why C is wrong:** GDPR governs EU personal data, not specifically payments.
+> **Why D is wrong:** SOC 1 is about service-org controls, not card data specifically.
 
 18. Handling Black Friday traffic spikes is best met with:
     A. Fixed single VM  B. Auto Scaling + ALB  C. One AZ  D. Manual scaling
-    Answer: B — Auto Scaling + load balancer absorbs spikes resiliently.
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** Auto Scaling groups behind an ALB absorb spikes resiliently and scale back down.
+> **Why A is wrong:** A fixed single VM can't handle a spike and is a single point of failure.
+> **Why C is wrong:** One AZ lacks resilience for peak events.
+> **Why D is wrong:** Manual scaling is too slow to react to sudden spikes.
 
 19. Auditing "who changed what" in AWS is done via:
     A. CloudTrail  B. CloudFront  C. EBS  D. NAT
-    Answer: A — CloudTrail logs API activity for audit.
+
+> [!note]- Reveal Answer
+> **Correct: A**
+> **Why correct:** CloudTrail logs all API activity, providing the "who changed what, when" audit trail.
+> **Why B is wrong:** CloudFront is a CDN, not an audit log.
+> **Why C is wrong:** EBS is block storage, not auditing.
+> **Why D is wrong:** NAT is network address translation, not audit logging.
 
 20. The cheapest storage tier for frequently read hot data is NOT:
     A. S3 Standard  B. EBS SSD  C. Glacier  D. EFS
-    Answer: C — Glacier is for cold archival, not hot frequent access.
+
+> [!note]- Reveal Answer
+> **Correct: C**
+> **Why correct:** Glacier is the cold/archive tier — not for frequently read hot data; it is the correct "NOT."
+> **Why A is wrong:** S3 Standard is the hot/frequent-access tier.
+> **Why B is wrong:** EBS SSD is high-performance block storage for active workloads.
+> **Why D is wrong:** EFS is active shared file storage, not cold archive.

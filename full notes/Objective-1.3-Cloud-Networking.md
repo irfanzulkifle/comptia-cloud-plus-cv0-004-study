@@ -215,137 +215,257 @@ A. AWS Direct Connect
 B. AWS Site-to-Site VPN
 C. VPC Peering
 D. Transit Gateway
-**Answer:** B — A Site-to-Site VPN uses an encrypted internet tunnel for hybrid connectivity.
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** A Site-to-Site VPN uses an encrypted internet tunnel for hybrid connectivity.
+> **Why A is wrong:** Direct Connect is a private circuit, not an internet tunnel.
+> **Why C is wrong:** Peering connects VPCs, not on-prem.
+> **Why D is wrong:** Transit Gateway routes, it does not create the tunnel.
 
 **Q2.** A company needs predictable, low-latency, 10 Gbps connectivity that bypasses the internet. Which should they choose?
 A. Client VPN
 B. VPC Peering
 C. AWS Direct Connect
 D. CloudFront
-**Answer:** C — Direct Connect is a dedicated physical circuit with predictable performance.
+
+> [!note]- Reveal Answer
+> **Correct: C**
+> **Why correct:** Direct Connect is a dedicated physical circuit with predictable, low-latency performance.
+> **Why A is wrong:** Client VPN is software over the internet.
+> **Why B is wrong:** Peering is VPC-to-VPC.
+> **Why D is wrong:** CloudFront is a CDN.
 
 **Q3.** Which VPC component lets two VPCs in different accounts communicate using private IPs?
 A. Internet Gateway
 B. VPC Peering
 C. NAT Gateway
 D. Security Group
-**Answer:** B — VPC Peering privately connects VPCs across accounts/regions via private IPs.
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** VPC Peering privately connects VPCs across accounts/regions via private IPs.
+> **Why A is wrong:** Internet Gateway provides internet access.
+> **Why C is wrong:** NAT Gateway is for outbound internet.
+> **Why D is wrong:** Security Groups filter traffic, they do not connect VPCs.
 
 **Q4.** For managing 25 VPCs and two on-prem links with central routing, which is the best fit?
 A. VPC Peering mesh
 B. Transit Gateway
 C. Static routes only
 D. NACLs
-**Answer:** B — Transit Gateway uses hub-and-spoke, scaling far better than peering meshes.
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** Transit Gateway uses hub-and-spoke, scaling far better than peering meshes.
+> **Why A is wrong:** Peering mesh is O(n^2) and does not scale.
+> **Why C is wrong:** Static routes do not centrally connect 25 VPCs.
+> **Why D is wrong:** NACLs filter, not route between VPCs.
 
 **Q5.** A public subnet is best described as:
 A. A subnet with no route table
 B. A subnet that has a route to an internet gateway
 C. A subnet that cannot reach the internet
 D. A subnet limited to one instance
-**Answer:** B — Public subnets route 0.0.0.0/0 to an internet gateway.
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** Public subnets route 0.0.0.0/0 to an internet gateway.
+> **Why A is wrong:** Every subnet has a route table.
+> **Why C is wrong:** A public subnet CAN reach the internet.
+> **Why D is wrong:** Subnets can hold many instances.
 
 **Q6.** Which Layer 7 service routes based on URL path and terminates TLS?
 A. Network Load Balancer
 B. Application Load Balancer
 C. NAT Gateway
 D. CDN
-**Answer:** B — ALB operates at Layer 7 with path/host routing and TLS termination.
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** ALB operates at Layer 7 with URL/host routing and TLS termination.
+> **Why A is wrong:** NLB is Layer 4.
+> **Why C is wrong:** NAT Gateway is for outbound internet.
+> **Why D is wrong:** CDN caches content.
 
 **Q7.** An NLB is preferred over an ALB when you need:
 A. URL-based routing
 B. Millions of TCP connections with low latency and client IP preservation
 C. WAF integration
 D. Header rewriting
-**Answer:** B — NLB is Layer 4, high throughput, preserves client IP, ultra-low latency.
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** NLB is Layer 4, high throughput, preserves client IP, ultra-low latency.
+> **Why A is wrong:** URL routing is ALB's L7 feature.
+> **Why C is wrong:** WAF is an Application Gateway/ALB feature.
+> **Why D is wrong:** Header rewriting is L7.
 
 **Q8.** Which managed service both load balances HTTP traffic and provides a Web Application Firewall?
 A. Application Gateway
 B. Network Load Balancer
 C. Transit Gateway
 D. Route Table
-**Answer:** A — An Application Gateway bundles Layer-7 load balancing with WAF.
+
+> [!note]- Reveal Answer
+> **Correct: A**
+> **Why correct:** An Application Gateway bundles Layer-7 load balancing with WAF.
+> **Why B is wrong:** NLB has no WAF.
+> **Why C is wrong:** Transit Gateway is for routing.
+> **Why D is wrong:** Route tables direct traffic, no WAF.
 
 **Q9.** A global CDN primarily improves:
 A. Database write speed
 B. Latency and offload for users far from origin
 C. VLAN segmentation
 D. BGP convergence
-**Answer:** B — CDNs cache content at edge locations near users, reducing latency.
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** CDNs cache content at edge locations near users, reducing latency.
+> **Why A is wrong:** CDNs do not speed up DB writes.
+> **Why C is wrong:** VLAN is L2 segmentation.
+> **Why D is wrong:** BGP is a routing protocol.
 
 **Q10.** Which firewall is stateful and applied at the instance (ENI) level?
 A. NACL
 B. Security Group
 C. Route Table
 D. Transit Gateway
-**Answer:** B — Security Groups are stateful and attached to instances/ENIs.
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** Security Groups are stateful and attached to instances/ENIs.
+> **Why A is wrong:** NACLs are stateless.
+> **Why C is wrong:** Route tables route, not filter by instance.
+> **Why D is wrong:** Transit Gateway is for routing.
 
 **Q11.** A subnet-level, stateless firewall that evaluates inbound and outbound rules separately is a:
 A. Security Group
 B. Network ACL (NACL)
 C. NAT Gateway
 D. Internet Gateway
-**Answer:** B — NACLs are stateless and operate at the subnet boundary.
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** NACLs are stateless and operate at the subnet boundary.
+> **Why A is wrong:** Security Groups are stateful.
+> **Why C is wrong:** NAT Gateway is for outbound.
+> **Why D is wrong:** Internet Gateway is internet access.
 
 **Q12.** Which protocol is used to advertise on-prem routes over Direct Connect dynamically?
 A. OSPF
 B. Static only
 C. BGP
 D. VLAN tagging
-**Answer:** C — BGP exchanges routes between autonomous systems over Direct Connect.
+
+> [!note]- Reveal Answer
+> **Correct: C**
+> **Why correct:** BGP exchanges routes between autonomous systems over Direct Connect.
+> **Why A is wrong:** OSPF is not used for Direct Connect.
+> **Why B is wrong:** Static is not dynamic.
+> **Why D is wrong:** VLAN tagging is not a routing protocol.
 
 **Q13.** SDN is best described as:
 A. Physical switch stacking
 B. Separating control plane from data plane, centrally managed by software
 C. A type of firewall
 D. A routing protocol
-**Answer:** B — SDN decouples control/data planes and is software-controlled (basis of VPCs).
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** SDN decouples control/data planes and is software-controlled (basis of VPCs).
+> **Why A is wrong:** It is not physical switch stacking.
+> **Why C is wrong:** It is not a firewall.
+> **Why D is wrong:** It is not a routing protocol.
 
 **Q14.** A VLAN is used to:
 A. Replace BGP
 B. Logically segment a network regardless of physical location
 C. Terminate TLS
 D. Cache content at the edge
-**Answer:** B — VLANs logically segment broadcast domains independent of physical layout.
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** VLANs logically segment broadcast domains independent of physical layout.
+> **Why A is wrong:** VLAN does not replace BGP.
+> **Why C is wrong:** TLS termination is a load-balancer/proxy job.
+> **Why D is wrong:** Edge caching is a CDN function.
 
 **Q15.** A static route is best when:
 A. You need automatic failover across many paths
 B. The path is simple, controlled, and predictable
 C. You must use BGP
 D. You want dynamic discovery
-**Answer:** B — Static routes are manual, simple, and predictable for known paths.
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** Static routes are manual, simple, and predictable for known paths.
+> **Why A is wrong:** Static does not auto-failover.
+> **Why C is wrong:** Static does not require BGP.
+> **Why D is wrong:** It is manual, not dynamic.
 
 **Q16.** What does a route table control?
 A. Firewall rules per instance
 B. Where traffic from a subnet is directed based on destination
 C. CDN edge placement
 D. VLAN IDs
-**Answer:** B — Route tables map destinations to targets for subnet traffic flow.
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** Route tables map destinations to targets for subnet traffic flow.
+> **Why A is wrong:** Firewall rules are SG/NACL, not route tables.
+> **Why C is wrong:** CDN placement is not route-table controlled.
+> **Why D is wrong:** VLAN IDs are not set in route tables.
 
 **Q17.** A private subnet typically sends outbound internet traffic through a:
 A. Internet Gateway
 B. NAT Gateway (via static route)
 C. Transit Gateway only
 D. Direct Connect
-**Answer:** B — Private subnets use a NAT Gateway (often via a static/default route) for outbound.
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** Private subnets use a NAT Gateway (often via a static/default route) for outbound.
+> **Why A is wrong:** Internet Gateway is for public subnets.
+> **Why C is wrong:** TGW is not required for basic outbound.
+> **Why D is wrong:** Direct Connect is for hybrid, not general outbound.
 
 **Q18.** Which AWS service maps to "Dedicated connection" in the exam objectives?
 A. VPN
 B. Direct Connect
 C. CloudFront
 D. ALB
-**Answer:** B — Dedicated connections map to AWS Direct Connect.
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** Dedicated connections map to AWS Direct Connect.
+> **Why A is wrong:** VPN is encrypted internet.
+> **Why C is wrong:** CloudFront is a CDN.
+> **Why D is wrong:** ALB is load balancing.
 
 **Q19.** Mapping the generic "Application gateway" to AWS yields:
 A. Network Firewall
 B. Application Load Balancer (ALB)
 C. Transit Gateway
 D. VPC Peering
-**Answer:** B — AWS has no separate App Gateway; it maps to ALB.
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** AWS has no separate App Gateway; it maps to the ALB.
+> **Why A is wrong:** Network Firewall is L3-L7 inspection.
+> **Why C is wrong:** Transit Gateway is routing.
+> **Why D is wrong:** VPC Peering connects VPCs.
 
 **Q20.** For global content delivery (CDN) on AWS, which service is used?
 A. CloudFront
 B. Direct Connect
 C. Security Group
 D. Route Table
-**Answer:** A — Amazon CloudFront is the AWS CDN.
+
+> [!note]- Reveal Answer
+> **Correct: A**
+> **Why correct:** Amazon CloudFront is the AWS CDN.
+> **Why B is wrong:** Direct Connect is hybrid connectivity.
+> **Why C is wrong:** Security Group is a firewall.
+> **Why D is wrong:** Route Table directs traffic.

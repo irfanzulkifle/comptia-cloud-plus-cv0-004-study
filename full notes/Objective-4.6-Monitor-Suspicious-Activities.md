@@ -247,12 +247,26 @@ These compose: VPC Flow Logs feed GuardDuty and CloudWatch; Config catches postu
    D. Encryption
    Answer: B — event monitoring centralizes telemetry for detection.
 
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** Event monitoring is the continuous collection, correlation, and review of telemetry (logs/metrics/API events).
+> **Why A is wrong:** Hardening removes attack surface; it is not telemetry collection.
+> **Why C is wrong:** Patching applies updates; it is not log correlation.
+> **Why D is wrong:** Encryption protects data; it does not collect or correlate events.
+
 2. A server normally uses 20% CPU but is pinned at 100% with no traffic rise. This is a:
    A. Baseline deviation
    B. DDoS
    C. Normal growth
    D. Patch event
    Answer: A — sustained CPU with no matching workload is a deviation.
+
+> [!note]- Reveal Answer
+> **Correct: A**
+> **Why correct:** Sustained 100% CPU with no matching workload is a deviation from the documented baseline.
+> **Why B is wrong:** DDoS shows an inbound traffic spike, not just CPU with low traffic.
+> **Why C is wrong:** Normal growth is correlated with business activity, not an unexplained CPU peg.
+> **Why D is wrong:** A patch event is a maintenance action, not an anomaly signal.
 
 3. Management port 3389 open to 0.0.0.0/0 is best described as:
    A. Required for web traffic
@@ -261,12 +275,26 @@ These compose: VPC Flow Logs feed GuardDuty and CloudWatch; Config catches postu
    D. Encryption at rest
    Answer: B — an unneeded, internet-exposed port is unnecessary attack surface.
 
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** RDP 3389 open to the world is an unnecessary open port — unneeded attack surface.
+> **Why A is wrong:** Port 3389 is RDP (remote desktop), not web traffic (443).
+> **Why C is wrong:** An open port is a misconfiguration, not a DDoS attack itself.
+> **Why D is wrong:** Encryption at rest is a data-protection control, unrelated to an open port.
+
 4. An attacker uses a known CVE in outdated software to gain a shell. This is:
    A. Human error
    B. Vulnerability exploitation (outdated software)
    C. Phishing
    D. Ransomware
    Answer: B — exploiting an unpatched CVE is vulnerability exploitation via outdated software.
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** Exploiting a known, unpatched CVE in outdated software is vulnerability exploitation (outdated software).
+> **Why A is wrong:** Human error is misconfiguration, not exploiting a known software CVE.
+> **Why C is wrong:** Phishing manipulates a person; this is technical exploitation of software.
+> **Why D is wrong:** Ransomware is malware that encrypts data; the entry here is a CVE exploit.
 
 5. A public S3 bucket is misconfigured and dumped. The root cause is:
    A. Phishing
@@ -275,12 +303,26 @@ These compose: VPC Flow Logs feed GuardDuty and CloudWatch; Config catches postu
    D. DDoS
    Answer: B — data leaked via a misconfiguration, not deception or code.
 
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** Data leaked via a misconfiguration (public bucket), so the root cause is human error.
+> **Why A is wrong:** Phishing steals creds via deception; this is an open-bucket misconfig.
+> **Why C is wrong:** Cryptojacking hijacks compute to mine; no mining symptom here.
+> **Why D is wrong:** DDoS is a flood; this is a data-leak misconfiguration.
+
 6. A user enters credentials on a fake portal after an email. This is:
    A. Malware
    B. Phishing (social engineering)
    C. Vulnerability exploitation
    D. Zombie instance
    Answer: B — credentials handed over under deception = phishing.
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** The user is deceived by a fake portal into handing over credentials — that is phishing (social engineering).
+> **Why A is wrong:** Malware is code execution; here the victim voluntarily gave creds, no code ran.
+> **Why C is wrong:** Vulnerability exploitation defeats a control; here trust was exploited, not a flaw.
+> **Why D is wrong:** A zombie instance is idle forgotten compute; unrelated to credential theft.
 
 7. Files are mass-encrypted with a ransom note. The attack type is:
    A. DDoS
@@ -289,12 +331,26 @@ These compose: VPC Flow Logs feed GuardDuty and CloudWatch; Config catches postu
    D. Metadata abuse
    Answer: B — mass encryption plus extortion is ransomware.
 
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** Mass file encryption plus a ransom demand is the defining symptom of ransomware.
+> **Why A is wrong:** DDoS denies availability via flooding, not by encrypting files.
+> **Why C is wrong:** Cryptojacking pegs CPU to mine; it does not encrypt files for ransom.
+> **Why D is wrong:** Metadata/IMDS abuse steals instance creds, not encrypt files.
+
 8. A site is unreachable with inbound traffic 100x normal from many IPs. This is:
    A. Cryptojacking
    B. DDoS
    C. Zombie instance
    D. Phishing
    Answer: B — distributed volumetric flood causing unavailability is DDoS.
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** A distributed, many-source inbound flood causing unavailability is a DDoS attack.
+> **Why A is wrong:** Cryptojacking shows high CPU, not an inbound traffic flood.
+> **Why C is wrong:** A zombie is idle/forgotten compute, not a flood of inbound traffic.
+> **Why D is wrong:** Phishing is credential theft via deception, not a traffic flood.
 
 9. CPU is pegged at 100% but app traffic is low. This points to:
    A. DDoS
@@ -303,12 +359,26 @@ These compose: VPC Flow Logs feed GuardDuty and CloudWatch; Config catches postu
    D. Human error
    Answer: B — high CPU with no business traffic is cryptojacking.
 
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** Sustained max CPU with little/no business traffic is the signature of cryptojacking.
+> **Why A is wrong:** DDoS is an inbound flood; CPU-with-no-traffic is not a flood signature.
+> **Why C is wrong:** Ransomware shows encrypted files/ransom note, not just CPU pegging.
+> **Why D is wrong:** Human error is misconfiguration; high CPU-mining is hostile, not a mistake.
+
 10. An untagged VM runs 24/7 with no owner and a rising bill. This is a:
     A. Zombie instance
     B. DDoS victim
     C. Ransomware host
     D. Phishing target
     Answer: A — abandoned, unowned, idle compute is a zombie instance.
+
+> [!note]- Reveal Answer
+> **Correct: A**
+> **Why correct:** An untagged, ownerless, always-on idle instance draining cost is a zombie instance.
+> **Why B is wrong:** A DDoS victim is unreachable under flood, not an idle untagged VM.
+> **Why C is wrong:** A ransomware host shows encrypted files, not idle low-utilization waste.
+> **Why D is wrong:** A phishing target is a person/credential, not an untagged instance.
 
 11. An app with SSRF reads 169.254.169.254 and steals the instance role's creds. This is:
     A. Phishing
@@ -317,12 +387,26 @@ These compose: VPC Flow Logs feed GuardDuty and CloudWatch; Config catches postu
     D. DDoS
     Answer: B — SSRF to the metadata endpoint stealing IAM creds is metadata abuse.
 
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** SSRF reaching the IMDS endpoint (169.254.169.254) to steal instance IAM creds is metadata/IMDS abuse.
+> **Why A is wrong:** Phishing tricks a person; this is a server-side SSRF exploit of metadata.
+> **Why C is wrong:** A zombie is idle forgotten compute, not an SSRF credential theft.
+> **Why D is wrong:** DDoS is a flood; this is targeted credential exfiltration.
+
 12. The mitigation that blocks simple SSRF metadata hops is:
     A. IMDSv1
     B. IMDSv2 (token-required, hop limit 1)
     C. Disabling CloudTrail
     D. Opening port 22
     Answer: B — IMDSv2's token/session model stops simple SSRF.
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** IMDSv2 requires a session token and enforces a hop limit, blocking simple SSRF metadata hops.
+> **Why A is wrong:** IMDSv1 has no token and is weak against SSRF — the opposite of the fix.
+> **Why C is wrong:** Disabling CloudTrail removes audit visibility; it does not stop SSRF.
+> **Why D is wrong:** Opening port 22 increases attack surface; it does not mitigate metadata abuse.
 
 13. A legitimate, gradual, workload-correlated traffic increase is:
     A. An attack
@@ -331,12 +415,26 @@ These compose: VPC Flow Logs feed GuardDuty and CloudWatch; Config catches postu
     D. Phishing
     Answer: B — correlated, explainable growth is normal, not an attack.
 
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** A gradual, business-correlated increase is a baseline shift (normal growth), not an attack.
+> **Why A is wrong:** Attacks show deviation uncorrelated with business activity, not correlated growth.
+> **Why C is wrong:** Cryptojacking shows CPU spikes with low traffic, not traffic growth.
+> **Why D is wrong:** Phishing is credential theft, not a traffic-growth pattern.
+
 14. A single IP brute-forcing a login is BEST classified as:
     A. DDoS
     B. Brute force (credential attack)
     C. Ransomware
     D. Zombie
     Answer: B — single-source password guessing is brute force, not distributed DDoS.
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** A single source guessing passwords is brute force (a credential attack), not a distributed flood.
+> **Why A is wrong:** DDoS is distributed from many sources; one IP is not a volumetric DDoS.
+> **Why C is wrong:** Ransomware encrypts files; this is login guessing, not encryption.
+> **Why D is wrong:** A zombie is idle compute; this is an active credential attack.
 
 15. Which AWS service flags cryptojacking and instance-credential exfiltration?
     A. CloudTrail
@@ -345,12 +443,26 @@ These compose: VPC Flow Logs feed GuardDuty and CloudWatch; Config catches postu
     D. KMS
     Answer: B — GuardDuty analyzes logs to detect these threats.
 
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** GuardDuty analyzes CloudTrail/Flow Logs/DNS to flag cryptojacking and instance-credential exfiltration.
+> **Why A is wrong:** CloudTrail records the events GuardDuty inspects, but does not itself flag the threat.
+> **Why C is wrong:** IAM controls identity; it does not detect cryptojacking/exfiltration.
+> **Why D is wrong:** KMS manages keys, not threat detection.
+
 16. Which AWS service builds CPU/baseline alarms to catch cryptojacking/DDoS?
     A. VPC Flow Logs
     B. CloudWatch
     C. Macie
     D. Secrets Manager
     Answer: B — CloudWatch metrics/alarms detect baseline deviation.
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** CloudWatch collects metrics and fires alarms on baseline deviation (e.g., CPU peg, traffic spike).
+> **Why A is wrong:** VPC Flow Logs capture traffic detail, but alarms/baselines are CloudWatch.
+> **Why C is wrong:** Macie classifies sensitive data, not CPU/metrics baselines.
+> **Why D is wrong:** Secrets Manager stores secrets, not metric alarms.
 
 17. Which AWS service flags unnecessary open ports and orphaned instances?
     A. Config
@@ -359,12 +471,26 @@ These compose: VPC Flow Logs feed GuardDuty and CloudWatch; Config catches postu
     D. KMS
     Answer: A — Config evaluates resource config and drift rules.
 
+> [!note]- Reveal Answer
+> **Correct: A**
+> **Why correct:** AWS Config continuously evaluates resource config, flagging open ports and orphaned/zombie instances.
+> **Why B is wrong:** Shield is DDoS protection, not configuration drift detection.
+> **Why C is wrong:** Macie is data classification, not port/instance posture.
+> **Why D is wrong:** KMS manages keys, not resource configuration.
+
 18. Which AWS service exposes network traffic to find mining egress and SSRF calls?
     A. VPC Flow Logs
     B. CloudTrail
     C. IAM
     D. GuardDuty alone
     Answer: A — VPC Flow Logs capture the ENI traffic detail.
+
+> [!note]- Reveal Answer
+> **Correct: A**
+> **Why correct:** VPC Flow Logs capture ENI traffic, exposing mining-pool egress and metadata-endpoint (169.254.169.254) calls.
+> **Why B is wrong:** CloudTrail records API/account events, not raw packet-flow detail.
+> **Why C is wrong:** IAM is identity control, not network traffic capture.
+> **Why D is wrong:** GuardDuty consumes Flow Logs; the traffic exposure itself comes from Flow Logs.
 
 19. Monitoring that surfaces a suspicious sign-in but does NOT block it demonstrates that:
     A. Monitoring prevents attacks
@@ -373,9 +499,23 @@ These compose: VPC Flow Logs feed GuardDuty and CloudWatch; Config catches postu
     D. IDS is the same as IPS
     Answer: B — detection is not prevention; blocking needs IPS/conditional access.
 
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** Monitoring detects and alerts; prevention (blocking) requires inline controls like IPS/conditional access.
+> **Why A is wrong:** Monitoring alone does not prevent; it surfaces and alerts only.
+> **Why C is wrong:** A SIEM correlates/analyzes logs; it is not a firewall that blocks traffic.
+> **Why D is wrong:** IDS detects/alerts, IPS also blocks — they are not the same.
+
 20. Port 443 open on a public web server should be:
     A. Closed as unnecessary
     B. Kept (it is required for the service)
     C. Opened to 0.0.0.0/0 on 22 instead
     D. Encrypted at rest
     Answer: B — 443 is required; least-exposure closes only unneeded ports.
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** 443 is required for HTTPS on a public web server; least-exposure only closes *unneeded* ports.
+> **Why A is wrong:** Closing 443 would break the web service; it is a required port.
+> **Why C is wrong:** Opening 22 to the world is an unnecessary open port — the misconfiguration, not the fix.
+> **Why D is wrong:** "Encrypted at rest" applies to stored data, not to whether a port is open.

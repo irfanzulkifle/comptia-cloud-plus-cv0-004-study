@@ -264,145 +264,264 @@ AWS Config records every configuration change and evaluates resources against ru
 
 ## SECTION 6 — PRACTICE QUESTIONS
 
-
 1. A deployment fails with "AccessDenied" although the resource exists. What is the most likely cause?
    A. Regional capacity exhaustion
    B. Permission/misconfiguration
    C. API throttling
    D. Deprecation
-   Answer: B — The resource exists but the identity lacks the required IAM/role permission.
+
+> [!note]- Reveal Answer: B
+> **Correct: B**
+> **Why correct:** The resource exists, so capacity/region aren't the issue; `AccessDenied` means the deploying identity lacks the required IAM/role permission (6.1.2b).
+> **Why A is wrong:** Capacity exhaustion gives `InsufficientInstanceCapacity`, not `AccessDenied`, and the resource does exist here.
+> **Why C is wrong:** Throttling returns HTTP 429, not an `AccessDenied`/permission error.
+> **Why D is wrong:** Deprecation surfaces as `Unsupported`/retired-type errors, not an access-denied on an existing resource.
 
 2. You receive "InsufficientInstanceCapacity" for a specific VM family in one AZ, but your quota is unused. Cause?
    A. Quota exceeded
    B. Throttling
    C. Regional/capacity availability
    D. Outdated definition
-   Answer: C — No free physical capacity for that family in that AZ; move AZ/region or reserve capacity.
+
+> [!note]- Reveal Answer: C
+> **Correct: C**
+> **Why correct:** `InsufficientInstanceCapacity` is oversubscription (6.1.2c) — no physical capacity for that family in that AZ right now; the fix is move AZ / reserve, not raise a quota.
+> **Why A is wrong:** A quota error would be `InstanceLimitExceeded`/`vCPU` and applies in every AZ; your quota is explicitly unused.
+> **Why B is wrong:** Throttling is a 429 rate-limit, unrelated to physical capacity in one AZ.
+> **Why D is wrong:** An outdated definition fails at template apply (e.g. `InvalidAMIID.NotFound`), not with a live capacity error.
 
 3. A container built on a dev laptop crashes on the cluster with a GLIBC mismatch. Cause?
    A. Oversubscription
    B. Incompatibility
    C. Quota
    D. Partial outage
-   Answer: B — Base image/libs or architecture differ from the host runtime; rebuild to match.
+
+> [!note]- Reveal Answer: B
+> **Correct: B**
+> **Why correct:** A GLIBC/architecture mismatch is a runtime incompatibility (6.1.1) — the image's libraries don't match the host's base/architecture; rebuild against the matching base.
+> **Why A is wrong:** Oversubscription is "no capacity in this AZ," not a library crash at startup.
+> **Why C is wrong:** A quota cap blocks provisioning, it doesn't cause a GLIBC crash on a running container.
+> **Why D is wrong:** A partial outage degrades some AZs/endpoints; it doesn't produce a deterministic GLIBC error.
 
 4. CI pipelines return HTTP 429 "rate limit exceeded" after adding parallel jobs. Cause?
    A. Quota breach
    B. Throttling
    C. Deprecation
    D. Misconfiguration of subnets
-   Answer: B — Request rate exceeded the API rate limit; add backoff and stagger jobs.
+
+> [!note]- Reveal Answer: B
+> **Correct: B**
+> **Why correct:** HTTP 429 = API throttling (6.1.6a) — you're calling the API faster than allowed after adding parallel load; add backoff+jitter and stagger jobs.
+> **Why A is wrong:** A quota breach is a quantity cap (`InstanceLimitExceeded`/`vCPU`), not a per-second 429 rate error.
+> **Why C is wrong:** Deprecation breaks a retired API/feature for everyone, not just under parallel load.
+> **Why D is wrong:** Subnet misconfiguration causes connectivity/launch failures, not a 429 rate-limit response.
 
 5. A Terraform apply fails with "QuotaExceeded" for vCPUs. Cause?
    A. Throttling
    B. Regional availability
    C. Quota (resource limit)
    D. Oversubscription
-   Answer: C — Account/service quota ceiling reached; request a limit increase or free resources.
+
+> [!note]- Reveal Answer: C
+> **Correct: C**
+> **Why correct:** `QuotaExceeded` for vCPUs is a service quota (6.1.6b) — an account-wide hard cap hit; request a limit increase or free resources.
+> **Why A is wrong:** Throttling is a 429 rate error, not a quantity/quota-exceeded message.
+> **Why B is wrong:** Regional availability is "type not offered in this region," not a vCPU quota error.
+> **Why D is wrong:** Oversubscription is `InsufficientInstanceCapacity` in one AZ; moving AZs won't fix a quota cap.
 
 6. A template works in us-east-1 but fails "OperationNotSupportedInRegion" in ap-southeast-1. Cause?
    A. Permissions
    B. Regional availability
    C. Outdated definition
    D. Throttling
-   Answer: B — The feature/instance family is not offered in the target region.
+
+> [!note]- Reveal Answer: B
+> **Correct: B**
+> **Why correct:** `OperationNotSupportedInRegion` is regional service availability (6.1.7) — the feature/instance family isn't offered in that region; deploy to a supported region or pick another type.
+> **Why A is wrong:** A permission error is `AccessDenied`/`403`, not a region-unsupported message.
+> **Why C is wrong:** An outdated definition references a removed resource (e.g. `InvalidAMIID.NotFound`), not a region-support error.
+> **Why D is wrong:** Throttling is a 429; it doesn't vary by region the way this error does.
 
 7. An app launches but cannot reach its database across subnets. Cause?
    A. Insufficient capacity
    B. Misconfiguration (SG/NACL/route)
    C. Deprecation
    D. Throttling
-   Answer: B — Network/security misconfiguration isolates the resources, not a capacity issue.
+
+> [!note]- Reveal Answer: B
+> **Correct: B**
+> **Why correct:** The app runs but can't reach the DB across subnets — a security-group/NACL/route misconfiguration (6.1.2) isolates the resources; check SG inbound, NACL, and the route table.
+> **Why A is wrong:** Capacity issues prevent launch/scale, not cross-subnet reachability of a running app.
+> **Why C is wrong:** Deprecation removes a feature/API everywhere, not just the path to one database.
+> **Why D is wrong:** Throttling is an API rate limit (429), unrelated to network reachability between instances.
 
 8. Deployments suddenly fail with "unknown parameter" on an API call that worked last month. Cause?
    A. Partial outage
    B. Deprecation / outdated definition
    C. Quota
    D. Oversubscription
-   Answer: B — The API version/parameter was deprecated or removed; update the call/definition.
+
+> [!note]- Reveal Answer: B
+> **Correct: B**
+> **Why correct:** A parameter that worked last month now being "unknown" points to deprecation/removal of that API field (6.1.4) or an outdated definition still referencing it (6.1.3); update the call/template.
+> **Why A is wrong:** A partial outage degrades some endpoints, not a specific "unknown parameter" rejection.
+> **Why C is wrong:** A quota error is a quantity cap, not an "unknown parameter" schema error.
+> **Why D is wrong:** Oversubscription is capacity-in-an-AZ, unrelated to an API parameter rejection.
 
 9. Autoscaler cannot add nodes: "no capacity" in the chosen AZ. Cause?
    A. Permission error
    B. Throttling
    C. Regional/capacity availability
    D. Sizing
-   Answer: C — The node instance family has no capacity there; try another AZ/type or reserve.
+
+> [!note]- Reveal Answer: C
+> **Correct: C**
+> **Why correct:** "No capacity" in the chosen AZ is oversubscription (6.1.2c) — the node family has no free physical capacity there; try another AZ/type or use a Capacity Reservation.
+> **Why A is wrong:** A permission error is `AccessDenied`, not a capacity message.
+> **Why B is wrong:** Throttling is a 429 rate limit, not "no capacity."
+> **Why D is wrong:** Sizing is "instance too small for the workload" (OOM), not "can't provision because AZ is full."
 
 10. A VM experiences high CPU steal and slow disks despite correct sizing. Cause?
    A. Throttling
    B. Oversubscription
    C. Deprecation
    D. Regional availability
-   Answer: B — Host over-allocated (noisy neighbor) starves your VM of physical resources.
+
+> [!note]- Reveal Answer: B
+> **Correct: B**
+> **Why correct:** High CPU steal + slow disks with correct sizing = the host is over-allocated (noisy neighbor), a form of oversubscription (6.1.2c); the physical host is starved, not your config.
+> **Why A is wrong:** Throttling is an API 429, not CPU steal on a running VM.
+> **Why C is wrong:** Deprecation removes a feature/type, it doesn't cause runtime CPU steal.
+> **Why D is wrong:** Regional availability is about whether a type is offered in a region, not runtime host contention.
 
 11. A Kubernetes Helm chart fails on a newly upgraded cluster with CRD errors. Cause?
    A. Incompatibility
    B. Quota
    C. Partial outage
    D. Throttling
-   Answer: A — Chart/CRD API versions don't match the upgraded cluster version; update the chart.
+
+> [!note]- Reveal Answer: A
+> **Correct: A**
+> **Why correct:** CRD/API-version errors after a cluster upgrade are an incompatibility (6.1.1) — the chart targets API versions the new cluster no longer serves; update the chart/CRDs to match.
+> **Why B is wrong:** A quota error blocks provisioning quantity, not CRD schema validation.
+> **Why C is wrong:** A partial outage degrades endpoints; it doesn't produce deterministic CRD version errors.
+> **Why D is wrong:** Throttling is a 429 rate limit, unrelated to CRD schema mismatch.
 
 12. You cannot launch a GPU instance in your selected region. Cause?
    A. Permissions
    B. Regional availability
    C. Oversubscription
    D. Outdated definition
-   Answer: B — GPU families are limited to specific regions/AZs; choose a supported region.
+
+> [!note]- Reveal Answer: B
+> **Correct: B**
+> **Why correct:** GPU families are limited to specific regions/AZs — this is regional service availability (6.1.7); choose a supported region or a locally available GPU type.
+> **Why A is wrong:** A permission error is `AccessDenied`, not "type not available in region."
+> **Why C is wrong:** Oversubscription is `InsufficientInstanceCapacity` in one AZ; here the type is unavailable across the region.
+> **Why D is wrong:** An outdated definition references a removed resource ID, not a region-offering gap.
 
 13. Intermittent 5xx errors hit only one microservice while others are fine. Cause?
    A. Full outage
    B. Partial outage of a dependency/AZ
    C. Quota
    D. Sizing
-   Answer: B — A specific dependency or AZ is degraded; check health and fail over.
+
+> [!note]- Reveal Answer: B
+> **Correct: B**
+> **Why correct:** Only one service/AZ affected while others are fine = a partial outage (6.1.5b) of a dependency or AZ; check health and reroute/fail over that segment.
+> **Why A is wrong:** A full outage takes down everything uniformly, not just one microservice.
+> **Why C is wrong:** A quota cap blocks provisioning, not intermittent 5xx on a running service.
+> **Why D is wrong:** Sizing causes OOM/crashes under load, not intermittent 5xx isolated to one dependency.
 
 14. A re-deploy fails with "EntityAlreadyExists." Cause?
    A. Throttling
    B. Misconfiguration of idempotency/naming
    C. Deprecation
    D. Regional availability
-   Answer: B — The resource already exists; fix naming/idempotency or import the existing resource.
+
+> [!note]- Reveal Answer: B
+> **Correct: B**
+> **Why correct:** `EntityAlreadyExists` means a resource with that name already exists — an idempotency/naming misconfiguration (6.1.2); fix naming or import the existing resource instead of re-creating.
+> **Why A is wrong:** Throttling is a 429, not an "already exists" conflict.
+> **Why C is wrong:** Deprecation retires a type/API, it doesn't reject a duplicate name.
+> **Why D is wrong:** Regional availability is about offering a type in a region, not duplicate-name conflicts.
 
 15. Deployments are slow only at month-end peak across teams. Most likely cause?
    A. Deprecation
    B. Throttling tied to shared-account burst limits
    C. Full outage
    D. Incompatibility
-   Answer: B — Shared automation account hits rate limits under peak parallel load; stagger/raise limits.
+
+> [!note]- Reveal Answer: B
+> **Correct: B**
+> **Why correct:** Slowness only at peak across teams = API throttling (6.1.6a) on the shared automation account's burst limits; stagger jobs or request higher limits.
+> **Why A is wrong:** Deprecation breaks a feature permanently for everyone, not just at month-end peaks.
+> **Why C is wrong:** A full outage stops deployments entirely, not "slow only at peak."
+> **Why D is wrong:** Incompatibility is a version clash at runtime, not time-of-month slowness.
 
 16. A template references a subnet that was deleted last quarter and apply fails. Cause?
    A. Outdated definition / misconfiguration
    B. Throttling
    C. Oversubscription
    D. Regional availability
-   Answer: A — Stale definition points to removed network resources; refresh IDs and re-validate.
+
+> [!note]- Reveal Answer: A
+> **Correct: A**
+> **Why correct:** A template pointing at a subnet deleted last quarter is a stale/outdated component definition (6.1.3) (a misconfiguration of references); refresh the IDs and re-validate.
+> **Why B is wrong:** Throttling is a 429, not a reference to a missing resource.
+> **Why C is wrong:** Oversubscription is capacity-in-an-AZ, unrelated to a deleted subnet ID.
+> **Why D is wrong:** Regional availability is about whether a type is offered, not a deleted specific resource.
 
 17. An instance is under-provisioned and the app crashes under load. Cause?
    A. Sizing misconfiguration
    B. Permissions
    C. Throttling
    D. Deprecation
-   Answer: A — Wrong vCPU/RAM sizing; right-size to workload requirements.
+
+> [!note]- Reveal Answer: A
+> **Correct: A**
+> **Why correct:** Under-provisioned + crash under load = a sizing issue (6.1.2d) — wrong vCPU/RAM for the workload; right-size the instance and set requests/limits.
+> **Why B is wrong:** Permissions cause `AccessDenied`, not OOM/crash under load.
+> **Why C is wrong:** Throttling is an API 429, not an instance running out of resources.
+> **Why D is wrong:** Deprecation removes a type/feature, not "too small for the workload."
 
 18. A managed service returns 503 only during a provider-incident window for one region. Cause?
    A. Quota
    B. Partial/full outage
    C. Incompatibility
    D. Oversubscription
-   Answer: B — Provider-side outage (check status page); not a local config problem.
+
+> [!note]- Reveal Answer: B
+> **Correct: B**
+> **Why correct:** A 503 during a provider-incident window for a region is an outage (6.1.5) — provider-side, not your config; check the status page and fail over/wait.
+> **Why A is wrong:** A quota cap blocks provisioning, not a 503 from a live managed service.
+> **Why C is wrong:** Incompatibility is a runtime version clash, not a region-wide incident 503.
+> **Why D is wrong:** Oversubscription is capacity-in-your-AZ, not a provider incident affecting a managed service.
 
 19. A build succeeds on x86 CI but pods crash on ARM nodes. Cause?
    A. Regional availability
    B. Incompatibility (architecture)
    C. Throttling
    D. Quota
-   Answer: B — Architecture mismatch; build multi-arch images and set correct node selectors.
+
+> [!note]- Reveal Answer: B
+> **Correct: B**
+> **Why correct:** x86 build crashing on ARM nodes is an architecture incompatibility (6.1.1) — build multi-arch images and set correct node selectors/affinities.
+> **Why A is wrong:** Regional availability is about offering a type in a region, not CPU architecture of nodes.
+> **Why C is wrong:** Throttling is a 429 API rate limit, unrelated to arch mismatch crashes.
+> **Why D is wrong:** A quota cap blocks provisioning count, not runtime arch crashes.
 
 20. A deployment uses a long-lived access key that now returns "SignatureDoesNotMatch." Recent policy forced IMDSv2/role use. Cause?
    A. Throttling
    B. Misconfiguration / deprecation of key-based auth path
    C. Oversubscription
    D. Sizing
-   Answer: B — Auth method deprecated/blocked by new policy; switch to IAM roles/instance profile.
+
+> [!note]- Reveal Answer: B
+> **Correct: B**
+> **Why correct:** A long-lived key rejected after a policy forced IMDSv2/roles is a misconfiguration/deprecation of the key-based auth path (6.1.2/6.1.4); switch to instance-profile/IAM roles.
+> **Why A is wrong:** Throttling is a 429, not a signature mismatch from a blocked auth method.
+> **Why C is wrong:** Oversubscription is capacity-in-an-AZ, unrelated to auth signature errors.
+> **Why D is wrong:** Sizing is instance magnitude (OOM/disk), not authentication failures.
 
 ---

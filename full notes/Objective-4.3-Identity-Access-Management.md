@@ -145,12 +145,26 @@ This section maps every 4.3 concept to its AWS-specific service or feature. AWS 
    D. Bastion host
    Answer: B
 
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** Programmatic access (API/SDK) lets applications/scripts call the cloud using access keys or tokens, not a human clicking.
+> **Why A is wrong:** The web portal is a human-driven GUI, not software calling the cloud.
+> **Why C is wrong:** RDP is remote desktop to a resource, not programmatic API access.
+> **Why D is wrong:** A bastion host is an SSH/RDP jump box, not a software API path.
+
 2. A developer needs to run a nightly script that creates storage snapshots. What is the most secure credential approach?
    A. Share the root account password
    B. Long-lived admin key on the laptop
    C. A narrowly scoped role assumed by the script
    D. Disable logging to speed it up
    Answer: C
+
+> [!note]- Reveal Answer
+> **Correct: C**
+> **Why correct:** A narrowly scoped role assumed by the script applies least privilege, so a leaked credential has a tiny blast radius.
+> **Why A is wrong:** Sharing root violates least privilege and destroys accountability.
+> **Why B is wrong:** A long-lived admin key is over-privileged and risky if it leaks.
+> **Why D is wrong:** Disabling logging removes the audit trail and is never the fix.
 
 3. Which tool is the browser-based graphical way to manage the cloud?
    A. CLI
@@ -159,12 +173,26 @@ This section maps every 4.3 concept to its AWS-specific service or feature. AWS 
    D. Bastion host
    Answer: C
 
+> [!note]- Reveal Answer
+> **Correct: C**
+> **Why correct:** The web portal is the browser-based management console (protected by password + MFA).
+> **Why A is wrong:** The CLI is a text/command tool, not a browser GUI.
+> **Why B is wrong:** An SDK is code libraries for programming, not a graphical console.
+> **Why D is wrong:** A bastion host is for reaching workloads via SSH/RDP, not cloud administration.
+
 4. You must give a new intern read-only access to resources. Which model fits best?
    A. DAC
    B. RBAC with a read-only role
    C. Local user only
    D. OpenID Connect
    Answer: B
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** RBAC assigns a job-function role (read-only) so the intern gets only the needed permissions.
+> **Why A is wrong:** DAC lets the resource owner set permissions; it is not role-based least privilege by function.
+> **Why C is wrong:** A local user is an identity type, not an authorization model that grants a role.
+> **Why D is wrong:** OIDC is an authentication method, not an authorization/role model.
 
 5. Staff already log into Microsoft Entra ID. You want them to use that same login for the cloud console. Which protocol enables this SSO?
    A. OAuth 2.0
@@ -173,12 +201,26 @@ This section maps every 4.3 concept to its AWS-specific service or feature. AWS 
    D. SSH
    Answer: B
 
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** SAML federation carries a signed assertion from the external IdP (Entra ID) to enable enterprise SSO.
+> **Why A is wrong:** OAuth 2.0 is authorization (delegated access), not the SSO protocol here.
+> **Why C is wrong:** RDP is remote desktop, unrelated to identity federation/SSO.
+> **Why D is wrong:** SSH is host shell access, not browser SSO to the console.
+
 6. "Log in with Google" so an app can access your profile without your password. Which framework grants this scoped access?
    A. SAML
    B. OAuth 2.0
    C. RDP
    D. DAC
    Answer: B
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** OAuth 2.0 grants a scoped, revocable access token to the app without sharing the user's password.
+> **Why A is wrong:** SAML is enterprise SSO via XML assertions, not the "Log in with Google" delegated-access pattern.
+> **Why C is wrong:** RDP is remote desktop, not an authorization framework.
+> **Why D is wrong:** DAC is owner-discretionary access to a resource, not third-party delegated access.
 
 7. OIDC is best described as:
    A. Authorization only
@@ -187,12 +229,26 @@ This section maps every 4.3 concept to its AWS-specific service or feature. AWS 
    D. A directory service
    Answer: B
 
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** OIDC is an authentication layer on top of OAuth 2.0 that returns an ID token answering "who is this user?"
+> **Why A is wrong:** OIDC is authentication, while OAuth 2.0 handles authorization.
+> **Why C is wrong:** A bastion host is a jump box; OIDC is a token protocol.
+> **Why D is wrong:** A directory service (AD/LDAP) stores identities; OIDC is a federated auth protocol.
+
 8. A server has no public IP and admins reach internal machines through one hardened, logged entry point. This is a:
    A. Web portal
    B. Bastion host
    C. SAML IdP
    D. Directory
    Answer: B
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** A bastion host is a single hardened, logged jump box that is the only inbound point to private servers.
+> **Why A is wrong:** The web portal is management-plane GUI access, not a network jump box.
+> **Why C is wrong:** A SAML IdP authenticates users; it is not a network entry point.
+> **Why D is wrong:** A directory holds identities; it does not provide SSH/RDP access routing.
 
 9. For Linux server remote shell access, the recommended authentication is:
    A. Password-only SSH open to the internet
@@ -201,12 +257,26 @@ This section maps every 4.3 concept to its AWS-specific service or feature. AWS 
    D. Web portal
    Answer: B
 
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** Key-based SSH (private key + passphrase) with restricted access is the recommended, stronger-than-password approach.
+> **Why A is wrong:** Password-only SSH exposed to the internet is weak and a common breach vector.
+> **Why C is wrong:** RDP is the Windows protocol, not Linux shell access.
+> **Why D is wrong:** The web portal is management-plane access, not host shell login.
+
 10. For Windows graphical remote desktop, which protocol is used?
    A. SSH
    B. RDP
    C. SAML
    D. OAuth 2.0
    Answer: B
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** RDP (Remote Desktop Protocol) provides a full graphical Windows desktop session.
+> **Why A is wrong:** SSH is for Linux/Unix command-line shells, not Windows graphical desktops.
+> **Why C is wrong:** SAML is a federation/SSO protocol, not a remote-desktop protocol.
+> **Why D is wrong:** OAuth 2.0 is authorization, not a remote-desktop transport.
 
 11. Requiring a password plus a phone-based code is an example of:
    A. Federation
@@ -215,12 +285,26 @@ This section maps every 4.3 concept to its AWS-specific service or feature. AWS 
    D. RBAC
    Answer: B
 
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** MFA requires two+ independent factors (something you know + have), e.g., password + phone code.
+> **Why A is wrong:** Federation is SSO via an external IdP, not combining multiple factors.
+> **Why C is wrong:** DAC is owner-discretionary resource access, unrelated to factor count.
+> **Why D is wrong:** RBAC is role-based authorization, not multi-factor authentication.
+
 12. A resource owner decides who may access their own files. This is:
    A. RBAC
    B. DAC
    C. OAuth 2.0
    D. Group-based
    Answer: B
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** DAC (Discretionary Access Control) leaves access decisions to the resource owner.
+> **Why A is wrong:** RBAC grants permissions via roles, not at the owner's discretion per resource.
+> **Why C is wrong:** OAuth 2.0 delegates app access via tokens, not owner-set file permissions.
+> **Why D is wrong:** Group-based access attaches permissions to groups, not the individual owner.
 
 13. Centralizing user identities in Active Directory that apps consult is:
    A. Token-based
@@ -229,12 +313,26 @@ This section maps every 4.3 concept to its AWS-specific service or feature. AWS 
    D. Bastion host
    Answer: B
 
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** Directory-based authentication uses a central directory (AD/LDAP) that apps consult to authenticate.
+> **Why A is wrong:** Token-based auth presents a token instead of a password; no central directory is implied.
+> **Why C is wrong:** Local users are stored in the system/OS, not a centralized directory.
+> **Why D is wrong:** A bastion host is a network jump box, not an identity store.
+
 14. Permissions assigned to a collection of users so a new hire inherits them automatically describe:
    A. Group-based access control
    B. DAC
    C. SAML
    D. MFA
    Answer: A
+
+> [!note]- Reveal Answer
+> **Correct: A**
+> **Why correct:** Group-based access control attaches permissions to groups, so adding a hire to the group inherits access.
+> **Why B is wrong:** DAC is owner-discretionary per resource, not group membership inheritance.
+> **Why C is wrong:** SAML is a federation/SSO protocol, not a permission-bundling model.
+> **Why D is wrong:** MFA is a factor requirement, not a model for inheriting permissions.
 
 15. After login, an app presents a short-lived JSON token instead of a password on each request. This is:
    A. Directory-based
@@ -243,12 +341,26 @@ This section maps every 4.3 concept to its AWS-specific service or feature. AWS 
    D. Bastion host
    Answer: B
 
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** Token-based authentication presents a (often JWT) token instead of a password on each request.
+> **Why A is wrong:** Directory-based auth checks a central store; it does not describe presenting a JSON token.
+> **Why C is wrong:** A local user authenticates with stored username/password, not a presented token.
+> **Why D is wrong:** A bastion host is network access, not a token-auth mechanism.
+
 16. The "A" in AAA that records who did what and when is:
    A. Authentication
    B. Authorization
    C. Accounting / audit trail
    D. Aggregation
    Answer: C
+
+> [!note]- Reveal Answer
+> **Correct: C**
+> **Why correct:** Accounting (the audit trail) records who did what, when, and from where.
+> **Why A is wrong:** Authentication is "who are you," not the recording of actions.
+> **Why B is wrong:** Authorization is "what you may do," not the logged record.
+> **Why D is wrong:** Aggregation is not one of the AAA elements.
 
 17. Which service records AWS management events for forensics and compliance?
    A. CloudTrail
@@ -257,12 +369,26 @@ This section maps every 4.3 concept to its AWS-specific service or feature. AWS 
    D. SSM
    Answer: A
 
+> [!note]- Reveal Answer
+> **Correct: A**
+> **Why correct:** AWS CloudTrail records all management events (who did what, when, from where) for forensics/compliance.
+> **Why B is wrong:** IAM groups bundle user permissions; they do not record activity.
+> **Why C is wrong:** Cognito handles app sign-in (OAuth/OIDC), not the management audit trail.
+> **Why D is wrong:** SSM is for instance management/sessions, not the account-wide audit log.
+
 18. In AWS, fine-grained permissions by job function are delivered through:
    A. IAM policies/roles
    B. Web portal
    C. RDP
    D. SDK only
    Answer: A
+
+> [!note]- Reveal Answer
+> **Correct: A**
+> **Why correct:** IAM policies/roles grant least-privilege, job-function permissions by attaching JSON policies to roles.
+> **Why B is wrong:** The web portal is a login surface, not a permission-granting mechanism.
+> **Why C is wrong:** RDP is remote desktop, not an authorization control.
+> **Why D is wrong:** The SDK calls the API; it does not define permissions — IAM does.
 
 19. App sign-in with social identity that proves who the user is, on top of OAuth, uses:
    A. SAML
@@ -271,9 +397,23 @@ This section maps every 4.3 concept to its AWS-specific service or feature. AWS 
    D. Local users
    Answer: B
 
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** Amazon Cognito provides OIDC authentication (proving who the user is) on top of OAuth 2.0 authorization.
+> **Why A is wrong:** SAML is enterprise XML SSO; social sign-in "who is this user" is OIDC.
+> **Why C is wrong:** A bastion host is a network jump box, unrelated to app sign-in.
+> **Why D is wrong:** Local users are stored locally; social identity proves via an external IdP/OIDC.
+
 20. Reaching a private Linux VM without opening port 22 to the internet is best done with:
    A. Public RDP
    B. AWS SSM Session Manager
    C. Web portal
    D. SAML
    Answer: B
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** AWS SSM Session Manager gives agent-based shell access without opening port 22 to the internet.
+> **Why A is wrong:** Public RDP exposes port 3389 and is the opposite of keeping access private.
+> **Why C is wrong:** The web portal is management-plane access, not shell access to a VM.
+> **Why D is wrong:** SAML is a federation protocol, not a method for reaching a VM shell.

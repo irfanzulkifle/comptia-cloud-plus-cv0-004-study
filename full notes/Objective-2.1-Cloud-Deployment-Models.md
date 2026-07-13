@@ -164,137 +164,257 @@ Exam note: "Run AWS compute on your own premises?" → **AWS Outposts** (private
    B. Community cloud
    C. Public cloud
    D. On-premises data center
-   Answer: C — Public cloud offers zero CapEx and elastic pay-as-you-go scaling.
+
+> [!note]- Reveal Answer
+> **Correct: C**
+> **Why correct:** Public cloud needs zero CapEx and offers elastic pay-as-you-go scaling — ideal for a budgetless startup with unpredictable traffic.
+> **Why A is wrong:** Private cloud needs upfront hardware purchase (CapEx), which the startup has no budget for.
+> **Why B is wrong:** Community cloud is shared by a defined group with common regulation — not a fit for a generic startup.
+> **Why D is wrong:** On-premises data center requires buying and running servers — the opposite of "no budget."
 
 2. A bank must keep customer financial data inside its own building to meet national regulation. Which model fits best?
    A. Public cloud
    B. Private cloud (on premises)
    C. Community cloud
    D. Multi-cloud
-   Answer: B — Private on-premises keeps data under the org's physical control.
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** Private cloud on premises keeps the bank's data under its own physical control, satisfying national regulation.
+> **Why A is wrong:** Public cloud stores data in a shared, provider-operated environment — fails data-residency/control.
+> **Why C is wrong:** Community cloud shares infra with other orgs — not suitable for a single bank's regulated data.
+> **Why D is wrong:** Multi-cloud still runs on public providers, so the data leaves the building.
 
 3. An organization keeps sensitive data on its own infrastructure but bursts extra web traffic to a provider during sales. This is:
    A. Public cloud
    B. Private cloud
    C. Hybrid cloud
    D. Community cloud
-   Answer: C — Hybrid mixes a private core with public-cloud bursting.
+
+> [!note]- Reveal Answer
+> **Correct: C**
+> **Why correct:** Hybrid cloud keeps sensitive workloads private while bursting variable traffic to public — exactly the described pattern.
+> **Why A is wrong:** Public-only would put the sensitive data in the public cloud, not keep it on own infra.
+> **Why B is wrong:** Private-only has no public component to burst into.
+> **Why D is wrong:** Community cloud is shared by a group, not a private-plus-public burst model.
 
 4. Several hospitals share infrastructure because they follow the same healthcare regulation. This is a:
    A. Public cloud
    B. Private cloud
    C. Community cloud
    D. Hybrid cloud
-   Answer: C — Community cloud serves a group with common regulatory needs.
+
+> [!note]- Reveal Answer
+> **Correct: C**
+> **Why correct:** Community cloud is shared by several orgs with a common regulatory/mission need, like hospitals under one healthcare rule.
+> **Why A is wrong:** Public cloud is open to anyone, not restricted to a defined group.
+> **Why B is wrong:** Private cloud is dedicated to a single org, not shared across hospitals.
+> **Why D is wrong:** Hybrid mixes private and public, not a shared group enclave.
 
 5. Using AWS and Azure together to avoid depending on one vendor is called:
    A. Hybrid cloud
    B. Private cloud
    C. Community cloud
    D. Multi-cloud
-   Answer: D — Multi-cloud uses multiple public providers to avoid lock-in.
+
+> [!note]- Reveal Answer
+> **Correct: D**
+> **Why correct:** Multi-cloud uses multiple public providers (AWS + Azure) to avoid dependence on any single vendor.
+> **Why A is wrong:** Hybrid is private + public, not two public providers.
+> **Why B is wrong:** Private cloud is a single-tenant deployment model, not a multi-provider pattern.
+> **Why C is wrong:** Community cloud is a shared-group deployment model, not multi-provider.
 
 6. Which deployment model is typically multi-tenant and owned by a third party?
    A. Private cloud
    B. Public cloud
    C. On-premises
    D. Community cloud
-   Answer: B — Public cloud is multi-tenant, operated by an external provider.
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** Public cloud is multi-tenant and operated by a third-party provider (AWS, Azure, etc.).
+> **Why A is wrong:** Private cloud is single-tenant, dedicated to one org.
+> **Why C is wrong:** On-premises is owned/operated by the org itself, not a third party.
+> **Why D is wrong:** Community cloud is multi-tenant but shared by a defined group, not "typically" the general third-party model.
 
 7. The strongest physical data isolation comes from which model?
    A. Public cloud
    B. Private cloud
    C. Community cloud
    D. Multi-cloud
-   Answer: B — Private (single-tenant) gives the strongest isolation.
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** Private (single-tenant, dedicated hardware) gives the strongest physical isolation.
+> **Why A is wrong:** Public cloud is logically isolated but shares physical hardware (multi-tenant).
+> **Why C is wrong:** Community cloud shares hardware within the group — weaker than dedicated private.
+> **Why D is wrong:** Multi-cloud spans providers but still uses shared public infra, not dedicated isolation.
 
 8. Which AWS service lets you run AWS compute and storage inside your own data center?
    A. AWS Direct Connect
    B. AWS Outposts
    C. Amazon S3
    D. AWS Lambda
-   Answer: B — AWS Outposts brings AWS infrastructure on premises (private).
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** AWS Outposts brings AWS compute/storage racks into your own data center (on-prem private).
+> **Why A is wrong:** Direct Connect links your DC to AWS; it doesn't run compute on premises.
+> **Why C is wrong:** Amazon S3 is object storage in the AWS region, not on-prem.
+> **Why D is wrong:** AWS Lambda is a serverless compute service in the AWS cloud, not on-prem.
 
 9. A secure private network link connecting an on-prem data center to AWS is:
    A. AWS Direct Connect
    B. Amazon CloudFront
    C. AWS Outposts
    D. AWS IAM
-   Answer: A — Direct Connect is the dedicated on-prem-to-AWS link for hybrid.
+
+> [!note]- Reveal Answer
+> **Correct: A**
+> **Why correct:** AWS Direct Connect is a dedicated private network link from on-prem to AWS, the classic hybrid connector.
+> **Why B is wrong:** CloudFront is a content-delivery (CDN) service, not a private DC link.
+> **Why C is wrong:** Outposts runs AWS on premises; it isn't the network link itself.
+> **Why D is wrong:** IAM is identity/access management, not networking.
 
 10. Which model has the highest upfront (CapEx) cost?
     A. Public cloud
     B. Private cloud
     C. Community cloud
     D. Multi-tenant public
-    Answer: B — Private cloud requires buying and maintaining your own hardware.
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** Private cloud requires buying and maintaining your own hardware — the highest upfront CapEx.
+> **Why A is wrong:** Public cloud has no upfront cost (pay-as-you-go OpEx).
+> **Why C is wrong:** Community cloud splits cost among members, lowering each one's CapEx.
+> **Why D is wrong:** "Multi-tenant public" is just public cloud — zero upfront cost.
 
 11. A government group jointly funds and governs a cloud only its agencies may use. This is:
     A. Public cloud
     B. Private cloud
     C. Community cloud
     D. Hybrid cloud
-    Answer: C — Community cloud is shared by a defined group with common goals.
+
+> [!note]- Reveal Answer
+> **Correct: C**
+> **Why correct:** Community cloud is jointly funded/governed by a defined group (the agencies) for their exclusive use.
+> **Why A is wrong:** Public cloud is open to all, not restricted to the agencies.
+> **Why B is wrong:** Private cloud is one org's, not jointly governed by many agencies.
+> **Why D is wrong:** Hybrid is private + public, not a shared-group enclave.
 
 12. Which is NOT a characteristic of public cloud?
     A. Pay-as-you-go
     B. Multi-tenant
     C. Single-tenant dedicated hardware
     D. Elastic scaling
-    Answer: C — Single-tenant dedicated hardware describes private, not public.
+
+> [!note]- Reveal Answer
+> **Correct: C**
+> **Why correct:** "Single-tenant dedicated hardware" describes private cloud; public is multi-tenant, so it is NOT a public characteristic.
+> **Why A is wrong:** Pay-as-you-go is a core public-cloud trait.
+> **Why B is wrong:** Multi-tenant is exactly how public cloud operates.
+> **Why D is wrong:** Elastic scaling is a defining public-cloud benefit.
 
 13. Hybrid cloud is best described as:
     A. Two public providers
     B. One org owning everything
     C. Private plus public connected securely
     D. A group sharing infrastructure
-    Answer: C — Hybrid is a private environment linked to a public one.
+
+> [!note]- Reveal Answer
+> **Correct: C**
+> **Why correct:** Hybrid cloud is a private environment securely connected to a public one (e.g., via VPN/Direct Connect).
+> **Why A is wrong:** Two public providers is multi-cloud, not hybrid.
+> **Why B is wrong:** One org owning everything describes private cloud.
+> **Why D is wrong:** A group sharing infrastructure is community cloud.
 
 14. Data sovereignty (keeping data in a specific country) is easiest with:
     A. Public cloud
     B. Private cloud on premises
     C. Community cloud only
     D. Any public region
-    Answer: B — On-prem private gives full physical control of data location.
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** Private cloud on premises gives full physical control of where data lives, satisfying data-sovereignty laws.
+> **Why A is wrong:** Public cloud stores data in provider regions you don't physically control.
+> **Why C is wrong:** Community cloud doesn't guarantee on-prem sovereignty; it can be off-prem.
+> **Why D is wrong:** Any public region still places data in a provider's DC, not under your physical control.
 
 15. Which AWS offering is a separate partition for stricter government compliance?
     A. AWS Outposts
     B. AWS GovCloud (US)
     C. Amazon VPC
     D. AWS Direct Connect
-    Answer: B — AWS GovCloud (US) is the regulated/compliance enclave.
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** AWS GovCloud (US) is a separate AWS partition with stricter compliance for government/regulated workloads.
+> **Why A is wrong:** Outposts brings AWS on premises; it isn't a compliance partition.
+> **Why C is wrong:** Amazon VPC is network isolation, not a compliance enclave.
+> **Why D is wrong:** Direct Connect is a network link, not a compliance partition.
 
 16. The main risk of using only one public provider is:
     A. High CapEx
     B. Vendor lock-in
     C. Poor isolation
     D. No elasticity
-    Answer: B — Relying on one provider creates vendor lock-in risk.
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** Relying on a single public provider creates vendor lock-in — hard to leave or port workloads.
+> **Why A is wrong:** Public cloud has no CapEx; that's a benefit, not a risk.
+> **Why C is wrong:** Public cloud is multi-tenant but isolation is logical, not the main single-provider risk.
+> **Why D is wrong:** Public cloud is highly elastic; lack of elasticity isn't the single-provider risk.
 
 17. A company wants best-of-breed AI from Google and cheap compute from AWS. This is:
     A. Hybrid cloud
     B. Private cloud
     C. Multi-cloud
     D. Community cloud
-    Answer: C — Using multiple public providers is multi-cloud.
+
+> [!note]- Reveal Answer
+> **Correct: C**
+> **Why correct:** Using multiple public providers (Google AI + AWS compute) is multi-cloud, picking best-of-breed per service.
+> **Why A is wrong:** Hybrid is private + public, not two public providers.
+> **Why B is wrong:** Private cloud is single-tenant, not multi-provider.
+> **Why D is wrong:** Community cloud is a shared-group model, not multi-provider.
 
 18. Which service helps bridge on-prem storage with AWS cloud storage in a hybrid setup?
     A. AWS Storage Gateway
     B. Amazon Route 53
     C. AWS Outposts
     D. AWS IAM
-    Answer: A — Storage Gateway connects on-prem storage to AWS storage.
+
+> [!note]- Reveal Answer
+> **Correct: A**
+> **Why correct:** AWS Storage Gateway bridges on-prem storage with AWS storage (S3/EFS/FSx) in a hybrid setup.
+> **Why B is wrong:** Route 53 is DNS/routing, not a storage bridge.
+> **Why C is wrong:** Outposts runs AWS on premises; it isn't the storage-bridge service.
+> **Why D is wrong:** IAM is access management, not storage.
 
 19. Community cloud is best matched with which keyword?
     A. "Any public user"
     B. "One company only"
     C. "Group with common regulation"
     D. "Burst to public"
-    Answer: C — Community cloud serves a group sharing common requirements.
+
+> [!note]- Reveal Answer
+> **Correct: C**
+> **Why correct:** Community cloud matches "a group with common regulation," shared by orgs with the same requirements.
+> **Why A is wrong:** "Any public user" is the public-cloud keyword.
+> **Why B is wrong:** "One company only" describes private cloud.
+> **Why D is wrong:** "Burst to public" describes hybrid cloud.
 
 20. Gradual migration from an on-prem data center to the cloud is best supported by which model?
     A. Public cloud only
     B. Private cloud only
     C. Hybrid cloud
     D. Community cloud
-    Answer: C — Hybrid allows step-by-step migration while keeping systems linked.
+
+> [!note]- Reveal Answer
+> **Correct: C**
+> **Why correct:** Hybrid cloud keeps systems linked while migrating step-by-step from on-prem to cloud.
+> **Why A is wrong:** Public-only doesn't preserve the on-prem link during a gradual move.
+> **Why B is wrong:** Private-only stays on-prem; it doesn't represent the migration path to cloud.
+> **Why D is wrong:** Community cloud is about shared groups, not migration sequencing.

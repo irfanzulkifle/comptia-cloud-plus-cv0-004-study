@@ -139,137 +139,257 @@ This objective maps to AWS services as follows (AWS-only framing for the exam):
    B. Stand-alone container
    C. Persistent volume
    D. Service mesh
-   Answer: B — A manually started single container with no orchestration is a stand-alone container.
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** A manually started single container with no orchestration is a stand-alone container.
+> **Why A is wrong:** Orchestration needs a control plane.
+> **Why C is wrong:** Persistent volume is storage.
+> **Why D is wrong:** Service mesh is a networking layer.
 
 2. Which technology is the de facto standard for workload orchestration?
    A. Docker Compose
    B. Kubernetes
    C. VirtualBox
    D. Ansible
-   Answer: B — Kubernetes is the industry-standard container orchestrator.
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** Kubernetes is the industry-standard container orchestrator.
+> **Why A is wrong:** Compose is multi-container dev, not the standard.
+> **Why C is wrong:** VirtualBox is virtual machines.
+> **Why D is wrong:** Ansible is configuration management.
 
 3. The command `docker run -p 8080:80 nginx` maps which port to which?
    A. Container 8080 to host 80
    B. Host 8080 to container 80
    C. Host 80 to container 8080
    D. Container 80 to host 8080 (reversed)
-   Answer: B — The host port (8080) forwards to the container port (80) in `host:container` form.
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** The host port (8080) forwards to the container port (80) in host:container form.
+> **Why A is wrong:** Reversed - host is first.
+> **Why C is wrong:** Reversed - host is first.
+> **Why D is wrong:** Reversed - host is first.
 
 4. Which storage type survives a container or pod restart?
    A. Ephemeral writable layer
    B. emptyDir
    C. Persistent volume
    D. tmpfs
-   Answer: C — Persistent volumes outlive the container/pod lifecycle.
+
+> [!note]- Reveal Answer
+> **Correct: C**
+> **Why correct:** Persistent volumes outlive the container/pod lifecycle.
+> **Why A is wrong:** The writable layer is ephemeral.
+> **Why B is wrong:** emptyDir is ephemeral.
+> **Why D is wrong:** tmpfs is ephemeral.
 
 5. Which Kubernetes object represents storage that survives pod deletion?
    A. emptyDir
    B. ConfigMap
    C. PersistentVolumeClaim
    D. Secret
-   Answer: C — A PVC binds to durable storage that persists beyond the pod.
+
+> [!note]- Reveal Answer
+> **Correct: C**
+> **Why correct:** A PVC binds to durable storage that persists beyond the pod.
+> **Why A is wrong:** emptyDir dies with the pod.
+> **Why B is wrong:** ConfigMap is config, not storage.
+> **Why D is wrong:** Secret is secrets, not durable storage.
 
 6. In AWS, which service provides a private container image registry?
    A. Amazon S3
    B. Amazon ECR
    C. AWS Lambda
    D. Amazon RDS
-   Answer: B — Amazon ECR is AWS's managed container image registry.
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** Amazon ECR is AWS's managed container image registry.
+> **Why A is wrong:** S3 is object storage.
+> **Why C is wrong:** Lambda is compute.
+> **Why D is wrong:** RDS is a database.
 
 7. Which AWS storage option supports ReadWriteMany access for sharing files across pods?
    A. Amazon EBS
    B. Amazon EFS
    C. Instance store
    D. S3 bucket mount
-   Answer: B — EFS is a file system that supports RWX shared access.
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** EFS is a file system that supports ReadWriteMany shared access.
+> **Why A is wrong:** EBS is RWO, single node.
+> **Why C is wrong:** Instance store is ephemeral.
+> **Why D is wrong:** S3 is not a natively mountable RWX filesystem.
 
 8. Which AWS service runs containers without managing EC2 instances?
    A. ECS on EC2
    B. AWS Fargate
    C. EC2 Auto Scaling
    D. AWS Batch
-   Answer: B — Fargate is serverless compute for containers (no host management).
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** Fargate is serverless compute for containers (no host management).
+> **Why A is wrong:** ECS on EC2 manages hosts.
+> **Why C is wrong:** Auto Scaling still uses hosts.
+> **Why D is wrong:** Batch runs jobs on hosts.
 
 9. What is the primary benefit of workload orchestration over stand-alone containers?
    A. Lower cost always
    B. Self-healing and auto-scaling
    C. No YAML needed
    D. Faster single startup
-   Answer: B — Orchestration adds self-healing, scaling, and declarative management.
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** Orchestration adds self-healing, scaling, and declarative management.
+> **Why A is wrong:** Not always cheaper - the control plane costs.
+> **Why C is wrong:** Orchestration uses YAML.
+> **Why D is wrong:** Scheduling can make single startup slower.
 
 10. Which storage is appropriate for a database that must keep data after pod restarts?
     A. emptyDir
     B. Ephemeral layer
     C. Persistent volume (EBS)
     D. tmpfs
-    Answer: C — Databases require persistent storage such as an EBS-backed PV.
+
+> [!note]- Reveal Answer
+> **Correct: C**
+> **Why correct:** Databases require persistent storage such as an EBS-backed PV.
+> **Why A is wrong:** emptyDir is ephemeral.
+> **Why B is wrong:** The ephemeral layer is lost on restart.
+> **Why D is wrong:** tmpfs is ephemeral.
 
 11. A Kubernetes Service of type LoadBalancer does what?
     A. Routes internal pod-to-pod traffic only
     B. Provisions a cloud load balancer for external access
     C. Maps host port to container port
     D. Stores container images
-    Answer: B — LoadBalancer provisions an external cloud load balancer.
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** LoadBalancer provisions an external cloud load balancer.
+> **Why A is wrong:** ClusterIP is internal only.
+> **Why C is wrong:** Port mapping is docker -p, not a Service type.
+> **Why D is wrong:** Images live in a registry, not a Service.
 
 12. Which registry is the largest public source of official images like nginx and postgres?
     A. Amazon ECR
     B. Azure ACR
     C. Docker Hub
     D. GitHub Container Registry
-    Answer: C — Docker Hub is the largest public registry with many official images.
+
+> [!note]- Reveal Answer
+> **Correct: C**
+> **Why correct:** Docker Hub is the largest public registry with many official images.
+> **Why A is wrong:** ECR is AWS's private/public registry.
+> **Why B is wrong:** ACR is Azure's registry.
+> **Why D is wrong:** GHCR is smaller, not the largest.
 
 13. In Kubernetes, what is the smallest deployable unit that can contain one or more containers?
     A. Node
     B. Pod
     C. Cluster
     D. Volume
-    Answer: B — A Pod is the smallest deployable unit in Kubernetes.
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** A Pod is the smallest deployable unit in Kubernetes.
+> **Why A is wrong:** Node is a host machine.
+> **Why C is wrong:** Cluster is many nodes.
+> **Why D is wrong:** Volume is storage.
 
 14. Which network driver lets Docker containers on different hosts communicate?
     A. bridge
     B. host
     C. overlay
     D. none
-    Answer: C — overlay networks span multiple Docker hosts.
+
+> [!note]- Reveal Answer
+> **Correct: C**
+> **Why correct:** Overlay networks span multiple Docker hosts.
+> **Why A is wrong:** Bridge is single-host.
+> **Why B is wrong:** Host shares the host network.
+> **Why D is wrong:** None isolates the container.
 
 15. An image identified by `nginx@sha256:abc...` uses which identifier?
     A. Tag
     B. Digest
     C. Layer
     D. Manifest name
-    Answer: B — A sha256 digest is the immutable content-addressed identifier.
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** A sha256 digest is the immutable content-addressed identifier.
+> **Why A is wrong:** Tag is a mutable label like v1.0.
+> **Why C is wrong:** Layer is part of the image.
+> **Why D is wrong:** Manifest name is not the identifier.
 
 16. Which ECS launch type is best described as "stand-alone" style with no cluster host management?
     A. ECS on EC2
     B. AWS Fargate single task
     C. EKS managed node group
     D. EC2 Spot Fleet
-    Answer: B — Fargate single task runs a container without managing hosts.
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** Fargate single task runs a container without managing hosts.
+> **Why A is wrong:** ECS on EC2 manages hosts.
+> **Why C is wrong:** EKS managed node group still has nodes.
+> **Why D is wrong:** Spot Fleet is EC2 instances.
 
 17. What does a Kubernetes Ingress provide?
     A. Block storage
     B. L7 HTTP path/host routing to Services
     C. Ephemeral scratch space
     D. Image vulnerability scanning
-    Answer: B — Ingress performs Layer-7 HTTP routing to Services.
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** Ingress performs Layer-7 HTTP routing to Services.
+> **Why A is wrong:** Block storage is EBS.
+> **Why C is wrong:** Ephemeral storage is emptyDir/tmp.
+> **Why D is wrong:** Image scanning is a registry feature.
 
 18. Which access mode allows a volume mounted read-write by a single node only?
     A. RWX
     B. ROX
     C. RWO
     D. RWOP
-    Answer: C — ReadWriteOnce (RWO) is single-node read-write.
+
+> [!note]- Reveal Answer
+> **Correct: C**
+> **Why correct:** ReadWriteOnce (RWO) is single-node read-write access.
+> **Why A is wrong:** RWX is many-node read-write.
+> **Why B is wrong:** ROX is many-node read-only.
+> **Why D is wrong:** RWOP is single-pod read-write.
 
 19. Why would a CI build job use ephemeral storage?
     A. To keep artifacts forever
     B. For temporary intermediate files that can be discarded
     C. To share with other tenants
     D. For database writes
-    Answer: B — Ephemeral storage suits temporary, discardable build artifacts.
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** Ephemeral storage suits temporary, discardable build artifacts.
+> **Why A is wrong:** Ephemeral does not persist.
+> **Why C is wrong:** Sharing needs persistent/RWX storage.
+> **Why D is wrong:** DB writes need persistent storage.
 
 20. In the AWS mapping, persistent volumes correspond to which services?
     A. EBS and EFS
     B. S3 and Glacier
     C. DynamoDB and RDS
     D. CloudWatch and CloudTrail
-    Answer: A — Persistent container storage maps to Amazon EBS (block) and EFS (file).
+
+> [!note]- Reveal Answer
+> **Correct: A**
+> **Why correct:** Persistent container storage maps to Amazon EBS (block) and EFS (file).
+> **Why B is wrong:** S3/Glacier are object storage.
+> **Why C is wrong:** DynamoDB/RDS are databases.
+> **Why D is wrong:** CloudWatch/CloudTrail are observability.

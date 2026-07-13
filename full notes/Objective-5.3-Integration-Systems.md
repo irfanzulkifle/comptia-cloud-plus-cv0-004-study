@@ -100,137 +100,257 @@ AWS-native services that map to Objective 5.3 integration concepts:
    B. Loose coupling via events/async messaging
    C. Single monolith
    D. Direct database sharing
-   Answer: B
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** EDA decouples producers/consumers through async events via a broker.
+> **Why A is wrong:** Synchronous request/response is the web-service model, not EDA.
+> **Why C is wrong:** EDA favors distributed services, not a single monolith.
+> **Why D is wrong:** Direct DB sharing couples systems; EDA avoids that via events.
 
 2. In pub/sub, a message is delivered to:
    A. Exactly one consumer
    B. All subscribers of a topic
    C. The database only
    D. The producer
-   Answer: B
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** Pub/sub broadcasts each message to every subscriber of the topic.
+> **Why A is wrong:** Exactly-one delivery is a queue (point-to-point), not pub/sub.
+> **Why C is wrong:** A message is not delivered to the database by the pattern itself.
+> **Why D is wrong:** The producer emits; it does not receive its own message.
 
 3. Which AWS service is the serverless event bus?
    A. API Gateway
    B. EventBridge
    C. DynamoDB
    D. CloudFront
-   Answer: B
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** EventBridge is the serverless event bus routing events to targets by rules.
+> **Why A is wrong:** API Gateway fronts web services/WebSockets, not an event bus.
+> **Why C is wrong:** DynamoDB is a database, not an event bus.
+> **Why D is wrong:** CloudFront is a CDN, not an event router.
 
 4. REST uses which HTTP verbs?
    A. Only GET
    B. GET/POST/PUT/DELETE
    C. Only POST
    D. PING
-   Answer: B
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** REST is resource-oriented using standard HTTP verbs including GET/POST/PUT/DELETE.
+> **Why A is wrong:** REST uses multiple verbs, not GET only.
+> **Why C is wrong:** POST alone is not sufficient; REST uses several verbs.
+> **Why D is wrong:** PING is a network diagnostic, not an HTTP verb.
 
 5. SOAP primarily uses which data format?
    A. JSON
    B. XML
    C. CSV
    D. Protobuf
-   Answer: B
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** SOAP is an XML-envelope protocol with a WSDL contract.
+> **Why A is wrong:** JSON is typical of REST, not SOAP.
+> **Why C is wrong:** CSV is not a SOAP format.
+> **Why D is wrong:** Protobuf is used by gRPC/RPC, not SOAP.
 
 6. gRPC is a variant of which integration type?
    A. SOAP
    B. REST
    C. RPC
    D. GraphQL
-   Answer: C
+
+> [!note]- Reveal Answer
+> **Correct: C**
+> **Why correct:** gRPC is a high-performance RPC using HTTP/2 and Protobuf.
+> **Why A is wrong:** gRPC is not SOAP (which is XML/WSDL).
+> **Why B is wrong:** gRPC is RPC, not REST.
+> **Why D is wrong:** It is not GraphQL; GraphQL is a query language.
 
 7. Which protocol provides a persistent full-duplex connection?
    A. REST
    B. SOAP
    C. Web sockets
    D. FTP
-   Answer: C
+
+> [!note]- Reveal Answer
+> **Correct: C**
+> **Why correct:** Web sockets keep one long-lived full-duplex TCP connection after an HTTP Upgrade.
+> **Why A is wrong:** REST is half-duplex, request-per-connection.
+> **Why B is wrong:** SOAP is request/response over HTTP, not persistent duplex.
+> **Why D is wrong:** FTP is a file-transfer protocol, not a real-time duplex channel.
 
 8. Web sockets begin with which handshake?
    A. TCP only
    B. An HTTP Upgrade request
    C. SMTP
    D. DNS
-   Answer: B
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** A web socket opens via an HTTP Upgrade handshake before becoming ws://.
+> **Why A is wrong:** It starts as HTTP (Upgrade), not raw TCP only.
+> **Why C is wrong:** SMTP is email; unrelated to web sockets.
+> **Why D is wrong:** DNS resolves names; it is not the socket handshake.
 
 9. The secure variant of web sockets is:
    A. http://
    B. wss://
    C. ftp://
    D. tcp://
-   Answer: B
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** `wss://` is the TLS-secured web socket scheme (analogous to https).
+> **Why A is wrong:** `http://` is plaintext web, not a socket scheme.
+> **Why C is wrong:** `ftp://` is file transfer, not web sockets.
+> **Why D is wrong:** `tcp://` is not a web socket scheme.
 
 10. GraphQL lets the client:
     A. Only GET data
     B. Specify exactly which fields to return
     C. Use SOAP
     D. Avoid a schema
-    Answer: B
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** GraphQL clients write a query requesting only the fields they need.
+> **Why A is wrong:** GraphQL supports queries, mutations, and subscriptions—not read-only.
+> **Why C is wrong:** It is not SOAP; it has its own query language.
+> **Why D is wrong:** GraphQL is schema-first; it requires a schema/type system.
 
 11. Compared to REST, GraphQL reduces:
     A. Security
     B. Over/under-fetching
     C. Schema use
     D. Endpoint count increase
-    Answer: B
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** Clients fetch precisely the fields they need, avoiding extra or missing data.
+> **Why A is wrong:** GraphQL introduces its own security considerations (query depth limits).
+> **Why C is wrong:** GraphQL relies on a strong schema, more than REST.
+> **Why D is wrong:** GraphQL reduces endpoint count (one endpoint), not increases it.
 
 12. A key downside of GraphQL is:
     A. Too many endpoints
     B. Harder caching and costly queries
     C. No schema
     D. No mutations
-    Answer: B
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** One flexible endpoint complicates URL-based caching; bad queries can be expensive.
+> **Why A is wrong:** GraphQL uses few/one endpoint, not too many.
+> **Why C is wrong:** GraphQL has a strict schema, not "no schema."
+> **Why D is wrong:** GraphQL supports mutations for writes.
 
 13. Idempotent consumers matter in EDA because:
     A. Events may be delivered more than once
     B. REST requires it
     C. SOAP needs it
     D. Web sockets need it
-    Answer: A
+
+> [!note]- Reveal Answer
+> **Correct: A**
+> **Why correct:** Brokers can redeliver events, so consumers must handle duplicates safely.
+> **Why B is wrong:** REST does not inherently drive the EDA idempotency requirement.
+> **Why C is wrong:** SOAP does not create the need for EDA idempotency.
+> **Why D is wrong:** Web sockets are not the reason; at-least-once delivery is.
 
 14. Which is an example of eventual consistency?
     A. Synchronous DB write
     B. Event processed later by a queue
     C. REST GET
     D. SOAP call
-    Answer: B
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** An async queue processes events after emission, so state converges later.
+> **Why A is wrong:** A synchronous DB write is immediately consistent.
+> **Why C is wrong:** A REST GET reads current state, not eventual consistency.
+> **Why D is wrong:** A SOAP call is synchronous request/response.
 
 15. API Gateway on AWS primarily exposes:
     A. Virtual machines
     B. REST/WebSocket web services
     C. Disk volumes
     D. IAM users
-    Answer: B
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** API Gateway fronts REST and WebSocket APIs, handling auth/routing.
+> **Why A is wrong:** It exposes APIs, not virtual machines.
+> **Why C is wrong:** It does not manage disk volumes.
+> **Why D is wrong:** IAM users are managed by IAM, not API Gateway.
 
 16. A queue (vs. topic) delivers a message to:
     A. Many subscribers
     B. Exactly one consumer
     C. The producer
     D. Everyone
-    Answer: B
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** Point-to-point queues deliver each message to a single consumer.
+> **Why A is wrong:** Many subscribers is pub/sub topics, not queues.
+> **Why C is wrong:** The message goes to a consumer, not back to the producer.
+> **Why D is wrong:** "Everyone" describes broadcast, not queue semantics.
 
 17. Web sockets are best for:
     A. One-time data fetch
     B. Real-time bidirectional updates
     C. Batch jobs
     D. File storage
-    Answer: B
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** Persistent full-duplex sockets suit live chat/dashboards/streaming.
+> **Why A is wrong:** One-time fetches are better via REST, not a persistent socket.
+> **Why C is wrong:** Batch jobs do not need real-time bidirectional channels.
+> **Why D is wrong:** File storage is unrelated to web sockets.
 
 18. Event streaming (e.g., Kafka) provides:
     A. Point-to-point only
     B. Ordered, replayable logs
     C. SOAP envelopes
     D. GraphQL schema
-    Answer: B
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** Streaming platforms keep an ordered, replayable commit log of events.
+> **Why A is wrong:** Kafka is pub/sub/streaming, not point-to-point only.
+> **Why C is wrong:** SOAP envelopes are unrelated to event streaming.
+> **Why D is wrong:** A GraphQL schema is not a streaming-log concept.
 
 19. The contract in GraphQL is called a:
     A. WSDL
     B. Schema/type system
     C. Topic
     D. Queue
-    Answer: B
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** GraphQL's contract is its schema/type system defining queries and types.
+> **Why A is wrong:** WSDL is the SOAP contract, not GraphQL's.
+> **Why C is wrong:** A topic is an EDA/pub-sub concept, not GraphQL.
+> **Why D is wrong:** A queue is a messaging concept, not a GraphQL contract.
 
 20. Server-sent events (SSE) differ from web sockets because SSE is:
     A. Full-duplex
     B. One-way (server to client)
     C. SOAP-based
     D. Always REST
-    Answer: B
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** SSE is a unidirectional server→client stream; web sockets are full-duplex.
+> **Why A is wrong:** SSE is one-way, not full-duplex.
+> **Why C is wrong:** SSE is not SOAP-based; it is a simple HTTP stream.
+> **Why D is wrong:** SSE is its own mechanism, not "always REST."

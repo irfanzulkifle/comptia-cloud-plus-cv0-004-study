@@ -162,137 +162,257 @@ A. Monolith
 B. Microservices
 C. Fan-out
 D. Service discovery
-**Answer:** B — Microservices decompose apps into small autonomous, independently deployable services.
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** Microservices decompose apps into small autonomous, independently deployable services.
+> **Why A is wrong:** Monolith is one single unit.
+> **Why C is wrong:** Fan-out is a messaging pattern.
+> **Why D is wrong:** Service discovery locates instances.
 
 **Q2.** A company wants to stop patching database servers and handling failover themselves. Which approach best meets this goal?
 A. Self-managed EC2 with PostgreSQL
 B. Cloud-provided managed services
 C. Tightly coupled architecture
 D. Hard-coded endpoints
-**Answer:** B — Managed services have the provider handle patching, HA, and backups.
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** Managed services have the provider handle patching, HA, and backups.
+> **Why A is wrong:** Self-managed EC2 means you patch.
+> **Why C is wrong:** Tight coupling increases outage risk.
+> **Why D is wrong:** Hard-coded endpoints break in dynamic environments.
 
 **Q3.** An e-commerce site splits checkout, payments, and shipping into separate services that scale and deploy independently. This is an example of:
 A. A monolith
 B. Loose coupling only
 C. Microservices
 D. Fan-out
-**Answer:** C — Separate, independently deployable/scalable services describe microservices.
+
+> [!note]- Reveal Answer
+> **Correct: C**
+> **Why correct:** Separate, independently deployable/scalable services describe microservices.
+> **Why A is wrong:** Monolith is one deployable.
+> **Why B is wrong:** It is more than loose coupling - it owns a business capability.
+> **Why D is wrong:** Fan-out is pub/sub.
 
 **Q4.** A web app writes "order placed" to a queue and returns immediately; workers process later. This design primarily demonstrates:
 A. Tight coupling
 B. Loosely coupled architecture
 C. Service discovery
 D. Monolithic deployment
-**Answer:** B — Queue-based decoupling lets producers and consumers operate independently.
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** Queue-based decoupling lets producers and consumers operate independently.
+> **Why A is wrong:** A queue decouples, not tightens.
+> **Why C is wrong:** Discovery locates services.
+> **Why D is wrong:** Monolith is a single-unit deploy.
 
 **Q5.** One uploaded file must trigger transcoding, thumbnail generation, and a virus scan at the same time. Which pattern is this?
 A. Point-to-point queue
 B. Fan-out
 C. Service discovery
 D. Monolith
-**Answer:** B — Fan-out delivers one event to multiple independent subscribers simultaneously.
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** Fan-out delivers one event to multiple independent subscribers simultaneously.
+> **Why A is wrong:** Point-to-point sends to one consumer.
+> **Why C is wrong:** Discovery locates services.
+> **Why D is wrong:** Monolith is a single unit.
 
 **Q6.** In AWS, which service is the managed implementation of a pub/sub fan-out topic?
 A. Amazon SQS
 B. Amazon SNS
 C. Amazon RDS
 D. AWS Cloud Map
-**Answer:** B — SNS is the AWS pub/sub service that fans messages out to many subscribers.
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** SNS is the AWS pub/sub service that fans messages out to many subscribers.
+> **Why A is wrong:** SQS is point-to-point.
+> **Why C is wrong:** RDS is a database.
+> **Why D is wrong:** Cloud Map is service discovery.
 
 **Q7.** As container instances are created and destroyed with new IPs, a client must find the current healthy address at runtime. The needed concept is:
 A. Fan-out
 B. Service discovery
 C. Microservices
 D. Managed services
-**Answer:** B — Service discovery dynamically locates live, healthy service instances.
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** Service discovery dynamically locates live, healthy service instances.
+> **Why A is wrong:** Fan-out broadcasts events.
+> **Why C is wrong:** Microservices are an architecture style.
+> **Why D is wrong:** Managed services are provider-run infra.
 
 **Q8.** Which AWS service provides managed service discovery and registration by name?
 A. Amazon Route 53
 B. AWS Cloud Map
 C. Amazon SQS
 D. Amazon ECS
-**Answer:** B — Cloud Map is AWS's managed service registry and discovery service.
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** Cloud Map is AWS's managed service registry and discovery service.
+> **Why A is wrong:** Route 53 is DNS-based discovery.
+> **Why C is wrong:** SQS is a queue.
+> **Why D is wrong:** ECS is container orchestration.
 
 **Q9.** Compared with a monolith, microservices primarily improve:
 A. Simpler initial deployment
 B. Independent scaling and failure isolation
 C. Single shared database
 D. Lower networking complexity
-**Answer:** B — Microservices allow per-service scaling and isolate failures.
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** Microservices allow per-service scaling and isolate failures.
+> **Why A is wrong:** Microservices are harder to start than a monolith.
+> **Why C is wrong:** They often use per-service databases.
+> **Why D is wrong:** They add networking complexity.
 
 **Q10.** A team uses S3 event notifications to trigger three separate Lambda functions. This is an example of:
 A. Fan-out
 B. Tight coupling
 C. Monolith
 D. Service discovery
-**Answer:** A — One event triggering multiple independent functions is fan-out.
+
+> [!note]- Reveal Answer
+> **Correct: A**
+> **Why correct:** One event triggering multiple independent functions is fan-out.
+> **Why B is wrong:** Lambda triggers are loosely coupled, not tight.
+> **Why C is wrong:** Monolith is a single unit.
+> **Why D is wrong:** Discovery locates services.
 
 **Q11.** Which is a downside of microservices relative to a monolith?
 A. Cannot scale
 B. Increased distributed-systems complexity
 C. No failure isolation
 D. Must deploy everything together
-**Answer:** B — Microservices add networking, discovery, and consistency complexity.
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** Microservices add networking, discovery, and consistency complexity.
+> **Why A is wrong:** They scale well.
+> **Why C is wrong:** They isolate failures.
+> **Why D is wrong:** They deploy independently.
 
 **Q12.** Amazon RDS is an example of which Objective 1.5 concept?
 A. Microservices
 B. Cloud-provided managed services
 C. Fan-out
 D. Service discovery
-**Answer:** B — RDS is a managed database service operated by the provider.
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** RDS is a managed database service operated by the provider.
+> **Why A is wrong:** It is not microservices.
+> **Why C is wrong:** It is not fan-out.
+> **Why D is wrong:** It is not discovery.
 
 **Q13.** A banking app emits one "transaction completed" event consumed by ledger, fraud, and notification services. The event bus demonstrates:
 A. Fan-out via pub/sub
 B. Monolithic coupling
 C. Hard-coded endpoints
 D. Microservices only
-**Answer:** A — One event delivered to many subscribers is fan-out over an event bus.
+
+> [!note]- Reveal Answer
+> **Correct: A**
+> **Why correct:** One event delivered to many subscribers is fan-out over an event bus.
+> **Why B is wrong:** Pub/sub is loosely coupled, not monolithic.
+> **Why C is wrong:** Hard-coded endpoints are not used.
+> **Why D is wrong:** It is the event pattern, not just microservices.
 
 **Q14.** Which AWS compute option is serverless and commonly used for small event-driven microservices?
 A. Amazon ECS
 B. AWS Lambda
 C. Amazon EC2
 D. AWS Cloud Map
-**Answer:** B — Lambda is serverless and ideal for event-driven microservices.
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** Lambda is serverless and ideal for event-driven microservices.
+> **Why A is wrong:** ECS runs containers, not serverless functions.
+> **Why C is wrong:** EC2 is virtual machines.
+> **Why D is wrong:** Cloud Map is discovery.
 
 **Q15.** Route 53 health checks that remove failing endpoints and route to healthy ones best illustrate:
 A. Fan-out
 B. Service discovery
 C. Microservices
 D. Managed services
-**Answer:** B — DNS-based health checking and routing is a service-discovery mechanism.
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** DNS-based health checking and routing is a service-discovery mechanism.
+> **Why A is wrong:** That describes fan-out.
+> **Why C is wrong:** That is an architecture style.
+> **Why D is wrong:** That describes managed services.
 
 **Q16.** The main benefit of loosely coupled architecture is:
 A. Components must be available simultaneously
 B. Failures are isolated and components scale independently
 C. One bug crashes everything
 D. Shared single database
-**Answer:** B — Loose coupling isolates failures and enables independent scaling.
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** Loose coupling isolates failures and enables independent scaling.
+> **Why A is wrong:** Loosely coupled components need not be available simultaneously.
+> **Why C is wrong:** That is tight coupling's failure mode.
+> **Why D is wrong:** Shared DB is monolith-style.
 
 **Q17.** Which AWS service pair is the classic "fan-out" pattern where one message feeds multiple independent worker queues?
 A. SNS → multiple SQS
 B. RDS → Lambda
 C. Cloud Map → ECS
 D. EC2 → S3
-**Answer:** A — SNS publishing to several SQS queues is the canonical fan-out topology.
+
+> [!note]- Reveal Answer
+> **Correct: A**
+> **Why correct:** SNS publishing to several SQS queues is the canonical fan-out topology.
+> **Why B is wrong:** RDS to Lambda is a single trigger.
+> **Why C is wrong:** Cloud Map to ECS is discovery.
+> **Why D is wrong:** EC2 to S3 is storage access.
 
 **Q18.** A retailer auto-scales only its Payment service during a traffic spike while Recommendation stays baseline. This shows microservices enable:
 A. Whole-app scaling only
 B. Independent per-service scaling
 C. Tight coupling
 D. Monolithic deployment
-**Answer:** B — Scaling one service independently is a core microservices benefit.
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** Scaling one service independently is a core microservices benefit.
+> **Why A is wrong:** Microservices scale per-service, not whole-app.
+> **Why C is wrong:** That is tight coupling.
+> **Why D is wrong:** Monolith deploys everything together.
 
 **Q19.** EventBridge is best classified under which Objective 1.5 concept in AWS?
 A. Managed relational database
 B. Loosely coupled / event-driven decoupling (and fan-out target)
 C. Service discovery registry
 D. Container orchestration
-**Answer:** B — EventBridge is an event bus that decouples and fans out to targets.
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** EventBridge is an event bus that decouples and fans out to targets.
+> **Why A is wrong:** It is not a relational database.
+> **Why C is wrong:** It is not a discovery registry.
+> **Why D is wrong:** It is not container orchestration.
 
 **Q20.** Hard-coding service IP addresses in a dynamic auto-scaling environment is problematic because:
 A. It improves resilience
 B. Addresses change as instances come and go, causing outages
 C. It enables service discovery automatically
 D. It reduces operational effort
-**Answer:** B — Static addresses break when instances change; discovery solves this.
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** Static addresses break when instances change; discovery solves this.
+> **Why A is wrong:** It hurts resilience.
+> **Why C is wrong:** It disables discovery.
+> **Why D is wrong:** It increases operational effort.

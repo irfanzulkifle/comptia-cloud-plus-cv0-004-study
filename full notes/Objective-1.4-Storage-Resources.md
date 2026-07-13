@@ -149,137 +149,257 @@ A. Hot
 B. Warm
 C. Cold
 D. Archive
-**Answer:** C — Cold tier balances low cost with minute-level retrieval, fitting rare-but-fast access.
+
+> [!note]- Reveal Answer
+> **Correct: C**
+> **Why correct:** Cold tier balances low cost with minute-level retrieval, fitting rare-but-fast access.
+> **Why A is wrong:** Hot is expensive for rarely accessed data.
+> **Why B is wrong:** Warm is seconds; Cold fits '<once a month, minutes' best.
+> **Why D is wrong:** Archive takes hours/days, too slow.
 
 **Q2.** Which storage type presents raw volumes that an operating system mounts like a physical disk?
 A. Object storage
 B. Block storage
 C. File storage
 D. Archive storage
-**Answer:** B — Block storage exposes raw volumes mounted and formatted by the OS.
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** Block storage exposes raw volumes mounted and formatted by the OS.
+> **Why A is wrong:** Object is API-accessed, not mounted.
+> **Why C is wrong:** File is a shared filesystem.
+> **Why D is wrong:** Archive is a tier, not a storage type.
 
 **Q3.** A company must let 12 Linux app servers read and write the same shared folder concurrently. Which storage type should they choose?
 A. Object storage
 B. Block storage
 C. File storage
 D. Cold storage
-**Answer:** C — File storage provides a shared hierarchical filesystem over NFS/SMB.
+
+> [!note]- Reveal Answer
+> **Correct: C**
+> **Why correct:** File storage provides a shared hierarchical filesystem over NFS/SMB.
+> **Why A is wrong:** Object is not a shared mount.
+> **Why B is wrong:** Block attaches to one instance.
+> **Why D is wrong:** Cold is a tier, not a type.
 
 **Q4.** Which disk type delivers the lowest latency and highest IOPS for a transactional database?
 A. HDD
 B. SSD
 C. Tape
 D. Optical
-**Answer:** B — SSDs use flash with no moving parts, giving sub-ms latency and high IOPS.
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** SSDs use flash with no moving parts, giving sub-ms latency and high IOPS.
+> **Why A is wrong:** HDD has higher latency.
+> **Why C is wrong:** Tape is not a disk type here.
+> **Why D is wrong:** Optical is not relevant.
 
 **Q5.** In AWS, which service provides object storage?
 A. EBS
 B. EFS
 C. S3
 D. FSx
-**Answer:** C — Amazon S3 is AWS's object storage service.
+
+> [!note]- Reveal Answer
+> **Correct: C**
+> **Why correct:** Amazon S3 is AWS's object storage service.
+> **Why A is wrong:** EBS is block storage.
+> **Why B is wrong:** EFS is file storage.
+> **Why D is wrong:** FSx is file storage.
 
 **Q6.** Which AWS EBS volume type is a provisioned-IOPS SSD suited for mission-critical databases?
 A. gp3
 B. st1
 C. io2
 D. sc1
-**Answer:** C — io2 is provisioned-IOPS SSD for the highest performance and durability.
+
+> [!note]- Reveal Answer
+> **Correct: C**
+> **Why correct:** io2 is provisioned-IOPS SSD for the highest performance and durability.
+> **Why A is wrong:** gp3 is general-purpose, lower max IOPS.
+> **Why B is wrong:** st1 is throughput HDD.
+> **Why D is wrong:** sc1 is cold HDD.
 
 **Q7.** A hospital must retain medical records for 10 years and rarely retrieves them. Which tier minimizes capacity cost?
 A. Hot
 B. Warm
 C. Cold
 D. Archive
-**Answer:** D — Archive has the lowest per-GB cost for almost-never-accessed data.
+
+> [!note]- Reveal Answer
+> **Correct: D**
+> **Why correct:** Archive has the lowest per-GB cost for almost-never-accessed data.
+> **Why A is wrong:** Hot is the most expensive.
+> **Why B is wrong:** Warm is for infrequent, not 10-year rare.
+> **Why C is wrong:** Cold still costs more than Archive.
 
 **Q8.** What is the main performance drawback of HDD compared with SSD?
 A. Lower capacity
 B. Higher latency and lower IOPS
 C. No durability
 D. Higher cost per GB
-**Answer:** B — HDDs have moving parts, causing higher latency and lower IOPS.
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** HDDs have moving parts, causing higher latency and lower IOPS.
+> **Why A is wrong:** HDD has higher capacity.
+> **Why C is wrong:** HDD has good durability for archival.
+> **Why D is wrong:** HDD is cheaper per GB.
 
 **Q9.** Which AWS S3 tier is designed for infrequently accessed data with a lower storage cost but a retrieval fee?
 A. S3 Standard
 B. S3 Standard-IA
 C. S3 Glacier Deep Archive
 D. S3 Intelligent-Tiering (base)
-**Answer:** B — S3 Standard-IA is the Warm tier: cheaper capacity, per-GB retrieval fee.
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** S3 Standard-IA is the Warm tier: cheaper capacity with a per-GB retrieval fee.
+> **Why A is wrong:** Standard is Hot, no retrieval fee.
+> **Why C is wrong:** Deep Archive is the Archive tier.
+> **Why D is wrong:** Intelligent-Tiering auto-moves; its base is Standard-like.
 
 **Q10.** Object storage is BEST described as:
 A. A mounted filesystem with folders
 B. Raw blocks addressed by LBA
 C. Data + metadata + ID in a flat namespace accessed via API
 D. A magnetic tape library
-**Answer:** C — Objects are stored with metadata and a unique ID, retrieved via HTTP API.
+
+> [!note]- Reveal Answer
+> **Correct: C**
+> **Why correct:** Objects are stored with metadata and a unique ID, retrieved via HTTP API.
+> **Why A is wrong:** That describes file storage.
+> **Why B is wrong:** That describes block storage.
+> **Why D is wrong:** Tape is not object storage.
 
 **Q11.** Which cost driver applies to ALL S3 tiers when data leaves the cloud to the internet?
 A. Retrieval fee
 B. Early deletion penalty
 C. Egress (data transfer out) fee
 D. Capacity fee only
-**Answer:** C — Egress/data-transfer-out fees apply regardless of storage tier.
+
+> [!note]- Reveal Answer
+> **Correct: C**
+> **Why correct:** Egress/data-transfer-out fees apply regardless of storage tier.
+> **Why A is wrong:** Retrieval fee varies by tier.
+> **Why B is wrong:** Early-deletion penalty applies only to some tiers.
+> **Why D is wrong:** Capacity fee is not the only fee.
 
 **Q12.** A big-data job performs large sequential reads of rarely changed logs. Which disk is most cost-effective?
 A. io2 SSD
 B. gp3 SSD
 C. st1 HDD
 D. sc1 only
-**Answer:** C — st1 throughput-optimized HDD is cheap and sequential-read friendly.
+
+> [!note]- Reveal Answer
+> **Correct: C**
+> **Why correct:** st1 throughput-optimized HDD is cheap and sequential-read friendly.
+> **Why A is wrong:** io2 is expensive SSD, overkill.
+> **Why B is wrong:** gp3 is SSD, costlier for bulk.
+> **Why D is wrong:** sc1 is cold HDD, not throughput-optimized.
 
 **Q13.** What is a key risk of placing frequently accessed data in an Archive tier?
 A. It cannot be deleted
 B. High retrieval fees and minimum-retention penalties erase savings
 C. It loses durability
 D. It becomes object storage automatically
-**Answer:** B — Archive adds retrieval fees and minimum stay; frequent access makes it costly.
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** Archive adds retrieval fees and minimum stay; frequent access erases the savings.
+> **Why A is wrong:** Archive can be deleted.
+> **Why C is wrong:** Archive keeps 11-nines durability.
+> **Why D is wrong:** It stays object storage.
 
 **Q14.** Which AWS offering provides managed Windows-file-share (SMB) file storage?
 A. EFS
 B. FSx
 C. EBS
 D. S3
-**Answer:** B — Amazon FSx (e.g., FSx for Windows File Server) provides SMB file storage.
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** Amazon FSx (e.g., FSx for Windows File Server) provides SMB file storage.
+> **Why A is wrong:** EFS is Linux/NFS.
+> **Why C is wrong:** EBS is block storage.
+> **Why D is wrong:** S3 is object storage.
 
 **Q15.** Hot storage is characterized by:
 A. Hours-long retrieval and lowest cost
 B. Frequent access, millisecond retrieval, highest capacity cost
 C. Never accessed, compliance only
 D. Sequential HDD backing only
-**Answer:** B — Hot = frequent access, ms retrieval, highest per-GB cost, no retrieval fee.
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** Hot = frequent access, ms retrieval, highest per-GB cost, no retrieval fee.
+> **Why A is wrong:** That describes Archive.
+> **Why C is wrong:** That describes Archive/compliance.
+> **Why D is wrong:** Hot can be SSD or HDD-backed, not HDD-only.
 
 **Q16.** A video-streaming service keeps its current catalog for instant playback. Which combination fits?
 A. Object + Archive
 B. Block + HDD
 C. Object + Hot
 D. File + Cold
-**Answer:** C — Object storage with Hot tier gives scalable, instant web delivery.
+
+> [!note]- Reveal Answer
+> **Correct: C**
+> **Why correct:** Object storage with Hot tier gives scalable, instant web delivery.
+> **Why A is wrong:** Archive is slow, wrong for instant playback.
+> **Why B is wrong:** HDD block is for databases, not streaming delivery.
+> **Why D is wrong:** File+Cold does not fit streaming.
 
 **Q17.** Which performance metric measures completed read/write operations per second?
 A. Throughput
 B. Latency
 C. IOPS
 D. Durability
-**Answer:** C — IOPS (input/output operations per second) counts operations per second.
+
+> [!note]- Reveal Answer
+> **Correct: C**
+> **Why correct:** IOPS (input/output operations per second) counts operations per second.
+> **Why A is wrong:** Throughput is MB/s.
+> **Why B is wrong:** Latency is response time.
+> **Why D is wrong:** Durability is data-survival probability.
 
 **Q18.** Glacier Instant Retrieval is the AWS mapping for which Objective 1.4 tier?
 A. Hot
 B. Warm
 C. Cold
 D. Archive
-**Answer:** C — Glacier Instant Retrieval is the Cold tier (fast retrieval, archive pricing).
+
+> [!note]- Reveal Answer
+> **Correct: C**
+> **Why correct:** Glacier Instant Retrieval is the Cold tier (fast retrieval, archive pricing).
+> **Why A is wrong:** Hot = S3 Standard.
+> **Why B is wrong:** Warm = Standard-IA.
+> **Why D is wrong:** Archive = Deep Archive.
 
 **Q19.** Why might an architect choose gp3 over io2 for a general-purpose workload?
 A. gp3 offers higher maximum IOPS than io2
 B. gp3 is cheaper and decouples IOPS/throughput from size for most needs
 C. io2 cannot attach to EC2
 D. gp3 is HDD-based
-**Answer:** B — gp3 is general-purpose SSD, cheaper, with independently scalable performance.
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** gp3 is general-purpose SSD, cheaper, with independently scalable performance.
+> **Why A is wrong:** io2 has the higher max IOPS, not gp3.
+> **Why C is wrong:** io2 attaches to EC2 fine.
+> **Why D is wrong:** gp3 is SSD-based.
 
 **Q20.** Which statement about File storage is TRUE?
 A. It is only accessible by one server at a time
 B. It exposes a shared hierarchical namespace over network protocols
 C. It is the cheapest tier for backups
 D. It uses HTTP APIs exclusively
-**Answer:** B — File storage shares a folder tree over NFS/SMB to multiple clients.
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** File storage shares a folder tree over NFS/SMB to multiple clients.
+> **Why A is wrong:** File is multi-client, not one-at-a-time.
+> **Why C is wrong:** File is not the cheapest backup tier.
+> **Why D is wrong:** File uses NFS/SMB, not HTTP APIs.

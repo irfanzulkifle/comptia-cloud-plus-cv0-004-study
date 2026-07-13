@@ -178,81 +178,201 @@
 
 1. Which approach describes the *desired end-state* and lets the tool figure out how to achieve it?
    A. Imperative scripting  B. Declarative IaC  C. Manual console build  D. Configuration drift
-   Answer: B — Declarative IaC states the end-state; the engine computes the steps.
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** Declarative IaC states the desired end-state and the engine computes the steps (Terraform/CloudFormation).
+> **Why A is wrong:** Imperative scripting lists step-by-step commands you must order yourself.
+> **Why C is wrong:** Manual console build isn't code-based and isn't repeatable.
+> **Why D is wrong:** Configuration drift is a divergence problem, not a provisioning approach.
 
 2. What is the primary difference between IaC and CaC?
    A. IaC configures OS settings; CaC builds networks  B. IaC provisions resources; CaC configures them
    C. CaC is only for AWS  D. IaC cannot be versioned
-   Answer: B — IaC builds resources; CaC sets their configuration/state.
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** IaC provisions the resources themselves; CaC applies configuration/state on top of existing resources.
+> **Why A is wrong:** Reversed — IaC builds resources, CaC configures them.
+> **Why C is wrong:** CaC tools (Ansible/Chef/Puppet) are cloud-agnostic, not AWS-only.
+> **Why D is wrong:** IaC is versioned in Git like any code.
 
 3. In a deployment template, `region = "us-east-1"` is an example of a:
    A. Function  B. Conditional  C. Variable  D. Data type
-   Answer: C — It parameterizes a value so the same code works in other regions.
+
+> [!note]- Reveal Answer
+> **Correct: C**
+> **Why correct:** It's a variable that parameterizes a value so the same code works in other regions.
+> **Why A is wrong:** A function computes a value; this just assigns a literal.
+> **Why B is wrong:** A conditional branches logic; this is a plain assignment.
+> **Why D is wrong:** It's an instance of a data type (string), not the type definition itself.
 
 4. You want "deploy 3 instances if environment is prod, else 1." Which scripting element handles this?
    A. Operator  B. Conditional  C. Data type  D. Function
-   Answer: B — Conditionals branch logic on the environment value.
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** Conditionals (`if/else`, `when`, `!If`) branch on the environment value.
+> **Why A is wrong:** Operators compare/compute but don't branch top-level logic.
+> **Why C is wrong:** Data types are the shape of values, not branching logic.
+> **Why D is wrong:** Functions return computed values; branching is done by conditionals.
 
 5. The expression `instance_count + 1` uses which scripting element?
    A. Arithmetic operator  B. Conditional  C. Variable declaration  D. Function call
-   Answer: A — The `+` is an arithmetic operator adding a buffer instance.
+
+> [!note]- Reveal Answer
+> **Correct: A**
+> **Why correct:** The `+` is an arithmetic operator adding a buffer instance to the count.
+> **Why B is wrong:** There's no branch in `instance_count + 1`.
+> **Why C is wrong:** The variable is referenced, not declared, here.
+> **Why D is wrong:** This is an operator expression, not a function invocation.
 
 6. Which data type is represented by `[web1, web2, web3]`?
    A. Map  B. String  C. List/array  D. Boolean
-   Answer: C — Square brackets denote an ordered list/array.
+
+> [!note]- Reveal Answer
+> **Correct: C**
+> **Why correct:** Square brackets denote an ordered list/array of values.
+> **Why A is wrong:** A map uses `{key: value}` braces, not brackets.
+> **Why B is wrong:** A string is quoted text, not a bracketed sequence.
+> **Why D is wrong:** A boolean is `true`/`false`, not a list.
 
 7. In CloudFormation, which intrinsic function returns another resource's ID?
    A. !GetAtt  B. !Ref  C. !Sub  D. !Join
-   Answer: B — `!Ref` references a resource or parameter by name.
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** `!Ref` references a resource or parameter by name and returns its ID/value.
+> **Why A is wrong:** `!GetAtt` returns an attribute of a resource, not its ID.
+> **Why C is wrong:** `!Sub` substitutes variables into a string, doesn't return an ID.
+> **Why D is wrong:** `!Join` concatenates a list into a string.
 
 8. Before applying a Terraform change to prod, the BEST first step is:
    A. Delete the state file  B. Run `terraform plan`  C. Edit live console  D. Skip review
-   Answer: B — `plan` previews changes (testing) so you catch errors first.
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** `terraform plan` previews changes (testing) so you catch errors before applying.
+> **Why A is wrong:** Deleting state loses the source of truth and breaks tracking.
+> **Why C is wrong:** Editing the live console causes drift and isn't a safe pre-apply step.
+> **Why D is wrong:** Skipping review risks bad/undetected changes reaching prod.
 
 9. YAML is preferred over JSON for authoring IaC mainly because it:
    A. Is faster at runtime  B. Supports comments and is more readable  C. Requires no indentation  D. Cannot contain lists
-   Answer: B — YAML's `#` comments and indentation make it human-friendly.
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** YAML's `#` comments and indentation make it human-friendly and easier to review.
+> **Why A is wrong:** Neither format's authoring syntax affects runtime speed meaningfully.
+> **Why C is wrong:** YAML is indentation-sensitive; it requires correct indentation.
+> **Why D is wrong:** YAML fully supports lists (with dashes).
 
 10. A misplaced space in a YAML file most commonly causes:
     A. A security breach  B. An indentation/syntax error  C. Drift  D. Version conflict
-    Answer: B — YAML is indentation-sensitive; bad spacing breaks parsing.
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** YAML is indentation-sensitive, so a misplaced space breaks parsing (syntax error).
+> **Why A is wrong:** A spacing bug is a parse error, not directly a security breach.
+> **Why C is wrong:** Drift is live-vs-code divergence, not a file syntax issue.
+> **Why D is wrong:** Version conflicts come from Git, not YAML whitespace.
 
 11. "Running the same template always creates the same environment with no manual steps" describes:
     A. Drift  B. Repeatability  C. Versioning  D. Documentation
-    Answer: B — Repeatability is identical output from the same code.
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** Repeatability means identical output from the same code every time, with no manual steps.
+> **Why A is wrong:** Drift is the opposite — divergence from the template.
+> **Why C is wrong:** Versioning tracks code changes over time, not environment sameness.
+> **Why D is wrong:** Documentation explains the code; it doesn't guarantee identical output.
 
 12. A security group was opened in the console and the template no longer matches reality. This is:
     A. Repeatability  B. Drift  C. Idempotency  D. Linting
-    Answer: B — Manual changes that diverge from code are configuration drift.
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** Manual console changes that diverge from the code are configuration drift.
+> **Why A is wrong:** Repeatability is about code producing the same result, not divergence.
+> **Why C is wrong:** Idempotency is safe re-application, not divergence.
+> **Why D is wrong:** Linting checks syntax, not live-vs-code mismatch.
 
 13. Which AWS feature directly detects drift in CloudFormation stacks?
     A. AWS Config  B. CloudFormation Drift Detection  C. IAM  D. S3 Versioning
-    Answer: B — CloudFormation has built-in drift detection for stacks.
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** CloudFormation has built-in Drift Detection that compares stack resources to the template.
+> **Why A is wrong:** AWS Config records config continuously but isn't the stack drift tool itself.
+> **Why C is wrong:** IAM is access management, unrelated to drift detection.
+> **Why D is wrong:** S3 Versioning tracks object versions, not infra drift.
 
 14. Storing IaC in Git with tagged releases supports which practice?
     A. Drift detection  B. Versioning  C. Conditionals  D. JSON formatting
-    Answer: B — Git tags/commits give you versioning and rollback.
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** Git tags/commits give versioning — an audit trail and safe rollback to known-good code.
+> **Why A is wrong:** Drift detection is a separate live-vs-code comparison, not Git tagging.
+> **Why C is wrong:** Conditionals are template logic, not a Git practice.
+> **Why D is wrong:** Format choice is independent of version control.
 
 15. An Ansible playbook that can be safely re-run without harmful side effects demonstrates:
     A. Drift  B. Idempotency  C. Variables  D. YAML errors
-    Answer: B — Idempotent CaC converges state safely on every run.
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** Idempotent CaC converges state safely on every run — same result, no harm.
+> **Why A is wrong:** Drift is divergence, not safe re-runs.
+> **Why C is wrong:** Variables enable reuse but don't define safe re-runs.
+> **Why D is wrong:** YAML errors would break the run, the opposite of safe execution.
 
 16. In JSON, which statement is true?
     A. Comments are allowed with `#`  B. Keys need no quotes  C. No comments; braces delimit  D. Indentation defines structure
-    Answer: C — JSON is brace-delimited and does not support comments.
+
+> [!note]- Reveal Answer
+> **Correct: C**
+> **Why correct:** JSON is brace-delimited (`{}`/`[]`) and does not support comments; indentation is cosmetic.
+> **Why A is wrong:** JSON has no comment syntax (unlike YAML's `#`).
+> **Why B is wrong:** JSON keys must be double-quoted.
+> **Why D is wrong:** Indentation is irrelevant in JSON; braces/brackets define structure.
 
 17. Using `when: public == true` in Ansible is an example of a:
     A. Variable  B. Conditional  C. Function  D. Data type
-    Answer: B — `when` is a conditional that gates task execution.
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** `when` is a conditional that gates whether a task executes.
+> **Why A is wrong:** The `public` is the variable; `when` is the gate using it.
+> **Why C is wrong:** It's a condition, not a function call computing a value.
+> **Why D is wrong:** `true` is a boolean data type, but the construct is a conditional.
 
 18. Which tool is BEST described as Configuration as Code for fleets of servers?
     A. Terraform  B. Ansible  C. CloudFormation  D. S3
-    Answer: B — Ansible is a classic CaC/config-management tool.
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** Ansible is a classic CaC/config-management tool that enforces desired state across fleets.
+> **Why A is wrong:** Terraform is primarily IaC (provisioning), not config management.
+> **Why C is wrong:** CloudFormation is IaC (provisioning), not fleet config management.
+> **Why D is wrong:** S3 is object storage, not a config tool.
 
 19. After a bad deploy, reverting to the previous tagged code version is an example of:
     A. Documentation  B. Rollback via versioning  C. Drift  D. Testing
-    Answer: B — Versioning enables safe rollback to a known-good state.
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** Versioning (Git tags/commits) enables safe rollback to a last known-good state.
+> **Why A is wrong:** Documentation explains code; it isn't rollback.
+> **Why C is wrong:** Drift is live-vs-code divergence, not a revert action.
+> **Why D is wrong:** Testing validates before apply, not rollback after.
 
 20. SSM Documents used by State Manager to enforce server config are written in:
     A. Only XML  B. JSON or YAML  C. Only Python  D. Binary
-    Answer: B — SSM Documents are authored in JSON or YAML.
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** SSM Documents are authored in JSON or YAML — flexible, human-readable formats.
+> **Why A is wrong:** SSM Documents are not XML-only.
+> **Why C is wrong:** They are JSON/YAML, not Python-only.
+> **Why D is wrong:** They are text (JSON/YAML), not binary.

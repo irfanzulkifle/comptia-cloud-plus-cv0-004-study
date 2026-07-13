@@ -162,12 +162,26 @@ C. Data sovereignty
 D. Data classification
 Answer: C — sovereignty follows the laws of the storage jurisdiction (EU/GDPR).
 
+> [!note]- Reveal Answer
+> **Correct: C**
+> **Why correct:** Data sovereignty is governed by the laws of the country where the data is physically stored — here, the EU (GDPR).
+> **Why A is wrong:** Ownership is about *who* owns the data, not which jurisdiction's laws apply.
+> **Why B is wrong:** Locality is the physical *where*; sovereignty is the legal *whose laws* that follows from it.
+> **Why D is wrong:** Classification labels sensitivity (Public/Restricted), not the governing legal regime.
+
 2. Who owns the customer database stored on a cloud provider's servers?
 A. The cloud provider
 B. The customer
 C. The data center operator
 D. The government of the storage region
 Answer: B — the customer owns the data; the provider is a custodian.
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** The customer owns their data; the cloud provider owns only the infrastructure and acts as a custodian.
+> **Why A is wrong:** The provider is merely a custodian of the infrastructure, not the data owner.
+> **Why C is wrong:** The data-center operator is a facilities/custody role, not the data owner.
+> **Why D is wrong:** The storage region's government sets applicable law (sovereignty), not ownership.
 
 3. "Data must remain physically within Canada." This requirement is best described as:
 A. Data sovereignty
@@ -176,12 +190,26 @@ C. Data ownership
 D. Data classification
 Answer: B — locality is the physical where; choose a Canadian region.
 
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** Data locality is the physical *where* — the specific region/country you choose (a Canadian region).
+> **Why A is wrong:** Sovereignty is the legal consequence; locality is the physical placement requirement itself.
+> **Why C is wrong:** Ownership is about who owns the data, unrelated to the physical placement rule.
+> **Why D is wrong:** Classification is sensitivity labeling, not a geographic placement requirement.
+
 4. Which data classification tier requires the strongest controls such as encryption, tight IAM, and audit?
 A. Public
 B. Internal
 C. Confidential
 D. Restricted
 Answer: D — Restricted covers PII, financial, and IP.
+
+> [!note]- Reveal Answer
+> **Correct: D**
+> **Why correct:** Restricted is the highest tier (PII, financial, IP) and needs the strongest controls: KMS, tight IAM, audit.
+> **Why A is wrong:** Public data needs only minimal controls.
+> **Why B is wrong:** Internal is low sensitivity with basic access controls only.
+> **Why C is wrong:** Confidential needs strong controls but less than the Restricted tier.
 
 5. A lawsuit is filed and your 90-day log-deletion policy would purge relevant records. What should you do?
 A. Delete per policy to save cost
@@ -190,12 +218,26 @@ C. Archive for 1 extra year only
 D. Reclassify the logs as public
 Answer: B — litigation hold freezes deletion of affected data.
 
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** A litigation hold freezes deletion of the affected data until the legal case closes.
+> **Why A is wrong:** Deleting relevant records during litigation is spoliation and illegal.
+> **Why C is wrong:** Ad-hoc archiving does not formally freeze deletion the way a hold does.
+> **Why D is wrong:** Reclassifying as public destroys confidentiality and does not preserve evidence.
+
 6. Internal retention policy is 1 year, but a regulation mandates 7 years. Which wins?
 A. Internal policy (1 year)
 B. Regulatory requirement (7 years)
 C. Whichever is cheaper
 D. Litigation hold
 Answer: B — regulatory retention sets a legally binding minimum.
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** Regulatory retention sets a legally binding minimum that overrides an internal policy.
+> **Why A is wrong:** An internal policy cannot override a law; the 7-year legal minimum wins.
+> **Why C is wrong:** Cost is not a valid basis to violate a regulatory retention mandate.
+> **Why D is wrong:** A litigation hold freezes deletion for a case; here the driver is a regulation, not litigation.
 
 7. A client contract requires you to keep records for 5 years. This is an example of:
 A. Regulatory retention
@@ -204,12 +246,26 @@ C. Contractual retention
 D. Normal policy
 Answer: C — contractual retention is driven by the agreement/MSA.
 
+> [!note]- Reveal Answer
+> **Correct: C**
+> **Why correct:** Contractual retention is driven by an agreement/MSA with the client.
+> **Why A is wrong:** Regulatory retention comes from a law, not a private contract.
+> **Why B is wrong:** A litigation hold is triggered by a legal case, not a routine contract term.
+> **Why D is wrong:** A normal policy is the organization's own internal schedule, not a client requirement.
+
 8. Which standard audits a service organization's controls against Trust Services Criteria?
 A. PCI DSS
 B. ISO 27001
 C. SOC 2
 D. CSA
 Answer: C — SOC 2 reports on service-org controls.
+
+> [!note]- Reveal Answer
+> **Correct: C**
+> **Why correct:** SOC 2 reports on a service organization's controls against the Trust Services Criteria.
+> **Why A is wrong:** PCI DSS governs cardholder data security, not service-org Trust criteria.
+> **Why B is wrong:** ISO 27001 certifies an ISMS framework, not a service-org Trust Services audit.
+> **Why D is wrong:** CSA publishes cloud best-practice guidance, not a service-org audit standard.
 
 9. An organization that stores credit-card data must comply with:
 A. ISO 27001
@@ -218,12 +274,26 @@ C. SOC 2
 D. CSA STAR only
 Answer: B — PCI DSS governs cardholder data security.
 
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** PCI DSS governs the security of cardholder data for anyone handling cards.
+> **Why A is wrong:** ISO 27001 is an ISMS framework, not specific to card data.
+> **Why C is wrong:** SOC 2 is for service-org controls, not a card-data mandate.
+> **Why D is wrong:** CSA STAR is advisory guidance, not the binding card-data standard.
+
 10. Which is a certifiable framework for an Information Security Management System?
 A. SOC 2
 B. PCI DSS
 C. ISO 27001
 D. Cloud Security Alliance
 Answer: C — ISO 27001 certifies an ISMS.
+
+> [!note]- Reveal Answer
+> **Correct: C**
+> **Why correct:** ISO 27001 is the certifiable framework for an Information Security Management System (ISMS).
+> **Why A is wrong:** SOC 2 is an audit report, not an ISMS certification framework.
+> **Why B is wrong:** PCI DSS is a card-data security standard, not an ISMS framework.
+> **Why D is wrong:** CSA is an advisory body, not a certifiable ISMS standard.
 
 11. The Cloud Security Alliance (CSA) is best described as:
 A. A government regulation
@@ -232,12 +302,26 @@ C. A credit-card standard
 D. A service-organization audit
 Answer: B — CSA is advisory guidance, not a law.
 
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** CSA is a nonprofit that publishes cloud-security best-practice guidance (e.g., CSA STAR).
+> **Why A is wrong:** CSA is not a government regulation; it is voluntary guidance.
+> **Why C is wrong:** Credit-card standards are PCI DSS, not CSA.
+> **Why D is wrong:** Service-organization audits are SOC 2, not CSA.
+
 12. To reduce PCI DSS scope, a company should:
 A. Store CVV for faster checkout
 B. Use a payment processor / tokenization so card data leaves its environment
 C. Disable encryption on the card database
 D. Keep card numbers in a spreadsheet
 Answer: B — tokenization/processor removes card data from your scope.
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** Using a processor/tokenization keeps card data out of your environment, shrinking PCI scope.
+> **Why A is wrong:** Storing CVV is prohibited by PCI DSS and *increases* scope.
+> **Why C is wrong:** Disabling encryption on card data violates PCI and raises scope/risk.
+> **Why D is wrong:** A plaintext spreadsheet of card numbers is a major PCI violation.
 
 13. Which AWS service provides on-demand compliance reports such as SOC 2 and ISO 27001?
 A. AWS Config
@@ -246,12 +330,26 @@ C. AWS Audit Manager
 D. AWS GovCloud
 Answer: B — AWS Artifact delivers compliance reports and agreements.
 
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** AWS Artifact is the self-service portal for on-demand compliance reports and agreements (SOC 2, ISO 27001, etc.).
+> **Why A is wrong:** Config evaluates configuration compliance, but does not deliver attestation reports.
+> **Why C is wrong:** Audit Manager helps collect audit evidence, not download third-party reports.
+> **Why D is wrong:** GovCloud is an isolated partition for regulated workloads, not a report portal.
+
 14. Which AWS service continuously evaluates resource configuration against compliance rules?
 A. AWS Config
 B. AWS Artifact
 C. AWS IAM
 D. AWS KMS
 Answer: A — AWS Config assesses and records configuration compliance.
+
+> [!note]- Reveal Answer
+> **Correct: A**
+> **Why correct:** AWS Config continuously evaluates resources against Config Rules and records configuration history/audit trail.
+> **Why B is wrong:** Artifact delivers reports; it does not evaluate live resource configuration.
+> **Why C is wrong:** IAM controls identity/access, not configuration-compliance evaluation.
+> **Why D is wrong:** KMS manages encryption keys, not compliance configuration rules.
 
 15. An S3 bucket must preserve records immutably to satisfy a legal hold. Which feature supports this?
 A. S3 Lifecycle
@@ -260,12 +358,26 @@ C. S3 Transfer Acceleration
 D. S3 Versioning only
 Answer: B — S3 Object Lock provides WORM immutability for holds.
 
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** S3 Object Lock provides WORM (write-once-read-many) immutability needed for legal/litigation holds.
+> **Why A is wrong:** Lifecycle transitions/expire objects; it does not make them immutable.
+> **Why C is wrong:** Transfer Acceleration speeds uploads; it has nothing to do with immutability.
+> **Why D is wrong:** Versioning alone does not prevent deletion/overwrite; Object Lock is required for WORM.
+
 16. A US government-regulated workload with strict access controls is best placed in:
 A. A standard commercial Region
 B. AWS GovCloud (US)
 C. An EU Region
 D. A Canadian Region
 Answer: B — GovCloud is isolated for US-regulated workloads.
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** AWS GovCloud (US) is a separate partition with stricter access controls for US government/regulated workloads.
+> **Why A is wrong:** Standard commercial Regions lack the US-persons-only isolation GovCloud provides.
+> **Why C is wrong:** An EU Region would subject the data to EU law, wrong for US-regulated workloads.
+> **Why D is wrong:** A Canadian Region applies Canadian residency, not US government isolation.
 
 17. To satisfy EU data sovereignty, you should store EU PII in:
 A. us-east-1
@@ -274,12 +386,26 @@ C. ap-southeast-1
 D. Any Region with encryption
 Answer: B — an EU Region keeps data under EU law.
 
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** Storing in an EU Region (e.g., eu-central-1) keeps the data under EU/GDPR law.
+> **Why A is wrong:** us-east-1 places data under US jurisdiction, violating EU sovereignty without safeguards.
+> **Why C is wrong:** ap-southeast-1 is an Asia-Pacific Region, not EU law.
+> **Why D is wrong:** Encryption does not change the storage jurisdiction that determines applicable law.
+
 18. Data classification primarily helps you:
 A. Decide who owns the data
 B. Match security effort to data sensitivity and reduce waste
 C. Determine the storage Region
 D. Replace retention policies
 Answer: B — classification right-sizes controls to risk.
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** Classification labels sensitivity so you match security effort to risk and avoid over/under-protecting.
+> **Why A is wrong:** Ownership is a separate concept (customer owns data), not set by classification.
+> **Why C is wrong:** Region selection follows sovereignty/locality, not classification directly.
+> **Why D is wrong:** Classification informs controls; it does not replace retention requirements.
 
 19. Under a litigation hold, normal deletion policies:
 A. Continue as scheduled
@@ -288,9 +414,23 @@ C. Are shortened
 D. Are converted to regulatory retention
 Answer: B — the hold overrides and freezes deletion.
 
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** A litigation hold overrides and freezes deletion for the affected data until the case closes.
+> **Why A is wrong:** Continuing scheduled deletion would destroy evidence and violate the hold.
+> **Why C is wrong:** The hold lengthens preservation; it does not shorten retention.
+> **Why D is wrong:** The hold is case-driven, not a conversion to a regulatory minimum.
+
 20. Which combination best supports proving AWS compliance to an auditor?
 A. Artifact + Config + Audit Manager
 B. EC2 + S3 only
 C. Route 53 + CloudFront
 D. Lambda + DynamoDB
 Answer: A — Artifact (reports), Config (posture), Audit Manager (evidence).
+
+> [!note]- Reveal Answer
+> **Correct: A**
+> **Why correct:** Artifact supplies attestations, Config records posture, and Audit Manager collects evidence — together proving compliance.
+> **Why B is wrong:** EC2 + S3 are compute/storage, not compliance-proof tooling.
+> **Why C is wrong:** Route 53 + CloudFront are DNS/CDN, unrelated to audit evidence.
+> **Why D is wrong:** Lambda + DynamoDB are compute/data services, not compliance evidence sources.

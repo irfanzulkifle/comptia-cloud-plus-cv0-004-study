@@ -168,137 +168,257 @@ A. Non-relational
 B. Relational
 C. Self-managed
 D. Provider-managed
-Answer: B — Tables, rows/columns, and SQL define a relational database.
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** Tables, rows, columns, and SQL define a relational database.
+> **Why A is wrong:** Non-relational uses documents, key-value, or graph, not fixed tables.
+> **Why C is wrong:** Self-managed is a deployment model, not a data type.
+> **Why D is wrong:** Provider-managed is a deployment model, not a data type.
 
 **Question 2.** Player profiles are stored as JSON documents with different fields per profile. Best type?
 A. Relational
 B. Graph
 C. Non-relational
 D. Provider-managed
-Answer: C — Flexible JSON documents with varying fields are non-relational (document).
+
+> [!note]- Reveal Answer
+> **Correct: C**
+> **Why correct:** Flexible JSON documents with varying fields are non-relational, document model.
+> **Why A is wrong:** Relational needs a fixed schema; varying fields break it.
+> **Why B is wrong:** Graph models relationships, not arbitrary per-record fields.
+> **Why D is wrong:** Provider-managed is deployment, not data type.
 
 **Question 3.** Your team installs the engine on a VM, patches, and backs up manually. This is:
 A. Provider-managed
 B. Relational
 C. Non-relational
 D. Self-managed
-Answer: D — Customer installs, patches, and backs up the DB = self-managed.
+
+> [!note]- Reveal Answer
+> **Correct: D**
+> **Why correct:** The customer installs, patches, and backs up the DB, which is self-managed.
+> **Why A is wrong:** Provider-managed means the CSP does patching and backups.
+> **Why B is wrong:** Relational is a data type, not a deployment model.
+> **Why C is wrong:** Non-relational is a data type, not a deployment model.
 
 **Question 4.** A startup wants the provider to handle patching, backups, and failover. Which model?
 A. Self-managed
 B. Provider-managed
 C. Relational
 D. Non-relational
-Answer: B — Automatic patching/backups/failover by the provider = provider-managed.
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** Automatic patching, backups, and failover by the provider is provider-managed.
+> **Why A is wrong:** Self-managed puts patching and backups on the customer.
+> **Why C is wrong:** Relational is a data type, not deployment.
+> **Why D is wrong:** Non-relational is a data type, not deployment.
 
 **Question 5.** Strong consistency and ACID financial transactions best suit which type?
 A. Non-relational
 B. Relational
 C. Key-value
 D. Wide-column
-Answer: B — Relational databases provide ACID for financial integrity.
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** Relational databases provide ACID transactions for financial integrity.
+> **Why A is wrong:** Non-relational often favors eventual consistency, not ACID finance.
+> **Why C is wrong:** Key-value is a non-relational model, not ACID financial.
+> **Why D is wrong:** Wide-column is non-relational, not strong ACID.
 
 **Question 6.** A social network stores highly connected friend relationships. Ideal model?
 A. Key-value
 B. Document
 C. Graph
 D. Relational
-Answer: C — Graph databases excel at highly connected relationship data.
+
+> [!note]- Reveal Answer
+> **Correct: C**
+> **Why correct:** Graph databases excel at highly connected relationship data like friend networks.
+> **Why A is wrong:** Key-value stores are simple lookups, not relationship traversal.
+> **Why B is wrong:** Document stores are for flexible records, not graph edges.
+> **Why D is wrong:** Relational can model relations but is weak at deep graph traversal.
 
 **Question 7.** Huge traffic spikes handled by adding servers, not upgrading one, favours:
 A. Vertical scaling of relational
 B. Horizontal scaling of non-relational
 C. Self-managed only
 D. Provider-managed only
-Answer: B — Non-relational systems scale out horizontally across servers.
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** Non-relational systems scale out horizontally across servers to handle spikes.
+> **Why A is wrong:** Vertical scaling of relational upgrades one server, with a ceiling.
+> **Why C is wrong:** Self-managed is deployment, not a scaling approach.
+> **Why D is wrong:** Provider-managed is deployment, not inherently horizontal scaling.
 
 **Question 8.** Max OS/engine control but highest operational effort describes:
 A. Relational + provider-managed
 B. Non-relational + provider-managed
 C. Self-managed (any type)
 D. Provider-managed (any type)
-Answer: C — Self-managed puts install, patch, and backup duties on the customer.
+
+> [!note]- Reveal Answer
+> **Correct: C**
+> **Why correct:** Self-managed puts install, patch, and backup duties on the customer, the highest effort.
+> **Why A is wrong:** Relational plus provider-managed is low-effort.
+> **Why B is wrong:** Non-relational plus provider-managed is low-effort.
+> **Why D is wrong:** Provider-managed reduces effort, not maximizes it.
 
 **Question 9.** Amazon RDS running MySQL maps to which two sub-objectives?
 A. Relational + provider-managed
 B. Non-relational + self-managed
 C. Relational + self-managed
 D. Non-relational + provider-managed
-Answer: A — RDS MySQL is a relational engine as a provider-managed service.
+
+> [!note]- Reveal Answer
+> **Correct: A**
+> **Why correct:** RDS MySQL is a relational engine delivered as a provider-managed service.
+> **Why B is wrong:** Non-relational plus self-managed would be MongoDB on EC2.
+> **Why C is wrong:** RDS manages the engine, so not self-managed.
+> **Why D is wrong:** MySQL is relational, not non-relational.
 
 **Question 10.** MongoDB installed and run on EC2 is an example of:
 A. Relational + provider-managed
 B. Non-relational + self-managed
 C. Relational + self-managed
 D. Non-relational + provider-managed
-Answer: B — MongoDB is non-relational; operating it on EC2 is self-managed.
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** MongoDB is non-relational and operating it on EC2 is self-managed.
+> **Why A is wrong:** It is non-relational, not relational.
+> **Why C is wrong:** MongoDB is non-relational, not relational.
+> **Why D is wrong:** Running it yourself on EC2 is self-managed, not provider-managed.
 
 **Question 11.** A fixed, predefined schema designed before storing data is characteristic of:
 A. Non-relational databases
 B. Relational databases
 C. Self-managed deployment
 D. Provider-managed deployment
-Answer: B — Relational databases require a fixed up-front schema.
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** Relational databases require a fixed, predefined schema designed before storing data.
+> **Why A is wrong:** Non-relational is flexible or schema-less.
+> **Why C is wrong:** Self-managed is deployment, unrelated to schema shape.
+> **Why D is wrong:** Provider-managed is deployment, unrelated to schema shape.
 
 **Question 12.** Which AWS service is a managed, serverless key-value and document NoSQL DB?
 A. Amazon RDS
 B. Amazon Neptune
 C. Amazon DynamoDB
 D. Amazon Aurora
-Answer: C — DynamoDB is AWS's managed serverless key-value/document NoSQL service.
+
+> [!note]- Reveal Answer
+> **Correct: C**
+> **Why correct:** DynamoDB is AWS managed serverless key-value and document NoSQL.
+> **Why A is wrong:** RDS is relational, not key-value NoSQL.
+> **Why B is wrong:** Neptune is graph, not key-value document.
+> **Why D is wrong:** Aurora is relational, not NoSQL.
 
 **Question 13.** A company chooses a managed service mainly to reduce:
 A. Data consistency
 B. Administrative/operational overhead
 C. The need for a schema
 D. Network bandwidth
-Answer: B — Provider-managed services cut patching, backup, and admin toil.
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** A managed service primarily reduces administrative and operational overhead.
+> **Why A is wrong:** Managed services still preserve consistency via ACID options.
+> **Why C is wrong:** A schema may still be required for relational managed services.
+> **Why D is wrong:** Network bandwidth is unrelated to the management trade-off.
 
 **Question 14.** True statement about self-managed databases:
 A. The provider applies all patches.
 B. Backups are automatic by the CSP.
 C. The customer handles installation and maintenance.
 D. They cannot run relational engines.
-Answer: C — In self-managed models the customer handles install and maintenance.
+
+> [!note]- Reveal Answer
+> **Correct: C**
+> **Why correct:** In self-managed models the customer handles installation and maintenance.
+> **Why A is wrong:** The provider applies patches only in provider-managed models.
+> **Why B is wrong:** Backups are automatic only in provider-managed models.
+> **Why D is wrong:** Self-managed can absolutely run relational engines.
 
 **Question 15.** Amazon Aurora is best described as:
 A. A non-relational graph database
 B. A MySQL/PostgreSQL-compatible relational engine on RDS
 C. A self-managed EC2 database
 D. A key-value store
-Answer: B — Aurora is a relational engine compatible with MySQL and PostgreSQL via RDS.
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** Aurora is a MySQL and PostgreSQL compatible relational engine on RDS.
+> **Why A is wrong:** Aurora is relational, not a graph database.
+> **Why C is wrong:** Aurora is a managed RDS service, not self-managed EC2.
+> **Why D is wrong:** Aurora is relational, not key-value.
 
 **Question 16.** A flexible catalog where items have varying attributes is BEST served by:
 A. Relational with fixed schema
 B. Non-relational document store
 C. Self-managed relational
 D. Provider-managed relational
-Answer: B — Varying attributes suit a flexible-schema non-relational document store.
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** Varying item attributes suit a flexible-schema non-relational document store.
+> **Why A is wrong:** Fixed-schema relational fights varying attributes.
+> **Why C is wrong:** Self-managed relational is about ops, not schema flexibility.
+> **Why D is wrong:** Provider-managed relational is still fixed-schema.
 
 **Question 17.** Amazon Neptune serves which data model?
 A. Relational tables
 B. Key-value
 C. Graph
 D. Document
-Answer: C — Neptune is AWS's managed graph database service.
+
+> [!note]- Reveal Answer
+> **Correct: C**
+> **Why correct:** Neptune is AWS managed graph database service for connected data.
+> **Why A is wrong:** Relational tables are RDS, not Neptune.
+> **Why B is wrong:** Key-value is DynamoDB, not Neptune.
+> **Why D is wrong:** Document is DocumentDB, not Neptune.
 
 **Question 18.** The usual trade-off of provider-managed vs. self-managed is:
 A. Less control over the OS/engine
 B. No backups
 C. Inability to use SQL
 D. Higher data-loss risk
-Answer: A — Managed services abstract the OS/engine, reducing low-level control.
+
+> [!note]- Reveal Answer
+> **Correct: A**
+> **Why correct:** Managed services abstract the OS and engine, reducing low-level control.
+> **Why B is wrong:** Managed services provide automated backups.
+> **Why C is wrong:** SQL remains usable on managed relational services.
+> **Why D is wrong:** Managed services lower data-loss risk via backups, not raise it.
 
 **Question 19.** Which deployment keeps the DB in your own network with full OS access for compliance?
 A. Provider-managed
 B. Self-managed on EC2
 C. Serverless NoSQL only
 D. Relational only
-Answer: B — Self-managed on EC2 gives network isolation and full OS control.
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** Self-managed on EC2 gives network isolation and full OS control for compliance.
+> **Why A is wrong:** Provider-managed reduces OS control, not increases it.
+> **Why C is wrong:** Self-managed is not limited to serverless NoSQL.
+> **Why D is wrong:** It is not limited to relational only.
 
 **Question 20.** A "managed NoSQL service" is classified as:
 A. Relational + self-managed
 B. Non-relational + provider-managed
 C. Relational + provider-managed
 D. Non-relational + self-managed
-Answer: B — A managed NoSQL service is non-relational and provider-managed.
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** A managed NoSQL service is non-relational and provider-managed.
+> **Why A is wrong:** NoSQL is non-relational, not relational.
+> **Why C is wrong:** NoSQL is non-relational, not relational.
+> **Why D is wrong:** Managed means provider-operated, not self-managed.

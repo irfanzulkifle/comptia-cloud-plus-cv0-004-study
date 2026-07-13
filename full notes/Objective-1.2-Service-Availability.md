@@ -176,137 +176,257 @@ This objective maps cleanly onto AWS services. Use this table for any AWS-flavou
    B. RTO
    C. SLA
    D. MTTR
-   Answer: B — RTO measures how long you can be down.
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** RTO measures the maximum acceptable downtime after a disaster.
+> **Why A is wrong:** RPO is about data loss, not downtime.
+> **Why C is wrong:** SLA is the contractual uptime promise.
+> **Why D is wrong:** MTTR is time to repair, not the objective.
 
 2. A company can lose at most 15 minutes of data. Which objective defines this?
    A. RTO
    B. SLO
    C. RPO
    D. MTTR
-   Answer: C — RPO is the acceptable data-loss window.
+
+> [!note]- Reveal Answer
+> **Correct: C**
+> **Why correct:** RPO is the acceptable data-loss window.
+> **Why A is wrong:** RTO is downtime tolerance.
+> **Why B is wrong:** SLO is an internal target.
+> **Why D is wrong:** MTTR is repair time.
 
 3. What is a geographic area containing multiple data centres called?
    A. Availability Zone
    B. Region
    C. Edge location
    D. Warm site
-   Answer: B — A region is the geographic grouping.
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** A region is the geographic grouping of multiple data centres.
+> **Why A is wrong:** An AZ is one or more DCs within a region.
+> **Why C is wrong:** Edge location is a CDN/POP near users.
+> **Why D is wrong:** Warm site is a DR option.
 
 4. Two physically separate data centres in the same region with independent power are:
    A. Two regions
    B. Availability Zones
    C. Edge nodes
    D. Cloud bursts
-   Answer: B — They are separate AZs.
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** They are separate Availability Zones in the same region.
+> **Why A is wrong:** Two DCs in one region are AZs, not two regions.
+> **Why C is wrong:** Edge nodes are for compute near users.
+> **Why D is wrong:** Cloud bursting is a capacity pattern.
 
 5. Running on-prem normally but spilling overflow to public cloud during peaks is:
    A. Edge computing
    B. Cloud bursting
    C. Cold site
    D. Multicloud
-   Answer: B — That is the cloud-bursting hybrid pattern.
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** That is the cloud-bursting hybrid pattern (on-prem plus public-cloud overflow).
+> **Why A is wrong:** Edge keeps processing out of the central cloud.
+> **Why C is wrong:** Cold site is a DR site.
+> **Why D is wrong:** Multicloud uses multiple providers.
 
 6. Processing data at a cell tower instead of a central DC is an example of:
    A. Cloud bursting
    B. Edge computing
    C. Hot site
    D. Region failover
-   Answer: B — Edge computing keeps processing near the source.
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** Edge computing keeps processing near the data source or user.
+> **Why A is wrong:** Cloud bursting sends overflow to the cloud.
+> **Why C is wrong:** Hot site is a DR environment.
+> **Why D is wrong:** Region failover is DR, not local processing.
 
 7. A fully mirrored, auto-failover DR environment with near-zero RPO is a:
    A. Cold site
    B. Warm site
    C. Hot site
    D. Pilot light
-   Answer: C — Hot site is the live duplicate.
+
+> [!note]- Reveal Answer
+> **Correct: C**
+> **Why correct:** Hot site is the fully mirrored, auto-failover live duplicate.
+> **Why A is wrong:** Cold site has no live copy.
+> **Why B is wrong:** Warm site lacks a live data copy.
+> **Why D is wrong:** Pilot light is a minimal always-on core (a warm variant).
 
 8. A DR site with pre-built servers but no live data copy, recovered in hours, is:
    A. Hot site
    B. Warm site
    C. Cold site
    D. Edge site
-   Answer: B — Warm site needs restore-from-backup.
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** Warm site has pre-built servers but needs restore-from-backup.
+> **Why A is wrong:** Hot site has a live copy.
+> **Why C is wrong:** Cold site has no pre-built servers.
+> **Why D is wrong:** Edge site is not a DR tier.
 
 9. The cheapest DR option with RTO measured in days is the:
    A. Hot site
    B. Warm site
    C. Cold site
    D. Multi-site
-   Answer: C — Cold site has only space/power, no servers.
+
+> [!note]- Reveal Answer
+> **Correct: C**
+> **Why correct:** Cold site has only space/power, no servers, making it cheapest with RTO in days.
+> **Why A is wrong:** Hot site is the most expensive, not cheapest.
+> **Why B is wrong:** Warm site has pre-built servers.
+> **Why D is wrong:** Multi-site active-active is costly.
 
 10. Using AWS and Azure together to avoid lock-in is an example of:
     A. Single cloud
     B. Multicloud tenancy
     C. Cloud bursting
     D. Edge computing
-    Answer: B — Multicloud uses two or more providers.
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** Multicloud uses two or more providers together.
+> **Why A is wrong:** Single cloud is one provider.
+> **Why C is wrong:** Cloud bursting is hybrid capacity.
+> **Why D is wrong:** Edge computing is local processing.
 
 11. Which AWS service is used for availability monitoring and alarms?
     A. CloudFront
     B. CloudWatch
     C. S3
     D. Route 53 only
-    Answer: B — CloudWatch provides metrics, alarms, and monitoring.
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** CloudWatch provides metrics, alarms, and availability monitoring.
+> **Why A is wrong:** CloudFront is a CDN.
+> **Why C is wrong:** S3 is object storage.
+> **Why D is wrong:** Route 53 is DNS/health checks, not the main monitoring service.
 
 12. For lowest RTO/RPO on AWS, which design is best?
     A. Backup & Restore to Glacier
     B. Pilot Light
     C. Multi-Region active-active with Aurora Global DB
     D. Cold standby
-    Answer: C — Active-active multi-region gives minutes/seconds recovery.
+
+> [!note]- Reveal Answer
+> **Correct: C**
+> **Why correct:** Active-active multi-region with Aurora Global DB gives minutes/seconds recovery.
+> **Why A is wrong:** Glacier restore is days (cold).
+> **Why B is wrong:** Pilot light is minimal, slower than active-active.
+> **Why D is wrong:** Cold standby is days.
 
 13. Cloud bursting most directly helps with:
     A. Data residency compliance
     B. Handling unpredictable capacity spikes
     C. Reducing RPO to zero
     D. Eliminating multicloud
-    Answer: B — Bursting absorbs demand peaks cheaply.
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** Bursting absorbs demand peaks cheaply without over-provisioning.
+> **Why A is wrong:** Bursting does not address residency (single-region).
+> **Why C is wrong:** It does not reduce RPO to zero.
+> **Why D is wrong:** It is unrelated to multicloud.
 
 14. Edge computing primarily reduces:
     A. Storage cost in the cloud
     B. Latency and bandwidth to central cloud
     C. Number of regions needed
     D. RTO
-    Answer: B — Edge cuts latency and raw-data transport.
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** Edge cuts latency and raw-data transport to the central cloud.
+> **Why A is wrong:** Edge does not primarily reduce cloud storage cost.
+> **Why C is wrong:** It does not reduce the number of regions.
+> **Why D is wrong:** It does not directly change RTO.
 
 15. An SLA of 99.9% allows roughly how much downtime per year?
     A. 4 minutes
     B. 43 minutes
     C. 8 hours
     D. 1 day
-    Answer: B — 99.9% ≈ 43.8 minutes/year.
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** 99.9% availability allows roughly 43.8 minutes of downtime per year.
+> **Why A is wrong:** 4 minutes is about 99.99%.
+> **Why C is wrong:** 8 hours is far lower availability.
+> **Why D is wrong:** 1 day is roughly 99.7% unavailable.
 
 16. Which is a valid reason to choose a single region for data?
     A. Automatic cross-region replication
     B. Data sovereignty / residency law
     C. Free egress
     D. Higher RPO
-    Answer: B — Regions support compliance with residency rules.
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** Regions support compliance with data-residency laws like PDPA.
+> **Why A is wrong:** Replication is NOT automatic across regions.
+> **Why C is wrong:** Egress is costly, not free.
+> **Why D is wrong:** Residency aims to constrain, not raise RPO.
 
 17. Deploying two VMs in the SAME AZ does NOT protect against:
     A. AZ failure
     B. Instance crash
     C. Application bug
     D. OS patch reboot
-    Answer: A — Same-AZ VMs share that AZ's failure domain.
+
+> [!note]- Reveal Answer
+> **Correct: A**
+> **Why correct:** Same-AZ VMs share that AZ's failure domain, so an AZ failure hits both.
+> **Why B is wrong:** Instance crash is covered by having two VMs.
+> **Why C is wrong:** App bugs are not infrastructure faults.
+> **Why D is wrong:** Patch reboots affect one VM; the other stays up.
 
 18. AWS Local Zones and Wavelength are examples of:
     A. Regions
     B. Edge computing offerings
     C. Cold sites
     D. Multicloud tools
-    Answer: B — They bring compute close to users/5G edge.
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** Local Zones and Wavelength bring compute close to users/5G edge.
+> **Why A is wrong:** They are not regions.
+> **Why C is wrong:** They are not DR cold sites.
+> **Why D is wrong:** They are AWS offerings, not multicloud tools.
 
 19. A warm site is generally chosen when:
     A. RTO must be seconds and budget is unlimited
     B. Hours of downtime are tolerable and cost matters
     C. No data loss is allowed
     D. There is no DR requirement
-    Answer: B — Warm balances cost with hours-level RTO.
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** Warm balances cost with hours-level RTO and recovery.
+> **Why A is wrong:** Seconds RTO with unlimited budget = hot site.
+> **Why C is wrong:** No data loss allowed = hot site.
+> **Why D is wrong:** Every production system should have DR.
 
 20. Multicloud increases resilience because:
     A. One provider outage can still take everything down
     B. A single bill is simpler
     C. One provider's outage does not equal total outage
     D. It removes the need for RTO/RPO
-    Answer: C — Spreading providers avoids single-vendor failure.
+
+> [!note]- Reveal Answer
+> **Correct: C**
+> **Why correct:** Spreading providers means one provider's outage is not a total outage.
+> **Why A is wrong:** That describes single-cloud risk.
+> **Why B is wrong:** Multicloud means multiple bills, not one.
+> **Why D is wrong:** You still need RTO/RPO planning.

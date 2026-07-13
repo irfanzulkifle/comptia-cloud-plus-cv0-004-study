@@ -58,9 +58,17 @@ status: in-progress
 ### 6.3.2 — AUTHORIZATION ISSUES (PRIVILEGE ESCALATION & UNAUTHORIZED ACCESS)
 - **Definition:**
   - Authorization = what an *authenticated* identity is allowed to do
-  - **Privilege escalation (6.3.2a):** gains rights above need — `*` wildcard, container as root, rights-widening exploit
-  - **Unauthorized access (6.3.2b):** identity reaches a resource it shouldn't — reads another's S3 bucket, cross-tenant data
-  - Both are access-control failures; identity is known but permissions are wrong/abused
+  - **Privilege escalation (6.3.2a):** a user, service, or process gains rights above what they should have
+    - Misconfigured role that is too permissive
+    - IAM policy with `*` wildcards
+    - Container running as root
+    - Exploit that widens rights
+  - **Unauthorized access (6.3.2b):** an identity (internal or external) reaches resources it should not
+    - Reading an S3 bucket it shouldn't
+    - Accessing another tenant's data
+    - Using a role outside its intended scope
+  - Both are access-control failures distinct from authentication (proving identity)
+  - Here the identity is known, but its permissions are wrong or abused
 - **Why it matters:**
   - Exam: "junior admin deletes prod because policy has `*`" → privilege escalation (6.3.2a)
   - Exam: "outside user reads private bucket via bad bucket policy" → unauthorized access (6.3.2b)
@@ -250,143 +258,264 @@ CloudTrail records every API call, giving the forensic backbone for:
 
 ## SECTION 6 — PRACTICE QUESTIONS
 
-
 1. After a provider disables TLS 1.0, a legacy client fails the handshake with "no cipher in common." What is the cause?
    A. Protocol incompatibility (6.2.5)
    B. Cipher suite deprecation (6.3.1)
    C. Authentication failure
    D. Routing issue
-   Answer: B — The weak cipher was retired provider-wide on a schedule; upgrade to a supported suite.
+
+> [!note]- Reveal Answer: B
+> **Correct: B**
+> **Why correct:** The weak cipher was retired provider-wide on a schedule — cipher suite deprecation (6.3.1); upgrade the client to a supported TLS 1.2+ suite.
+> **Why A is wrong:** Protocol incompatibility (6.2.5) is two live ends disagreeing with no announced cutoff; this is a provider-wide removal on a date.
+> **Why C is wrong:** Authentication failure is about proving identity (6.3.3), not a removed cipher suite.
+> **Why D is wrong:** Routing issues are network pathing, unrelated to a TLS cipher handshake.
 
 2. A developer's role has `s3:*` on all buckets, and a compromise leads to prod data loss. Which cause?
    A. Unauthorized access (6.3.2b)
    B. Privilege escalation (6.3.2a)
    C. Leaked credentials (6.3.3a)
    D. Software vulnerability (6.3.4)
-   Answer: B — An over-permissive (`*`) policy granted excess rights; scope to least privilege.
+
+> [!note]- Reveal Answer: B
+> **Correct: B**
+> **Why correct:** An over-permissive (`*`) policy granting far more than the job requires = privilege escalation (6.3.2a); apply least-privilege scoping.
+> **Why A is wrong:** Unauthorized access is an identity reaching a resource it shouldn't; here the role itself was too permissive (excess rights).
+> **Why C is wrong:** Leaked credentials is an exposed secret; the problem is the over-broad policy, not a stolen key.
+> **Why D is wrong:** Software vulnerability is a flaw in code/dependency, not an IAM policy grant.
 
 3. A public S3 bucket policy with `"Principal": "*"` lets anonymous users read sensitive objects. Cause?
    A. Privilege escalation (6.3.2a)
    B. Unauthorized access (6.3.2b)
    C. Cipher deprecation (6.3.1)
    D. Unauthorized software (6.3.5)
-   Answer: B — An external/unauthenticated principal reaches forbidden data; fix the policy and block public access.
+
+> [!note]- Reveal Answer: B
+> **Correct: B**
+> **Why correct:** An external/unauthenticated principal reaches forbidden data = unauthorized access (6.3.2b); fix the policy and enable block-public-access.
+> **Why A is wrong:** Privilege escalation is excess rights via an over-broad role; here it's an open policy exposing data to outsiders.
+> **Why C is wrong:** Cipher deprecation is about removed encryption suites, not a public-read bucket policy.
+> **Why D is wrong:** Unauthorized software is a rogue program running, not a misconfigured bucket policy.
 
 4. An AWS access key committed to a public repo starts API calls from a foreign IP at 3 a.m. Cause?
    A. Software vulnerability (6.3.4)
    B. Leaked credentials (6.3.3a)
    C. Unauthorized access (6.3.2b)
    D. Privilege escalation (6.3.2a)
-   Answer: B — An exposed secret is being abused; rotate/disable it and revoke sessions immediately.
+
+> [!note]- Reveal Answer: B
+> **Correct: B**
+> **Why correct:** An exposed long-lived secret being abused from an unusual IP = leaked credentials (6.3.3a); rotate/disable the key and revoke sessions immediately.
+> **Why A is wrong:** Software vulnerability is a code/dependency flaw, not an exposed key.
+> **Why C is wrong:** Unauthorized access is the downstream effect; the root cause to name is the leaked credential.
+> **Why D is wrong:** Privilege escalation is widening rights via policy; here it's a stolen secret.
 
 5. An internet-facing service is exploited for RCE via CVE-2021-44228 (Log4j). Cause?
    A. Leaked credentials (6.3.3a)
    B. Software vulnerability (6.3.4)
    C. Unauthorized access (6.3.2b)
    D. Cipher deprecation (6.3.1)
-   Answer: B — A known, unpatched flaw; patch/upgrade the component and rebuild images.
+
+> [!note]- Reveal Answer: B
+> **Correct: B**
+> **Why correct:** Exploitation of a known, unpatched flaw (Log4j CVE) = software vulnerability (6.3.4); patch/upgrade the component and rebuild images.
+> **Why A is wrong:** Leaked credentials is a stolen secret; no credential is involved in a CVE exploit.
+> **Why C is wrong:** Unauthorized access is the symptom; root cause is the vulnerable code.
+> **Why D is wrong:** Cipher deprecation is a removed encryption suite, not a library RCE flaw.
 
 6. Instances spike to 100% CPU from an unknown `kdevtmpfsi` binary not in any manifest. Cause?
    A. Software vulnerability (6.3.4)
    B. Unauthorized software (6.3.5)
    C. Leaked credentials (6.3.3a)
    D. Privilege escalation (6.3.2a)
-   Answer: B — Rogue crypto-miner malware; quarantine, find the entry vector, and evict.
+
+> [!note]- Reveal Answer: B
+> **Correct: B**
+> **Why correct:** An unrecognized crypto-miner process with no deployment manifest = unauthorized software (6.3.5); quarantine, find the entry vector, and evict.
+> **Why A is wrong:** A software vulnerability is the entry path, but the symptom described is the rogue program itself.
+> **Why C is wrong:** Leaked credentials is an exposed secret; the symptom is a running unauthorized binary.
+> **Why D is wrong:** Privilege escalation is excess IAM rights, not a rogue process on the host.
 
 7. A user can perform actions far above their job role because their policy uses wildcards. This is:
    A. Unauthorized access (6.3.2b)
    B. Privilege escalation (6.3.2a)
    C. Leaked credentials (6.3.3a)
    D. Authentication issue (6.3.3)
-   Answer: B — Excess rights via over-broad policy = privilege escalation; apply least privilege.
+
+> [!note]- Reveal Answer: B
+> **Correct: B**
+> **Why correct:** Excess rights granted via an over-broad (wildcard) policy = privilege escalation (6.3.2a); apply least privilege.
+> **Why A is wrong:** Unauthorized access is reaching a forbidden resource; this is the role having too much permission by design.
+> **Why C is wrong:** Leaked credentials is a stolen/exposed secret, not an over-broad policy.
+> **Why D is wrong:** Authentication is proving identity; this is about excessive authorized rights.
 
 8. GuardDuty raises `CredentialAccess:IAMUser/AnomalousBehavior` from an unusual IP. This indicates:
    A. Software vulnerability (6.3.4)
    B. Leaked credentials (6.3.3a)
    C. Cipher deprecation (6.3.1)
    D. Unauthorized software (6.3.5)
-   Answer: B — A key used anomalously signals leaked/abused credentials; rotate and investigate.
+
+> [!note]- Reveal Answer: B
+> **Correct: B**
+> **Why correct:** A key used anomalously from an unusual IP is the signature of leaked/abused credentials (6.3.3a); rotate the key and investigate.
+> **Why A is wrong:** Software vulnerability is a code flaw, not anomalous credential use.
+> **Why C is wrong:** Cipher deprecation is a removed encryption suite, unrelated to credential anomaly.
+> **Why D is wrong:** Unauthorized software is a rogue program; this is a credential-behavior finding.
 
 9. IAM Access Analyzer shows an S3 bucket shared with an external account. This is:
    A. Privilege escalation (6.3.2a)
    B. Unauthorized access (6.3.2b)
    C. Leaked credentials (6.3.3a)
    D. Unauthorized software (6.3.5)
-   Answer: B — External sharing is unintended access; revoke the cross-account grant.
+
+> [!note]- Reveal Answer: B
+> **Correct: B**
+> **Why correct:** An external-account share is unintended access to a resource = unauthorized access (6.3.2b); revoke the cross-account grant.
+> **Why A is wrong:** Privilege escalation is excess rights via policy; this is data exposed to an outside principal.
+> **Why C is wrong:** Leaked credentials is a stolen secret; this is a sharing-policy exposure.
+> **Why D is wrong:** Unauthorized software is a rogue program, not an IAM share finding.
 
 10. A container from an untrusted registry is running in production without approval. Cause?
     A. Unauthorized software (6.3.5)
     B. Software vulnerability (6.3.4)
     C. Leaked credentials (6.3.3a)
     D. Cipher deprecation (6.3.1)
-    Answer: A — An unapproved image/workload; block untrusted registries and remove it.
+
+> [!note]- Reveal Answer: A
+> **Correct: A**
+> **Why correct:** An unapproved image/workload from an untrusted registry = unauthorized software (6.3.5); block untrusted registries and remove it.
+> **Why B is wrong:** Software vulnerability is a flaw in the code; the issue here is the image isn't approved/sanctioned at all.
+> **Why C is wrong:** Leaked credentials is an exposed secret, not an unsanctioned container.
+> **Why D is wrong:** Cipher deprecation is a removed encryption suite, unrelated to an untrusted image.
 
 11. An attacker assumes a role then attaches `AdministratorAccess` to themselves. Which cause?
-    A. Unauthorized access (6.3.2b)
-    B. Privilege escalation (6.3.2a)
-    C. Leaked credentials (6.3.3a)
-    D. Software vulnerability (6.3.4)
-    Answer: B — Widening own rights via role/policy manipulation = privilege escalation.
+   A. Unauthorized access (6.3.2b)
+   B. Privilege escalation (6.3.2a)
+   C. Leaked credentials (6.3.3a)
+   D. Software vulnerability (6.3.4)
+
+> [!note]- Reveal Answer: B
+> **Correct: B**
+> **Why correct:** Widening one's own rights via role/policy manipulation (attaching admin) = privilege escalation (6.3.2a); restrict risky IAM actions like `iam:*`/`PassRole`.
+> **Why A is wrong:** Unauthorized access is reaching a resource; this is the attacker raising their own permission level.
+> **Why C is wrong:** Leaked credentials is a stolen secret; the act described is rights-widening, not secret reuse.
+> **Why D is wrong:** Software vulnerability is a code flaw, not an IAM self-escalation.
 
 12. CloudTrail shows `ConsoleLogin` with `MFAUsed=false` repeatedly succeeding for an admin. Concern?
-    A. Cipher deprecation (6.3.1)
-    B. Authentication issue (6.3.3) — MFA not enforced
-    C. Unauthorized software (6.3.5)
-    D. Software vulnerability (6.3.4)
-    Answer: B — Missing MFA is an authentication weakness; enforce MFA on all privileged users.
+   A. Cipher deprecation (6.3.1)
+   B. Authentication issue (6.3.3) — MFA not enforced
+   C. Unauthorized software (6.3.5)
+   D. Software vulnerability (6.3.4)
+
+> [!note]- Reveal Answer: B
+> **Correct: B**
+> **Why correct:** Successful logins without MFA = an authentication weakness (6.3.3); enforce MFA on all privileged users.
+> **Why A is wrong:** Cipher deprecation is a removed encryption suite, unrelated to MFA enforcement.
+> **Why C is wrong:** Unauthorized software is a rogue program, not a missing MFA control.
+> **Why D is wrong:** Software vulnerability is a code flaw, not an auth-policy gap.
 
 13. A dependency with a known CVSS 9.8 RCE is pulled into the build and exploited. Cause?
-    A. Unauthorized software (6.3.5)
-    B. Software vulnerability (6.3.4)
-    C. Leaked credentials (6.3.3a)
-    D. Unauthorized access (6.3.2b)
-    Answer: B — A known vulnerable dependency; patch/upgrade and scan in CI.
+   A. Unauthorized software (6.3.5)
+   B. Software vulnerability (6.3.4)
+   C. Leaked credentials (6.3.3a)
+   D. Unauthorized access (6.3.2b)
+
+> [!note]- Reveal Answer: B
+> **Correct: B**
+> **Why correct:** A known vulnerable dependency (CVSS 9.8) being exploited = software vulnerability (6.3.4); patch/upgrade and add CVE scanning in CI.
+> **Why A is wrong:** Unauthorized software is a rogue/unapproved program, not a vulnerable (but sanctioned) dependency.
+> **Why C is wrong:** Leaked credentials is an exposed secret, not a CVE in a library.
+> **Why D is wrong:** Unauthorized access is the downstream effect; root cause is the vulnerable dependency.
 
 14. After disabling RC4, a partner's integration stops connecting securely. Cause?
-    A. Cipher suite deprecation (6.3.1)
-    B. Protocol incompatibility (6.2.5)
-    C. Authorization issue (6.3.2)
-    D. Leaked credentials (6.3.3a)
-    Answer: A — The weak cipher was deprecated; the partner must negotiate a supported suite.
+   A. Cipher suite deprecation (6.3.1)
+   B. Protocol incompatibility (6.2.5)
+   C. Authorization issue (6.3.2)
+   D. Leaked credentials (6.3.3a)
+
+> [!note]- Reveal Answer: A
+> **Correct: A**
+> **Why correct:** You removed the weak RC4 cipher, so the partner's client can no longer negotiate a supported suite = cipher suite deprecation (6.3.1); the partner must upgrade.
+> **Why B is wrong:** Protocol incompatibility is two live ends disagreeing with no cutoff; here you intentionally retired the weak cipher.
+> **Why C is wrong:** Authorization is about access rights, not an encryption-suite negotiation.
+> **Why D is wrong:** Leaked credentials is a stolen secret, unrelated to a cipher being disabled.
 
 15. A compromised key is used to launch dozens of unapproved instances. The instance creation is:
     A. Software vulnerability (6.3.4)
     B. Unauthorized software (6.3.5) enabled via leaked creds (6.3.3a)
     C. Cipher deprecation (6.3.1)
     D. Privilege escalation (6.3.2a)
-    Answer: B — Rogue workloads = unauthorized software; the entry was the leaked key (6.3.3a).
+
+> [!note]- Reveal Answer: B
+> **Correct: B**
+> **Why correct:** Rogue workloads launched via a stolen key = unauthorized software (6.3.5), with the entry vector being the leaked credentials (6.3.3a); revoke the key and evict.
+> **Why A is wrong:** Software vulnerability is a code flaw; the issue is unsanctioned instances from a compromised key.
+> **Why C is wrong:** Cipher deprecation is a removed encryption suite, unrelated to rogue instance creation.
+> **Why D is wrong:** Privilege escalation is widening IAM rights; here it's unauthorized workloads from a leaked key.
 
 16. An S3 bucket policy allows `s3:GetObject` to `"Principal": "*"`. This is best described as:
-    A. Privilege escalation (6.3.2a)
-    B. Unauthorized access (6.3.2b)
-    C. Leaked credentials (6.3.3a)
-    D. Cipher deprecation (6.3.1)
-    Answer: B — Public read of private data is unauthorized access; remove the wildcard principal.
+   A. Privilege escalation (6.3.2a)
+   B. Unauthorized access (6.3.2b)
+   C. Leaked credentials (6.3.3a)
+   D. Cipher deprecation (6.3.1)
+
+> [!note]- Reveal Answer: B
+> **Correct: B**
+> **Why correct:** Public read of private data via a wildcard principal = unauthorized access (6.3.2b); remove the wildcard principal and block public access.
+> **Why A is wrong:** Privilege escalation is excess IAM rights; this is data exposed to everyone via policy.
+> **Why C is wrong:** Leaked credentials is a stolen secret; this is an open bucket policy.
+> **Why D is wrong:** Cipher deprecation is a removed encryption suite, unrelated to bucket policy.
 
 17. Inspector flags a critical CVE in the base AMI of running instances. Under 6.3 this is:
-    A. Leaked credentials (6.3.3a)
-    B. Software vulnerability (6.3.4)
-    C. Unauthorized software (6.3.5)
-    D. Unauthorized access (6.3.2b)
-    Answer: B — A vulnerable image/OS component; patch and redeploy from a fixed AMI.
+   A. Leaked credentials (6.3.3a)
+   B. Software vulnerability (6.3.4)
+   C. Unauthorized software (6.3.5)
+   D. Unauthorized access (6.3.2b)
+
+> [!note]- Reveal Answer: B
+> **Correct: B**
+> **Why correct:** A vulnerable image/OS component flagged by Inspector = software vulnerability (6.3.4); patch and redeploy from a fixed AMI.
+> **Why A is wrong:** Leaked credentials is an exposed secret, not a vulnerable AMI component.
+> **Why C is wrong:** Unauthorized software is a rogue program; here it's a known-vulnerable (but sanctioned) image.
+> **Why D is wrong:** Unauthorized access is reaching a resource; the finding is a vulnerability in the image.
 
 18. A user shares their password and an outsider logs in as them. The root cause to name is:
-    A. Privilege escalation (6.3.2a)
-    B. Leaked credentials (6.3.3a)
-    C. Software vulnerability (6.3.4)
-    D. Unauthorized software (6.3.5)
-    Answer: B — A shared/exposed password is a leaked credential; reset it and enforce MFA.
+   A. Privilege escalation (6.3.2a)
+   B. Leaked credentials (6.3.3a)
+   C. Software vulnerability (6.3.4)
+   D. Unauthorized software (6.3.5)
+
+> [!note]- Reveal Answer: B
+> **Correct: B**
+> **Why correct:** A shared/exposed password is a leaked credential (6.3.3a); reset it, enforce MFA, and stop password sharing.
+> **Why A is wrong:** Privilege escalation is excess IAM rights, not a shared password.
+> **Why C is wrong:** Software vulnerability is a code flaw, not a credential shared by a user.
+> **Why D is wrong:** Unauthorized software is a rogue program, not a shared login.
 
 19. GuardDuty raises `CryptoCurrency:EC2/...Miner`. The appropriate 6.3 classification is:
-    A. Software vulnerability (6.3.4)
-    B. Unauthorized software (6.3.5)
-    C. Leaked credentials (6.3.3a)
-    D. Unauthorized access (6.3.2b)
-    Answer: B — Detected crypto-mining is rogue/unauthorized software; quarantine and find the entry.
+   A. Software vulnerability (6.3.4)
+   B. Unauthorized software (6.3.5)
+   C. Leaked credentials (6.3.3a)
+   D. Unauthorized access (6.3.2b)
+
+> [!note]- Reveal Answer: B
+> **Correct: B**
+> **Why correct:** Detected crypto-mining on an instance is the signature of rogue/unauthorized software (6.3.5); quarantine and find the entry vector.
+> **Why A is wrong:** Software vulnerability may be the entry path, but the finding is the miner process itself.
+> **Why C is wrong:** Leaked credentials is an exposed secret; the finding is a running miner binary.
+> **Why D is wrong:** Unauthorized access is reaching a resource; this is unauthorized compute usage.
 
 20. A role can `iam:PassRole` to a privileged instance profile, enabling a user to gain admin. This is:
     A. Unauthorized access (6.3.2b)
     B. Privilege escalation (6.3.2a)
     C. Cipher deprecation (6.3.1)
     D. Unauthorized software (6.3.5)
-    Answer: B — Using a permission to widen rights = privilege escalation; restrict risky IAM actions.
+
+> [!note]- Reveal Answer: B
+> **Correct: B**
+> **Why correct:** Using a permission (`iam:PassRole`) to widen rights to admin = privilege escalation (6.3.2a); restrict risky IAM actions.
+> **Why A is wrong:** Unauthorized access is reaching a resource; this is the user raising their own permission level.
+> **Why C is wrong:** Cipher deprecation is a removed encryption suite, unrelated to IAM PassRole.
+> **Why D is wrong:** Unauthorized software is a rogue program, not a rights-widening permission.
+
+---

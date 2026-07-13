@@ -168,137 +168,257 @@ This section maps the vendor-neutral 1.11 sub-objectives to the AWS-specific ser
    B. Text recognition (OCR)
    C. Text-to-voice
    D. Visual recognition
-   Answer: B — OCR/text recognition extracts machine-readable text from scanned documents and forms.
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** OCR or text recognition extracts machine-readable text from scanned documents and forms.
+> **Why A is wrong:** Sentiment analysis judges tone, it does not extract text from scans.
+> **Why C is wrong:** Text-to-voice synthesizes speech, the opposite direction.
+> **Why D is wrong:** Visual recognition detects objects, not printed text fields.
 
 2. An e-commerce site must show Japanese product reviews to English-speaking shoppers automatically. Which service applies?
    A. Text translation
    B. Voice-to-text
    C. Generative AI
    D. Sensors
-   Answer: A — text translation converts written text from one language to another.
+
+> [!note]- Reveal Answer
+> **Correct: A**
+> **Why correct:** Text translation converts written text from one language to another.
+> **Why B is wrong:** Voice-to-text transcribes speech to text, not language conversion.
+> **Why C is wrong:** Generative AI creates new content, not strict translation.
+> **Why D is wrong:** Sensors measure the physical world, unrelated to language.
 
 3. A social platform wants to automatically flag prohibited objects in uploaded photos. Which AI service is correct?
    A. Text recognition
    B. Sentiment analysis
    C. Visual recognition
    D. Text-to-voice
-   Answer: C — visual recognition (computer vision) detects objects, scenes, and unsafe content in images.
+
+> [!note]- Reveal Answer
+> **Correct: C**
+> **Why correct:** Visual recognition detects objects, scenes, and unsafe content in uploaded images and video.
+> **Why A is wrong:** Text recognition reads printed text, not prohibited objects.
+> **Why B is wrong:** Sentiment analysis judges text tone, not images.
+> **Why D is wrong:** Text-to-voice synthesizes speech, unrelated to photos.
 
 4. A support team wants to auto-escalate chats that trend strongly negative. Which capability detects this?
    A. Sentiment analysis
    B. Translation
    C. OCR
    D. Voice-to-text
-   Answer: A — sentiment analysis classifies the emotional tone of text.
+
+> [!note]- Reveal Answer
+> **Correct: A**
+> **Why correct:** Sentiment analysis classifies the emotional tone of text, flagging strong negative chats.
+> **Why B is wrong:** Translation changes language, not emotional tone.
+> **Why C is wrong:** OCR extracts text from images, not tone of chat text.
+> **Why D is wrong:** Voice-to-text transcribes audio, not chat mood.
 
 5. A call center needs searchable text from thousands of recorded phone calls. Which service should it use?
    A. Text-to-voice
    B. Voice-to-text
    C. Generative AI
    D. Visual recognition
-   Answer: B — voice-to-text (ASR) transcribes spoken audio into written text.
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** Voice-to-text, automatic speech recognition, transcribes spoken audio into text.
+> **Why A is wrong:** Text-to-voice synthesizes audio, the reverse direction.
+> **Why C is wrong:** Generative AI creates content, not transcription.
+> **Why D is wrong:** Visual recognition analyzes images, not audio.
 
 6. A news app reads written articles aloud in a natural voice for commuters. Which service is this?
    A. Voice-to-text
    B. Sentiment analysis
    C. Text-to-voice
    D. Text recognition
-   Answer: C — text-to-voice (TTS) synthesizes spoken audio from written text.
+
+> [!note]- Reveal Answer
+> **Correct: C**
+> **Why correct:** Text-to-voice, text-to-speech, synthesizes lifelike spoken audio from written text.
+> **Why A is wrong:** Voice-to-text goes audio to text, the opposite.
+> **Why B is wrong:** Sentiment analysis judges tone, not narration.
+> **Why D is wrong:** Text recognition reads scans, not speech.
 
 7. A company builds a chatbot that writes original answers and summarizes documents from prompts. Which technology?
    A. Discriminative recognition
    B. Generative AI
    C. Sentiment analysis
    D. OCR
-   Answer: B — generative AI creates new content in response to natural-language prompts.
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** Generative AI creates new content such as answers and summaries from natural-language prompts.
+> **Why A is wrong:** Discriminative recognition classifies inputs, it does not create.
+> **Why C is wrong:** Sentiment analysis judges tone, not original writing.
+> **Why D is wrong:** OCR extracts text, it does not generate answers.
 
 8. Which statement best distinguishes generative from discriminative AI?
    A. Generative AI only classifies inputs
    B. Discriminative AI creates new media
    C. Generative AI creates new content; discriminative analyzes existing input
    D. They are identical
-   Answer: C — generative produces novel output; discriminative classifies/analyzes.
+
+> [!note]- Reveal Answer
+> **Correct: C**
+> **Why correct:** Generative AI creates new content, while discriminative AI analyzes existing input.
+> **Why A is wrong:** Generative does far more than classify; it creates.
+> **Why B is wrong:** Discriminative analyzes, it does not create media.
+> **Why D is wrong:** They differ in function, not identical.
 
 9. In an IoT system, which component directly measures physical conditions like temperature?
    A. Gateway
    B. Sensor
    C. Broker
    D. Device shadow
-   Answer: B — sensors detect and measure real-world conditions and emit telemetry.
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** Sensors detect and measure real-world conditions such as temperature and emit telemetry.
+> **Why A is wrong:** A gateway aggregates sensors, it does not measure directly.
+> **Why C is wrong:** A broker routes messages, it is not a physical sensor.
+> **Why D is wrong:** A device shadow holds state, not a measurement device.
 
 10. Which device aggregates data from many local sensors and forwards it to the cloud, often with edge processing?
     A. Sensor
     B. Gateway
     C. Load balancer
     D. Foundation model
-    Answer: B — an IoT gateway aggregates, filters, and forwards sensor data at the edge.
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** An IoT gateway aggregates, filters, and forwards sensor data at the edge with processing.
+> **Why A is wrong:** A sensor measures; it does not aggregate and forward fleets.
+> **Why C is wrong:** A load balancer distributes traffic, not IoT sensor data.
+> **Why D is wrong:** A foundation model is ML, not a gateway device.
 
 11. Thousands of battery-powered sensors must report tiny readings frequently over unreliable networks. Best protocol?
     A. HTTP
     B. FTP
     C. MQTT
     D. SMTP
-    Answer: C — MQTT is a lightweight pub/sub protocol ideal for constrained, low-power devices.
+
+> [!note]- Reveal Answer
+> **Correct: C**
+> **Why correct:** MQTT is a lightweight pub/sub protocol ideal for constrained, low-power, unreliable networks.
+> **Why A is wrong:** HTTP is heavier per message, poor for tiny frequent battery reports.
+> **Why B is wrong:** FTP is for file transfer, not telemetry, and heavy.
+> **Why D is wrong:** SMTP is email, not IoT telemetry.
 
 12. What IoT construct stores a device's last-known and desired state so commands apply after reconnection?
     A. Device shadow
     B. Sensor array
     C. CDN
     D. IOPS
-    Answer: A — a device shadow/twin holds reported and desired state for offline-tolerant control.
+
+> [!note]- Reveal Answer
+> **Correct: A**
+> **Why correct:** A device shadow or twin holds reported and desired state for offline-tolerant control.
+> **Why B is wrong:** A sensor array measures, it does not store desired state.
+> **Why C is wrong:** A CDN caches content, unrelated to device state.
+> **Why D is wrong:** IOPS is a storage metric, not an IoT construct.
 
 13. Which messaging pattern is central to IoT communication via a broker?
     A. Request/response only
     B. Publish/subscribe
     C. Point-to-point serial
     D. Batch ETL
-    Answer: B — IoT communication commonly uses publish/subscribe through a message broker.
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** IoT communication commonly uses publish/subscribe through a message broker.
+> **Why A is wrong:** It is not request/response only; pub/sub is central.
+> **Why C is wrong:** Point-to-point serial is not the broker model used.
+> **Why D is wrong:** Batch ETL is a workflow, not IoT device communication.
 
 14. A pipeline transcribes calls, then judges caller mood. Which two services in order?
     A. Text-to-voice then OCR
     B. Voice-to-text then sentiment analysis
     C. Translation then visual recognition
     D. Generative AI then sensors
-    Answer: B — transcribe audio to text (voice-to-text), then analyze tone (sentiment).
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** Transcribe audio to text with voice-to-text, then analyze tone with sentiment analysis.
+> **Why A is wrong:** Text-to-voice and OCR are the wrong directions for this pipeline.
+> **Why C is wrong:** Translation then visual recognition does not fit mood detection.
+> **Why D is wrong:** Generative AI then sensors does not transcribe or gauge mood.
 
 15. Which AWS service extracts text and form fields from scanned documents?
     A. Amazon Polly
     B. Amazon Textract
     C. Amazon Translate
     D. AWS IoT Core
-    Answer: B — Amazon Textract extracts text, tables, and forms from documents.
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** Amazon Textract extracts text, tables, and form fields from scanned documents.
+> **Why A is wrong:** Amazon Polly is text-to-speech, not extraction.
+> **Why C is wrong:** Amazon Translate is language conversion, not extraction.
+> **Why D is wrong:** AWS IoT Core is device management, not document extraction.
 
 16. Which AWS service provides text-to-speech synthesis?
     A. Amazon Transcribe
     B. Amazon Comprehend
     C. Amazon Polly
     D. Amazon Rekognition
-    Answer: C — Amazon Polly converts text into lifelike spoken audio.
+
+> [!note]- Reveal Answer
+> **Correct: C**
+> **Why correct:** Amazon Polly converts text into lifelike spoken audio, text-to-speech.
+> **Why A is wrong:** Amazon Transcribe is speech-to-text, the reverse.
+> **Why B is wrong:** Amazon Comprehend is NLP sentiment, not speech.
+> **Why D is wrong:** Amazon Rekognition is visual, not speech.
 
 17. Which AWS service performs sentiment analysis and other NLP tasks?
     A. Amazon Comprehend
     B. Amazon Rekognition
     C. Amazon Bedrock
     D. AWS Greengrass
-    Answer: A — Amazon Comprehend detects sentiment, entities, and key phrases in text.
+
+> [!note]- Reveal Answer
+> **Correct: A**
+> **Why correct:** Amazon Comprehend detects sentiment, entities, and key phrases in text.
+> **Why B is wrong:** Amazon Rekognition is visual recognition, not NLP sentiment.
+> **Why C is wrong:** Amazon Bedrock is generative AI foundation models, not sentiment.
+> **Why D is wrong:** AWS Greengrass is edge runtime, not NLP.
 
 18. Which AWS pairing gives managed access to foundation models and custom model training for generative AI?
     A. Amazon Rekognition and Polly
     B. Amazon Bedrock and SageMaker
     C. Amazon Translate and Transcribe
     D. IoT Core and Greengrass
-    Answer: B — Bedrock offers foundation-model APIs; SageMaker builds/trains custom models.
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** Bedrock offers foundation-model APIs and SageMaker builds and trains custom models.
+> **Why A is wrong:** Rekognition and Polly are vision and speech, not gen-AI training.
+> **Why C is wrong:** Translate and Transcribe are language services, not gen-AI.
+> **Why D is wrong:** IoT Core and Greengrass are IoT, not generative AI.
 
 19. Which AWS edge runtime runs on gateway hardware to process sensor data and ML locally?
     A. AWS IoT Greengrass
     B. Amazon Textract
     C. Amazon Polly
     D. Amazon Comprehend
-    Answer: A — AWS IoT Greengrass runs cloud logic and ML at the edge/gateway.
+
+> [!note]- Reveal Answer
+> **Correct: A**
+> **Why correct:** AWS IoT Greengrass runs cloud logic and ML at the edge or gateway hardware.
+> **Why B is wrong:** Amazon Textract is document extraction, not edge runtime.
+> **Why C is wrong:** Amazon Polly is speech synthesis, not edge runtime.
+> **Why D is wrong:** Amazon Comprehend is NLP, not edge runtime.
 
 20. Which AWS service acts as the MQTT message broker and manages device shadows for IoT communication?
     A. Amazon Rekognition
     B. AWS IoT Core
     C. Amazon SageMaker
     D. Amazon Translate
-    Answer: B — AWS IoT Core provides the MQTT broker, topics, and device shadows.
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** AWS IoT Core provides the MQTT broker, topics, and device shadows for IoT.
+> **Why A is wrong:** Amazon Rekognition is visual recognition, not IoT broker.
+> **Why C is wrong:** Amazon SageMaker trains models, not device messaging.
+> **Why D is wrong:** Amazon Translate converts language, not IoT.

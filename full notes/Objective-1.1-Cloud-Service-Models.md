@@ -160,137 +160,257 @@ Key exam takeaway: the same provider (AWS) offers all four models, and the share
    B. PaaS
    C. IaaS
    D. FaaS
-   Answer: C — IaaS gives the customer control of the OS and applications while the provider supplies the virtualised hardware.
+
+> [!note]- Reveal Answer
+> **Correct: C**
+> **Why correct:** IaaS gives the customer control of the OS and applications while the provider supplies the virtualised hardware.
+> **Why A is wrong:** SaaS is a finished app you just use, with no custom OS control.
+> **Why B is wrong:** PaaS manages the runtime; you do not control the underlying OS.
+> **Why D is wrong:** FaaS runs single functions on demand, not full custom servers.
 
 2. Developers want to deploy code without managing operating systems or servers. Which model should they choose?
    A. IaaS
    B. PaaS
    C. SaaS
    D. FaaS (only if event-driven)
-   Answer: B — PaaS provides a managed runtime so developers focus on code, not server patching.
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** PaaS provides a managed runtime so developers focus on code, not server patching.
+> **Why A is wrong:** IaaS makes the customer manage the OS and servers.
+> **Why C is wrong:** SaaS is a ready app, not a development platform.
+> **Why D is wrong:** FaaS is event-driven functions, not the general build-and-deploy answer.
 
 3. A user accesses email and documents through a browser for a monthly per-user fee. This is an example of:
    A. IaaS
    B. PaaS
    C. SaaS
    D. FaaS
-   Answer: C — SaaS delivers a finished application consumed via browser on a subscription basis.
+
+> [!note]- Reveal Answer
+> **Correct: C**
+> **Why correct:** SaaS delivers a finished application consumed via browser on a subscription basis.
+> **Why A is wrong:** IaaS is raw VMs, not a browser app.
+> **Why B is wrong:** PaaS is a build platform, not a finished app.
+> **Why D is wrong:** FaaS runs functions, not a full application.
 
 4. Which model charges only for the time code actually executes?
    A. IaaS
    B. PaaS
    C. SaaS
    D. FaaS
-   Answer: D — FaaS (serverless) bills per execution and scales to zero when idle.
+
+> [!note]- Reveal Answer
+> **Correct: D**
+> **Why correct:** FaaS (serverless) bills per execution and scales to zero when idle.
+> **Why A is wrong:** IaaS bills for running resources by the hour.
+> **Why B is wrong:** PaaS bills for the platform/runtime, not per execution.
+> **Why C is wrong:** SaaS bills per user per month.
 
 5. Under the shared responsibility model, who is responsible for patching the guest operating system on an IaaS virtual machine?
    A. The cloud provider
    B. The customer
    C. A third-party regulator
    D. No one
-   Answer: B — In IaaS the customer manages the guest OS, while the provider secures the host.
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** In IaaS the customer manages the guest OS, while the provider secures the host.
+> **Why A is wrong:** The provider secures the host, not the guest OS.
+> **Why C is wrong:** Regulators do not patch your virtual machines.
+> **Why D is wrong:** Someone must patch; it is the customer's responsibility.
 
 6. In a SaaS arrangement, who is primarily responsible for securing the application code?
    A. The customer
    B. The provider
    C. The internet service provider
    D. Shared equally
-   Answer: B — With SaaS the provider manages the full stack including application code.
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** With SaaS the provider manages the full stack including application code.
+> **Why A is wrong:** The customer only manages data and users in SaaS.
+> **Why C is wrong:** The ISP has no role in application security.
+> **Why D is wrong:** It is not shared equally; the provider owns the stack.
 
 7. A retailer resizes uploaded images automatically whenever a file arrives, with no servers running between uploads. This is:
    A. IaaS
    B. PaaS
    C. FaaS
    D. SaaS
-   Answer: C — Event-triggered, stateless, pay-per-run image processing is a classic FaaS use case.
+
+> [!note]- Reveal Answer
+> **Correct: C**
+> **Why correct:** Event-triggered, stateless, pay-per-run image processing is a classic FaaS use case.
+> **Why A is wrong:** IaaS would need always-on servers.
+> **Why B is wrong:** PaaS is not per-file event-triggered by default.
+> **Why D is wrong:** SaaS is a finished app, not a custom processor.
 
 8. Which characteristic is MOST associated with IaaS?
    A. Zero customer management
    B. Maximum customer control over the stack
    C. Per-user subscription billing
    D. Finished application delivered
-   Answer: B — IaaS offers the highest control because the customer manages from the OS upward.
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** IaaS offers the highest control because the customer manages from the OS upward.
+> **Why A is wrong:** Zero management describes SaaS, not IaaS.
+> **Why C is wrong:** Per-user subscription is SaaS billing.
+> **Why D is wrong:** A finished application is SaaS.
 
 9. Under shared responsibility, "security OF the cloud" refers to:
    A. The customer's data
    B. The provider's physical and infrastructure layer
    C. The customer's passwords
    D. Application logic
-   Answer: B — The provider secures the data centres, hardware, and host infrastructure.
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** The provider secures the data centres, hardware, and host infrastructure.
+> **Why A is wrong:** Customer data is the customer's 'security IN the cloud' duty.
+> **Why C is wrong:** Passwords are the customer's responsibility.
+> **Why D is wrong:** Application logic is the customer's (or SaaS provider's) area.
 
 10. A startup wants to build an app fast with a managed database and no ops team. Best choice:
     A. IaaS
     B. PaaS
     C. SaaS
     D. FaaS
-    Answer: B — PaaS pairs a managed runtime and database with developer-focused deployment.
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** PaaS pairs a managed runtime and database with developer-focused deployment.
+> **Why A is wrong:** IaaS needs an ops team for the OS.
+> **Why C is wrong:** SaaS is off-the-shelf, not a custom app build.
+> **Why D is wrong:** FaaS is event-driven functions, not a typical app build.
 
 11. Which is a typical IaaS example?
     A. Google Workspace
     B. AWS Lambda
     C. Amazon EC2
     D. Salesforce
-    Answer: C — EC2 provides virtual machines, the defining IaaS building block.
+
+> [!note]- Reveal Answer
+> **Correct: C**
+> **Why correct:** EC2 provides virtual machines, the defining IaaS building block.
+> **Why A is wrong:** Google Workspace is SaaS.
+> **Why B is wrong:** Lambda is FaaS.
+> **Why D is wrong:** Salesforce is SaaS.
 
 12. Which is a typical PaaS example?
     A. Microsoft 365
     B. AWS Elastic Beanstalk
     C. Amazon S3
     D. AWS Lambda
-    Answer: B — Elastic Beanstalk manages the platform so developers deploy code directly.
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** Elastic Beanstalk manages the platform so developers deploy code directly.
+> **Why A is wrong:** Microsoft 365 is SaaS.
+> **Why C is wrong:** S3 is object storage (IaaS-level).
+> **Why D is wrong:** Lambda is FaaS.
 
 13. Which is a typical SaaS example?
     A. Azure Virtual Machines
     B. Google App Engine
     C. Salesforce
     D. AWS Lambda
-    Answer: C — Salesforce is a ready-to-use application delivered over the web.
+
+> [!note]- Reveal Answer
+> **Correct: C**
+> **Why correct:** Salesforce is a ready-to-use application delivered over the web.
+> **Why A is wrong:** Azure VMs are IaaS.
+> **Why B is wrong:** App Engine is PaaS.
+> **Why D is wrong:** Lambda is FaaS.
 
 14. Which is a typical FaaS example?
     A. Amazon EC2
     B. Heroku
     C. AWS Lambda
     D. Dropbox
-    Answer: C — Lambda runs individual functions on demand, the essence of FaaS.
+
+> [!note]- Reveal Answer
+> **Correct: C**
+> **Why correct:** Lambda runs individual functions on demand, the essence of FaaS.
+> **Why A is wrong:** EC2 is IaaS.
+> **Why B is wrong:** Heroku is PaaS.
+> **Why D is wrong:** Dropbox is SaaS.
 
 15. As you move UP the service-model stack (IaaS→PaaS→SaaS), the customer's management effort generally:
     A. Increases
     B. Decreases
     C. Stays the same
     D. Disappears entirely for IaaS
-    Answer: B — Higher abstraction means the provider takes on more management.
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** Higher abstraction means the provider takes on more management.
+> **Why A is wrong:** Effort decreases, not increases.
+> **Why C is wrong:** It does change across the stack.
+> **Why D is wrong:** Management is highest at IaaS, not absent.
 
 16. A company leaves a cloud storage bucket publicly readable and suffers a leak. Whose responsibility is the misconfiguration?
     A. The provider's, always
     B. The customer's, because access config is their duty
     C. The government's
     D. Neither
-    Answer: B — Configuring data access is the customer's side of shared responsibility.
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** Configuring data access is the customer's side of shared responsibility.
+> **Why A is wrong:** The provider supplies secure infra, not access config.
+> **Why C is wrong:** Government is not responsible for your bucket config.
+> **Why D is wrong:** It is someone's (the customer's) responsibility.
 
 17. For FaaS, which of the following is the customer still responsible for?
     A. The runtime environment
     B. The application code and its triggers
     C. The physical servers
     D. The operating system
-    Answer: B — The customer writes the function code; the provider manages everything below.
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** The customer writes the function code; the provider manages everything below.
+> **Why A is wrong:** The runtime is managed by the provider.
+> **Why C is wrong:** Physical servers are the provider's.
+> **Why D is wrong:** The OS is the provider's in FaaS.
 
 18. The BEST match for "lift-and-shift migration of a legacy app with OS control" is:
     A. SaaS
     B. PaaS
     C. IaaS
     D. FaaS
-    Answer: C — Lift-and-shift with full OS control maps directly to IaaS.
+
+> [!note]- Reveal Answer
+> **Correct: C**
+> **Why correct:** Lift-and-shift with full OS control maps directly to IaaS.
+> **Why A is wrong:** SaaS gives no OS control.
+> **Why B is wrong:** PaaS hides the OS.
+> **Why D is wrong:** FaaS has no persistent OS.
 
 19. Under shared responsibility for PaaS, the provider patches the OS but the customer must still secure:
     A. The physical data centre
     B. The application and its data
     C. The hypervisor
     D. The network backbone
-    Answer: B — In PaaS the customer owns app-level security and data, not the platform.
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** In PaaS the customer owns app-level security and data, not the platform.
+> **Why A is wrong:** The data centre is the provider's.
+> **Why C is wrong:** The hypervisor is the provider's.
+> **Why D is wrong:** The network backbone is the provider's.
 
 20. What does the AWS Shared Responsibility Model describe?
     A. How AWS splits costs with customers
     B. The division of security duties between AWS and the customer
     C. Which regions AWS operates in
     D. How to cancel an AWS subscription
-    Answer: B — It defines what AWS secures versus what the customer must secure.
+
+> [!note]- Reveal Answer
+> **Correct: B**
+> **Why correct:** It defines what AWS secures versus what the customer must secure.
+> **Why A is wrong:** It is about security duties, not a cost split.
+> **Why C is wrong:** It does not describe AWS regions.
+> **Why D is wrong:** It is not about subscription cancellation.
