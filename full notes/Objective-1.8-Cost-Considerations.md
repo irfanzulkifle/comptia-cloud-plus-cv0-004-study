@@ -155,262 +155,382 @@ Remember: the exam uses provider-neutral language, but when it shows an AWS scre
 
 ## SECTION 6 — PRACTICE QUESTIONS
 
-**Q1.** Which billing model charges per second with no commitment and is the most expensive per hour?
-A. Reserved Instance
-B. Dedicated Host
-C. Pay-as-you-go (On-Demand)
-D. Spot Instance
+1. A workload runs 24/7 for 3 years with steady state. The LOWEST long-term cost model is:
+   - **A.** On-Demand
+   - **B.** Reserved Instances (1- or 3-yr)
+   - **C.** Spot
+   - **D.** Dedicated Host
 
-> [!note]- Reveal Answer
-> **Correct: C**
-> **Why correct:** Pay-as-you-go (On-Demand) bills per second with no commitment at the highest per-hour rate.
-> **Why A is wrong:** Reserved Instances require a 1 to 3 year commitment and are discounted, not most expensive.
-> **Why B is wrong:** A Dedicated Host carries a premium for isolation, not flexible per-second billing.
-> **Why D is wrong:** Spot is the cheapest option, not the most expensive.
+<details>
+<summary>Reveal Answer</summary>
 
-**Q2.** A company wants the cheapest compute for a fault-tolerant rendering job that can restart if interrupted. Which model fits best?
-A. Dedicated Host
-B. Spot Instance
-C. Reserved Instance
-D. On-Demand
+**Correct: B**
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** Spot offers 70 to 90 percent off but can be reclaimed, ideal for interruptible batch work.
-> **Why A is wrong:** A Dedicated Host is costly and for licensing, not cheap batch.
-> **Why C is wrong:** Reserved Instances suit steady load, not interruptible one-off jobs.
-> **Why D is wrong:** On-Demand is flexible but not the cheapest for batch.
+**Why correct:** Reservations give steep discounts for steady, long-lived usage vs On-Demand.
 
-**Q3.** What is the primary reason to use a Dedicated Host?
-A. To get the lowest possible price
-B. To satisfy per-socket licensing or physical isolation requirements
-C. To auto-scale with demand
-D. To avoid tagging
+**Why A is wrong:** On-Demand is most expensive for steady 24/7.
+**Why C is wrong:** Spot is for interruptible, not steady.
+**Why D is wrong:** Dedicated Host is premium.
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** Dedicated Hosts enable bring-your-own-license and physical isolation for compliance.
-> **Why A is wrong:** They carry a price premium, not the lowest price.
-> **Why C is wrong:** Scaling is not the reason to choose a dedicated host.
-> **Why D is wrong:** Tagging is unrelated to host tenancy.
+</details>
 
-**Q4.** Reserved capacity is best suited for which type of workload?
-A. Unpredictable, one-time testing
-B. Steady, always-on baseline load
-C. Short nightly batch only
-D. Anything that must never be interrupted
+2. A batch job can tolerate interruption and needs the cheapest compute. Use:
+   - **A.** On-Demand
+   - **B.** Spot Instances
+   - **C.** Reserved
+   - **D.** Dedicated Host
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** Reserved capacity yields the biggest discount for steady, always-on baseline load.
-> **Why A is wrong:** Unpredictable one-time fits On-Demand, not reservations.
-> **Why C is wrong:** A short nightly batch may not justify a 1 to 3 year commitment.
-> **Why D is wrong:** Never interrupted alone does not define the best RI fit; steady baseline does.
+<details>
+<summary>Reveal Answer</summary>
 
-**Q5.** What does "resource metering" primarily provide?
-A. A list of security groups
-B. The measured usage data behind every bill
-C. A backup of virtual machines
-D. DNS resolution records
+**Correct: B**
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** Resource metering records the consumption such as hours, GB, and transfers that drives every bill.
-> **Why A is wrong:** Security groups are firewall rules, not usage data.
-> **Why C is wrong:** Backups are data protection, not metering.
-> **Why D is wrong:** DNS resolution is name lookup, not billing data.
+**Why correct:** Spot uses spare capacity at large discounts and can be reclaimed, ideal for fault-tolerant batch.
 
-**Q6.** A cloud bill shows a single lump sum with no breakdown by team. What practice was likely missing?
-A. Rightsizing
-B. Resource metering
-C. Tagging
-D. Spot purchasing
+**Why A is wrong:** On-Demand costs more.
+**Why C is wrong:** Reserved is for steady use.
+**Why D is wrong:** Dedicated is premium.
 
-> [!note]- Reveal Answer
-> **Correct: C**
-> **Why correct:** Without cost allocation tags, spend cannot be attributed to teams, so it appears as a lump sum.
-> **Why A is wrong:** Rightsizing cuts waste but does not attribute cost by team.
-> **Why B is wrong:** Metering measures usage but cannot group it by owner without tags.
-> **Why D is wrong:** Spot is a pricing model, not cost attribution.
+</details>
 
-**Q7.** Which action best describes "rightsizing"?
-A. Buying more reserved capacity
-B. Matching instance size to actual demand
-C. Adding tags to resources
-D. Switching to a dedicated host
+3. You must comply with licensing that requires a physical dedicated server. Which model?
+   - **A.** Shared On-Demand
+   - **B.** Dedicated Host
+   - **C.** Spot
+   - **D.** Lambda
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** Rightsizing matches instance size to actual demand, eliminating waste.
-> **Why A is wrong:** Buying more reserved can increase waste if unneeded.
-> **Why C is wrong:** Tagging labels resources but does not resize them.
-> **Why D is wrong:** A dedicated host is tenancy, not size matching.
+<details>
+<summary>Reveal Answer</summary>
 
-**Q8.** In AWS, which service gives rightsizing recommendations?
-A. CloudWatch only
-B. AWS Compute Optimizer
-C. IAM
-D. Route 53
+**Correct: B**
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** AWS Compute Optimizer recommends optimal instance types and sizes.
-> **Why A is wrong:** CloudWatch collects metrics but does not recommend sizes by itself.
-> **Why C is wrong:** IAM is access control, not rightsizing.
-> **Why D is wrong:** Route 53 is DNS, not rightsizing.
+**Why correct:** Dedicated Hosts give you a physical server dedicated to you, satisfying per-socket/core license rules.
 
-**Q9.** Cost allocation tags in AWS are consumed by which tool for reporting?
-A. EC2
-B. Cost Explorer
-C. Lambda
-D. S3
+**Why A is wrong:** Shared violates dedicated licensing.
+**Why C is wrong:** Spot is shared.
+**Why D is wrong:** Lambda is shared multitenant.
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** Cost Explorer and AWS Budgets consume allocation tags for cost breakdowns.
-> **Why A is wrong:** EC2 is compute, not a tag-reporting tool.
-> **Why C is wrong:** Lambda is compute, not cost reporting.
-> **Why D is wrong:** S3 is storage, not cost reporting.
+</details>
 
-**Q10.** A hospital must ensure no other customer shares its physical server due to regulations. Which model?
-A. On-Demand
-B. Spot
-C. Dedicated Host
-D. Reserved Instance
+4. The PRIMARY lever to reduce a runaway AWS bill is first:
+   - **A.** Delete the account
+   - **B.** Identify what is driving cost via billing/Cost Explorer tagging
+   - **C.** Buy more RI blindly
+   - **D.** Disable CloudTrail
 
-> [!note]- Reveal Answer
-> **Correct: C**
-> **Why correct:** A Dedicated Host provides single-tenant physical isolation for regulatory needs.
-> **Why A is wrong:** On-Demand is multi-tenant shared hardware.
-> **Why B is wrong:** Spot is spare shared capacity, not isolated.
-> **Why D is wrong:** Reserved Instances are still shared-tenant unless dedicated.
+<details>
+<summary>Reveal Answer</summary>
 
-**Q11.** Which billing model typically carries a price premium rather than a discount?
-A. Spot Instance
-B. Reserved Instance
-C. Dedicated Host
-D. On-Demand
+**Correct: B**
 
-> [!note]- Reveal Answer
-> **Correct: C**
-> **Why correct:** Dedicated Hosts usually carry a price premium rather than a discount.
-> **Why A is wrong:** Spot is deeply discounted.
-> **Why B is wrong:** Reserved Instances give 40 to 60 percent discounts.
-> **Why D is wrong:** On-Demand is baseline pricing, not a premium.
+**Why correct:** You cannot optimize what you cannot see; tag resources and analyze spend with Cost Explorer.
 
-**Q12.** What is a key risk of Spot Instances?
-A. They cannot be automated
-B. The provider may terminate them on short notice
-C. They require a 3-year commitment
-D. They are the most expensive option
+**Why A is wrong:** Destructive and wrong.
+**Why C is wrong:** Blind RI buying wastes money.
+**Why D is wrong:** Disabling logging hides the problem.
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** The provider may terminate Spot instances on short notice with a 2 minute warning.
-> **Why A is wrong:** Spot is highly automatable via ASG and Spot Fleet.
-> **Why C is wrong:** A 3 year commitment is Reserved, not Spot.
-> **Why D is wrong:** Spot is the cheapest option, not the most expensive.
+</details>
 
-**Q13.** Moving rarely accessed storage from "hot" to "archive" tier is an example of:
-A. Tagging
-B. Metering
-C. Rightsizing storage
-D. Dedicated hosting
+5. Which service shows cost and usage over time with filtering by tag/service?
+   - **A.** CloudTrail
+   - **B.** AWS Cost Explorer
+   - **C.** GuardDuty
+   - **D.** Trusted Advisor (only)
 
-> [!note]- Reveal Answer
-> **Correct: C**
-> **Why correct:** Moving rarely accessed storage to archive tier is storage rightsizing cost optimization.
-> **Why A is wrong:** Tagging labels, it does not change storage tier.
-> **Why B is wrong:** Metering measures, it does not tier data.
-> **Why D is wrong:** Dedicated hosting is compute tenancy, not storage tiering.
+<details>
+<summary>Reveal Answer</summary>
 
-**Q14.** Which AWS feature lets you set custom spend thresholds and receive alerts?
-A. Savings Plans
-B. AWS Budgets
-C. Compute Optimizer
-D. Dedicated Hosts
+**Correct: B**
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** AWS Budgets triggers alerts when custom cost thresholds are breached.
-> **Why A is wrong:** Savings Plans are commitments, not alerting.
-> **Why C is wrong:** Compute Optimizer recommends sizes, not budget alerts.
-> **Why D is wrong:** Dedicated Hosts are tenancy, not budget alerts.
+**Why correct:** Cost Explorer visualizes spend by service, tag, and time to find optimization targets.
 
-**Q15.** Pay-as-you-go is most appropriate when:
-A. Workload is constant for 3 years
-B. You need zero commitment and short duration
-C. Licensing requires physical isolation
-D. You want maximum discount
+**Why A is wrong:** CloudTrail is API audit.
+**Why C is wrong:** GuardDuty is threat detection.
+**Why D is wrong:** Trusted Advisor advises but Cost Explorer is the analytics tool.
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** On-demand fits unpredictable, short, commitment-free needs.
-> **Why A is wrong:** Constant for 3 years fits Reserved, not On-Demand.
-> **Why C is wrong:** Physical isolation fits a Dedicated Host.
-> **Why D is wrong:** On-demand is the most expensive per hour, not maximum discount.
+</details>
 
-**Q16.** The trade-off of Reserved Instances is:
-A. Higher hourly rate
-B. Commitment cost even if unused
-C. Risk of termination
-D. No discount available
+6. Rightsizing means:
+   - **A.** Buying the biggest instance
+   - **B.** Matching instance type/size to actual utilization to avoid waste
+   - **C.** Disabling monitoring
+   - **D.** Always using On-Demand
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** The trade-off of Reserved Instances is paying for committed capacity whether or not you use it.
-> **Why A is wrong:** The effective rate is lower with RIs.
-> **Why C is wrong:** Termination risk is Spot, not RI.
-> **Why D is wrong:** RIs do provide a discount.
+<details>
+<summary>Reveal Answer</summary>
 
-**Q17.** Which term describes measuring data transferred out of the cloud to the internet?
-A. Ingress metering
-B. Network egress metering
-C. Tagging
-D. Rightsizing
+**Correct: B**
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** Egress, data leaving the cloud to the internet, is a metered and billable network dimension.
-> **Why A is wrong:** Ingress, inbound traffic, is generally not billed.
-> **Why C is wrong:** Tagging is labeling, not a network metric.
-> **Why D is wrong:** Rightsizing is sizing, not data-transfer metering.
+**Why correct:** Rightsizing selects the cheapest instance that meets performance, eliminating over-provisioning.
 
-**Q18.** A team stops dev/test VMs nights and weekends to save money. This is:
-A. Rightsizing by schedule
-B. Dedicated hosting
-C. Spot purchasing
-D. Tagging
+**Why A is wrong:** Oversized wastes money.
+**Why C is wrong:** Monitoring helps rightsizing.
+**Why D is wrong:** On-Demand is not a sizing strategy.
 
-> [!note]- Reveal Answer
-> **Correct: A**
-> **Why correct:** Scheduling off non-prod VMs nights and weekends is a schedule-based rightsizing win.
-> **Why B is wrong:** Dedicated hosting is tenancy, not scheduling.
-> **Why C is wrong:** Spot is a pricing model, not scheduling off.
-> **Why D is wrong:** Tagging labels, it does not stop instances.
+</details>
 
-**Q19.** In AWS, Savings Plans are flexible commitments that can cover EC2, Fargate, and:
-A. S3 storage
-B. Lambda
-C. Dedicated Hosts
-D. Route 53
+7. A tag is used in cost management to:
+   - **A.** Encrypt data
+   - **B.** Attribute spend to a team/project/environment
+   - **C.** Set IAM
+   - **D.** Route traffic
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** Savings Plans apply to compute including Lambda and Fargate as well as EC2.
-> **Why A is wrong:** S3 storage is not covered by Savings Plans.
-> **Why C is wrong:** Dedicated Hosts are not covered by Savings Plans.
-> **Why D is wrong:** Route 53 DNS is not compute under Savings Plans.
+<details>
+<summary>Reveal Answer</summary>
 
-**Q20.** The first step in the cloud cost-control lifecycle is typically:
-A. Rightsizing
-B. Choosing a dedicated host
-C. Metering (measuring usage)
-D. Deleting all resources
+**Correct: B**
 
-> [!note]- Reveal Answer
-> **Correct: C**
-> **Why correct:** You must meter, measure usage, before you can tag, analyze, and optimize cost.
-> **Why A is wrong:** Rightsizing before metering lacks data to act on.
-> **Why B is wrong:** Choosing a dedicated host is not the first lifecycle step.
-> **Why D is wrong:** Deleting all resources is not a cost-control lifecycle step.
+**Why correct:** Cost allocation tags group and attribute costs so each team/project is accountable.
+
+**Why A is wrong:** Tags don't encrypt.
+**Why C is wrong:** IAM is separate.
+**Why D is wrong:** Routing is network.
+
+</details>
+
+8. Compute Savings Plans provide discounts in exchange for:
+   - **A.** A fixed region lock only
+   - **B.** A committed $/hr spend on compute, flexible across instance families
+   - **C.** Buying hardware
+   - **D.** Disabling Auto Scaling
+
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** Savings Plans give discounts for a $/hr commitment and are flexible across instance types/regions.
+
+**Why A is wrong:** They are more flexible than RIs.
+**Why C is wrong:** No hardware purchase.
+**Why D is wrong:** Auto Scaling still works.
+
+</details>
+
+9. Which is a CAPEX-like option in an otherwise OPEX cloud?
+   - **A.** On-Demand
+   - **B.** Reserved/Committed Use (long-term commitment)
+   - **C.** Spot
+   - **D.** Lambda
+
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** Long-term commitments behave like CAPEX planning (predictable, upfront) within OPEX billing.
+
+**Why A is wrong:** On-Demand is pure OPEX variable.
+**Why C is wrong:** Spot is variable.
+**Why D is wrong:** Lambda is per-use.
+
+</details>
+
+10. A dev environment used 8 hours/day, 5 days/week should avoid:
+   - **A.** Stopping instances off-hours
+   - **B.** Running 24/7 On-Demand year-round
+   - **C.** Scheduled scaling
+   - **D.** Smaller instances
+
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** Leaving dev running nights/weekends wastes ~70% of the bill; schedule stop/start.
+
+**Why A is wrong:** Stopping saves money.
+**Why C is wrong:** Scheduling helps.
+**Why D is wrong:** Right-sizing helps.
+
+</details>
+
+11. EBS volumes left attached to stopped instances still:
+   - **A.** Cost nothing
+   - **B.** Incurs storage cost
+   - **C.** Auto-delete
+   - **D.** Become free
+
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** You pay for provisioned EBS storage even when the instance is stopped.
+
+**Why A is wrong:** Storage is billed regardless of instance state.
+**Why C is wrong:** Not auto-deleted.
+**Why D is wrong:** Not free.
+
+</details>
+
+12. Data egress (out to internet) is generally:
+   - **A.** Free
+   - **B.** Charged per GB
+   - **C.** Included in instance price
+   - **D.** Always banned
+
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** AWS charges for data transfer OUT to the internet; intra-AZ/in is often free.
+
+**Why A is wrong:** Egress is billable.
+**Why C is wrong:** Not bundled.
+**Why D is wrong:** Allowed, not banned.
+
+</details>
+
+13. Which helps detect idle/underused resources to cut cost?
+   - **A.** CloudTrail only
+   - **B.** Trusted Advisor / Cost and Usage reports
+   - **C.** Route 53
+   - **D.** NAT gateway
+
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** Trusted Advisor flags idle resources (unused EIPs, low-utilization EC2) for savings.
+
+**Why A is wrong:** CloudTrail is API logs.
+**Why C is wrong:** DNS.
+**Why D is wrong:** Egress component.
+
+</details>
+
+14. A company wants predictable monthly spend and can commit to steady usage. Best fit:
+   - **A.** Pure Spot
+   - **B.** Reserved + Savings Plans
+   - **C.** Always On-Demand
+   - **D.** Dedicated Host for everything
+
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** Reservations/Savings Plans convert variable cost into predictable discounted commitment.
+
+**Why A is wrong:** Spot is unpredictable.
+**Why C is wrong:** On-Demand is variable and pricey.
+**Why D is wrong:** Dedicated is for licensing, not general.
+
+</details>
+
+15. Per-request serverless billing (pay only when code runs) applies to:
+   - **A.** Always-on EC2
+   - **B.** Lambda
+   - **C.** Reserved RDS
+   - **D.** EBS
+
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** Lambda bills per invocation duration, scaling to zero when idle — no idle cost.
+
+**Why A is wrong:** EC2 bills while running.
+**Why C is wrong:** RDS bills while provisioned.
+**Why D is wrong:** EBS bills while provisioned.
+
+</details>
+
+16. Provisioned IOPS (io2) costs more because:
+   - **A.** It is archive storage
+   - **B.** You pay for guaranteed performance, not just capacity
+   - **C.** It is free tier
+   - **D.** It is object storage
+
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** io2 prices guaranteed IOPS/throughput separately from capacity — performance you pay for.
+
+**Why A is wrong:** It is block, not archive.
+**Why C is wrong:** Not free.
+**Why D is wrong:** Not object.
+
+</details>
+
+17. To avoid surprise bills from a forgotten test resource, you should:
+   - **A.** Never tag
+   - **B.** Set billing alarms / budget alerts
+   - **C.** Disable Cost Explorer
+   - **D.** Use only On-Demand
+
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** Budgets and CloudWatch billing alarms alert you before spend runs away.
+
+**Why A is wrong:** Tagging aids accountability.
+**Why C is wrong:** Hiding data is bad.
+**Why D is wrong:** On-Demand can still surprise.
+
+</details>
+
+18. The difference between CAPEX and OPEX in cloud is:
+   - **A.** Same thing
+   - **B.** CAPEX = upfront owned assets; OPEX = pay-as-you-go operating expense
+   - **C.** Cloud is only CAPEX
+   - **D.** On-prem is only OPEX
+
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** Cloud shifts you from buying assets (CAPEX) to consuming services (OPEX), improving cash flow.
+
+**Why A is wrong:** They differ.
+**Why C is wrong:** Cloud is mostly OPEX.
+**Why D is wrong:** On-prem is mostly CAPEX.
+
+</details>
+
+19. Storage cost for an EBS volume is driven mainly by:
+   - **A.** Number of API calls only
+   - **B.** Provisioned size and type (gp3 vs io2), not actual used space
+   - **C.** The instance's CPU
+   - **D.** Free tier only
+
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** EBS is billed on provisioned GB and volume type, regardless of how full the disk is.
+
+**Why A is wrong:** API calls are separate/minor.
+**Why C is wrong:** Instance CPU is billed separately.
+**Why D is wrong:** Free tier is limited, not the rule.
+
+</details>
+
+20. A 2-week spikes-only workload with unpredictable timing is cheapest on:
+   - **A.** 3-year Reserved Instances
+   - **B.** On-Demand or Spot
+   - **C.** Dedicated Host
+   - **D.** Long-term Savings Plan lock-in
+
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** For short, unpredictable spikes, On-Demand/Spot avoids paying for idle reserved capacity.
+
+**Why A is wrong:** 3-yr RI is wasted when idle most of the year.
+**Why C is wrong:** Dedicated is premium and underused.
+**Why D is wrong:** Long locks waste money on spikes.
+
+</details>

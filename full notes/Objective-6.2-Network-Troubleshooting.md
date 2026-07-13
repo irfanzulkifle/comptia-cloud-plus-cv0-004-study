@@ -222,263 +222,381 @@ CloudWatch Logs hold DNS resolver logs, NAT gateway flow, DHCP, and application/
 ## SECTION 6 — PRACTICE QUESTIONS
 
 1. New instances boot with 169.254.x.x addresses and cannot reach the network, though existing instances work. What is the most likely cause?
-   A. Missing route to the internet gateway
-   B. DHCP failure (6.2.1)
-   C. DNS resolution error
-   D. Network overlap
+   - **A.** Missing route to the internet gateway
+   - **B.** DHCP failure (6.2.1)
+   - **C.** DNS resolution error
+   - **D.** Network overlap
 
-> [!note]- Reveal Answer: B
-> **Correct: B**
-> **Why correct:** 169.254.x.x is an APIPA self-assigned address — the instance never got a DHCP lease, so DHCP service is failing (6.2.1).
-> **Why A is wrong:** A missing route blocks internet reachability but still leaves a valid private IP from DHCP.
-> **Why C is wrong:** DNS failure breaks name resolution, not IP assignment — the instance would still have a real IP.
-> **Why D is wrong:** Network overlap causes peering/VPN routing collisions, not self-assigned APIPA addresses.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** 169.254.x.x is an APIPA self-assigned address — the instance never got a DHCP lease, so DHCP service is failing (6.2.1).
+
+**Why A is wrong:** A missing route blocks internet reachability but still leaves a valid private IP from DHCP.
+**Why C is wrong:** DNS failure breaks name resolution, not IP assignment — the instance would still have a real IP.
+**Why D is wrong:** Network overlap causes peering/VPN routing collisions, not self-assigned APIPA addresses.
+
+</details>
 
 2. `ping 8.8.8.8` succeeds but `ping google.com` fails. What is the cause?
-   A. Routing issue
-   B. Firewall blocking all traffic
-   C. DNS failure (6.2.1)
-   D. Bandwidth exhaustion
+   - **A.** Routing issue
+   - **B.** Firewall blocking all traffic
+   - **C.** DNS failure (6.2.1)
+   - **D.** Bandwidth exhaustion
 
-> [!note]- Reveal Answer: C
-> **Correct: C**
-> **Why correct:** IP connectivity works (8.8.8.8 replies) but name resolution fails — that's a DNS failure (6.2.1), not a path/routing problem.
-> **Why A is wrong:** A routing issue would also break the raw IP ping to 8.8.8.8.
-> **Why B is wrong:** A firewall blocking all traffic would stop the successful 8.8.8.8 ping too.
-> **Why D is wrong:** Bandwidth exhaustion slows/stalls transfers, it doesn't cause "name resolution" failure.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: C**
+
+**Why correct:** IP connectivity works (8.8.8.8 replies) but name resolution fails — that's a DNS failure (6.2.1), not a path/routing problem.
+
+**Why A is wrong:** A routing issue would also break the raw IP ping to 8.8.8.8.
+**Why B is wrong:** A firewall blocking all traffic would stop the successful 8.8.8.8 ping too.
+**Why D is wrong:** Bandwidth exhaustion slows/stalls transfers, it doesn't cause "name resolution" failure.
+
+</details>
 
 3. An app server cannot connect to an RDS instance in the same VPC; both are running and connections time out. Most likely cause?
-   A. Missing route table entry
-   B. Network device misconfiguration — security group (6.2.4)
-   C. IP scope exhaustion
-   D. Latency
+   - **A.** Missing route table entry
+   - **B.** Network device misconfiguration — security group (6.2.4)
+   - **C.** IP scope exhaustion
+   - **D.** Latency
 
-> [!note]- Reveal Answer: B
-> **Correct: B**
-> **Why correct:** Both resources run but the connection times out — almost always a dropped SG/NACL/firewall rule (device misconfiguration, 6.2.4); use Reachability Analyzer to name the blocker.
-> **Why A is wrong:** A missing route would also break reachability to the running app itself, not just the DB connection.
-> **Why C is wrong:** Scope exhaustion blocks new IP assignment, not a connection between two already-running resources.
-> **Why D is wrong:** Latency makes things slow, not time out completely between co-located VPC resources.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** Both resources run but the connection times out — almost always a dropped SG/NACL/firewall rule (device misconfiguration, 6.2.4); use Reachability Analyzer to name the blocker.
+
+**Why A is wrong:** A missing route would also break reachability to the running app itself, not just the DB connection.
+**Why C is wrong:** Scope exhaustion blocks new IP assignment, not a connection between two already-running resources.
+**Why D is wrong:** Latency makes things slow, not time out completely between co-located VPC resources.
+
+</details>
 
 4. A web page loads in 3 seconds because the database is in another region, but large file uploads are fast. Cause?
-   A. Bandwidth/throughput issue (6.2.3)
-   B. Routing issue
-   C. Latency (6.2.2)
-   D. Protocol incompatibility
+   - **A.** Bandwidth/throughput issue (6.2.3)
+   - **B.** Routing issue
+   - **C.** Latency (6.2.2)
+   - **D.** Protocol incompatibility
 
-> [!note]- Reveal Answer: C
-> **Correct: C**
-> **Why correct:** Slow per-request responses (DB in another region adds cross-region RTT) with fine bulk transfer = latency (6.2.2), not a throughput cap.
-> **Why A is wrong:** Bandwidth/throughput limits would also slow the large file uploads, which are fast here.
-> **Why B is wrong:** A routing issue would break or black-hole traffic, not just add steady per-request delay.
-> **Why D is wrong:** Protocol incompatibility fails the handshake entirely, not "slow but works."
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: C**
+
+**Why correct:** Slow per-request responses (DB in another region adds cross-region RTT) with fine bulk transfer = latency (6.2.2), not a throughput cap.
+
+**Why A is wrong:** Bandwidth/throughput limits would also slow the large file uploads, which are fast here.
+**Why B is wrong:** A routing issue would break or black-hole traffic, not just add steady per-request delay.
+**Why D is wrong:** Protocol incompatibility fails the handshake entirely, not "slow but works."
+
+</details>
 
 5. A 500 GB nightly sync across a VPN takes 9 hours and stalls. Most likely cause?
-   A. Latency (6.2.2)
-   B. Bandwidth/throughput (6.2.3)
-   C. DNS failure
-   D. DHCP failure
+   - **A.** Latency (6.2.2)
+   - **B.** Bandwidth/throughput (6.2.3)
+   - **C.** DNS failure
+   - **D.** DHCP failure
 
-> [!note]- Reveal Answer: B
-> **Correct: B**
-> **Why correct:** A large transfer that crawls/stalls is a bandwidth/throughput bottleneck (6.2.3) — the pipe is too small for the volume; upgrade tier or schedule off-peak.
-> **Why A is wrong:** Latency is per-packet delay (slow responses), not a big transfer that never finishes.
-> **Why C is wrong:** DNS failure breaks name resolution, not a bulk data sync that starts and stalls.
-> **Why D is wrong:** DHCP failure means no IP at all, not a slow transfer of existing traffic.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** A large transfer that crawls/stalls is a bandwidth/throughput bottleneck (6.2.3) — the pipe is too small for the volume; upgrade tier or schedule off-peak.
+
+**Why A is wrong:** Latency is per-packet delay (slow responses), not a big transfer that never finishes.
+**Why C is wrong:** DNS failure breaks name resolution, not a bulk data sync that starts and stalls.
+**Why D is wrong:** DHCP failure means no IP at all, not a slow transfer of existing traffic.
+
+</details>
 
 6. After a security policy enforces TLS 1.2 minimum, a legacy agent logging "handshake failure" stops connecting. Cause?
-   A. Protocol deprecation (6.2.6)
-   B. Protocol incompatibility (6.2.5)
-   C. Firewall misconfiguration
-   D. Routing issue
+   - **A.** Protocol deprecation (6.2.6)
+   - **B.** Protocol incompatibility (6.2.5)
+   - **C.** Firewall misconfiguration
+   - **D.** Routing issue
 
-> [!note]- Reveal Answer: B
-> **Correct: B**
-> **Why correct:** The agent and server now share no common TLS version — a live protocol incompatibility (6.2.5); align the TLS/cipher on both ends.
-> **Why A is wrong:** Deprecation is a scheduled provider-wide removal affecting everyone; here it's two ends that don't agree on version.
-> **Why C is wrong:** A firewall misconfig would block the connection, not produce a TLS handshake-version failure.
-> **Why D is wrong:** A routing issue black-holes traffic, not a TLS version mismatch at the handshake.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** The agent and server now share no common TLS version — a live protocol incompatibility (6.2.5); align the TLS/cipher on both ends.
+
+**Why A is wrong:** Deprecation is a scheduled provider-wide removal affecting everyone; here it's two ends that don't agree on version.
+**Why C is wrong:** A firewall misconfig would block the connection, not produce a TLS handshake-version failure.
+**Why D is wrong:** A routing issue black-holes traffic, not a TLS version mismatch at the handshake.
+
+</details>
 
 7. On a provider's announced cutoff date, all TLS 1.0 clients fail while TLS 1.2 clients work. Cause?
-   A. Protocol incompatibility (6.2.5)
-   B. Protocol deprecation (6.2.6)
-   C. Device misconfiguration
-   D. Latency
+   - **A.** Protocol incompatibility (6.2.5)
+   - **B.** Protocol deprecation (6.2.6)
+   - **C.** Device misconfiguration
+   - **D.** Latency
 
-> [!note]- Reveal Answer: B
-> **Correct: B**
-> **Why correct:** A scheduled provider-wide removal of the old protocol that hits everyone still using it = protocol deprecation (6.2.6); migrate clients to a supported version.
-> **Why A is wrong:** Incompatibility is two live ends disagreeing with no announced cutoff; this is a provider date affecting all old clients.
-> **Why C is wrong:** Device misconfiguration is an SG/NACL/firewall rule, not a protocol-version cutoff.
-> **Why D is wrong:** Latency is delay, not a universal "old clients fail on a date" cutoff.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** A scheduled provider-wide removal of the old protocol that hits everyone still using it = protocol deprecation (6.2.6); migrate clients to a supported version.
+
+**Why A is wrong:** Incompatibility is two live ends disagreeing with no announced cutoff; this is a provider date affecting all old clients.
+**Why C is wrong:** Device misconfiguration is an SG/NACL/firewall rule, not a protocol-version cutoff.
+**Why D is wrong:** Latency is delay, not a universal "old clients fail on a date" cutoff.
+
+</details>
 
 8. A subnet can no longer launch instances, returning "insufficient free addresses." Cause?
-   A. Network overlap
-   B. Missing route
-   C. IP scope exhaustion (6.2.7)
-   D. VLAN misconfiguration
+   - **A.** Network overlap
+   - **B.** Missing route
+   - **C.** IP scope exhaustion (6.2.7)
+   - **D.** VLAN misconfiguration
 
-> [!note]- Reveal Answer: C
-> **Correct: C**
-> **Why correct:** "Insufficient free addresses" means the subnet/DHCP pool is full — IP scope exhaustion (6.2.7); add a CIDR or enlarge the subnet.
-> **Why A is wrong:** Network overlap causes colliding CIDRs/peering failure, not "no free addresses."
-> **Why B is wrong:** A missing route blocks pathing, not IP assignment.
-> **Why D is wrong:** VLAN misconfiguration isolates a segment at L2, not exhausts the IP pool.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: C**
+
+**Why correct:** "Insufficient free addresses" means the subnet/DHCP pool is full — IP scope exhaustion (6.2.7); add a CIDR or enlarge the subnet.
+
+**Why A is wrong:** Network overlap causes colliding CIDRs/peering failure, not "no free addresses."
+**Why B is wrong:** A missing route blocks pathing, not IP assignment.
+**Why D is wrong:** VLAN misconfiguration isolates a segment at L2, not exhausts the IP pool.
+
+</details>
 
 9. A VPC peering fails because both VPCs use 10.0.0.0/16. Cause?
-   A. Missing route
-   B. Network overlap (6.2.7)
-   C. Bandwidth issue
-   D. Deprecation
+   - **A.** Missing route
+   - **B.** Network overlap (6.2.7)
+   - **C.** Bandwidth issue
+   - **D.** Deprecation
 
-> [!note]- Reveal Answer: B
-> **Correct: B**
-> **Why correct:** Two VPCs with the same CIDR make routing ambiguous so peering can't connect — network overlap (6.2.7); re-address one side with a non-overlapping CIDR.
-> **Why A is wrong:** A missing route breaks an existing path, not the CIDR collision that blocks peering setup.
-> **Why C is wrong:** Bandwidth is throughput, unrelated to CIDR overlap blocking peering.
-> **Why D is wrong:** Deprecation retires a protocol/feature, not a CIDR addressing choice.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** Two VPCs with the same CIDR make routing ambiguous so peering can't connect — network overlap (6.2.7); re-address one side with a non-overlapping CIDR.
+
+**Why A is wrong:** A missing route breaks an existing path, not the CIDR collision that blocks peering setup.
+**Why C is wrong:** Bandwidth is throughput, unrelated to CIDR overlap blocking peering.
+**Why D is wrong:** Deprecation retires a protocol/feature, not a CIDR addressing choice.
+
+</details>
 
 10. Private-subnet instances cannot reach the internet, but public-subnet instances can, with identical security groups. Cause?
-    A. Security group block
-    B. Missing route to NAT gateway (6.2.8)
-    C. DNS failure
-    D. DHCP failure
+   - **A.** Security group block
+   - **B.** Missing route to NAT gateway (6.2.8)
+   - **C.** DNS failure
+   - **D.** DHCP failure
 
-> [!note]- Reveal Answer: B
-> **Correct: B**
-> **Why correct:** With identical SGs the only difference is the route table — the private subnet is missing the `0.0.0.0/0 → NAT GW` route, so it has no path to the internet (routing issue 6.2.8).
-> **Why A is wrong:** SGs are identical between subnets, so an SG block would hit both, not just the private one.
-> **Why C is wrong:** DNS failure breaks name resolution, not all internet reachability, and would not be specific to the private subnet.
-> **Why D is wrong:** DHCP failure means no IP at all, not "running but can't reach internet."
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** With identical SGs the only difference is the route table — the private subnet is missing the `0.0.0.0/0 → NAT GW` route, so it has no path to the internet (routing issue 6.2.8).
+
+**Why A is wrong:** SGs are identical between subnets, so an SG block would hit both, not just the private one.
+**Why C is wrong:** DNS failure breaks name resolution, not all internet reachability, and would not be specific to the private subnet.
+**Why D is wrong:** DHCP failure means no IP at all, not "running but can't reach internet."
+
+</details>
 
 11. Traffic destined for an on-prem network is being sent to the internet instead. Cause?
-    A. Missing route
-    B. Misconfigured route target (6.2.8)
-    C. Protocol deprecation
-    D. Scope exhaustion
+   - **A.** Missing route
+   - **B.** Misconfigured route target (6.2.8)
+   - **C.** Protocol deprecation
+   - **D.** Scope exhaustion
 
-> [!note]- Reveal Answer: B
-> **Correct: B**
-> **Why correct:** A route exists but points to the wrong target (igw instead of the VPN/transit gateway) — a misconfigured route (6.2.8); correct the route target.
-> **Why A is wrong:** A missing route would black-hole/on-prem traffic, not send it to the internet; here a route is clearly present.
-> **Why C is wrong:** Protocol deprecation is about retired protocols, not route targets.
-> **Why D is wrong:** Scope exhaustion is out-of-IPs, unrelated to traffic being misrouted.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** A route exists but points to the wrong target (igw instead of the VPN/transit gateway) — a misconfigured route (6.2.8); correct the route target.
+
+**Why A is wrong:** A missing route would black-hole/on-prem traffic, not send it to the internet; here a route is clearly present.
+**Why C is wrong:** Protocol deprecation is about retired protocols, not route targets.
+**Why D is wrong:** Scope exhaustion is out-of-IPs, unrelated to traffic being misrouted.
+
+</details>
 
 12. A device is on the wrong network segment and can't see its VLAN peers though IP config is correct. Cause?
-    A. Routing issue
-    B. Switching/VLAN misconfigured tag (6.2.9)
-    C. Bandwidth issue
-    D. DNS failure
+   - **A.** Routing issue
+   - **B.** Switching/VLAN misconfigured tag (6.2.9)
+   - **C.** Bandwidth issue
+   - **D.** DNS failure
 
-> [!note]- Reveal Answer: B
-> **Correct: B**
-> **Why correct:** Correct L3/IP but isolated on the wrong segment = a Layer-2 VLAN tag or access/trunk misconfiguration (6.2.9); fix the tag/port mode.
-> **Why A is wrong:** A routing issue is L3 pathing; here IP config is correct and the problem is segment placement.
-> **Why C is wrong:** Bandwidth is throughput, unrelated to VLAN segment isolation.
-> **Why D is wrong:** DNS failure breaks name resolution, not L2 segment membership.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** Correct L3/IP but isolated on the wrong segment = a Layer-2 VLAN tag or access/trunk misconfiguration (6.2.9); fix the tag/port mode.
+
+**Why A is wrong:** A routing issue is L3 pathing; here IP config is correct and the problem is segment placement.
+**Why C is wrong:** Bandwidth is throughput, unrelated to VLAN segment isolation.
+**Why D is wrong:** DNS failure breaks name resolution, not L2 segment membership.
+
+</details>
 
 13. Authentication to a service fails intermittently with clock-skew errors, though connectivity is fine. Cause?
-   A. NTP failure (6.2.1)
-   B. DNS failure
-   C. Routing issue
-   D. Bandwidth issue
+   - **A.** NTP failure (6.2.1)
+   - **B.** DNS failure
+   - **C.** Routing issue
+   - **D.** Bandwidth issue
 
-> [!note]- Reveal Answer: A
-> **Correct: A**
-> **Why correct:** Clock-skew breaking time-based auth = NTP failure (6.2.1) — the hosts' clocks drifted out of sync; repoint NTP and sync.
-> **Why B is wrong:** DNS failure breaks name resolution, not time-based auth with clock-skew errors.
-> **Why C is wrong:** A routing issue blocks paths, not authentication; connectivity is fine here.
-> **Why D is wrong:** Bandwidth is throughput, unrelated to clock skew.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: A**
+
+**Why correct:** Clock-skew breaking time-based auth = NTP failure (6.2.1) — the hosts' clocks drifted out of sync; repoint NTP and sync.
+
+**Why B is wrong:** DNS failure breaks name resolution, not time-based auth with clock-skew errors.
+**Why C is wrong:** A routing issue blocks paths, not authentication; connectivity is fine here.
+**Why D is wrong:** Bandwidth is throughput, unrelated to clock skew.
+
+</details>
 
 14. Private instances cannot reach the public internet even though a NAT gateway exists. Most likely?
-   A. DNS resolution
-   B. Missing/misconfigured route to NAT (6.2.8) or SG/NACL (6.2.4)
-   C. IP scope exhaustion
-   D. Protocol deprecation
+   - **A.** DNS resolution
+   - **B.** Missing/misconfigured route to NAT (6.2.8) or SG/NACL (6.2.4)
+   - **C.** IP scope exhaustion
+   - **D.** Protocol deprecation
 
-> [!note]- Reveal Answer: B
-> **Correct: B**
-> **Why correct:** The NAT exists but traffic still can't egress — either the private route table lacks the NAT route (6.2.8) or a device (SG/NACL, 6.2.4) blocks it; verify both.
-> **Why A is wrong:** DNS failure would only break name resolution, not all egress to the internet.
-> **Why C is wrong:** Scope exhaustion is out-of-IPs, not a pathing/device block to an existing NAT.
-> **Why D is wrong:** Protocol deprecation retires a protocol, not egress routing to a NAT.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** The NAT exists but traffic still can't egress — either the private route table lacks the NAT route (6.2.8) or a device (SG/NACL, 6.2.4) blocks it; verify both.
+
+**Why A is wrong:** DNS failure would only break name resolution, not all egress to the internet.
+**Why C is wrong:** Scope exhaustion is out-of-IPs, not a pathing/device block to an existing NAT.
+**Why D is wrong:** Protocol deprecation retires a protocol, not egress routing to a NAT.
+
+</details>
 
 15. An ALB returns 503 Service Unavailable for a backend. This is a signal of which sub-objective?
-   A. DHCP (6.2.1)
-   B. HTTP status code — service unavailability (6.2.1)
-   C. Latency (6.2.2)
-   D. Routing (6.2.8)
+   - **A.** DHCP (6.2.1)
+   - **B.** HTTP status code — service unavailability (6.2.1)
+   - **C.** Latency (6.2.2)
+   - **D.** Routing (6.2.8)
 
-> [!note]- Reveal Answer: B
-> **Correct: B**
-> **Why correct:** A 5xx is an HTTP status-code symptom of network service unavailability (6.2.1) — the backend/service is down or unreachable.
-> **Why A is wrong:** DHCP is about IP lease assignment, not an HTTP 503 from an ALB.
-> **Why C is wrong:** Latency is slowness, not a 503 service-unavailable status.
-> **Why D is wrong:** Routing issues black-hole traffic; a 503 is an HTTP-layer status, not a missing route.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** A 5xx is an HTTP status-code symptom of network service unavailability (6.2.1) — the backend/service is down or unreachable.
+
+**Why A is wrong:** DHCP is about IP lease assignment, not an HTTP 503 from an ALB.
+**Why C is wrong:** Latency is slowness, not a 503 service-unavailable status.
+**Why D is wrong:** Routing issues black-hole traffic; a 503 is an HTTP-layer status, not a missing route.
+
+</details>
 
 16. A VPN tunnel shows healthy but no traffic flows between overlapping address spaces. Cause?
-   A. Bandwidth
-   B. Network overlap (6.2.7)
-   C. Protocol incompatibility
-   D. DHCP
+   - **A.** Bandwidth
+   - **B.** Network overlap (6.2.7)
+   - **C.** Protocol incompatibility
+   - **D.** DHCP
 
-> [!note]- Reveal Answer: B
-> **Correct: B**
-> **Why correct:** The tunnel is up but overlapping CIDRs make the path ambiguous, so traffic can't route — network overlap (6.2.7); re-IP one side.
-> **Why A is wrong:** Bandwidth is throughput; the tunnel is healthy, the problem is addressing ambiguity.
-> **Why C is wrong:** Protocol incompatibility fails the handshake/negotiation, not routing between overlapping spaces.
-> **Why D is wrong:** DHCP is IP assignment, unrelated to overlapping CIDRs blocking a VPN.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** The tunnel is up but overlapping CIDRs make the path ambiguous, so traffic can't route — network overlap (6.2.7); re-IP one side.
+
+**Why A is wrong:** Bandwidth is throughput; the tunnel is healthy, the problem is addressing ambiguity.
+**Why C is wrong:** Protocol incompatibility fails the handshake/negotiation, not routing between overlapping spaces.
+**Why D is wrong:** DHCP is IP assignment, unrelated to overlapping CIDRs blocking a VPN.
+
+</details>
 
 17. Two systems open a TCP connection but the encrypted handshake resets immediately. Cause?
-   A. Routing issue
-   B. Protocol incompatibility (6.2.5)
-   C. Scope exhaustion
-   D. VLAN misconfiguration
+   - **A.** Routing issue
+   - **B.** Protocol incompatibility (6.2.5)
+   - **C.** Scope exhaustion
+   - **D.** VLAN misconfiguration
 
-> [!note]- Reveal Answer: B
-> **Correct: B**
-> **Why correct:** The TCP path works (connection opens) but the protocol/cipher negotiation fails and resets — protocol incompatibility (6.2.5); align TLS/cipher on both ends.
-> **Why A is wrong:** A routing issue would prevent the TCP connection from opening at all.
-> **Why C is wrong:** Scope exhaustion is out-of-IPs, unrelated to a handshake reset on an open connection.
-> **Why D is wrong:** VLAN misconfiguration isolates a segment at L2, not a TLS negotiation reset.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** The TCP path works (connection opens) but the protocol/cipher negotiation fails and resets — protocol incompatibility (6.2.5); align TLS/cipher on both ends.
+
+**Why A is wrong:** A routing issue would prevent the TCP connection from opening at all.
+**Why C is wrong:** Scope exhaustion is out-of-IPs, unrelated to a handshake reset on an open connection.
+**Why D is wrong:** VLAN misconfiguration isolates a segment at L2, not a TLS negotiation reset.
+
+</details>
 
 18. A connection to a database times out and traceroute ends at the subnet gateway with nothing beyond. Cause?
-   A. Missing/misconfigured route (6.2.8)
-   B. DNS failure
-   C. DHCP failure
-   D. Bandwidth
+   - **A.** Missing/misconfigured route (6.2.8)
+   - **B.** DNS failure
+   - **C.** DHCP failure
+   - **D.** Bandwidth
 
-> [!note]- Reveal Answer: A
-> **Correct: A**
-> **Why correct:** Traffic dies at the gateway with no next hop = a missing or misconfigured route (6.2.8); add/correct the route to the destination.
-> **Why B is wrong:** DNS failure would show as name-resolution errors, not a traceroute dying at the gateway.
-> **Why C is wrong:** DHCP failure means no IP; here the connection is established then times out at the gateway.
-> **Why D is wrong:** Bandwidth limits throughput, not a hard "nothing beyond the gateway" stop.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: A**
+
+**Why correct:** Traffic dies at the gateway with no next hop = a missing or misconfigured route (6.2.8); add/correct the route to the destination.
+
+**Why B is wrong:** DNS failure would show as name-resolution errors, not a traceroute dying at the gateway.
+**Why C is wrong:** DHCP failure means no IP; here the connection is established then times out at the gateway.
+**Why D is wrong:** Bandwidth limits throughput, not a hard "nothing beyond the gateway" stop.
+
+</details>
 
 19. A newly attached ENI can't reach peers in its intended subnet though its IP/subnet is correct. Cause?
-   A. Routing
-   B. Switching/VLAN issue (6.2.9)
-   C. DNS
-   D. Deprecation
+   - **A.** Routing
+   - **B.** Switching/VLAN issue (6.2.9)
+   - **C.** DNS
+   - **D.** Deprecation
 
-> [!note]- Reveal Answer: B
-> **Correct: B**
-> **Why correct:** Correct L3 (IP/subnet) but isolated from its peers = a Layer-2 VLAN tag/access-trunk misconfiguration (6.2.9) at the ENI's placement.
-> **Why A is wrong:** Routing is L3 pathing; here the IP/subnet is correct, so it's a segment/VLAN issue.
-> **Why C is wrong:** DNS failure breaks name resolution, not L2 reachability between correct-IP peers.
-> **Why D is wrong:** Deprecation retires a protocol/feature, not ENI segment placement.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** Correct L3 (IP/subnet) but isolated from its peers = a Layer-2 VLAN tag/access-trunk misconfiguration (6.2.9) at the ENI's placement.
+
+**Why A is wrong:** Routing is L3 pathing; here the IP/subnet is correct, so it's a segment/VLAN issue.
+**Why C is wrong:** DNS failure breaks name resolution, not L2 reachability between correct-IP peers.
+**Why D is wrong:** Deprecation retires a protocol/feature, not ENI segment placement.
+
+</details>
 
 20. An application returns 404 Not Found for an API path that exists on another environment. Under 6.2 this is classified as:
-   A. DNS failure (6.2.1)
-   B. HTTP status code — client error (6.2.1)
-   C. Latency
-   D. Bandwidth
+   - **A.** DNS failure (6.2.1)
+   - **B.** HTTP status code — client error (6.2.1)
+   - **C.** Latency
+   - **D.** Bandwidth
 
-> [!note]- Reveal Answer: B
-> **Correct: B**
-> **Why correct:** A 4xx is an HTTP status-code symptom of network service unavailability (6.2.1) on the client/request side — the requested path/resource isn't served here.
-> **Why A is wrong:** DNS failure would prevent reaching the host, not return a 404 for a reachable API path.
-> **Why C is wrong:** Latency is delay, not a 404 client-error status.
-> **Why D is wrong:** Bandwidth is throughput, unrelated to a 404 response.
+<details>
+<summary>Reveal Answer</summary>
 
----
+**Correct: B**
+
+**Why correct:** A 4xx is an HTTP status-code symptom of network service unavailability (6.2.1) on the client/request side — the requested path/resource isn't served here.
+
+**Why A is wrong:** DNS failure would prevent reaching the host, not return a 404 for a reachable API path.
+**Why C is wrong:** Latency is delay, not a 404 client-error status.
+**Why D is wrong:** Bandwidth is throughput, unrelated to a 404 response.
+
+</details>

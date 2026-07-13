@@ -144,262 +144,382 @@ This section maps every Objective 1.4 concept to its AWS-specific service. Use t
 
 ## SECTION 6 — PRACTICE QUESTIONS
 
-**Q1.** A cloud engineer needs to store daily application logs that are accessed less than once a month but must be retrievable within minutes. Which storage tier is the BEST fit?
-A. Hot
-B. Warm
-C. Cold
-D. Archive
+1. Which storage class is best for frequently accessed, low-latency object data with 11 nines durability?
+   - **A.** S3 Glacier Deep Archive
+   - **B.** S3 Standard
+   - **C.** S3 Glacier Flexible Retrieval
+   - **D.** EBS Cold HDD
 
-> [!note]- Reveal Answer
-> **Correct: C**
-> **Why correct:** Cold tier balances low cost with minute-level retrieval, fitting rare-but-fast access.
-> **Why A is wrong:** Hot is expensive for rarely accessed data.
-> **Why B is wrong:** Warm is seconds; Cold fits '<once a month, minutes' best.
-> **Why D is wrong:** Archive takes hours/days, too slow.
+<details>
+<summary>Reveal Answer</summary>
 
-**Q2.** Which storage type presents raw volumes that an operating system mounts like a physical disk?
-A. Object storage
-B. Block storage
-C. File storage
-D. Archive storage
+**Correct: B**
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** Block storage exposes raw volumes mounted and formatted by the OS.
-> **Why A is wrong:** Object is API-accessed, not mounted.
-> **Why C is wrong:** File is a shared filesystem.
-> **Why D is wrong:** Archive is a tier, not a storage type.
+**Why correct:** S3 Standard is the general-purpose, low-latency, durable object store for hot data.
 
-**Q3.** A company must let 12 Linux app servers read and write the same shared folder concurrently. Which storage type should they choose?
-A. Object storage
-B. Block storage
-C. File storage
-D. Cold storage
+**Why A is wrong:** Glacier Deep Archive is for rare cold access.
+**Why C is wrong:** Glacier Flexible is archival, not low-latency.
+**Why D is wrong:** EBS Cold HDD is block storage, not object.
 
-> [!note]- Reveal Answer
-> **Correct: C**
-> **Why correct:** File storage provides a shared hierarchical filesystem over NFS/SMB.
-> **Why A is wrong:** Object is not a shared mount.
-> **Why B is wrong:** Block attaches to one instance.
-> **Why D is wrong:** Cold is a tier, not a type.
+</details>
 
-**Q4.** Which disk type delivers the lowest latency and highest IOPS for a transactional database?
-A. HDD
-B. SSD
-C. Tape
-D. Optical
+2. You need block storage attached to a single EC2 instance for a database with sustained high IOPS. Best choice?
+   - **A.** S3 Standard
+   - **B.** EBS gp3
+   - **C.** EBS io2 (provisioned IOPS)
+   - **D.** EFS Standard
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** SSDs use flash with no moving parts, giving sub-ms latency and high IOPS.
-> **Why A is wrong:** HDD has higher latency.
-> **Why C is wrong:** Tape is not a disk type here.
-> **Why D is wrong:** Optical is not relevant.
+<details>
+<summary>Reveal Answer</summary>
 
-**Q5.** In AWS, which service provides object storage?
-A. EBS
-B. EFS
-C. S3
-D. FSx
+**Correct: C**
 
-> [!note]- Reveal Answer
-> **Correct: C**
-> **Why correct:** Amazon S3 is AWS's object storage service.
-> **Why A is wrong:** EBS is block storage.
-> **Why B is wrong:** EFS is file storage.
-> **Why D is wrong:** FSx is file storage.
+**Why correct:** io2 delivers provisioned IOPS for demanding, latency-sensitive databases.
 
-**Q6.** Which AWS EBS volume type is a provisioned-IOPS SSD suited for mission-critical databases?
-A. gp3
-B. st1
-C. io2
-D. sc1
+**Why A is wrong:** S3 is object, not block, and not attachable.
+**Why B is wrong:** gp3 is general-purpose, lower ceiling than io2.
+**Why D is wrong:** EFS is file storage shared across instances.
 
-> [!note]- Reveal Answer
-> **Correct: C**
-> **Why correct:** io2 is provisioned-IOPS SSD for the highest performance and durability.
-> **Why A is wrong:** gp3 is general-purpose, lower max IOPS.
-> **Why B is wrong:** st1 is throughput HDD.
-> **Why D is wrong:** sc1 is cold HDD.
+</details>
 
-**Q7.** A hospital must retain medical records for 10 years and rarely retrieves them. Which tier minimizes capacity cost?
-A. Hot
-B. Warm
-C. Cold
-D. Archive
+3. A shared file system accessed concurrently by hundreds of Linux instances using NFS is needed. Which service?
+   - **A.** EBS volume
+   - **B.** S3 bucket
+   - **C.** EFS (Elastic File System)
+   - **D.** Instance store
 
-> [!note]- Reveal Answer
-> **Correct: D**
-> **Why correct:** Archive has the lowest per-GB cost for almost-never-accessed data.
-> **Why A is wrong:** Hot is the most expensive.
-> **Why B is wrong:** Warm is for infrequent, not 10-year rare.
-> **Why C is wrong:** Cold still costs more than Archive.
+<details>
+<summary>Reveal Answer</summary>
 
-**Q8.** What is the main performance drawback of HDD compared with SSD?
-A. Lower capacity
-B. Higher latency and lower IOPS
-C. No durability
-D. Higher cost per GB
+**Correct: C**
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** HDDs have moving parts, causing higher latency and lower IOPS.
-> **Why A is wrong:** HDD has higher capacity.
-> **Why C is wrong:** HDD has good durability for archival.
-> **Why D is wrong:** HDD is cheaper per GB.
+**Why correct:** EFS is a managed NFS file system that many instances mount concurrently.
 
-**Q9.** Which AWS S3 tier is designed for infrequently accessed data with a lower storage cost but a retrieval fee?
-A. S3 Standard
-B. S3 Standard-IA
-C. S3 Glacier Deep Archive
-D. S3 Intelligent-Tiering (base)
+**Why A is wrong:** EBS attaches to one instance at a time.
+**Why B is wrong:** S3 is object, not a mountable file system.
+**Why D is wrong:** Instance store is ephemeral local disk.
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** S3 Standard-IA is the Warm tier: cheaper capacity with a per-GB retrieval fee.
-> **Why A is wrong:** Standard is Hot, no retrieval fee.
-> **Why C is wrong:** Deep Archive is the Archive tier.
-> **Why D is wrong:** Intelligent-Tiering auto-moves; its base is Standard-like.
+</details>
 
-**Q10.** Object storage is BEST described as:
-A. A mounted filesystem with folders
-B. Raw blocks addressed by LBA
-C. Data + metadata + ID in a flat namespace accessed via API
-D. A magnetic tape library
+4. Archive data must be kept for 7+ years at the lowest cost, retrieval within 12 hours is acceptable. Choose:
+   - **A.** S3 Standard
+   - **B.** S3 Glacier Deep Archive
+   - **C.** EBS gp3
+   - **D.** EFS
 
-> [!note]- Reveal Answer
-> **Correct: C**
-> **Why correct:** Objects are stored with metadata and a unique ID, retrieved via HTTP API.
-> **Why A is wrong:** That describes file storage.
-> **Why B is wrong:** That describes block storage.
-> **Why D is wrong:** Tape is not object storage.
+<details>
+<summary>Reveal Answer</summary>
 
-**Q11.** Which cost driver applies to ALL S3 tiers when data leaves the cloud to the internet?
-A. Retrieval fee
-B. Early deletion penalty
-C. Egress (data transfer out) fee
-D. Capacity fee only
+**Correct: B**
 
-> [!note]- Reveal Answer
-> **Correct: C**
-> **Why correct:** Egress/data-transfer-out fees apply regardless of storage tier.
-> **Why A is wrong:** Retrieval fee varies by tier.
-> **Why B is wrong:** Early-deletion penalty applies only to some tiers.
-> **Why D is wrong:** Capacity fee is not the only fee.
+**Why correct:** Glacier Deep Archive is the lowest-cost class for long-term retention with hours-long retrieval.
 
-**Q12.** A big-data job performs large sequential reads of rarely changed logs. Which disk is most cost-effective?
-A. io2 SSD
-B. gp3 SSD
-C. st1 HDD
-D. sc1 only
+**Why A is wrong:** Standard is costly for cold data.
+**Why C is wrong:** EBS is block and pricier per GB.
+**Why D is wrong:** EFS is for active shared files.
 
-> [!note]- Reveal Answer
-> **Correct: C**
-> **Why correct:** st1 throughput-optimized HDD is cheap and sequential-read friendly.
-> **Why A is wrong:** io2 is expensive SSD, overkill.
-> **Why B is wrong:** gp3 is SSD, costlier for bulk.
-> **Why D is wrong:** sc1 is cold HDD, not throughput-optimized.
+</details>
 
-**Q13.** What is a key risk of placing frequently accessed data in an Archive tier?
-A. It cannot be deleted
-B. High retrieval fees and minimum-retention penalties erase savings
-C. It loses durability
-D. It becomes object storage automatically
+5. S3 Standard-IA is appropriate when:
+   - **A.** Data is accessed multiple times per second
+   - **B.** Data is infrequently accessed but needs rapid retrieval when needed
+   - **C.** Data must never be retrieved
+   - **D.** Data is only accessed via Glacier
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** Archive adds retrieval fees and minimum stay; frequent access erases the savings.
-> **Why A is wrong:** Archive can be deleted.
-> **Why C is wrong:** Archive keeps 11-nines durability.
-> **Why D is wrong:** It stays object storage.
+<details>
+<summary>Reveal Answer</summary>
 
-**Q14.** Which AWS offering provides managed Windows-file-share (SMB) file storage?
-A. EFS
-B. FSx
-C. EBS
-D. S3
+**Correct: B**
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** Amazon FSx (e.g., FSx for Windows File Server) provides SMB file storage.
-> **Why A is wrong:** EFS is Linux/NFS.
-> **Why C is wrong:** EBS is block storage.
-> **Why D is wrong:** S3 is object storage.
+**Why correct:** Standard-IA lowers storage cost for infrequently accessed data while keeping millisecond retrieval.
 
-**Q15.** Hot storage is characterized by:
-A. Hours-long retrieval and lowest cost
-B. Frequent access, millisecond retrieval, highest capacity cost
-C. Never accessed, compliance only
-D. Sequential HDD backing only
+**Why A is wrong:** That is Standard, not IA.
+**Why C is wrong:** Archive classes fit never-accessed better.
+**Why D is wrong:** IA is not behind Glacier.
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** Hot = frequent access, ms retrieval, highest per-GB cost, no retrieval fee.
-> **Why A is wrong:** That describes Archive.
-> **Why C is wrong:** That describes Archive/compliance.
-> **Why D is wrong:** Hot can be SSD or HDD-backed, not HDD-only.
+</details>
 
-**Q16.** A video-streaming service keeps its current catalog for instant playback. Which combination fits?
-A. Object + Archive
-B. Block + HDD
-C. Object + Hot
-D. File + Cold
+6. What does S3's '11 nines' (99.999999999%) durability refer to?
+   - **A.** Uptime of the S3 service
+   - **B.** Probability of NOT losing an object over a year
+   - **C.** Encryption strength
+   - **D.** Maximum file size
 
-> [!note]- Reveal Answer
-> **Correct: C**
-> **Why correct:** Object storage with Hot tier gives scalable, instant web delivery.
-> **Why A is wrong:** Archive is slow, wrong for instant playback.
-> **Why B is wrong:** HDD block is for databases, not streaming delivery.
-> **Why D is wrong:** File+Cold does not fit streaming.
+<details>
+<summary>Reveal Answer</summary>
 
-**Q17.** Which performance metric measures completed read/write operations per second?
-A. Throughput
-B. Latency
-C. IOPS
-D. Durability
+**Correct: B**
 
-> [!note]- Reveal Answer
-> **Correct: C**
-> **Why correct:** IOPS (input/output operations per second) counts operations per second.
-> **Why A is wrong:** Throughput is MB/s.
-> **Why B is wrong:** Latency is response time.
-> **Why D is wrong:** Durability is data-survival probability.
+**Why correct:** Durability is the design probability that stored objects are not lost.
 
-**Q18.** Glacier Instant Retrieval is the AWS mapping for which Objective 1.4 tier?
-A. Hot
-B. Warm
-C. Cold
-D. Archive
+**Why A is wrong:** That is availability, not durability.
+**Why C is wrong:** Encryption is separate.
+**Why D is wrong:** File size is unrelated.
 
-> [!note]- Reveal Answer
-> **Correct: C**
-> **Why correct:** Glacier Instant Retrieval is the Cold tier (fast retrieval, archive pricing).
-> **Why A is wrong:** Hot = S3 Standard.
-> **Why B is wrong:** Warm = Standard-IA.
-> **Why D is wrong:** Archive = Deep Archive.
+</details>
 
-**Q19.** Why might an architect choose gp3 over io2 for a general-purpose workload?
-A. gp3 offers higher maximum IOPS than io2
-B. gp3 is cheaper and decouples IOPS/throughput from size for most needs
-C. io2 cannot attach to EC2
-D. gp3 is HDD-based
+7. An EBS volume's data persists after the attached EC2 instance is stopped. TRUE because:
+   - **A.** EBS is network-attached block storage independent of instance lifecycle
+   - **B.** Instance store persists
+   - **C.** S3 auto-copies it
+   - **D.** It is always encrypted
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** gp3 is general-purpose SSD, cheaper, with independently scalable performance.
-> **Why A is wrong:** io2 has the higher max IOPS, not gp3.
-> **Why C is wrong:** io2 attaches to EC2 fine.
-> **Why D is wrong:** gp3 is SSD-based.
+<details>
+<summary>Reveal Answer</summary>
 
-**Q20.** Which statement about File storage is TRUE?
-A. It is only accessible by one server at a time
-B. It exposes a shared hierarchical namespace over network protocols
-C. It is the cheapest tier for backups
-D. It uses HTTP APIs exclusively
+**Correct: A**
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** File storage shares a folder tree over NFS/SMB to multiple clients.
-> **Why A is wrong:** File is multi-client, not one-at-a-time.
-> **Why C is wrong:** File is not the cheapest backup tier.
-> **Why D is wrong:** File uses NFS/SMB, not HTTP APIs.
+**Why correct:** EBS is durable network block storage that survives stop/start and even termination if not set to delete.
+
+**Why B is wrong:** Instance store is ephemeral, not EBS.
+**Why C is wrong:** S3 is separate.
+**Why D is wrong:** Encryption is optional, not the reason for persistence.
+
+</details>
+
+8. You want to auto-tier objects from Standard to IA after 30 days of no access. Use:
+   - **A.** Lifecycle policy
+   - **B.** Bucket policy
+   - **C.** CORS configuration
+   - **D.** Replication rule
+
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: A**
+
+**Why correct:** S3 Lifecycle rules transition objects between storage classes based on age/access.
+
+**Why B is wrong:** Bucket policy controls access, not tiering.
+**Why C is wrong:** CORS controls cross-origin web access.
+**Why D is wrong:** Replication copies data to another bucket.
+
+</details>
+
+9. A workload needs temporary, very high-IOPS block storage that is lost when the instance stops. Which?
+   - **A.** EBS io2
+   - **B.** Instance store (ephemeral)
+   - **C.** EFS
+   - **D.** S3
+
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** Instance store is physically attached, very fast, and ephemeral — data is lost on stop.
+
+**Why A is wrong:** EBS persists.
+**Why C is wrong:** EFS persists and is shared.
+**Why D is wrong:** S3 persists.
+
+</details>
+
+10. EBS st1 (Throughput Optimized HDD) is best for:
+   - **A.** Boot volumes
+   - **B.** Big data / throughput-heavy sequential workloads
+   - **C.** Small random IOPS databases
+   - **D.** Cold archive
+
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** st1 is low-cost HDD optimized for large, sequential throughput (e.g., big data, logs).
+
+**Why A is wrong:** Boot volumes need SSD (gp3).
+**Why C is wrong:** Random IOPS want SSD.
+**Why D is wrong:** Archive is Glacier.
+
+</details>
+
+11. Which storage is object-based and accessed via a REST/HTTPS API (not mounted as a file system)?
+   - **A.** EFS
+   - **B.** EBS
+   - **C.** S3
+   - **D.** Instance store
+
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: C**
+
+**Why correct:** S3 is object storage reached over HTTP API; you do not mount it like a disk.
+
+**Why A is wrong:** EFS is a mountable file system.
+**Why B is wrong:** EBS is a block device.
+**Why D is wrong:** Instance store is local block.
+
+</details>
+
+12. A bucket policy is used to:
+   - **A.** Define storage class transitions
+   - **B.** Control who can access the bucket/objects and what actions
+   - **C.** Encrypt objects at rest
+   - **D.** Set retrieval time
+
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** Bucket policies are resource-based IAM-like JSON that grant/deny access to the bucket.
+
+**Why A is wrong:** That is lifecycle.
+**Why C is wrong:** Encryption is SSE config.
+**Why D is wrong:** Retrieval time is a class property.
+
+</details>
+
+13. You must ensure objects are encrypted at rest in S3. The SIMPLEST always-on option is:
+   - **A.** SSE-S3 (AES-256 managed by S3)
+   - **B.** Client-side only
+   - **C.** No encryption
+   - **D.** TLS only
+
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: A**
+
+**Why correct:** SSE-S3 transparently encrypts every object with a key managed by S3.
+
+**Why B is wrong:** Client-side is possible but more work.
+**Why C is wrong:** No encryption fails compliance.
+**Why D is wrong:** TLS is in-transit, not at rest.
+
+</details>
+
+14. Multi-part upload in S3 is recommended for files larger than:
+   - **A.** 5 MB
+   - **B.** 100 MB
+   - **C.** 5 GB
+   - **D.** 1 TB
+
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** AWS recommends multipart upload for objects over 100 MB to improve throughput and recovery.
+
+**Why A is wrong:** Too small a threshold.
+**Why C is wrong:** 5 GB is the single-part max, not the recommendation threshold.
+**Why D is wrong:** Far above.
+
+</details>
+
+15. A company needs cross-region copies of a bucket for disaster recovery. Implement with:
+   - **A.** S3 Cross-Region Replication (CRR)
+   - **B.** Lifecycle expiry
+   - **C.** Bucket policy
+   - **D.** CORS
+
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: A**
+
+**Why correct:** CRR asynchronously copies objects to a bucket in another region for DR.
+
+**Why B is wrong:** Lifecycle expires, does not replicate.
+**Why C is wrong:** Policy controls access.
+**Why D is wrong:** CORS is web cross-origin.
+
+</details>
+
+16. EFS is described as 'elastic' because:
+   - **A.** It is block storage
+   - **B.** Capacity grows/shrinks automatically as files are added/removed
+   - **C.** It is single-instance only
+   - **D.** It requires fixed provisioning
+
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** EFS scales storage up and down automatically with usage, no pre-provisioning.
+
+**Why A is wrong:** It is file, not block.
+**Why C is wrong:** It is multi-attach.
+**Why D is wrong:** No fixed provisioning is the point.
+
+</details>
+
+17. EBS sc1 (Cold HDD) is the right choice for:
+   - **A.** Production databases
+   - **B.** Cold, infrequent-access, throughput workloads at lowest HDD cost
+   - **C.** Boot volumes
+   - **D.** High IOPS transactions
+
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** sc1 is the cheapest HDD for cold, sequentially-accessed data.
+
+**Why A is wrong:** Databases want SSD.
+**Why C is wrong:** Boot wants gp3.
+**Why D is wrong:** High IOPS wants io2.
+
+</details>
+
+18. Object lock in S3 provides:
+   - **A.** Faster retrieval
+   - **B.** WORM (write once, read many) immutability to prevent deletion
+   - **C.** Lifecycle deletion
+   - **D.** Cross-region copy
+
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** Object Lock enforces WORM so objects cannot be deleted/modified for a retention period.
+
+**Why A is wrong:** It does not speed retrieval.
+**Why C is wrong:** It prevents deletion, opposite of lifecycle expiry.
+**Why D is wrong:** Replication is separate.
+
+</details>
+
+19. A database needs block storage that can be attached to one instance but snapshot-backed for recovery. Best is:
+   - **A.** S3
+   - **B.** EBS with snapshots
+   - **C.** EFS
+   - **D.** Instance store
+
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** EBS gives block storage; EBS snapshots to S3 provide point-in-time recovery.
+
+**Why A is wrong:** S3 is object, not a DB volume.
+**Why C is wrong:** EFS is shared file, not a single-instance DB volume.
+**Why D is wrong:** Instance store has no snapshots.
+
+</details>
+
+20. A single file system that must be available across multiple AZs automatically with no single-AZ failure is:
+   - **A.** EBS volume
+   - **B.** EFS with Multi-AZ
+   - **C.** S3 bucket
+   - **D.** Instance store
+
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** EFS is a regional, Multi-AZ file system so it survives an AZ failure; EBS is single-AZ.
+
+**Why A is wrong:** EBS lives in one AZ.
+**Why C is wrong:** S3 is object, not a mountable shared FS with AZ semantics.
+**Why D is wrong:** Instance store is single-host ephemeral.
+
+</details>

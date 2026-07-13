@@ -142,261 +142,381 @@ AWS-only services and features that implement each 2.2 strategy:
 ## SECTION 6 — PRACTICE QUESTIONS
 
 1. A company must release a critical customer-facing app with zero downtime and needs the ability to revert in seconds if a defect appears. Cost is not a constraint. Which strategy fits best?
-   A. Rolling
-   B. Canary
-   C. Blue-green
-   D. In-place
+   - **A.** Rolling
+   - **B.** Canary
+   - **C.** Blue-green
+   - **D.** In-place
 
-> [!note]- Reveal Answer
-> **Correct: C**
-> **Why correct:** Blue-green runs two full environments so you flip all traffic at once and roll back in seconds via the load balancer.
-> **Why A is wrong:** Rolling replaces instances in batches; rollback is slow (re-deploy old version).
-> **Why B is wrong:** Canary limits blast radius but full rollback isn't instant across all users.
-> **Why D is wrong:** In-place stops the service; it has downtime and manual/slow rollback.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: C**
+
+**Why correct:** Blue-green runs two full environments so you flip all traffic at once and roll back in seconds via the load balancer.
+
+**Why A is wrong:** Rolling replaces instances in batches; rollback is slow (re-deploy old version).
+**Why B is wrong:** Canary limits blast radius but full rollback isn't instant across all users.
+**Why D is wrong:** In-place stops the service; it has downtime and manual/slow rollback.
+
+</details>
 
 2. You want to expose a new feature to 5% of users first and watch error rates before widening. Which strategy?
-   A. In-place
-   B. Canary
-   C. Blue-green
-   D. Rolling
+   - **A.** In-place
+   - **B.** Canary
+   - **C.** Blue-green
+   - **D.** Rolling
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** Canary releases to a small cohort (e.g., 5%) and promotes based on metrics like error rate.
-> **Why A is wrong:** In-place is a stop/patch/restart — no staged user exposure.
-> **Why C is wrong:** Blue-green shifts 100% at once, not 5% first.
-> **Why D is wrong:** Rolling updates instances in batches, not by user percentage.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** Canary releases to a small cohort (e.g., 5%) and promotes based on metrics like error rate.
+
+**Why A is wrong:** In-place is a stop/patch/restart — no staged user exposure.
+**Why C is wrong:** Blue-green shifts 100% at once, not 5% first.
+**Why D is wrong:** Rolling updates instances in batches, not by user percentage.
+
+</details>
 
 3. An update replaces running instances a few at a time while the app stays available, with no second full environment. Which strategy?
-   A. Rolling
-   B. Blue-green
-   C. Canary
-   D. In-place
+   - **A.** Rolling
+   - **B.** Blue-green
+   - **C.** Canary
+   - **D.** In-place
 
-> [!note]- Reveal Answer
-> **Correct: A**
-> **Why correct:** Rolling updates instances in batches with no duplicate full environment, keeping the app available.
-> **Why B is wrong:** Blue-green requires a second full (Green) environment.
-> **Why C is wrong:** Canary is about user-percentage exposure, typically via a load balancer slice, not batch instance replacement.
-> **Why D is wrong:** In-place stops the app (downtime), it doesn't keep it available.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: A**
+
+**Why correct:** Rolling updates instances in batches with no duplicate full environment, keeping the app available.
+
+**Why B is wrong:** Blue-green requires a second full (Green) environment.
+**Why C is wrong:** Canary is about user-percentage exposure, typically via a load balancer slice, not batch instance replacement.
+**Why D is wrong:** In-place stops the app (downtime), it doesn't keep it available.
+
+</details>
 
 4. During a scheduled Sunday maintenance window, an internal tool is stopped, patched, and restarted. Which strategy?
-   A. Canary
-   B. Blue-green
-   C. In-place
-   D. Rolling
+   - **A.** Canary
+   - **B.** Blue-green
+   - **C.** In-place
+   - **D.** Rolling
 
-> [!note]- Reveal Answer
-> **Correct: C**
-> **Why correct:** In-place (stop, patch, restart on same infra) is cheapest and fine when downtime is planned.
-> **Why A is wrong:** Canary needs live traffic to slice — no use for a tool down in maintenance.
-> **Why B is wrong:** Blue-green is overkill and costly for a planned-downtime internal tool.
-> **Why D is wrong:** Rolling avoids downtime, which isn't needed in a maintenance window.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: C**
+
+**Why correct:** In-place (stop, patch, restart on same infra) is cheapest and fine when downtime is planned.
+
+**Why A is wrong:** Canary needs live traffic to slice — no use for a tool down in maintenance.
+**Why B is wrong:** Blue-green is overkill and costly for a planned-downtime internal tool.
+**Why D is wrong:** Rolling avoids downtime, which isn't needed in a maintenance window.
+
+</details>
 
 5. Which strategy has the highest infrastructure cost during deployment?
-   A. Rolling
-   B. In-place
-   C. Blue-green
-   D. Canary
+   - **A.** Rolling
+   - **B.** In-place
+   - **C.** Blue-green
+   - **D.** Canary
 
-> [!note]- Reveal Answer
-> **Correct: C**
-> **Why correct:** Blue-green runs two full production environments simultaneously — the highest extra cost.
-> **Why A is wrong:** Rolling uses no duplicate env, so cost is low.
-> **Why B is wrong:** In-place uses the same infra — zero extra environment cost.
-> **Why D is wrong:** Canary only runs a small slice, not a full second env.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: C**
+
+**Why correct:** Blue-green runs two full production environments simultaneously — the highest extra cost.
+
+**Why A is wrong:** Rolling uses no duplicate env, so cost is low.
+**Why B is wrong:** In-place uses the same infra — zero extra environment cost.
+**Why D is wrong:** Canary only runs a small slice, not a full second env.
+
+</details>
 
 6. Which strategy offers the slowest rollback if a defect is found late in the rollout?
-   A. Blue-green
-   B. Rolling
-   C. Canary
-   D. In-place
+   - **A.** Blue-green
+   - **B.** Rolling
+   - **C.** Canary
+   - **D.** In-place
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** Rolling requires re-deploying the old version batch-by-batch, so late rollbacks are slow (minutes–hours).
-> **Why A is wrong:** Blue-green rollback is seconds (repoint traffic to Blue).
-> **Why C is wrong:** Canary rollback is fast (shift % back to stable).
-> **Why D is wrong:** In-place rollback is manual but not "late in the rollout" — rolling is slower for that case.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** Rolling requires re-deploying the old version batch-by-batch, so late rollbacks are slow (minutes–hours).
+
+**Why A is wrong:** Blue-green rollback is seconds (repoint traffic to Blue).
+**Why C is wrong:** Canary rollback is fast (shift % back to stable).
+**Why D is wrong:** In-place rollback is manual but not "late in the rollout" — rolling is slower for that case.
+
+</details>
 
 7. A stateful legacy app cannot run two versions at once and downtime is tolerated. Best choice?
-   A. Blue-green
-   B. In-place
-   C. Canary
-   D. Rolling
+   - **A.** Blue-green
+   - **B.** In-place
+   - **C.** Canary
+   - **D.** Rolling
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** In-place avoids running two versions simultaneously, suiting stateful apps; planned downtime is acceptable.
-> **Why A is wrong:** Blue-green runs old+new at once — breaks a stateful app that can't coexist.
-> **Why C is wrong:** Canary still exposes two versions to users — bad for stateful.
-> **Why D is wrong:** Rolling runs mixed old/new instances, problematic for stateful systems.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** In-place avoids running two versions simultaneously, suiting stateful apps; planned downtime is acceptable.
+
+**Why A is wrong:** Blue-green runs old+new at once — breaks a stateful app that can't coexist.
+**Why C is wrong:** Canary still exposes two versions to users — bad for stateful.
+**Why D is wrong:** Rolling runs mixed old/new instances, problematic for stateful systems.
+
+</details>
 
 8. AWS CodeDeploy traffic-shift options like Canary10Percent5Minutes implement which strategy?
-   A. Blue-green
-   B. Rolling
-   C. In-place
-   D. Canary
+   - **A.** Blue-green
+   - **B.** Rolling
+   - **C.** In-place
+   - **D.** Canary
 
-> [!note]- Reveal Answer
-> **Correct: D**
-> **Why correct:** CodeDeploy canary traffic-shift options (e.g., Canary10Percent5Minutes) implement Canary deployments.
-> **Why A is wrong:** Blue-green uses an immediate/linear traffic shift to a second env, not a 10%-canary shift.
-> **Why B is wrong:** Rolling is AllAtOnce/OneAtATime, not a percentage canary shift.
-> **Why C is wrong:** In-place is a stop/update/restart, not a traffic shift.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: D**
+
+**Why correct:** CodeDeploy canary traffic-shift options (e.g., Canary10Percent5Minutes) implement Canary deployments.
+
+**Why A is wrong:** Blue-green uses an immediate/linear traffic shift to a second env, not a 10%-canary shift.
+**Why B is wrong:** Rolling is AllAtOnce/OneAtATime, not a percentage canary shift.
+**Why C is wrong:** In-place is a stop/update/restart, not a traffic shift.
+
+</details>
 
 9. Which strategy keeps both old and new versions running simultaneously, requiring version-tolerant apps?
-   A. In-place
-   B. Blue-green
-   C. Rolling
-   D. Canary
+   - **A.** In-place
+   - **B.** Blue-green
+   - **C.** Rolling
+   - **D.** Canary
 
-> [!note]- Reveal Answer
-> **Correct: C**
-> **Why correct:** Rolling runs mixed old/new instances during the update, so the app must tolerate both versions live.
-> **Why A is wrong:** In-place runs only the new version after restart.
-> **Why B is wrong:** Blue-green runs two full envs but only one serves all traffic at a time.
-> **Why D is wrong:** Canary is about user-percentage exposure, not necessarily mixed instances fleet-wide.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: C**
+
+**Why correct:** Rolling runs mixed old/new instances during the update, so the app must tolerate both versions live.
+
+**Why A is wrong:** In-place runs only the new version after restart.
+**Why B is wrong:** Blue-green runs two full envs but only one serves all traffic at a time.
+**Why D is wrong:** Canary is about user-percentage exposure, not necessarily mixed instances fleet-wide.
+
+</details>
 
 10. For a regulated system needing a clean audit trail of before/after states, which is preferred?
-    A. Rolling
-    B. In-place
-    C. Blue-green
-    D. Canary
+   - **A.** Rolling
+   - **B.** In-place
+   - **C.** Blue-green
+   - **D.** Canary
 
-> [!note]- Reveal Answer
-> **Correct: C**
-> **Why correct:** Blue-green gives a clean, separable before (Blue) / after (Green) environment, ideal for audit trails.
-> **Why A is wrong:** Rolling has no separable before/after — instances mix during rollout.
-> **Why B is wrong:** In-place has no distinct before/after env to audit.
-> **Why D is wrong:** Canary blends versions gradually, less cleanly separable than two full envs.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: C**
+
+**Why correct:** Blue-green gives a clean, separable before (Blue) / after (Green) environment, ideal for audit trails.
+
+**Why A is wrong:** Rolling has no separable before/after — instances mix during rollout.
+**Why B is wrong:** In-place has no distinct before/after env to audit.
+**Why D is wrong:** Canary blends versions gradually, less cleanly separable than two full envs.
+
+</details>
 
 11. An ALB weighted target-group split sending 10% of traffic to a new version describes which strategy?
-    A. Canary
-    B. Rolling
-    C. Blue-green
-    D. In-place
+   - **A.** Canary
+   - **B.** Rolling
+   - **C.** Blue-green
+   - **D.** In-place
 
-> [!note]- Reveal Answer
-> **Correct: A**
-> **Why correct:** Percentage traffic splits (10% via weighted ALB target groups) are the hallmark of Canary.
-> **Why B is wrong:** Rolling splits by instance batches, not user percentage.
-> **Why C is wrong:** Blue-green shifts 100% at once, not 10%.
-> **Why D is wrong:** In-place has no traffic splitting.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: A**
+
+**Why correct:** Percentage traffic splits (10% via weighted ALB target groups) are the hallmark of Canary.
+
+**Why B is wrong:** Rolling splits by instance batches, not user percentage.
+**Why C is wrong:** Blue-green shifts 100% at once, not 10%.
+**Why D is wrong:** In-place has no traffic splitting.
+
+</details>
 
 12. Which strategy is best for a stateless microservice fleet on a tight budget?
-    A. Blue-green
-    B. Rolling
-    C. In-place
-    D. Canary
+   - **A.** Blue-green
+   - **B.** Rolling
+   - **C.** In-place
+   - **D.** Canary
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** Rolling balances uptime and cost with no duplicate env — ideal for stateless, budget-sensitive fleets.
-> **Why A is wrong:** Blue-green's duplicate env is expensive, conflicting with tight budget.
-> **Why C is wrong:** In-place causes downtime, not ideal for a service fleet.
-> **Why D is wrong:** Canary needs strong monitoring, adding cost/complexity beyond the budget need.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** Rolling balances uptime and cost with no duplicate env — ideal for stateless, budget-sensitive fleets.
+
+**Why A is wrong:** Blue-green's duplicate env is expensive, conflicting with tight budget.
+**Why C is wrong:** In-place causes downtime, not ideal for a service fleet.
+**Why D is wrong:** Canary needs strong monitoring, adding cost/complexity beyond the budget need.
+
+</details>
 
 13. Elastic Beanstalk immutable deployments are an AWS implementation of which strategy?
-    A. In-place
-    B. Rolling
-    C. Canary
-    D. Blue-green
+   - **A.** In-place
+   - **B.** Rolling
+   - **C.** Canary
+   - **D.** Blue-green
 
-> [!note]- Reveal Answer
-> **Correct: D**
-> **Why correct:** Immutable deployments spin up a fresh set of instances and shift traffic — like blue-green.
-> **Why A is wrong:** In-place updates existing instances; immutable does the opposite.
-> **Why B is wrong:** Rolling updates in place in batches; immutable creates new instances.
-> **Why C is wrong:** Immutable shifts all-at-once to the new set, not a small percentage.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: D**
+
+**Why correct:** Immutable deployments spin up a fresh set of instances and shift traffic — like blue-green.
+
+**Why A is wrong:** In-place updates existing instances; immutable does the opposite.
+**Why B is wrong:** Rolling updates in place in batches; immutable creates new instances.
+**Why C is wrong:** Immutable shifts all-at-once to the new set, not a small percentage.
+
+</details>
 
 14. If the priority is limiting the "blast radius" of a bad release, choose:
-    A. In-place
-    B. Blue-green
-    C. Canary
-    D. Rolling
+   - **A.** In-place
+   - **B.** Blue-green
+   - **C.** Canary
+   - **D.** Rolling
 
-> [!note]- Reveal Answer
-> **Correct: C**
-> **Why correct:** Canary limits impact to a small user subset, minimizing blast radius of a bad release.
-> **Why A is wrong:** In-place exposes all users at once after restart.
-> **Why B is wrong:** Blue-green flips 100% — large blast radius if Green is bad.
-> **Why D is wrong:** Rolling eventually reaches all users; not as tightly scoped as canary.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: C**
+
+**Why correct:** Canary limits impact to a small user subset, minimizing blast radius of a bad release.
+
+**Why A is wrong:** In-place exposes all users at once after restart.
+**Why B is wrong:** Blue-green flips 100% — large blast radius if Green is bad.
+**Why D is wrong:** Rolling eventually reaches all users; not as tightly scoped as canary.
+
+</details>
 
 15. Which strategy typically causes full application downtime?
-    A. Canary
-    B. Rolling
-    C. Blue-green
-    D. In-place
+   - **A.** Canary
+   - **B.** Rolling
+   - **C.** Blue-green
+   - **D.** In-place
 
-> [!note]- Reveal Answer
-> **Correct: D**
-> **Why correct:** In-place stops the service during the update, causing full downtime.
-> **Why A is wrong:** Canary keeps the app available to the majority throughout.
-> **Why B is wrong:** Rolling keeps the app partially/fully available.
-> **Why C is wrong:** Blue-green has near-zero downtime via traffic flip.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: D**
+
+**Why correct:** In-place stops the service during the update, causing full downtime.
+
+**Why A is wrong:** Canary keeps the app available to the majority throughout.
+**Why B is wrong:** Rolling keeps the app partially/fully available.
+**Why C is wrong:** Blue-green has near-zero downtime via traffic flip.
+
+</details>
 
 16. Amazon ECS rolling update with minimum/maximum healthy percent implements which strategy?
-    A. Blue-green
-    B. Rolling
-    C. Canary
-    D. In-place
+   - **A.** Blue-green
+   - **B.** Rolling
+   - **C.** Canary
+   - **D.** In-place
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** ECS rolling update (min/max healthy percent) replaces tasks gradually — the Rolling strategy.
-> **Why A is wrong:** Blue-green would stand up a separate task set and shift all traffic.
-> **Why C is wrong:** Canary would weight a percentage of requests, not just min/max healthy tasks.
-> **Why D is wrong:** In-place stops tasks; ECS rolling keeps the service up.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** ECS rolling update (min/max healthy percent) replaces tasks gradually — the Rolling strategy.
+
+**Why A is wrong:** Blue-green would stand up a separate task set and shift all traffic.
+**Why C is wrong:** Canary would weight a percentage of requests, not just min/max healthy tasks.
+**Why D is wrong:** In-place stops tasks; ECS rolling keeps the service up.
+
+</details>
 
 17. A team wants instant rollback but cannot afford two full environments. Best compromise?
-    A. Canary
-    B. Blue-green
-    C. In-place
-    D. Rolling
+   - **A.** Canary
+   - **B.** Blue-green
+   - **C.** In-place
+   - **D.** Rolling
 
-> [!note]- Reveal Answer
-> **Correct: A**
-> **Why correct:** Canary gives fast staged rollback at low extra cost (small slice), avoiding a full second env.
-> **Why B is wrong:** Blue-green needs two full environments — unaffordable here.
-> **Why C is wrong:** In-place rollback is manual/slow, not instant.
-> **Why D is wrong:** Rolling rollback is slow (re-deploy batches).
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: A**
+
+**Why correct:** Canary gives fast staged rollback at low extra cost (small slice), avoiding a full second env.
+
+**Why B is wrong:** Blue-green needs two full environments — unaffordable here.
+**Why C is wrong:** In-place rollback is manual/slow, not instant.
+**Why D is wrong:** Rolling rollback is slow (re-deploy batches).
+
+</details>
 
 18. Route 53 weighted routing between two environments is used in which strategy?
-    A. Canary
-    B. Rolling
-    C. Blue-green
-    D. In-place
+   - **A.** Canary
+   - **B.** Rolling
+   - **C.** Blue-green
+   - **D.** In-place
 
-> [!note]- Reveal Answer
-> **Correct: C**
-> **Why correct:** DNS-weighted cutover between two full environments (Route 53) is a blue-green mechanism.
-> **Why A is wrong:** Canary percentages are usually done at the ALB, not DNS-weighted across full envs.
-> **Why B is wrong:** Rolling has no two-environment DNS cutover.
-> **Why D is wrong:** In-place has a single environment.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: C**
+
+**Why correct:** DNS-weighted cutover between two full environments (Route 53) is a blue-green mechanism.
+
+**Why A is wrong:** Canary percentages are usually done at the ALB, not DNS-weighted across full envs.
+**Why B is wrong:** Rolling has no two-environment DNS cutover.
+**Why D is wrong:** In-place has a single environment.
+
+</details>
 
 19. Which deployment needs the most mature monitoring and feature-flag tooling?
-    A. In-place
-    B. Rolling
-    C. Canary
-    D. Blue-green
+   - **A.** In-place
+   - **B.** Rolling
+   - **C.** Canary
+   - **D.** Blue-green
 
-> [!note]- Reveal Answer
-> **Correct: C**
-> **Why correct:** Canary depends on metrics/monitoring to decide promotion or rollback at each stage.
-> **Why A is wrong:** In-place needs only basic monitoring.
-> **Why B is wrong:** Rolling needs standard monitoring, less mature than canary's staged gates.
-> **Why D is wrong:** Blue-green needs standard monitoring; the flip is binary, not metric-gated.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: C**
+
+**Why correct:** Canary depends on metrics/monitoring to decide promotion or rollback at each stage.
+
+**Why A is wrong:** In-place needs only basic monitoring.
+**Why B is wrong:** Rolling needs standard monitoring, less mature than canary's staged gates.
+**Why D is wrong:** Blue-green needs standard monitoring; the flip is binary, not metric-gated.
+
+</details>
 
 20. You must patch 200 pods one at a time while keeping 199 available. Which strategy?
-    A. In-place
-    B. Rolling
-    C. Blue-green
-    D. Canary
+   - **A.** In-place
+   - **B.** Rolling
+   - **C.** Blue-green
+   - **D.** Canary
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** Rolling updates instances incrementally (e.g., maxUnavailable=1) while preserving capacity — matches the 199-available goal.
-> **Why A is wrong:** In-place would stop pods, dropping availability below 199.
-> **Why C is wrong:** Blue-green would duplicate all 200, not patch one-at-a-time.
-> **Why D is wrong:** Canary targets user percentage, not per-pod incremental patching.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** Rolling updates instances incrementally (e.g., maxUnavailable=1) while preserving capacity — matches the 199-available goal.
+
+**Why A is wrong:** In-place would stop pods, dropping availability below 199.
+**Why C is wrong:** Blue-green would duplicate all 200, not patch one-at-a-time.
+**Why D is wrong:** Canary targets user percentage, not per-pod incremental patching.
+
+</details>

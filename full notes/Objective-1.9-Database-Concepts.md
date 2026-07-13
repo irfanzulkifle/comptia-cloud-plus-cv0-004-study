@@ -163,262 +163,382 @@ Maps Objective 1.9's four sub-objectives to **AWS-only** services.
 
 ## SECTION 6 — PRACTICE QUESTIONS
 
-**Question 1.** A database stores data in tables with rows and columns, queried with SQL. Which type?
-A. Non-relational
-B. Relational
-C. Self-managed
-D. Provider-managed
+1. A schema-on-write, ACID, table-based store with SQL is:
+   - **A.** Key-value store
+   - **B.** Relational (RDBMS)
+   - **C.** Object store
+   - **D.** Graph store
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** Tables, rows, columns, and SQL define a relational database.
-> **Why A is wrong:** Non-relational uses documents, key-value, or graph, not fixed tables.
-> **Why C is wrong:** Self-managed is a deployment model, not a data type.
-> **Why D is wrong:** Provider-managed is a deployment model, not a data type.
+<details>
+<summary>Reveal Answer</summary>
 
-**Question 2.** Player profiles are stored as JSON documents with different fields per profile. Best type?
-A. Relational
-B. Graph
-C. Non-relational
-D. Provider-managed
+**Correct: B**
 
-> [!note]- Reveal Answer
-> **Correct: C**
-> **Why correct:** Flexible JSON documents with varying fields are non-relational, document model.
-> **Why A is wrong:** Relational needs a fixed schema; varying fields break it.
-> **Why B is wrong:** Graph models relationships, not arbitrary per-record fields.
-> **Why D is wrong:** Provider-managed is deployment, not data type.
+**Why correct:** Relational DBs enforce a schema and ACID transactions via SQL.
 
-**Question 3.** Your team installs the engine on a VM, patches, and backs up manually. This is:
-A. Provider-managed
-B. Relational
-C. Non-relational
-D. Self-managed
+**Why A is wrong:** Key-value is schemaless.
+**Why C is wrong:** Object store is S3.
+**Why D is wrong:** Graph models relationships, not classic tables.
 
-> [!note]- Reveal Answer
-> **Correct: D**
-> **Why correct:** The customer installs, patches, and backs up the DB, which is self-managed.
-> **Why A is wrong:** Provider-managed means the CSP does patching and backups.
-> **Why B is wrong:** Relational is a data type, not a deployment model.
-> **Why C is wrong:** Non-relational is a data type, not a deployment model.
+</details>
 
-**Question 4.** A startup wants the provider to handle patching, backups, and failover. Which model?
-A. Self-managed
-B. Provider-managed
-C. Relational
-D. Non-relational
+2. A flexible-schema, single-digit-millisecond, serverless NoSQL table keyed by partition+sort is:
+   - **A.** RDS MySQL
+   - **B.** DynamoDB
+   - **C.** Aurora
+   - **D.** Redshift
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** Automatic patching, backups, and failover by the provider is provider-managed.
-> **Why A is wrong:** Self-managed puts patching and backups on the customer.
-> **Why C is wrong:** Relational is a data type, not deployment.
-> **Why D is wrong:** Non-relational is a data type, not deployment.
+<details>
+<summary>Reveal Answer</summary>
 
-**Question 5.** Strong consistency and ACID financial transactions best suit which type?
-A. Non-relational
-B. Relational
-C. Key-value
-D. Wide-column
+**Correct: B**
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** Relational databases provide ACID transactions for financial integrity.
-> **Why A is wrong:** Non-relational often favors eventual consistency, not ACID finance.
-> **Why C is wrong:** Key-value is a non-relational model, not ACID financial.
-> **Why D is wrong:** Wide-column is non-relational, not strong ACID.
+**Why correct:** DynamoDB is a managed NoSQL key-value/document store with single-digit-ms latency.
 
-**Question 6.** A social network stores highly connected friend relationships. Ideal model?
-A. Key-value
-B. Document
-C. Graph
-D. Relational
+**Why A is wrong:** RDS MySQL is relational.
+**Why C is wrong:** Aurora is relational.
+**Why D is wrong:** Redshift is warehouse.
 
-> [!note]- Reveal Answer
-> **Correct: C**
-> **Why correct:** Graph databases excel at highly connected relationship data like friend networks.
-> **Why A is wrong:** Key-value stores are simple lookups, not relationship traversal.
-> **Why B is wrong:** Document stores are for flexible records, not graph edges.
-> **Why D is wrong:** Relational can model relations but is weak at deep graph traversal.
+</details>
 
-**Question 7.** Huge traffic spikes handled by adding servers, not upgrading one, favours:
-A. Vertical scaling of relational
-B. Horizontal scaling of non-relational
-C. Self-managed only
-D. Provider-managed only
+3. A managed MySQL/PostgreSQL-compatible relational engine with up to 15 read replicas and Multi-AZ is:
+   - **A.** DynamoDB
+   - **B.** Aurora
+   - **C.** Neptune
+   - **D.** DocumentDB
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** Non-relational systems scale out horizontally across servers to handle spikes.
-> **Why A is wrong:** Vertical scaling of relational upgrades one server, with a ceiling.
-> **Why C is wrong:** Self-managed is deployment, not a scaling approach.
-> **Why D is wrong:** Provider-managed is deployment, not inherently horizontal scaling.
+<details>
+<summary>Reveal Answer</summary>
 
-**Question 8.** Max OS/engine control but highest operational effort describes:
-A. Relational + provider-managed
-B. Non-relational + provider-managed
-C. Self-managed (any type)
-D. Provider-managed (any type)
+**Correct: B**
 
-> [!note]- Reveal Answer
-> **Correct: C**
-> **Why correct:** Self-managed puts install, patch, and backup duties on the customer, the highest effort.
-> **Why A is wrong:** Relational plus provider-managed is low-effort.
-> **Why B is wrong:** Non-relational plus provider-managed is low-effort.
-> **Why D is wrong:** Provider-managed reduces effort, not maximizes it.
+**Why correct:** Aurora is a high-performance managed relational engine (MySQL/PostgreSQL compatible).
 
-**Question 9.** Amazon RDS running MySQL maps to which two sub-objectives?
-A. Relational + provider-managed
-B. Non-relational + self-managed
-C. Relational + self-managed
-D. Non-relational + provider-managed
+**Why A is wrong:** DynamoDB is NoSQL.
+**Why C is wrong:** Neptune is graph.
+**Why D is wrong:** DocumentDB is MongoDB-compatible.
 
-> [!note]- Reveal Answer
-> **Correct: A**
-> **Why correct:** RDS MySQL is a relational engine delivered as a provider-managed service.
-> **Why B is wrong:** Non-relational plus self-managed would be MongoDB on EC2.
-> **Why C is wrong:** RDS manages the engine, so not self-managed.
-> **Why D is wrong:** MySQL is relational, not non-relational.
+</details>
 
-**Question 10.** MongoDB installed and run on EC2 is an example of:
-A. Relational + provider-managed
-B. Non-relational + self-managed
-C. Relational + self-managed
-D. Non-relational + provider-managed
+4. A graph database for highly connected data (social, fraud) is:
+   - **A.** DynamoDB
+   - **B.** Neptune
+   - **C.** RDS
+   - **D.** Redshift
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** MongoDB is non-relational and operating it on EC2 is self-managed.
-> **Why A is wrong:** It is non-relational, not relational.
-> **Why C is wrong:** MongoDB is non-relational, not relational.
-> **Why D is wrong:** Running it yourself on EC2 is self-managed, not provider-managed.
+<details>
+<summary>Reveal Answer</summary>
 
-**Question 11.** A fixed, predefined schema designed before storing data is characteristic of:
-A. Non-relational databases
-B. Relational databases
-C. Self-managed deployment
-D. Provider-managed deployment
+**Correct: B**
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** Relational databases require a fixed, predefined schema designed before storing data.
-> **Why A is wrong:** Non-relational is flexible or schema-less.
-> **Why C is wrong:** Self-managed is deployment, unrelated to schema shape.
-> **Why D is wrong:** Provider-managed is deployment, unrelated to schema shape.
+**Why correct:** Neptune stores nodes/edges for relationship-heavy queries.
 
-**Question 12.** Which AWS service is a managed, serverless key-value and document NoSQL DB?
-A. Amazon RDS
-B. Amazon Neptune
-C. Amazon DynamoDB
-D. Amazon Aurora
+**Why A is wrong:** DynamoDB is key-value/doc.
+**Why C is wrong:** RDS is relational tables.
+**Why D is wrong:** Redshift is warehouse.
 
-> [!note]- Reveal Answer
-> **Correct: C**
-> **Why correct:** DynamoDB is AWS managed serverless key-value and document NoSQL.
-> **Why A is wrong:** RDS is relational, not key-value NoSQL.
-> **Why B is wrong:** Neptune is graph, not key-value document.
-> **Why D is wrong:** Aurora is relational, not NoSQL.
+</details>
 
-**Question 13.** A company chooses a managed service mainly to reduce:
-A. Data consistency
-B. Administrative/operational overhead
-C. The need for a schema
-D. Network bandwidth
+5. A MongoDB-compatible managed document database is:
+   - **A.** DocumentDB
+   - **B.** DynamoDB
+   - **C.** Aurora
+   - **D.** ElastiCache
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** A managed service primarily reduces administrative and operational overhead.
-> **Why A is wrong:** Managed services still preserve consistency via ACID options.
-> **Why C is wrong:** A schema may still be required for relational managed services.
-> **Why D is wrong:** Network bandwidth is unrelated to the management trade-off.
+<details>
+<summary>Reveal Answer</summary>
 
-**Question 14.** True statement about self-managed databases:
-A. The provider applies all patches.
-B. Backups are automatic by the CSP.
-C. The customer handles installation and maintenance.
-D. They cannot run relational engines.
+**Correct: A**
 
-> [!note]- Reveal Answer
-> **Correct: C**
-> **Why correct:** In self-managed models the customer handles installation and maintenance.
-> **Why A is wrong:** The provider applies patches only in provider-managed models.
-> **Why B is wrong:** Backups are automatic only in provider-managed models.
-> **Why D is wrong:** Self-managed can absolutely run relational engines.
+**Why correct:** DocumentDB is a managed MongoDB-compatible document store.
 
-**Question 15.** Amazon Aurora is best described as:
-A. A non-relational graph database
-B. A MySQL/PostgreSQL-compatible relational engine on RDS
-C. A self-managed EC2 database
-D. A key-value store
+**Why B is wrong:** DynamoDB is its own API.
+**Why C is wrong:** Aurora is relational.
+**Why D is wrong:** ElastiCache is in-memory cache.
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** Aurora is a MySQL and PostgreSQL compatible relational engine on RDS.
-> **Why A is wrong:** Aurora is relational, not a graph database.
-> **Why C is wrong:** Aurora is a managed RDS service, not self-managed EC2.
-> **Why D is wrong:** Aurora is relational, not key-value.
+</details>
 
-**Question 16.** A flexible catalog where items have varying attributes is BEST served by:
-A. Relational with fixed schema
-B. Non-relational document store
-C. Self-managed relational
-D. Provider-managed relational
+6. A columnar, petabyte-scale data warehouse for analytics (OLAP) is:
+   - **A.** RDS
+   - **B.** Redshift
+   - **C.** DynamoDB
+   - **D.** Neptune
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** Varying item attributes suit a flexible-schema non-relational document store.
-> **Why A is wrong:** Fixed-schema relational fights varying attributes.
-> **Why C is wrong:** Self-managed relational is about ops, not schema flexibility.
-> **Why D is wrong:** Provider-managed relational is still fixed-schema.
+<details>
+<summary>Reveal Answer</summary>
 
-**Question 17.** Amazon Neptune serves which data model?
-A. Relational tables
-B. Key-value
-C. Graph
-D. Document
+**Correct: B**
 
-> [!note]- Reveal Answer
-> **Correct: C**
-> **Why correct:** Neptune is AWS managed graph database service for connected data.
-> **Why A is wrong:** Relational tables are RDS, not Neptune.
-> **Why B is wrong:** Key-value is DynamoDB, not Neptune.
-> **Why D is wrong:** Document is DocumentDB, not Neptune.
+**Why correct:** Redshift is a column-oriented warehouse built for large analytical queries.
 
-**Question 18.** The usual trade-off of provider-managed vs. self-managed is:
-A. Less control over the OS/engine
-B. No backups
-C. Inability to use SQL
-D. Higher data-loss risk
+**Why A is wrong:** RDS is OLTP.
+**Why C is wrong:** DynamoDB is OLTP NoSQL.
+**Why D is wrong:** Neptune is graph.
 
-> [!note]- Reveal Answer
-> **Correct: A**
-> **Why correct:** Managed services abstract the OS and engine, reducing low-level control.
-> **Why B is wrong:** Managed services provide automated backups.
-> **Why C is wrong:** SQL remains usable on managed relational services.
-> **Why D is wrong:** Managed services lower data-loss risk via backups, not raise it.
+</details>
 
-**Question 19.** Which deployment keeps the DB in your own network with full OS access for compliance?
-A. Provider-managed
-B. Self-managed on EC2
-C. Serverless NoSQL only
-D. Relational only
+7. In-memory cache (Redis/Memcached) is used to:
+   - **A.** Replace the primary database permanently
+   - **B.** Reduce latency and offload read load from the DB
+   - **C.** Store cold archives
+   - **D.** Encrypt data
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** Self-managed on EC2 gives network isolation and full OS control for compliance.
-> **Why A is wrong:** Provider-managed reduces OS control, not increases it.
-> **Why C is wrong:** Self-managed is not limited to serverless NoSQL.
-> **Why D is wrong:** It is not limited to relational only.
+<details>
+<summary>Reveal Answer</summary>
 
-**Question 20.** A "managed NoSQL service" is classified as:
-A. Relational + self-managed
-B. Non-relational + provider-managed
-C. Relational + provider-managed
-D. Non-relational + self-managed
+**Correct: B**
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** A managed NoSQL service is non-relational and provider-managed.
-> **Why A is wrong:** NoSQL is non-relational, not relational.
-> **Why C is wrong:** NoSQL is non-relational, not relational.
-> **Why D is wrong:** Managed means provider-operated, not self-managed.
+**Why correct:** Caches sit in front of the DB to serve hot reads fast and reduce backend load.
+
+**Why A is wrong:** Cache is not the system of record.
+**Why C is wrong:** Archives go to Glacier.
+**Why D is wrong:** Caches may encrypt but that is not the purpose.
+
+</details>
+
+8. ACID stands for Atomicity, Consistency, Isolation, Durability — these guarantee:
+   - **A.** Maximum scale only
+   - **B.** Reliable, all-or-nothing transactions
+   - **C.** No schema
+   - **D.** Eventual consistency
+
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** ACID ensures transactions complete fully or roll back, with consistent isolated durable state.
+
+**Why A is wrong:** Scale is a separate concern.
+**Why C is wrong:** Relational DBs are schemaful.
+**Why D is wrong:** ACID is strong consistency, not eventual.
+
+</details>
+
+9. Eventual consistency (vs strong) means:
+   - **A.** Writes never succeed
+   - **B.** Reads may briefly return stale data until replicas converge
+   - **C.** No durability
+   - **D.** Schema is required
+
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** Eventual-consistent stores may serve stale reads for a short window before all replicas sync.
+
+**Why A is wrong:** Writes do succeed.
+**Why C is wrong:** Durability is separate.
+**Why D is wrong:** Often schemaless.
+
+</details>
+
+10. A NoSQL document store is a good fit when:
+   - **A.** You need complex multi-row ACID joins
+   - **B.** Data shape varies and you need horizontal scale + flexible schema
+   - **C.** You need strict SQL reports
+   - **D.** You need a warehouse
+
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** Document stores scale out and accept varying structures without migrations.
+
+**Why A is wrong:** Joins are weak in NoSQL.
+**Why C is wrong:** SQL reporting favors relational.
+**Why D is wrong:** Warehouse is Redshift.
+
+</details>
+
+11. Sharding a database is done to:
+   - **A.** Combine all data on one node
+   - **B.** Partition data across nodes to scale writes/store horizontally
+   - **C.** Delete data
+   - **D.** Encrypt it
+
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** Sharding splits data by key across nodes, spreading load beyond one machine's limit.
+
+**Why A is wrong:** Opposite of sharding.
+**Why C is wrong:** Not deletion.
+**Why D is wrong:** Not encryption.
+
+</details>
+
+12. A read replica primarily provides:
+   - **A.** Write scaling
+   - **B.** Read scaling and a standby for failover
+   - **C.** Schema changes
+   - **D.** Encryption keys
+
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** Replicas serve read traffic and can be promoted on failure.
+
+**Why A is wrong:** Replicas do not scale writes.
+**Why C is wrong:** Schema changes go to primary.
+**Why D is wrong:** KMS manages keys.
+
+</details>
+
+13. OLTP vs OLAP: OLTP is for:
+   - **A.** Long analytical scans
+   - **B.** Short transactional app queries (insert/update/select)
+   - **C.** Data warehousing
+   - **D.** Batch reporting
+
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** OLTP handles day-to-day transactional workloads; OLAP handles analytics.
+
+**Why A is wrong:** That is OLAP.
+**Why C is wrong:** Warehouse is OLAP.
+**Why D is wrong:** Reporting is OLAP.
+
+</details>
+
+14. You need to migrate an on-prem MySQL to AWS with minimal change to app SQL. Best:
+   - **A.** DynamoDB
+   - **B.** RDS for MySQL / Aurora MySQL
+   - **C.** Redshift
+   - **D.** Neptune
+
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** RDS/Aurora MySQL are drop-in managed MySQL, so app SQL barely changes.
+
+**Why A is wrong:** DynamoDB needs a data model rewrite.
+**Why C is wrong:** Redshift is warehouse, not OLTP.
+**Why D is wrong:** Neptune is graph.
+
+</details>
+
+15. A managed relational DB where AWS handles patching, backups, and Multi-AZ failover is:
+   - **A.** MySQL on a self-patched EC2
+   - **B.** RDS
+   - **C.** DynamoDB
+   - **D.** S3
+
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** RDS offloads maintenance, backups, and failover — the managed relational service.
+
+**Why A is wrong:** Self-patched EC2 is not managed.
+**Why C is wrong:** DynamoDB is NoSQL.
+**Why D is wrong:** S3 is object storage.
+
+</details>
+
+16. Time-series or wide-column stores (e.g., Cassandra-style) suit:
+   - **A.** Bank transactions
+   - **B.** High-volume timestamped/IoT writes with simple key access
+   - **C.** Ad-hoc SQL joins
+   - **D.** Graph traversal
+
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** Wide-column/time-series stores ingest massive timestamped streams efficiently.
+
+**Why A is wrong:** Transactions favor relational.
+**Why C is wrong:** Ad-hoc joins favor SQL.
+**Why D is wrong:** Graph favors Neptune.
+
+</details>
+
+17. Choosing SQL vs NoSQL should be based on:
+   - **A.** Which is newer
+   - **B.** Query patterns, consistency needs, and scale model
+   - **C.** Random choice
+   - **D.** Only cost
+
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** Fit the model to access patterns, consistency requirements, and scaling needs.
+
+**Why A is wrong:** Novelty is not a criterion.
+**Why C is wrong:** Not random.
+**Why D is wrong:** Cost is one factor, not the only one.
+
+</details>
+
+18. A database connection pool is used to:
+   - **A.** Avoid the overhead of opening a new connection per query
+   - **B.** Encrypt the disk
+   - **C.** Replace indexes
+   - **D.** Shard automatically
+
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: A**
+
+**Why correct:** Pools reuse connections, cutting latency and resource churn from frequent connect/disconnect.
+
+**Why B is wrong:** Encryption is separate.
+**Why C is wrong:** Indexes are still needed.
+**Why D is wrong:** Sharding is manual/architectural.
+
+</details>
+
+19. The PRIMARY key in a relational table:
+   - **A.** Can be duplicated
+   - **B.** Uniquely identifies each row and cannot be null
+   - **C.** Is optional
+   - **D.** Stores the schema
+
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** A primary key uniquely and non-nullly identifies a row.
+
+**Why A is wrong:** Must be unique.
+**Why C is wrong:** It is required for identity.
+**Why D is wrong:** It is data, not schema metadata.
+
+</details>
+
+20. Aurora Global Database is primarily used for:
+   - **A.** Single-AZ testing
+   - **B.** Cross-Region disaster recovery and low-latency global reads
+   - **C.** Graph queries
+   - **D.** Data warehousing
+
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** Aurora Global Database replicates to other regions for fast DR failover and local reads.
+
+**Why A is wrong:** It is a multi-region feature, not single-AZ.
+**Why C is wrong:** Graph is Neptune.
+**Why D is wrong:** Warehouse is Redshift.
+
+</details>

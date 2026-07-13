@@ -138,281 +138,381 @@ Quick memory aid: **M**acie = **D**ata, **G**uardDuty = **E**ndpoint + **I**DS, 
 ## SECTION 6 — PRACTICE QUESTIONS
 
 1. A cloud VM shows signs of a rootkit and unusual outbound connections. Which control is primarily responsible for detecting and responding on that host?
-   A. Network ACL
-   B. Endpoint protection
-   C. WAF
-   D. DLP
-   **Answer: B — Endpoint protection (EDR/anti-malware) runs on the host.**
+   - **A.** Network ACL
+   - **B.** Endpoint protection
+   - **C.** WAF
+   - **D.** DLP
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** Endpoint protection (EDR/anti-malware) runs on the host to detect and respond to threats like a rootkit.
-> **Why A is wrong:** A Network ACL filters subnet traffic; it does not inspect host processes or a rootkit.
-> **Why C is wrong:** A WAF protects the web app at L7; it does not run on the VM host.
-> **Why D is wrong:** DLP blocks sensitive-data egress; it does not detect host malware.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** Endpoint protection (EDR/anti-malware) runs on the host to detect and respond to threats like a rootkit.
+
+**Why A is wrong:** A Network ACL filters subnet traffic; it does not inspect host processes or a rootkit.
+**Why C is wrong:** A WAF protects the web app at L7; it does not run on the VM host.
+**Why D is wrong:** DLP blocks sensitive-data egress; it does not detect host malware.
+
+</details>
 
 2. Your company wants to block customer NRIC numbers from being uploaded to a public link. Which control should you deploy?
-   A. IPS
-   B. DLP
-   C. Network Security Group
-   D. WAF
-   **Answer: B — DLP classifies and blocks sensitive data egress.**
+   - **A.** IPS
+   - **B.** DLP
+   - **C.** Network Security Group
+   - **D.** WAF
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** DLP classifies and blocks sensitive data (e.g., NRIC/PII) from leaving via uploads/public links.
-> **Why A is wrong:** IPS blocks network attacks; it does not classify and block sensitive content egress.
-> **Why C is wrong:** A Network Security Group filters host traffic; it does not inspect file content.
-> **Why D is wrong:** A WAF filters web requests; it does not classify document content like an NRIC.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** DLP classifies and blocks sensitive data (e.g., NRIC/PII) from leaving via uploads/public links.
+
+**Why A is wrong:** IPS blocks network attacks; it does not classify and block sensitive content egress.
+**Why C is wrong:** A Network Security Group filters host traffic; it does not inspect file content.
+**Why D is wrong:** A WAF filters web requests; it does not classify document content like an NRIC.
+
+</details>
 
 3. A sensor only logs and alerts when it sees a port scan but does not block it. What is this?
-   A. IPS
-   B. Firewall
-   C. IDS
-   D. WAF
-   **Answer: C — IDS detects and alerts only; IPS would block.**
+   - **A.** IPS
+   - **B.** Firewall
+   - **C.** IDS
+   - **D.** WAF
 
-> [!note]- Reveal Answer
-> **Correct: C**
-> **Why correct:** An IDS detects and alerts only; it sits out-of-band and does not block traffic.
-> **Why A is wrong:** An IPS would block/drop the malicious traffic, not merely alert.
-> **Why B is wrong:** A firewall filters by rules; the describe behavior is specifically detect-and-alert (IDS).
-> **Why D is wrong:** A WAF is L7 app protection; the scenario is generic detection without blocking = IDS.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: C**
+
+**Why correct:** An IDS detects and alerts only; it sits out-of-band and does not block traffic.
+
+**Why A is wrong:** An IPS would block/drop the malicious traffic, not merely alert.
+**Why B is wrong:** A firewall filters by rules; the describe behavior is specifically detect-and-alert (IDS).
+**Why D is wrong:** A WAF is L7 app protection; the scenario is generic detection without blocking = IDS.
+
+</details>
 
 4. An attacker floods your web app with 60 Gbps of UDP traffic from many sources. Which control mitigates this?
-   A. DLP
-   B. DDoS protection
-   C. Endpoint protection
-   D. IAM policy
-   **Answer: B — DDoS protection scrubs volumetric floods.**
+   - **A.** DLP
+   - **B.** DDoS protection
+   - **C.** Endpoint protection
+   - **D.** IAM policy
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** DDoS protection (e.g., AWS Shield) scrubs volumetric/UDP floods from many sources at the edge.
-> **Why A is wrong:** DLP blocks data egress; it does nothing against a traffic flood.
-> **Why C is wrong:** Endpoint protection secures hosts; it cannot absorb a distributed flood.
-> **Why D is wrong:** An IAM policy controls access, not network flooding.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** DDoS protection (e.g., AWS Shield) scrubs volumetric/UDP floods from many sources at the edge.
+
+**Why A is wrong:** DLP blocks data egress; it does nothing against a traffic flood.
+**Why C is wrong:** Endpoint protection secures hosts; it cannot absorb a distributed flood.
+**Why D is wrong:** An IAM policy controls access, not network flooding.
+
+</details>
 
 5. Which IAM principle means giving a user only the permissions they need?
-   A. Separation of duties
-   B. Least privilege
-   C. Federation
-   D. ABAC
-   **Answer: B — Least privilege minimizes access scope.**
+   - **A.** Separation of duties
+   - **B.** Least privilege
+   - **C.** Federation
+   - **D.** ABAC
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** Least privilege grants only the permissions necessary to do the job, and no more.
-> **Why A is wrong:** Separation of duties splits conflicting tasks among people; not the same as minimal scope.
-> **Why C is wrong:** Federation is SSO via an external IdP, not a scoping principle.
-> **Why D is wrong:** ABAC is attribute-based access; least privilege is the minimal-scope principle.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** Least privilege grants only the permissions necessary to do the job, and no more.
+
+**Why A is wrong:** Separation of duties splits conflicting tasks among people; not the same as minimal scope.
+**Why C is wrong:** Federation is SSO via an external IdP, not a scoping principle.
+**Why D is wrong:** ABAC is attribute-based access; least privilege is the minimal-scope principle.
+
+</details>
 
 6. A subnet-level filter that is stateless and uses numbered rules is a:
-   A. Security Group
-   B. WAF
-   C. Network ACL
-   D. NSG
-   **Answer: C — NACL is stateless and subnet-scoped with numbered rules.**
+   - **A.** Security Group
+   - **B.** WAF
+   - **C.** Network ACL
+   - **D.** NSG
 
-> [!note]- Reveal Answer
-> **Correct: C**
-> **Why correct:** A Network ACL is stateless, subnet-scoped, and uses numbered rules (first match wins).
-> **Why A is wrong:** A Security Group is stateful and instance-level, not stateless/subnet numbered.
-> **Why B is wrong:** A WAF is L7 app filtering, not a subnet-level stateless filter.
-> **Why D is wrong:** An NSG (stateful) is the Azure equivalent; the stateless numbered filter described is a NACL.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: C**
+
+**Why correct:** A Network ACL is stateless, subnet-scoped, and uses numbered rules (first match wins).
+
+**Why A is wrong:** A Security Group is stateful and instance-level, not stateless/subnet numbered.
+**Why B is wrong:** A WAF is L7 app filtering, not a subnet-level stateless filter.
+**Why D is wrong:** An NSG (stateful) is the Azure equivalent; the stateless numbered filter described is a NACL.
+
+</details>
 
 7. Which firewall inspects HTTP requests to block SQL injection?
-   A. Network ACL
-   B. WAF
-   C. Security Group
-   D. NACL
-   **Answer: B — WAF operates at Layer 7 and blocks SQLi/XSS.**
+   - **A.** Network ACL
+   - **B.** WAF
+   - **C.** Security Group
+   - **D.** NACL
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** A WAF operates at Layer 7 and blocks web attacks like SQL injection and XSS.
-> **Why A is wrong:** A Network ACL filters L3/L4 ports/IP, not HTTP content.
-> **Why C is wrong:** A Security Group is L3/L4 stateful; it does not inspect HTTP payloads.
-> **Why D is wrong:** A NACL is L3/L4 stateless; it cannot see SQLi in the request body.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** A WAF operates at Layer 7 and blocks web attacks like SQL injection and XSS.
+
+**Why A is wrong:** A Network ACL filters L3/L4 ports/IP, not HTTP content.
+**Why C is wrong:** A Security Group is L3/L4 stateful; it does not inspect HTTP payloads.
+**Why D is wrong:** A NACL is L3/L4 stateless; it cannot see SQLi in the request body.
+
+</details>
 
 8. An AWS Security Group is best described as:
-   A. Stateless subnet filter
-   B. Stateful instance-level filter
-   C. Layer 7 app filter
-   D. Data classifier
-   **Answer: B — Security Groups are stateful and attach to instances/NICs.**
+   - **A.** Stateless subnet filter
+   - **B.** Stateful instance-level filter
+   - **C.** Layer 7 app filter
+   - **D.** Data classifier
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** A Security Group is stateful and attaches to instances/NICs (the AWS NSG equivalent).
-> **Why A is wrong:** Stateless subnet filtering is a NACL, not a Security Group.
-> **Why C is wrong:** L7 app filtering is a WAF, not a Security Group.
-> **Why D is wrong:** A Security Group filters traffic, not classifies data.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** A Security Group is stateful and attaches to instances/NICs (the AWS NSG equivalent).
+
+**Why A is wrong:** Stateless subnet filtering is a NACL, not a Security Group.
+**Why C is wrong:** L7 app filtering is a WAF, not a Security Group.
+**Why D is wrong:** A Security Group filters traffic, not classifies data.
+
+</details>
 
 9. You must prove a developer can read but never delete a bucket. What do you use?
-   A. DLP policy
-   B. IAM policy with Allow GetObject and Deny DeleteObject
-   C. NACL
-   D. WAF rule
-   **Answer: B — IAM policy defines precise allow/deny actions.**
+   - **A.** DLP policy
+   - **B.** IAM policy with Allow GetObject and Deny DeleteObject
+   - **C.** NACL
+   - **D.** WAF rule
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** An IAM policy defines precise allow/deny actions (Allow s3:GetObject, Deny s3:DeleteObject).
-> **Why A is wrong:** DLP classifies/blocks data egress, not per-action bucket permissions.
-> **Why C is wrong:** A NACL filters subnet traffic, not S3 API actions.
-> **Why D is wrong:** A WAF rule filters web requests, not S3 API permissions.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** An IAM policy defines precise allow/deny actions (Allow s3:GetObject, Deny s3:DeleteObject).
+
+**Why A is wrong:** DLP classifies/blocks data egress, not per-action bucket permissions.
+**Why C is wrong:** A NACL filters subnet traffic, not S3 API actions.
+**Why D is wrong:** A WAF rule filters web requests, not S3 API permissions.
+
+</details>
 
 10. In AWS, which service discovers and classifies sensitive data in S3?
-    A. GuardDuty
-    B. Macie
-    C. Shield
-    D. Inspector
-    **Answer: B — Macie is the AWS DLP/classification service.**
+   - **A.** GuardDuty
+   - **B.** Macie
+   - **C.** Shield
+   - **D.** Inspector
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** Amazon Macie uses ML/pattern matching to discover and classify sensitive data (PII, credentials) in S3.
-> **Why A is wrong:** GuardDuty does threat detection, not data classification in S3.
-> **Why C is wrong:** Shield provides DDoS protection, not data discovery.
-> **Why D is wrong:** Inspector finds vulnerabilities/CVEs, not sensitive-data classification.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** Amazon Macie uses ML/pattern matching to discover and classify sensitive data (PII, credentials) in S3.
+
+**Why A is wrong:** GuardDuty does threat detection, not data classification in S3.
+**Why C is wrong:** Shield provides DDoS protection, not data discovery.
+**Why D is wrong:** Inspector finds vulnerabilities/CVEs, not sensitive-data classification.
+
+</details>
 
 11. Which service provides in-line IPS/IDS filtering at the VPC edge in AWS?
-    A. Security Group
-    B. AWS Network Firewall
-    C. Macie
-    D. CloudFront
-    **Answer: B — Network Firewall runs IDS/IPS rule groups in-line.**
+   - **A.** Security Group
+   - **B.** AWS Network Firewall
+   - **C.** Macie
+   - **D.** CloudFront
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** AWS Network Firewall runs IDS/IPS rule groups in-line at the VPC edge to detect and block.
-> **Why A is wrong:** A Security Group is stateful L3/L4 filtering, not an in-line IPS/IDS engine.
-> **Why C is wrong:** Macie is DLP/classification, not IPS/IDS.
-> **Why D is wrong:** CloudFront is a CDN; it does not run IPS/IDS rule groups.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** AWS Network Firewall runs IDS/IPS rule groups in-line at the VPC edge to detect and block.
+
+**Why A is wrong:** A Security Group is stateful L3/L4 filtering, not an in-line IPS/IDS engine.
+**Why C is wrong:** Macie is DLP/classification, not IPS/IDS.
+**Why D is wrong:** CloudFront is a CDN; it does not run IPS/IDS rule groups.
+
+</details>
 
 12. GuardDuty in AWS is primarily used for:
-    A. Data classification (DLP)
-    B. Threat detection (endpoint/IDS-style)
-    C. DDoS mitigation
-    D. IAM policy enforcement
-    **Answer: B — GuardDuty is threat detection; Macie is DLP, Shield is DDoS.**
+   - **A.** Data classification (DLP)
+   - **B.** Threat detection (endpoint/IDS-style)
+   - **C.** DDoS mitigation
+   - **D.** IAM policy enforcement
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** GuardDuty is managed threat detection (IDS-style) analyzing CloudTrail/Flow Logs/DNS.
-> **Why A is wrong:** Macie is the DLP/classification service, not GuardDuty.
-> **Why C is wrong:** Shield handles DDoS mitigation, not GuardDuty.
-> **Why D is wrong:** IAM enforces policies; GuardDuty detects threats, it does not enforce IAM.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** GuardDuty is managed threat detection (IDS-style) analyzing CloudTrail/Flow Logs/DNS.
+
+**Why A is wrong:** Macie is the DLP/classification service, not GuardDuty.
+**Why C is wrong:** Shield handles DDoS mitigation, not GuardDuty.
+**Why D is wrong:** IAM enforces policies; GuardDuty detects threats, it does not enforce IAM.
+
+</details>
 
 13. The OWASP Top 10 protections are most associated with which control?
-    A. NACL
-    B. NSG
-    C. WAF
-    D. Endpoint protection
-    **Answer: C — WAF defends against OWASP Top 10 web attacks.**
+   - **A.** NACL
+   - **B.** NSG
+   - **C.** WAF
+   - **D.** Endpoint protection
 
-> [!note]- Reveal Answer
-> **Correct: C**
-> **Why correct:** A WAF defends against OWASP Top 10 web attacks (SQLi, XSS, etc.) at L7.
-> **Why A is wrong:** A NACL is L3/L4 subnet filtering, blind to web attacks.
-> **Why B is wrong:** An NSG is L3/L4 host filtering, not web-app protection.
-> **Why D is wrong:** Endpoint protection secures hosts, not the web app's HTTP layer.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: C**
+
+**Why correct:** A WAF defends against OWASP Top 10 web attacks (SQLi, XSS, etc.) at L7.
+
+**Why A is wrong:** A NACL is L3/L4 subnet filtering, blind to web attacks.
+**Why B is wrong:** An NSG is L3/L4 host filtering, not web-app protection.
+**Why D is wrong:** Endpoint protection secures hosts, not the web app's HTTP layer.
+
+</details>
 
 14. An application-layer DDoS (HTTP flood) is best mitigated by:
-    A. NACL rate limiting alone
-    B. WAF / bot management + DDoS protection
-    C. Disk encryption
-    D. IAM federation
-    **Answer: B — App-layer floods need WAF/bot controls plus DDoS protection.**
+   - **A.** NACL rate limiting alone
+   - **B.** WAF / bot management + DDoS protection
+   - **C.** Disk encryption
+   - **D.** IAM federation
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** App-layer (L7) floods need WAF/bot management plus DDoS protection (e.g., Shield + WAF).
-> **Why A is wrong:** A NACL rate-limits L3/L4, not the HTTP application layer.
-> **Why C is wrong:** Disk encryption protects data at rest, irrelevant to a flood.
-> **Why D is wrong:** IAM federation controls identity, not traffic floods.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** App-layer (L7) floods need WAF/bot management plus DDoS protection (e.g., Shield + WAF).
+
+**Why A is wrong:** A NACL rate-limits L3/L4, not the HTTP application layer.
+**Why C is wrong:** Disk encryption protects data at rest, irrelevant to a flood.
+**Why D is wrong:** IAM federation controls identity, not traffic floods.
+
+</details>
 
 15. Explicit Deny in an IAM policy:
-    A. Is overridden by Allow
-    B. Always wins over Allow
-    C. Only applies to groups
-    D. Requires MFA
-    **Answer: B — Explicit Deny takes precedence over any Allow.**
+   - **A.** Is overridden by Allow
+   - **B.** Always wins over Allow
+   - **C.** Only applies to groups
+   - **D.** Requires MFA
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** In IAM policy evaluation, an Explicit Deny always wins over any Allow.
-> **Why A is wrong:** Allow does not override an explicit Deny — the opposite is true.
-> **Why C is wrong:** Explicit Deny applies to any principal (users, roles, groups), not only groups.
-> **Why D is wrong:** A Deny does not require MFA; it is an evaluation outcome.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** In IAM policy evaluation, an Explicit Deny always wins over any Allow.
+
+**Why A is wrong:** Allow does not override an explicit Deny — the opposite is true.
+**Why C is wrong:** Explicit Deny applies to any principal (users, roles, groups), not only groups.
+**Why D is wrong:** A Deny does not require MFA; it is an evaluation outcome.
+
+</details>
 
 16. Full-disk encryption on a cloud instance protects data:
-    A. In transit
-    B. At rest
-    C. In use by an app
-    D. Shared externally
-    **Answer: B — Disk encryption protects data at rest if the volume is stolen.**
+   - **A.** In transit
+   - **B.** At rest
+   - **C.** In use by an app
+   - **D.** Shared externally
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** Full-disk/volume encryption protects data at rest if the volume or snapshot is stolen.
-> **Why A is wrong:** In-transit protection is TLS/VPN, not disk encryption.
-> **Why C is wrong:** Data "in use" is decrypted in memory; disk encryption does not cover that.
-> **Why D is wrong:** Sharing externally is an access-control concern, not at-rest encryption.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** Full-disk/volume encryption protects data at rest if the volume or snapshot is stolen.
+
+**Why A is wrong:** In-transit protection is TLS/VPN, not disk encryption.
+**Why C is wrong:** Data "in use" is decrypted in memory; disk encryption does not cover that.
+**Why D is wrong:** Sharing externally is an access-control concern, not at-rest encryption.
+
+</details>
 
 17. A host-based firewall is a component of:
-    A. DLP
-    B. Endpoint protection
-    C. WAF
-    D. NACL
-    **Answer: B — Host firewall is part of endpoint protection.**
+   - **A.** DLP
+   - **B.** Endpoint protection
+   - **C.** WAF
+   - **D.** NACL
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** A host-based firewall is a component of endpoint protection (along with EDR, patching, disk encryption).
-> **Why A is wrong:** DLP is about data egress classification, not host firewalls.
-> **Why C is wrong:** A WAF is network/app-layer, not a host-resident firewall.
-> **Why D is wrong:** A NACL is a subnet-level network filter, not a host firewall.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** A host-based firewall is a component of endpoint protection (along with EDR, patching, disk encryption).
+
+**Why A is wrong:** DLP is about data egress classification, not host firewalls.
+**Why C is wrong:** A WAF is network/app-layer, not a host-resident firewall.
+**Why D is wrong:** A NACL is a subnet-level network filter, not a host firewall.
+
+</details>
 
 18. Which is a difference between NACL and Security Group?
-    A. Both are stateful
-    B. NACL is stateless; Security Group is stateful
-    C. Both are Layer 7
-    D. NACL attaches to instances
-    **Answer: B — NACL stateless, Security Group stateful.**
+   - **A.** Both are stateful
+   - **B.** NACL is stateless; Security Group is stateful
+   - **C.** Both are Layer 7
+   - **D.** NACL attaches to instances
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** The key discriminator: NACL is stateless, Security Group is stateful.
-> **Why A is wrong:** They are not both stateful — NACL is stateless.
-> **Why C is wrong:** Both are L3/L4, not Layer 7.
-> **Why D is wrong:** NACLs attach to subnets, not instances (Security Groups attach to instances).
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** The key discriminator: NACL is stateless, Security Group is stateful.
+
+**Why A is wrong:** They are not both stateful — NACL is stateless.
+**Why C is wrong:** Both are L3/L4, not Layer 7.
+**Why D is wrong:** NACLs attach to subnets, not instances (Security Groups attach to instances).
+
+</details>
 
 19. Multi-factor authentication strengthens which objective area?
-    A. DLP
-    B. IAM policies
-    C. WAF
-    D. DDoS
-    **Answer: B — MFA is an IAM authentication control.**
+   - **A.** DLP
+   - **B.** IAM policies
+   - **C.** WAF
+   - **D.** DDoS
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** MFA is an authentication control under IAM policies/identity management.
-> **Why A is wrong:** DLP is data egress control, not authentication.
-> **Why C is wrong:** A WAF is app-layer filtering, not an identity factor.
-> **Why D is wrong:** DDoS protection is availability, not authentication.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** MFA is an authentication control under IAM policies/identity management.
+
+**Why A is wrong:** DLP is data egress control, not authentication.
+**Why C is wrong:** A WAF is app-layer filtering, not an identity factor.
+**Why D is wrong:** DDoS protection is availability, not authentication.
+
+</details>
 
 20. EBS malware scanning in AWS supports which 4.5 control?
-    A. DLP
-    B. Endpoint protection
-    C. DDoS
-    D. WAF
-    **Answer: B — Scanning EBS volumes for malware is endpoint protection.**
+   - **A.** DLP
+   - **B.** Endpoint protection
+   - **C.** DDoS
+   - **D.** WAF
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** Scanning EBS volumes/snapshots for malware is host/workload protection — the endpoint protection control.
-> **Why A is wrong:** DLP classifies sensitive data, not scans volumes for malware.
-> **Why C is wrong:** DDoS is availability protection, not malware scanning.
-> **Why D is wrong:** A WAF is L7 app filtering, not volume malware scanning.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** Scanning EBS volumes/snapshots for malware is host/workload protection — the endpoint protection control.
+
+**Why A is wrong:** DLP classifies sensitive data, not scans volumes for malware.
+**Why C is wrong:** DDoS is availability protection, not malware scanning.
+**Why D is wrong:** A WAF is L7 app filtering, not volume malware scanning.
+
+</details>

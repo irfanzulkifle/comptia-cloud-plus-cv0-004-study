@@ -158,261 +158,381 @@ AWS-only services for 2.3 migration aspects:
 ## SECTION 6 — PRACTICE QUESTIONS
 
 1. Moving virtual machines from a company's own data center to a public cloud with no code changes is which migration type?
-   A. Cloud → on-premises
-   B. On-premises → cloud
-   C. Cloud → cloud
-   D. Retire
+   - **A.** Cloud → on-premises
+   - **B.** On-premises → cloud
+   - **C.** Cloud → cloud
+   - **D.** Retire
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** On-premises → cloud (lift-to-cloud) moves VMs out of the company DC to the public cloud with no code changes.
-> **Why A is wrong:** Cloud → on-premises moves workloads back out of the cloud, the reverse direction.
-> **Why C is wrong:** Cloud → cloud is between providers/regions, not from a company DC.
-> **Why D is wrong:** Retire decommissions the app; it doesn't move it.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** On-premises → cloud (lift-to-cloud) moves VMs out of the company DC to the public cloud with no code changes.
+
+**Why A is wrong:** Cloud → on-premises moves workloads back out of the cloud, the reverse direction.
+**Why C is wrong:** Cloud → cloud is between providers/regions, not from a company DC.
+**Why D is wrong:** Retire decommissions the app; it doesn't move it.
+
+</details>
 
 2. A firm moves workloads back out of the cloud to its own data center due to cost overruns. This is:
-   A. Repatriation (cloud → on-premises)
-   B. On-premises → cloud
-   C. Cloud → cloud
-   D. Rehost
+   - **A.** Repatriation (cloud → on-premises)
+   - **B.** On-premises → cloud
+   - **C.** Cloud → cloud
+   - **D.** Rehost
 
-> [!note]- Reveal Answer
-> **Correct: A**
-> **Why correct:** Repatriation / cloud → on-premises reverses the original move, bringing workloads back to the DC.
-> **Why B is wrong:** On-premises → cloud is the original move into the cloud, not back out.
-> **Why C is wrong:** Cloud → cloud is between providers, not back to on-prem.
-> **Why D is wrong:** Rehost is a 6-R migration method (lift-and-shift), not a direction.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: A**
+
+**Why correct:** Repatriation / cloud → on-premises reverses the original move, bringing workloads back to the DC.
+
+**Why B is wrong:** On-premises → cloud is the original move into the cloud, not back out.
+**Why C is wrong:** Cloud → cloud is between providers, not back to on-prem.
+**Why D is wrong:** Rehost is a 6-R migration method (lift-and-shift), not a direction.
+
+</details>
 
 3. Migrating applications from one cloud provider to another is which type?
-   A. On-premises → cloud
-   B. Cloud → on-premises
-   C. Cloud → cloud
-   D. Retain
+   - **A.** On-premises → cloud
+   - **B.** Cloud → on-premises
+   - **C.** Cloud → cloud
+   - **D.** Retain
 
-> [!note]- Reveal Answer
-> **Correct: C**
-> **Why correct:** Cloud → cloud moves workloads between providers or regions/accounts within a provider.
-> **Why A is wrong:** On-premises → cloud starts from a company DC, not a cloud.
-> **Why B is wrong:** Cloud → on-premises ends on-prem, not at another provider.
-> **Why D is wrong:** Retain leaves the app in place; it doesn't move it between clouds.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: C**
+
+**Why correct:** Cloud → cloud moves workloads between providers or regions/accounts within a provider.
+
+**Why A is wrong:** On-premises → cloud starts from a company DC, not a cloud.
+**Why B is wrong:** Cloud → on-premises ends on-prem, not at another provider.
+**Why D is wrong:** Retain leaves the app in place; it doesn't move it between clouds.
+
+</details>
 
 4. Lifting an app to the cloud with no changes is the _____ strategy.
-   A. Replatform
-   B. Rehost
-   C. Refactor
-   D. Re-architect
+   - **A.** Replatform
+   - **B.** Rehost
+   - **C.** Refactor
+   - **D.** Re-architect
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** Rehost (lift-and-shift) moves the app with no code changes — same OS, same app, new hardware.
-> **Why A is wrong:** Replatform makes minor cloud optimizations, not zero changes.
-> **Why C is wrong:** Refactor tweaks code to exploit cloud services.
-> **Why D is wrong:** Re-architect is a major redesign, not a simple lift.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** Rehost (lift-and-shift) moves the app with no code changes — same OS, same app, new hardware.
+
+**Why A is wrong:** Replatform makes minor cloud optimizations, not zero changes.
+**Why C is wrong:** Refactor tweaks code to exploit cloud services.
+**Why D is wrong:** Re-architect is a major redesign, not a simple lift.
+
+</details>
 
 5. Swapping a self-managed database for a managed cloud database during migration is:
-   A. Rehost
-   B. Retire
-   C. Replatform
-   D. Re-architect
+   - **A.** Rehost
+   - **B.** Retire
+   - **C.** Replatform
+   - **D.** Re-architect
 
-> [!note]- Reveal Answer
-> **Correct: C**
-> **Why correct:** Replatform applies minor cloud optimizations (e.g., managed DB) with minimal code change.
-> **Why A is wrong:** Rehost moves the DB as-is without swapping to managed.
-> **Why B is wrong:** Retire decommissions it; this keeps and improves it.
-> **Why D is wrong:** Re-architect is a full redesign, more than a managed-DB swap.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: C**
+
+**Why correct:** Replatform applies minor cloud optimizations (e.g., managed DB) with minimal code change.
+
+**Why A is wrong:** Rehost moves the DB as-is without swapping to managed.
+**Why B is wrong:** Retire decommissions it; this keeps and improves it.
+**Why D is wrong:** Re-architect is a full redesign, more than a managed-DB swap.
+
+</details>
 
 6. Redesigning an app as microservices on serverless is which strategy?
-   A. Refactor
-   B. Rehost
-   C. Re-architect
-   D. Retain
+   - **A.** Refactor
+   - **B.** Rehost
+   - **C.** Re-architect
+   - **D.** Retain
 
-> [!note]- Reveal Answer
-> **Correct: C**
-> **Why correct:** Re-architect is a significant redesign to cloud-native (microservices/serverless) for max benefit.
-> **Why A is wrong:** Refactor is lighter code tweaks, not a full microservices redesign.
-> **Why B is wrong:** Rehost makes no changes — the opposite of redesign.
-> **Why D is wrong:** Retain keeps the app as-is, not redesigned.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: C**
+
+**Why correct:** Re-architect is a significant redesign to cloud-native (microservices/serverless) for max benefit.
+
+**Why A is wrong:** Refactor is lighter code tweaks, not a full microservices redesign.
+**Why B is wrong:** Rehost makes no changes — the opposite of redesign.
+**Why D is wrong:** Retain keeps the app as-is, not redesigned.
+
+</details>
 
 7. Decommissioning an unused legacy application during migration is:
-   A. Retain
-   B. Retire
-   C. Rehost
-   D. Replatform
+   - **A.** Retain
+   - **B.** Retire
+   - **C.** Rehost
+   - **D.** Replatform
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** Retire decommissions redundant/unused apps, saving cost and reducing attack surface.
-> **Why A is wrong:** Retain keeps the app in place, not decommission it.
-> **Why C is wrong:** Rehost moves it, not removes it.
-> **Why D is wrong:** Replatform changes it, not decommissions it.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** Retire decommissions redundant/unused apps, saving cost and reducing attack surface.
+
+**Why A is wrong:** Retain keeps the app in place, not decommission it.
+**Why C is wrong:** Rehost moves it, not removes it.
+**Why D is wrong:** Replatform changes it, not decommissions it.
+
+</details>
 
 8. Deliberately leaving an app on-prem because it is not worth migrating is:
-   A. Retire
-   B. Rehost
-   C. Retain
-   D. Refactor
+   - **A.** Retire
+   - **B.** Rehost
+   - **C.** Retain
+   - **D.** Refactor
 
-> [!note]- Reveal Answer
-> **Correct: C**
-> **Why correct:** Retain deliberately keeps workloads in place because migration isn't worth it.
-> **Why A is wrong:** Retire removes the app; this keeps it running.
-> **Why B is wrong:** Rehost would move it to the cloud.
-> **Why D is wrong:** Refactor changes code; this leaves it untouched.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: C**
+
+**Why correct:** Retain deliberately keeps workloads in place because migration isn't worth it.
+
+**Why A is wrong:** Retire removes the app; this keeps it running.
+**Why B is wrong:** Rehost would move it to the cloud.
+**Why D is wrong:** Refactor changes code; this leaves it untouched.
+
+</details>
 
 9. Which consideration is most often the cutover bottleneck?
-   A. Regulatory
-   B. Networking
-   C. Environmental
-   D. Management overhead
+   - **A.** Regulatory
+   - **B.** Networking
+   - **C.** Environmental
+   - **D.** Management overhead
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** Networking (bandwidth/latency, VPN/Direct Connect) is frequently the bottleneck and cause of cutover downtime.
-> **Why A is wrong:** Regulatory constrains region/direction but isn't usually the cutover bottleneck.
-> **Why C is wrong:** Environmental (power/cooling) is a strategic concern, not a cutover bottleneck.
-> **Why D is wrong:** Management overhead is post-migration ops, not the cutover blocker.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** Networking (bandwidth/latency, VPN/Direct Connect) is frequently the bottleneck and cause of cutover downtime.
+
+**Why A is wrong:** Regulatory constrains region/direction but isn't usually the cutover bottleneck.
+**Why C is wrong:** Environmental (power/cooling) is a strategic concern, not a cutover bottleneck.
+**Why D is wrong:** Management overhead is post-migration ops, not the cutover blocker.
+
+</details>
 
 10. Using proprietary managed services that make future exits harder illustrates:
-    A. Service availability
-    B. Vendor lock-in
-    C. Resource allocation
-    D. Compliance
+   - **A.** Service availability
+   - **B.** Vendor lock-in
+   - **C.** Resource allocation
+   - **D.** Compliance
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** Vendor lock-in is the difficulty of leaving a provider because of proprietary managed services.
-> **Why A is wrong:** Service availability is about uptime/SLA, not exit difficulty.
-> **Why C is wrong:** Resource allocation is capacity planning, not lock-in.
-> **Why D is wrong:** Compliance is meeting regulations, not provider dependence.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** Vendor lock-in is the difficulty of leaving a provider because of proprietary managed services.
+
+**Why A is wrong:** Service availability is about uptime/SLA, not exit difficulty.
+**Why C is wrong:** Resource allocation is capacity planning, not lock-in.
+**Why D is wrong:** Compliance is meeting regulations, not provider dependence.
+
+</details>
 
 11. Data-residency laws that restrict where data may be stored are a _____ constraint.
-    A. Cost
-    B. Regulatory
-    C. Environmental
-    D. Platform compatibility
+   - **A.** Cost
+   - **B.** Regulatory
+   - **C.** Environmental
+   - **D.** Platform compatibility
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** Regulatory constraints (laws like data-residency) restrict where/how data may be stored.
-> **Why A is wrong:** Cost is a budget consideration, not a legal residency restriction.
-> **Why C is wrong:** Environmental covers power/cooling footprint, not data location law.
-> **Why D is wrong:** Platform compatibility is about OS/dependency fit, not legal residency.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** Regulatory constraints (laws like data-residency) restrict where/how data may be stored.
+
+**Why A is wrong:** Cost is a budget consideration, not a legal residency restriction.
+**Why C is wrong:** Environmental covers power/cooling footprint, not data location law.
+**Why D is wrong:** Platform compatibility is about OS/dependency fit, not legal residency.
+
+</details>
 
 12. Right-sizing instances to avoid waste or outages is part of:
-    A. Resource allocation
-    B. Retire
-    C. Re-architect
-    D. Vendor lock-in
+   - **A.** Resource allocation
+   - **B.** Retire
+   - **C.** Re-architect
+   - **D.** Vendor lock-in
 
-> [!note]- Reveal Answer
-> **Correct: A**
-> **Why correct:** Resource allocation plans compute/storage/network capacity — right-sizing avoids under/over-provisioning.
-> **Why B is wrong:** Retire is a 6-R decision, not capacity planning.
-> **Why C is wrong:** Re-architect is a redesign strategy, not sizing.
-> **Why D is wrong:** Vendor lock-in is an exit-cost consideration, not sizing.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: A**
+
+**Why correct:** Resource allocation plans compute/storage/network capacity — right-sizing avoids under/over-provisioning.
+
+**Why B is wrong:** Retire is a 6-R decision, not capacity planning.
+**Why C is wrong:** Re-architect is a redesign strategy, not sizing.
+**Why D is wrong:** Vendor lock-in is an exit-cost consideration, not sizing.
+
+</details>
 
 13. AWS DMS is primarily used to support which strategy?
-    A. Rehost
-    B. Retire
-    C. Replatform (database)
-    D. Retain
+   - **A.** Rehost
+   - **B.** Retire
+   - **C.** Replatform (database)
+   - **D.** Retain
 
-> [!note]- Reveal Answer
-> **Correct: C**
-> **Why correct:** AWS DMS migrates databases to managed services (RDS/Aurora) with minimal downtime — a classic replatform enabler.
-> **Why A is wrong:** Rehost of whole VMs is done by MGN/VM Import, not DMS.
-> **Why B is wrong:** DMS moves data forward, not decommissions it.
-> **Why D is wrong:** Retain keeps the DB in place; DMS migrates it.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: C**
+
+**Why correct:** AWS DMS migrates databases to managed services (RDS/Aurora) with minimal downtime — a classic replatform enabler.
+
+**Why A is wrong:** Rehost of whole VMs is done by MGN/VM Import, not DMS.
+**Why B is wrong:** DMS moves data forward, not decommissions it.
+**Why D is wrong:** Retain keeps the DB in place; DMS migrates it.
+
+</details>
 
 14. For a petabyte dataset where network transfer is impractical, AWS offers:
-    A. DataSync
-    B. Snowball
-    C. Direct Connect
-    D. Migration Hub
+   - **A.** DataSync
+   - **B.** Snowball
+   - **C.** Direct Connect
+   - **D.** Migration Hub
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** AWS Snowball/Snowcone/Snowmobile are physical appliances for petabyte-scale transfer when networks are impractical.
-> **Why A is wrong:** DataSync is online transfer; too slow for a petabyte with impractical network.
-> **Why C is wrong:** Direct Connect is a network link, not for shipping bulk data physically.
-> **Why D is wrong:** Migration Hub tracks migrations, it doesn't transfer data.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** AWS Snowball/Snowcone/Snowmobile are physical appliances for petabyte-scale transfer when networks are impractical.
+
+**Why A is wrong:** DataSync is online transfer; too slow for a petabyte with impractical network.
+**Why C is wrong:** Direct Connect is a network link, not for shipping bulk data physically.
+**Why D is wrong:** Migration Hub tracks migrations, it doesn't transfer data.
+
+</details>
 
 15. Which strategy captures the MOST long-term cloud benefit but has the HIGHEST effort?
-    A. Rehost
-    B. Replatform
-    C. Re-architect
-    D. Retain
+   - **A.** Rehost
+   - **B.** Replatform
+   - **C.** Re-architect
+   - **D.** Retain
 
-> [!note]- Reveal Answer
-> **Correct: C**
-> **Why correct:** Re-architect (cloud-native redesign) yields maximum scalability/resilience benefit at the highest effort.
-> **Why A is wrong:** Rehost is fastest/lowest effort but captures few cloud benefits.
-> **Why B is wrong:** Replatform is medium effort/benefit, not the highest of either.
-> **Why D is wrong:** Retain makes no migration effort or benefit.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: C**
+
+**Why correct:** Re-architect (cloud-native redesign) yields maximum scalability/resilience benefit at the highest effort.
+
+**Why A is wrong:** Rehost is fastest/lowest effort but captures few cloud benefits.
+**Why B is wrong:** Replatform is medium effort/benefit, not the highest of either.
+**Why D is wrong:** Retain makes no migration effort or benefit.
+
+</details>
 
 16. Minimizing code changes to exploit a managed cache is best described as:
-    A. Rehost
-    B. Refactor
-    C. Retire
-    D. Retain
+   - **A.** Rehost
+   - **B.** Refactor
+   - **C.** Retire
+   - **D.** Retain
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** Refactor adjusts code (e.g., to use a managed cache) to fit cloud services with minimal redesign.
-> **Why A is wrong:** Rehost makes no code changes at all.
-> **Why C is wrong:** Retire decommissions the app; this keeps and tweaks it.
-> **Why D is wrong:** Retain leaves code untouched, not refactored.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** Refactor adjusts code (e.g., to use a managed cache) to fit cloud services with minimal redesign.
+
+**Why A is wrong:** Rehost makes no code changes at all.
+**Why C is wrong:** Retire decommissions the app; this keeps and tweaks it.
+**Why D is wrong:** Retain leaves code untouched, not refactored.
+
+</details>
 
 17. AWS Application Discovery Service helps identify candidates for:
-    A. Rehost only
-    B. Retain and Retire
-    C. Re-architect only
-    D. Compliance only
+   - **A.** Rehost only
+   - **B.** Retain and Retire
+   - **C.** Re-architect only
+   - **D.** Compliance only
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** Discovery collects dependency/data to reveal which apps to keep (Retain) or drop (Retire) — common assessment output.
-> **Why A is wrong:** Discovery informs all strategies, not rehost only.
-> **Why C is wrong:** It isn't limited to re-architect candidates.
-> **Why D is wrong:** It's an inventory tool, not a compliance assessor.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** Discovery collects dependency/data to reveal which apps to keep (Retain) or drop (Retire) — common assessment output.
+
+**Why A is wrong:** Discovery informs all strategies, not rehost only.
+**Why C is wrong:** It isn't limited to re-architect candidates.
+**Why D is wrong:** It's an inventory tool, not a compliance assessor.
+
+</details>
 
 18. A merger consolidating onto one provider's cloud is an example of:
-    A. On-prem → cloud
-    B. Cloud → on-premises
-    C. Cloud → cloud
-    D. Replatform
+   - **A.** On-prem → cloud
+   - **B.** Cloud → on-premises
+   - **C.** Cloud → cloud
+   - **D.** Replatform
 
-> [!note]- Reveal Answer
-> **Correct: C**
-> **Why correct:** Consolidating onto the parent's provider after M&A moves workloads between clouds — cloud → cloud.
-> **Why A is wrong:** It starts from a cloud, not on-prem.
-> **Why B is wrong:** It ends on a cloud, not on-prem.
-> **Why D is wrong:** Replatform is a 6-R method, not a migration direction.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: C**
+
+**Why correct:** Consolidating onto the parent's provider after M&A moves workloads between clouds — cloud → cloud.
+
+**Why A is wrong:** It starts from a cloud, not on-prem.
+**Why B is wrong:** It ends on a cloud, not on-prem.
+**Why D is wrong:** Replatform is a 6-R method, not a migration direction.
+
+</details>
 
 19. Which consideration addresses who operates the environment after migration?
-    A. Service availability
-    B. Management overhead
-    C. Platform compatibility
-    D. Environmental
+   - **A.** Service availability
+   - **B.** Management overhead
+   - **C.** Platform compatibility
+   - **D.** Environmental
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** Management overhead covers who operates the environment post-migration (managed vs self-managed).
-> **Why A is wrong:** Service availability is about SLA/uptime, not operations ownership.
-> **Why C is wrong:** Platform compatibility is about OS/dependency fit, not operations.
-> **Why D is wrong:** Environmental is power/cooling footprint, not operations.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** Management overhead covers who operates the environment post-migration (managed vs self-managed).
+
+**Why A is wrong:** Service availability is about SLA/uptime, not operations ownership.
+**Why C is wrong:** Platform compatibility is about OS/dependency fit, not operations.
+**Why D is wrong:** Environmental is power/cooling footprint, not operations.
+
+</details>
 
 20. Moving to cloud to reduce a company's own power and cooling footprint relates to:
-    A. Regulatory
-    B. Environmental
-    C. Vendor lock-in
-    D. Cost
+   - **A.** Regulatory
+   - **B.** Environmental
+   - **C.** Vendor lock-in
+   - **D.** Cost
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** Environmental consideration covers power/cooling footprint and carbon, reduced by moving to cloud.
-> **Why A is wrong:** Regulatory is legal/residency, not physical footprint.
-> **Why C is wrong:** Vendor lock-in is exit cost, unrelated to power/cooling.
-> **Why D is wrong:** Cost is budget; environmental is the power/cooling-specific angle.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** Environmental consideration covers power/cooling footprint and carbon, reduced by moving to cloud.
+
+**Why A is wrong:** Regulatory is legal/residency, not physical footprint.
+**Why C is wrong:** Vendor lock-in is exit cost, unrelated to power/cooling.
+**Why D is wrong:** Cost is budget; environmental is the power/cooling-specific angle.
+
+</details>

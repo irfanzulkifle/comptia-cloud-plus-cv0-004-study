@@ -113,261 +113,381 @@ Together: AWS Backup = policy/schedule/retention/encryption/replication/testing;
 ## SECTION 6 — PRACTICE QUESTIONS
 
 1. Which backup type restores fastest and has no dependency chain?
-    A. Incremental
-    B. Differential
-    C. Full
-    D. Synthetic
+   - **A.** Incremental
+   - **B.** Differential
+   - **C.** Full
+   - **D.** Synthetic
 
-> [!note]- Reveal Answer
-> **Correct: C**
-> **Why correct:** A full backup alone contains everything, so restore needs just that one self-contained set with no chain.
-> **Why A is wrong:** Incremental restore needs the full plus every link in the chain — slow and fragile.
-> **Why B is wrong:** Differential still needs the full plus the latest differential, not a single set.
-> **Why D is wrong:** "Synthetic full" is a backup technique, not a distinct restore-simplest type here.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: C**
+
+**Why correct:** A full backup alone contains everything, so restore needs just that one self-contained set with no chain.
+
+**Why A is wrong:** Incremental restore needs the full plus every link in the chain — slow and fragile.
+**Why B is wrong:** Differential still needs the full plus the latest differential, not a single set.
+**Why D is wrong:** "Synthetic full" is a backup technique, not a distinct restore-simplest type here.
+
+</details>
 
 2. An incremental backup copies data changed since:
-    A. The last full only
-    B. The last backup of any type
-    C. The last differential only
-    D. Seven days ago
+   - **A.** The last full only
+   - **B.** The last backup of any type
+   - **C.** The last differential only
+   - **D.** Seven days ago
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** Incremental backs up only what changed since the most recent backup (full or incremental), making each run small.
-> **Why A is wrong:** "Since last full only" describes a differential, not an incremental.
-> **Why C is wrong:** It is not limited to the last differential; any prior backup resets the baseline.
-> **Why D is wrong:** A fixed 7-day window ignores the actual prior backup and is not how incrementals work.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** Incremental backs up only what changed since the most recent backup (full or incremental), making each run small.
+
+**Why A is wrong:** "Since last full only" describes a differential, not an incremental.
+**Why C is wrong:** It is not limited to the last differential; any prior backup resets the baseline.
+**Why D is wrong:** A fixed 7-day window ignores the actual prior backup and is not how incrementals work.
+
+</details>
 
 3. A differential backup grows because it copies changes since:
-    A. The last incremental
-    B. The last full
-    C. Yesterday only
-    D. The last differential
+   - **A.** The last incremental
+   - **B.** The last full
+   - **C.** Yesterday only
+   - **D.** The last differential
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** Differential re-copies everything changed since the last full and only resets when a new full is taken, so it grows over the week.
-> **Why A is wrong:** It is not measured against the last incremental.
-> **Why C is wrong:** "Yesterday only" is arbitrary and not the differential definition.
-> **Why D is wrong:** It does not reset at each differential; only a new full resets it.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** Differential re-copies everything changed since the last full and only resets when a new full is taken, so it grows over the week.
+
+**Why A is wrong:** It is not measured against the last incremental.
+**Why C is wrong:** "Yesterday only" is arbitrary and not the differential definition.
+**Why D is wrong:** It does not reset at each differential; only a new full resets it.
+
+</details>
 
 4. To survive a regional natural disaster, backups should be:
-    A. On site only
-    B. Off site (cross-region/account)
-    C. On the same volume
-    D. Unencrypted
+   - **A.** On site only
+   - **B.** Off site (cross-region/account)
+   - **C.** On the same volume
+   - **D.** Unencrypted
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** Off-site (cross-region/account) copies survive a site/region loss that would destroy on-site backups.
-> **Why A is wrong:** On-site backups are wiped by the same regional disaster.
-> **Why C is wrong:** Same volume fails with the primary — no disaster protection at all.
-> **Why D is wrong:** Encryption protects confidentiality, not geographic survival.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** Off-site (cross-region/account) copies survive a site/region loss that would destroy on-site backups.
+
+**Why A is wrong:** On-site backups are wiped by the same regional disaster.
+**Why C is wrong:** Same volume fails with the primary — no disaster protection at all.
+**Why D is wrong:** Encryption protects confidentiality, not geographic survival.
+
+</details>
 
 5. The fastest restore of a single accidentally deleted file uses:
-    A. Bulk recovery
-    B. Granular recovery
-    C. In-place only
-    D. Full rebuild
+   - **A.** Bulk recovery
+   - **B.** Granular recovery
+   - **C.** In-place only
+   - **D.** Full rebuild
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** Granular (item-level) recovery pulls just the one file without restoring the whole system, minimizing scope and downtime.
-> **Why A is wrong:** Bulk restores the entire system/volume — slow and disruptive for one file.
-> **Why C is wrong:** In-place is a recovery type (location), not a scope option like granular.
-> **Why D is wrong:** A full rebuild is the opposite of fast, targeted restore.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** Granular (item-level) recovery pulls just the one file without restoring the whole system, minimizing scope and downtime.
+
+**Why A is wrong:** Bulk restores the entire system/volume — slow and disruptive for one file.
+**Why C is wrong:** In-place is a recovery type (location), not a scope option like granular.
+**Why D is wrong:** A full rebuild is the opposite of fast, targeted restore.
+
+</details>
 
 6. Restoring to a separate environment to validate before cutover is:
-    A. In-place recovery
-    B. Parallel recovery
-    C. Bulk recovery
-    D. Differential
+   - **A.** In-place recovery
+   - **B.** Parallel recovery
+   - **C.** Bulk recovery
+   - **D.** Differential
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** Parallel recovery restores to a separate environment so you validate before cutting traffic over, avoiding clobbering prod.
-> **Why A is wrong:** In-place restores onto the original location, risking bad-data overwrite.
-> **Why C is wrong:** Bulk is about scope (whole system), not the separate environment.
-> **Why D is wrong:** Differential is a backup type, not a recovery type.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** Parallel recovery restores to a separate environment so you validate before cutting traffic over, avoiding clobbering prod.
+
+**Why A is wrong:** In-place restores onto the original location, risking bad-data overwrite.
+**Why C is wrong:** Bulk is about scope (whole system), not the separate environment.
+**Why D is wrong:** Differential is a backup type, not a recovery type.
+
+</details>
 
 7. RPO is primarily controlled by:
-    A. Retention length
-    B. Backup schedule/frequency
-    C. Encryption
-    D. Recovery type
+   - **A.** Retention length
+   - **B.** Backup schedule/frequency
+   - **C.** Encryption
+   - **D.** Recovery type
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** RPO (max tolerable data loss) is driven by how often you back up — more frequent backups = smaller potential loss.
-> **Why A is wrong:** Retention governs how far back you can recover, not how much you lose between backups.
-> **Why C is wrong:** Encryption protects data confidentiality, not data-loss window.
-> **Why D is wrong:** Recovery type (in-place/parallel) affects cutover safety, not RPO.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** RPO (max tolerable data loss) is driven by how often you back up — more frequent backups = smaller potential loss.
+
+**Why A is wrong:** Retention governs how far back you can recover, not how much you lose between backups.
+**Why C is wrong:** Encryption protects data confidentiality, not data-loss window.
+**Why D is wrong:** Recovery type (in-place/parallel) affects cutover safety, not RPO.
+
+</details>
 
 8. A backup encrypted with KMS is useless if you:
-    A. Replicate it
-    B. Lose the encryption key
-    C. Test it
-    D. Retain it longer
+   - **A.** Replicate it
+   - **B.** Lose the encryption key
+   - **C.** Test it
+   - **D.** Retain it longer
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** Without the KMS key, the ciphertext cannot be decrypted, so the backup cannot be restored — losing the key loses the data.
-> **Why A is wrong:** Replication copies the data; it does not by itself make it unrecoverable.
-> **Why C is wrong:** Testing proves recoverability; it does not destroy the backup.
-> **Why D is wrong:** Longer retention keeps the backup longer; it does not invalidate the key.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** Without the KMS key, the ciphertext cannot be decrypted, so the backup cannot be restored — losing the key loses the data.
+
+**Why A is wrong:** Replication copies the data; it does not by itself make it unrecoverable.
+**Why C is wrong:** Testing proves recoverability; it does not destroy the backup.
+**Why D is wrong:** Longer retention keeps the backup longer; it does not invalidate the key.
+
+</details>
 
 9. Which practice proves a backup actually works?
-    A. Encryption
-    B. Testing / recoverability (test restores)
-    C. Replication
-    D. Retention
+   - **A.** Encryption
+   - **B.** Testing / recoverability (test restores)
+   - **C.** Replication
+   - **D.** Retention
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** Only performing test restores (and verifying the result) confirms the backup is recoverable — "an untested backup is not a backup."
-> **Why A is wrong:** Encryption protects data but says nothing about whether it restores.
-> **Why C is wrong:** Replication copies data; a replicated bad backup is still bad.
-> **Why D is wrong:** Retention keeps copies; it does not validate they are usable.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** Only performing test restores (and verifying the result) confirms the backup is recoverable — "an untested backup is not a backup."
+
+**Why A is wrong:** Encryption protects data but says nothing about whether it restores.
+**Why C is wrong:** Replication copies data; a replicated bad backup is still bad.
+**Why D is wrong:** Retention keeps copies; it does not validate they are usable.
+
+</details>
 
 10. Integrity verification of a backup uses:
-    A. Cooldowns
-    B. Checksums / hashes
-    C. Load balancers
-    D. Schedules
+   - **A.** Cooldowns
+   - **B.** Checksums / hashes
+   - **C.** Load balancers
+   - **D.** Schedules
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** Checksums/hashes prove the backup is complete and unaltered since capture, confirming integrity.
-> **Why A is wrong:** Cooldowns are an Auto Scaling concept, unrelated to backup integrity.
-> **Why C is wrong:** Load balancers distribute traffic, not verify data integrity.
-> **Why D is wrong:** Schedules control timing, not integrity verification.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** Checksums/hashes prove the backup is complete and unaltered since capture, confirming integrity.
+
+**Why A is wrong:** Cooldowns are an Auto Scaling concept, unrelated to backup integrity.
+**Why C is wrong:** Load balancers distribute traffic, not verify data integrity.
+**Why D is wrong:** Schedules control timing, not integrity verification.
+
+</details>
 
 11. Synchronous replication is best described as:
-    A. High lag, cross-region
-    B. Near-zero data loss, latency-bound
-    C. Backup only nightly
-    D. Always off-site
+   - **A.** High lag, cross-region
+   - **B.** Near-zero data loss, latency-bound
+   - **C.** Backup only nightly
+   - **D.** Always off-site
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** Sync replication waits for the remote write to confirm, giving ~zero data loss but adding latency (distance-bound).
-> **Why A is wrong:** Sync has low lag for data loss, not high lag; high lag describes async.
-> **Why C is wrong:** Synchronous replication is continuous, not nightly batch.
-> **Why D is wrong:** It can be same-region (Multi-AZ) or cross-region; "always off-site" is false.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** Sync replication waits for the remote write to confirm, giving ~zero data loss but adding latency (distance-bound).
+
+**Why A is wrong:** Sync has low lag for data loss, not high lag; high lag describes async.
+**Why C is wrong:** Synchronous replication is continuous, not nightly batch.
+**Why D is wrong:** It can be same-region (Multi-AZ) or cross-region; "always off-site" is false.
+
+</details>
 
 12. The 3-2-1 rule's "1 off-site" protects against:
-    A. Ransomware keys
-    B. Site-level disaster
-    C. Slow restores
-    D. Encryption cost
+   - **A.** Ransomware keys
+   - **B.** Site-level disaster
+   - **C.** Slow restores
+   - **D.** Encryption cost
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** One off-site copy survives a localized catastrophe (fire, flood, region outage) that destroys on-site media.
-> **Why A is wrong:** Off-site alone does not defeat ransomware encryption of the copy unless it is also immutable.
-> **Why C is wrong:** Off-site copies are often slower to restore, not a protection against slowness.
-> **Why D is wrong:** Encryption cost is unrelated to the off-site copy's disaster purpose.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** One off-site copy survives a localized catastrophe (fire, flood, region outage) that destroys on-site media.
+
+**Why A is wrong:** Off-site alone does not defeat ransomware encryption of the copy unless it is also immutable.
+**Why C is wrong:** Off-site copies are often slower to restore, not a protection against slowness.
+**Why D is wrong:** Encryption cost is unrelated to the off-site copy's disaster purpose.
+
+</details>
 
 13. Storing backups for 7 years for audits is governed by:
-    A. Schedule
-    B. Retention
-    C. Replication
-    D. Granular recovery
+   - **A.** Schedule
+   - **B.** Retention
+   - **C.** Replication
+   - **D.** Granular recovery
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** Retention defines how long copies are kept, which is exactly the compliance/history window (7 years) question.
-> **Why A is wrong:** Schedule governs frequency/RPO, not how long you keep copies.
-> **Why C is wrong:** Replication is about location/geo-redundancy, not duration.
-> **Why D is wrong:** Granular recovery is a restore scope, not a retention duration.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** Retention defines how long copies are kept, which is exactly the compliance/history window (7 years) question.
+
+**Why A is wrong:** Schedule governs frequency/RPO, not how long you keep copies.
+**Why C is wrong:** Replication is about location/geo-redundancy, not duration.
+**Why D is wrong:** Granular recovery is a restore scope, not a retention duration.
+
+</details>
 
 14. On AWS, a centralized policy with cron schedule + lifecycle is:
-    A. Snapshot only
-    B. AWS Backup plan
-    C. RDS replica
-    D. KMS key
+   - **A.** Snapshot only
+   - **B.** AWS Backup plan
+   - **C.** RDS replica
+   - **D.** KMS key
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** An AWS Backup plan defines the cron schedule, retention/lifecycle, encryption, and cross-region copy in one policy.
-> **Why A is wrong:** A snapshot is a single point-in-time artifact, not a scheduled policy framework.
-> **Why C is wrong:** An RDS replica is continuous replication, not a scheduled backup plan.
-> **Why D is wrong:** A KMS key encrypts; it does not schedule or retain backups.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** An AWS Backup plan defines the cron schedule, retention/lifecycle, encryption, and cross-region copy in one policy.
+
+**Why A is wrong:** A snapshot is a single point-in-time artifact, not a scheduled policy framework.
+**Why C is wrong:** An RDS replica is continuous replication, not a scheduled backup plan.
+**Why D is wrong:** A KMS key encrypts; it does not schedule or retain backups.
+
+</details>
 
 15. EBS snapshots are incremental at the:
-    A. File level only
-    B. Block level
-    C. Region level
-    D. User level
+   - **A.** File level only
+   - **B.** Block level
+   - **C.** Region level
+   - **D.** User level
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** EBS snapshots store only changed blocks since the prior snapshot — block-level incremental, efficient in size.
-> **Why A is wrong:** EBS snapshots are block-level, not file-level (that is file-based backup tools).
-> **Why C is wrong:** "Region level" is meaningless for how incrementals are computed.
-> **Why D is wrong:** Incremental behavior is not per-user; it is per-volume block changes.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** EBS snapshots store only changed blocks since the prior snapshot — block-level incremental, efficient in size.
+
+**Why A is wrong:** EBS snapshots are block-level, not file-level (that is file-based backup tools).
+**Why C is wrong:** "Region level" is meaningless for how incrementals are computed.
+**Why D is wrong:** Incremental behavior is not per-user; it is per-volume block changes.
+
+</details>
 
 16. RDS Multi-AZ provides which recovery characteristic?
-    A. Manual only
-    B. Synchronous failover, near-zero RPO
-    C. Off-site only
-    D. Granular file restore
+   - **A.** Manual only
+   - **B.** Synchronous failover, near-zero RPO
+   - **C.** Off-site only
+   - **D.** Granular file restore
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** Multi-AZ uses synchronous standby replication enabling automatic failover with near-zero RPO and in-place recovery.
-> **Why A is wrong:** Failover is automatic, not manual-only.
-> **Why C is wrong:** Multi-AZ is same-region (different AZ), not off-site; cross-region is Read Replicas.
-> **Why D is wrong:** Multi-AZ is whole-DB failover, not item-level file restore.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** Multi-AZ uses synchronous standby replication enabling automatic failover with near-zero RPO and in-place recovery.
+
+**Why A is wrong:** Failover is automatic, not manual-only.
+**Why C is wrong:** Multi-AZ is same-region (different AZ), not off-site; cross-region is Read Replicas.
+**Why D is wrong:** Multi-AZ is whole-DB failover, not item-level file restore.
+
+</details>
 
 17. Immutability / vault lock defends backups against:
-    A. Slow queries
-    B. Ransomware tampering
-    C. Encryption
-    D. Schedule drift
+   - **A.** Slow queries
+   - **B.** Ransomware tampering
+   - **C.** Encryption
+   - **D.** Schedule drift
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** WORM/immutable vault lock prevents deletion or alteration, so attackers cannot encrypt or delete the clean backup.
-> **Why A is wrong:** Immutability does not affect query speed.
-> **Why C is wrong:** Encryption is a separate control; immutability is about write-protection.
-> **Why D is wrong:** Schedule drift is an operational issue, not what immutability addresses.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** WORM/immutable vault lock prevents deletion or alteration, so attackers cannot encrypt or delete the clean backup.
+
+**Why A is wrong:** Immutability does not affect query speed.
+**Why C is wrong:** Encryption is a separate control; immutability is about write-protection.
+**Why D is wrong:** Schedule drift is an operational issue, not what immutability addresses.
+
+</details>
 
 18. Bulk recovery is most appropriate for:
-    A. One deleted email
-    B. Entire datacenter loss
-    C. A single row
-    D. A config typo
+   - **A.** One deleted email
+   - **B.** Entire datacenter loss
+   - **C.** A single row
+   - **D.** A config typo
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** Bulk recovery restores whole systems/volumes/DBs, which is what a datacenter loss scenario requires.
-> **Why A is wrong:** One deleted email is a granular/item-level restore.
-> **Why C is wrong:** A single row is granular recovery, not bulk.
-> **Why D is wrong:** A config typo is a tiny change, better fixed granularly or via IaC, not a bulk restore.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** Bulk recovery restores whole systems/volumes/DBs, which is what a datacenter loss scenario requires.
+
+**Why A is wrong:** One deleted email is a granular/item-level restore.
+**Why C is wrong:** A single row is granular recovery, not bulk.
+**Why D is wrong:** A config typo is a tiny change, better fixed granularly or via IaC, not a bulk restore.
+
+</details>
 
 19. A long incremental chain is risky because:
-    A. Backups are too big
-    B. One corrupt link breaks later restores
-    C. Restore is too fast
-    D. It needs a full every hour
+   - **A.** Backups are too big
+   - **B.** One corrupt link breaks later restores
+   - **C.** Restore is too fast
+   - **D.** It needs a full every hour
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** Restore needs every link in the incremental chain, so any single corrupt/missing link invalidates all later restores.
-> **Why A is wrong:** Incrementals are the smallest/fastest backups, not too big.
-> **Why C is wrong:** Restore is actually the slowest/fragile with long chains, not too fast.
-> **Why D is wrong:** You do not need a full every hour; the risk is chain dependency, not frequency.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** Restore needs every link in the incremental chain, so any single corrupt/missing link invalidates all later restores.
+
+**Why A is wrong:** Incrementals are the smallest/fastest backups, not too big.
+**Why C is wrong:** Restore is actually the slowest/fragile with long chains, not too fast.
+**Why D is wrong:** You do not need a full every hour; the risk is chain dependency, not frequency.
+
+</details>
 
 20. Restoring in-place is riskier than parallel because it can:
-    A. Cost less
-    B. Clobber production data if the restore is bad
-    C. Encrypt the backup
-    D. Skip validation
+   - **A.** Cost less
+   - **B.** Clobber production data if the restore is bad
+   - **C.** Encrypt the backup
+   - **D.** Skip validation
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** In-place overlays live data with no isolation, so a bad restore can overwrite and destroy production.
-> **Why A is wrong:** Cost is not the risk differentiator; clobbering data is.
-> **Why C is wrong:** Restore does not encrypt the backup; that is a separate control.
-> **Why D is wrong:** Both can skip validation, but the danger unique to in-place is overwriting prod.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** In-place overlays live data with no isolation, so a bad restore can overwrite and destroy production.
+
+**Why A is wrong:** Cost is not the risk differentiator; clobbering data is.
+**Why C is wrong:** Restore does not encrypt the backup; that is a separate control.
+**Why D is wrong:** Both can skip validation, but the danger unique to in-place is overwriting prod.
+
+</details>

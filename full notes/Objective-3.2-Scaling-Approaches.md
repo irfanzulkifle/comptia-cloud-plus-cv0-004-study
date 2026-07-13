@@ -120,261 +120,381 @@ Event-driven horizontal scaling also appears via **AWS Lambda** (scales concurre
 ## SECTION 6 — PRACTICE QUESTIONS
 
 1. A stateless web app faces unpredictable traffic and must stay highly available. Best scaling choice?
-    A. Vertical only
-    B. Horizontal + load-triggered
-    C. Manual resize nightly
-    D. Scheduled to fixed count
+   - **A.** Vertical only
+   - **B.** Horizontal + load-triggered
+   - **C.** Manual resize nightly
+   - **D.** Scheduled to fixed count
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** A stateless app with spiky demand and an HA requirement is the textbook case for horizontal scale-out driven by load (CPU/request) triggers.
-> **Why A is wrong:** Vertical only hits a hard instance-size ceiling and sacrifices availability.
-> **Why C is wrong:** Manual nightly resize cannot react to surprise spikes and adds reaction lag.
-> **Why D is wrong:** A fixed scheduled count cannot absorb unpredictable spikes.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** A stateless app with spiky demand and an HA requirement is the textbook case for horizontal scale-out driven by load (CPU/request) triggers.
+
+**Why A is wrong:** Vertical only hits a hard instance-size ceiling and sacrifices availability.
+**Why C is wrong:** Manual nightly resize cannot react to surprise spikes and adds reaction lag.
+**Why D is wrong:** A fixed scheduled count cannot absorb unpredictable spikes.
+
+</details>
 
 2. Which approach scales capacity BEFORE the load arrives using history?
-    A. Load
-    B. Event
-    C. Trending (predictive)
-    D. Manual
+   - **A.** Load
+   - **B.** Event
+   - **C.** Trending (predictive)
+   - **D.** Manual
 
-> [!note]- Reveal Answer
-> **Correct: C**
-> **Why correct:** Trending/predictive scaling forecasts from historical patterns and provisions ahead of demand, eliminating reaction lag.
-> **Why A is wrong:** Load scaling reacts after a metric threshold is crossed, so it lags.
-> **Why B is wrong:** Event scaling fires on a discrete occurrence, not a forecast.
-> **Why D is wrong:** Manual scaling waits for a human to act, not a prediction.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: C**
+
+**Why correct:** Trending/predictive scaling forecasts from historical patterns and provisions ahead of demand, eliminating reaction lag.
+
+**Why A is wrong:** Load scaling reacts after a metric threshold is crossed, so it lags.
+**Why B is wrong:** Event scaling fires on a discrete occurrence, not a forecast.
+**Why D is wrong:** Manual scaling waits for a human to act, not a prediction.
+
+</details>
 
 3. Scaling based on "average CPU > 70% for 5 minutes" is:
-    A. Scheduled
-    B. Trending
-    C. Load-triggered
-    D. Manual
+   - **A.** Scheduled
+   - **B.** Trending
+   - **C.** Load-triggered
+   - **D.** Manual
 
-> [!note]- Reveal Answer
-> **Correct: C**
-> **Why correct:** Reacting to a real-time metric threshold (CPU breach for a duration) is load-triggered (reactive) scaling.
-> **Why A is wrong:** Scheduled scaling uses clock/cron, not a live metric.
-> **Why B is wrong:** Trending forecasts from history; it does not wait for a threshold breach.
-> **Why D is wrong:** Manual requires a human action, not an automatic threshold.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: C**
+
+**Why correct:** Reacting to a real-time metric threshold (CPU breach for a duration) is load-triggered (reactive) scaling.
+
+**Why A is wrong:** Scheduled scaling uses clock/cron, not a live metric.
+**Why B is wrong:** Trending forecasts from history; it does not wait for a threshold breach.
+**Why D is wrong:** Manual requires a human action, not an automatic threshold.
+
+</details>
 
 4. A video upload triggers one transcoding task per file, scaling to zero when idle. This is:
-    A. Trending
-    B. Event-triggered
-    C. Scheduled
-    D. Vertical
+   - **A.** Trending
+   - **B.** Event-triggered
+   - **C.** Scheduled
+   - **D.** Vertical
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** Capacity follows a discrete event (the upload/queue message) and scales to zero when idle — classic event-driven scaling.
-> **Why A is wrong:** Trending needs historical patterns, not per-file events.
-> **Why C is wrong:** Scheduled runs on a clock, not on upload arrival.
-> **Why D is wrong:** Vertical changes instance size, not task count, and cannot scale to zero meaningfully.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** Capacity follows a discrete event (the upload/queue message) and scales to zero when idle — classic event-driven scaling.
+
+**Why A is wrong:** Trending needs historical patterns, not per-file events.
+**Why C is wrong:** Scheduled runs on a clock, not on upload arrival.
+**Why D is wrong:** Vertical changes instance size, not task count, and cannot scale to zero meaningfully.
+
+</details>
 
 5. "Scale to 20 instances weekdays at 8 a.m., back to 5 at 8 p.m." is:
-    A. Load
-    B. Event
-    C. Scheduled
-    D. Trending
+   - **A.** Load
+   - **B.** Event
+   - **C.** Scheduled
+   - **D.** Trending
 
-> [!note]- Reveal Answer
-> **Correct: C**
-> **Why correct:** A known, clock-based cycle (cron) that sets capacity at fixed times is scheduled scaling.
-> **Why A is wrong:** Load reacts to utilization, not a fixed time.
-> **Why B is wrong:** Event reacts to discrete occurrences, not a daily clock.
-> **Why D is wrong:** Trending forecasts from history; here the pattern is simply known by policy.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: C**
+
+**Why correct:** A known, clock-based cycle (cron) that sets capacity at fixed times is scheduled scaling.
+
+**Why A is wrong:** Load reacts to utilization, not a fixed time.
+**Why B is wrong:** Event reacts to discrete occurrences, not a daily clock.
+**Why D is wrong:** Trending forecasts from history; here the pattern is simply known by policy.
+
+</details>
 
 6. The main risk of manual scaling is:
-    A. Always costs more
-    B. Slow response to unexpected demand
-    C. Requires stateless apps
-    D. Causes reboot downtime
+   - **A.** Always costs more
+   - **B.** Slow response to unexpected demand
+   - **C.** Requires stateless apps
+   - **D.** Causes reboot downtime
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** A human must act, so unexpected spikes go unhandled until someone intervenes — reaction lag by definition.
-> **Why A is wrong:** Manual can be cheap; it is not defined by always costing more.
-> **Why C is wrong:** Manual can target either horizontal or vertical; it does not require statelessness.
-> **Why D is wrong:** Reboot downtime is a vertical-scaling trait, not manual scaling generally.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** A human must act, so unexpected spikes go unhandled until someone intervenes — reaction lag by definition.
+
+**Why A is wrong:** Manual can be cheap; it is not defined by always costing more.
+**Why C is wrong:** Manual can target either horizontal or vertical; it does not require statelessness.
+**Why D is wrong:** Reboot downtime is a vertical-scaling trait, not manual scaling generally.
+
+</details>
 
 7. Horizontal scaling requires the app to be:
-    A. Stateful
-    B. Monolithic
-    C. Stateless (or externalized state)
-    D. Single-instance
+   - **A.** Stateful
+   - **B.** Monolithic
+   - **C.** Stateless (or externalized state)
+   - **D.** Single-instance
 
-> [!note]- Reveal Answer
-> **Correct: C**
-> **Why correct:** Any instance must serve any request, so session/state must be externalized (DB/cache) for scale-out to work.
-> **Why A is wrong:** Stateful apps break when requests land on different instances after scale-out.
-> **Why B is wrong:** Monoliths can run, but without externalized state they do not scale horizontally cleanly.
-> **Why D is wrong:** Single-instance is the opposite of horizontal (multiple-instance) scaling.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: C**
+
+**Why correct:** Any instance must serve any request, so session/state must be externalized (DB/cache) for scale-out to work.
+
+**Why A is wrong:** Stateful apps break when requests land on different instances after scale-out.
+**Why B is wrong:** Monoliths can run, but without externalized state they do not scale horizontally cleanly.
+**Why D is wrong:** Single-instance is the opposite of horizontal (multiple-instance) scaling.
+
+</details>
 
 8. Vertical scaling's hard limitation is:
-    A. It cannot reduce cost
-    B. A maximum instance size (ceiling)
-    C. It always scales to zero
-    D. It needs a load balancer
+   - **A.** It cannot reduce cost
+   - **B.** A maximum instance size (ceiling)
+   - **C.** It always scales to zero
+   - **D.** It needs a load balancer
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** Every instance family has a largest size, so vertical scaling hits an absolute ceiling and cannot grow beyond it.
-> **Why A is wrong:** Vertical can reduce cost by right-sizing down, not just up.
-> **Why C is wrong:** Vertical resizes an existing instance; it does not scale to zero.
-> **Why D is wrong:** A load balancer is for horizontal fleets, not required for a single resized instance.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** Every instance family has a largest size, so vertical scaling hits an absolute ceiling and cannot grow beyond it.
+
+**Why A is wrong:** Vertical can reduce cost by right-sizing down, not just up.
+**Why C is wrong:** Vertical resizes an existing instance; it does not scale to zero.
+**Why D is wrong:** A load balancer is for horizontal fleets, not required for a single resized instance.
+
+</details>
 
 9. Connection draining is important during:
-    A. Scale-out
-    B. Graceful scale-in
-    C. Vertical resize
-    D. Scheduled action
+   - **A.** Scale-out
+   - **B.** Graceful scale-in
+   - **C.** Vertical resize
+   - **D.** Scheduled action
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** Draining lets in-flight requests on an instance finish before it is removed during scale-in, avoiding dropped sessions.
-> **Why A is wrong:** Scale-out adds instances; no existing sessions need draining.
-> **Why C is wrong:** Vertical resize is a stop/start of one instance, not a fleet removal.
-> **Why D is wrong:** Scheduled actions may scale in, but draining itself is the graceful-removal mechanism, not the schedule.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** Draining lets in-flight requests on an instance finish before it is removed during scale-in, avoiding dropped sessions.
+
+**Why A is wrong:** Scale-out adds instances; no existing sessions need draining.
+**Why C is wrong:** Vertical resize is a stop/start of one instance, not a fleet removal.
+**Why D is wrong:** Scheduled actions may scale in, but draining itself is the graceful-removal mechanism, not the schedule.
+
+</details>
 
 10. Cooldown periods prevent:
-    A. Scaling out
-    B. Flapping / rapid oscillation
-    C. Scheduled actions
-    D. Vertical scaling
+   - **A.** Scaling out
+   - **B.** Flapping / rapid oscillation
+   - **C.** Scheduled actions
+   - **D.** Vertical scaling
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** A cooldown blocks new scaling actions briefly after one, stopping repeated scale-out/in from brief spikes (flapping).
-> **Why A is wrong:** Cooldowns do not block scaling out; they pause the next action temporarily.
-> **Why C is wrong:** Scheduled actions run on cron regardless of cooldown.
-> **Why D is wrong:** Cooldown is an ASG (horizontal) concept, not vertical scaling.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** A cooldown blocks new scaling actions briefly after one, stopping repeated scale-out/in from brief spikes (flapping).
+
+**Why A is wrong:** Cooldowns do not block scaling out; they pause the next action temporarily.
+**Why C is wrong:** Scheduled actions run on cron regardless of cooldown.
+**Why D is wrong:** Cooldown is an ASG (horizontal) concept, not vertical scaling.
+
+</details>
 
 11. An ASG replacing an unhealthy instance is an example of:
-    A. Trending
-    B. Self-healing (horizontal)
-    C. Vertical scaling
-    D. Manual scaling
+   - **A.** Trending
+   - **B.** Self-healing (horizontal)
+   - **C.** Vertical scaling
+   - **D.** Manual scaling
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** Health-check replacement brings capacity back to desired count automatically — self-healing horizontal capacity.
-> **Why A is wrong:** Trending is predictive pre-scaling, not health replacement.
-> **Why C is wrong:** Replacing an instance keeps the same size; it is not a vertical resize.
-> **Why D is wrong:** The ASG acts automatically; no human is required.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** Health-check replacement brings capacity back to desired count automatically — self-healing horizontal capacity.
+
+**Why A is wrong:** Trending is predictive pre-scaling, not health replacement.
+**Why C is wrong:** Replacing an instance keeps the same size; it is not a vertical resize.
+**Why D is wrong:** The ASG acts automatically; no human is required.
+
+</details>
 
 12. Which scaling type improves availability by adding redundancy?
-    A. Vertical
-    B. Horizontal
-    C. Manual only
-    D. Scheduled only
+   - **A.** Vertical
+   - **B.** Horizontal
+   - **C.** Manual only
+   - **D.** Scheduled only
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** Adding instances across AZs removes single-instance failure points, so horizontal scaling improves availability.
-> **Why A is wrong:** Vertical resizing one instance usually causes reboot downtime and reduces availability.
-> **Why C is wrong:** Manual is an approach, not a type, and does not inherently add redundancy.
-> **Why D is wrong:** Scheduled is an approach, not a type, and may set a single fixed count.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** Adding instances across AZs removes single-instance failure points, so horizontal scaling improves availability.
+
+**Why A is wrong:** Vertical resizing one instance usually causes reboot downtime and reduces availability.
+**Why C is wrong:** Manual is an approach, not a type, and does not inherently add redundancy.
+**Why D is wrong:** Scheduled is an approach, not a type, and may set a single fixed count.
+
+</details>
 
 13. Predictive scaling on AWS is a form of:
-    A. Scheduled
-    B. Event
-    C. Trending (triggered)
-    D. Manual
+   - **A.** Scheduled
+   - **B.** Event
+   - **C.** Trending (triggered)
+   - **D.** Manual
 
-> [!note]- Reveal Answer
-> **Correct: C**
-> **Why correct:** AWS predictive scaling uses ML to forecast demand and pre-provision — that is the trending/forecast triggered approach.
-> **Why A is wrong:** Scheduled uses cron; predictive uses a learned demand forecast.
-> **Why B is wrong:** Event scaling reacts to discrete occurrences, not forecasts.
-> **Why D is wrong:** Predictive scaling runs automatically, not via human action.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: C**
+
+**Why correct:** AWS predictive scaling uses ML to forecast demand and pre-provision — that is the trending/forecast triggered approach.
+
+**Why A is wrong:** Scheduled uses cron; predictive uses a learned demand forecast.
+**Why B is wrong:** Event scaling reacts to discrete occurrences, not forecasts.
+**Why D is wrong:** Predictive scaling runs automatically, not via human action.
+
+</details>
 
 14. Resizing an EC2 instance to a larger type usually requires:
-    A. No downtime
-    B. A stop/start (reboot)
-    C. A load balancer change
-    D. Adding instances
+   - **A.** No downtime
+   - **B.** A stop/start (reboot)
+   - **C.** A load balancer change
+   - **D.** Adding instances
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** Changing an EC2 instance type means stop, change type, start — a reboot/downtime window.
-> **Why A is wrong:** You cannot change hardware type on a running instance; a stop/start is required.
-> **Why C is wrong:** The instance stays behind the same LB; no LB change is needed.
-> **Why D is wrong:** Adding instances is horizontal scaling, not a vertical resize.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** Changing an EC2 instance type means stop, change type, start — a reboot/downtime window.
+
+**Why A is wrong:** You cannot change hardware type on a running instance; a stop/start is required.
+**Why C is wrong:** The instance stays behind the same LB; no LB change is needed.
+**Why D is wrong:** Adding instances is horizontal scaling, not a vertical resize.
+
+</details>
 
 15. Event-based scaling is ideal for:
-    A. Steady 24/7 traffic
-    B. Asynchronous/batch bursty workloads
-    C. Single legacy DB
-    D. Fixed capacity
+   - **A.** Steady 24/7 traffic
+   - **B.** Asynchronous/batch bursty workloads
+   - **C.** Single legacy DB
+   - **D.** Fixed capacity
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** Capacity follows each work item (queue message/webhook), so event scaling suits async, batch, bursty work and scales to zero.
-> **Why A is wrong:** Steady traffic is better served by load or scheduled scaling.
-> **Why C is wrong:** A single legacy DB is a vertical-scaling or fixed-capacity case.
-> **Why D is wrong:** Fixed capacity contradicts event scaling, which varies with arrivals.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** Capacity follows each work item (queue message/webhook), so event scaling suits async, batch, bursty work and scales to zero.
+
+**Why A is wrong:** Steady traffic is better served by load or scheduled scaling.
+**Why C is wrong:** A single legacy DB is a vertical-scaling or fixed-capacity case.
+**Why D is wrong:** Fixed capacity contradicts event scaling, which varies with arrivals.
+
+</details>
 
 16. Combining a schedule (baseline) with load rules is done to:
-    A. Eliminate cooldowns
-    B. Handle predictable base + surprise spikes
-    C. Force vertical scaling
-    D. Disable alarms
+   - **A.** Eliminate cooldowns
+   - **B.** Handle predictable base + surprise spikes
+   - **C.** Force vertical scaling
+   - **D.** Disable alarms
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** The schedule sets a known baseline capacity; load rules catch unpredictable spikes on top of it.
-> **Why A is wrong:** Cooldowns remain necessary to prevent flapping regardless of scheduling.
-> **Why C is wrong:** This combination is horizontal (count-based), not vertical.
-> **Why D is wrong:** Alarms still drive the load rules; they are not disabled.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** The schedule sets a known baseline capacity; load rules catch unpredictable spikes on top of it.
+
+**Why A is wrong:** Cooldowns remain necessary to prevent flapping regardless of scheduling.
+**Why C is wrong:** This combination is horizontal (count-based), not vertical.
+**Why D is wrong:** Alarms still drive the load rules; they are not disabled.
+
+</details>
 
 17. A metric like "queue depth" most naturally drives:
-    A. Vertical scaling
-    B. Event or load-triggered horizontal
-    C. Scheduled scaling
-    D. Manual only
+   - **A.** Vertical scaling
+   - **B.** Event or load-triggered horizontal
+   - **C.** Scheduled scaling
+   - **D.** Manual only
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** Queue length is a real-time signal of pending work, so it naturally triggers horizontal scale-out (event/load) to drain the backlog.
-> **Why A is wrong:** Queue depth reflects work volume, not instance size needs.
-> **Why C is wrong:** Scheduled ignores live queue length and runs on a clock.
-> **Why D is wrong:** Manual would not react promptly to queue fluctuations.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** Queue length is a real-time signal of pending work, so it naturally triggers horizontal scale-out (event/load) to drain the backlog.
+
+**Why A is wrong:** Queue depth reflects work volume, not instance size needs.
+**Why C is wrong:** Scheduled ignores live queue length and runs on a clock.
+**Why D is wrong:** Manual would not react promptly to queue fluctuations.
+
+</details>
 
 18. The biggest availability downside of vertical scaling is:
-    A. It scales to zero
-    B. Reboot downtime during resize
-    C. It needs stateless apps
-    D. It adds load balancers
+   - **A.** It scales to zero
+   - **B.** Reboot downtime during resize
+   - **C.** It needs stateless apps
+   - **D.** It adds load balancers
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** Resizing usually stops the instance, causing a reboot/downtime window and reducing availability.
-> **Why A is wrong:** Vertical does not scale to zero; that is event/serverless behavior.
-> **Why C is wrong:** Vertical is often chosen precisely because an app is NOT stateless.
-> **Why D is wrong:** A single resized instance typically sits behind an existing LB; adding one is not the downside.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** Resizing usually stops the instance, causing a reboot/downtime window and reducing availability.
+
+**Why A is wrong:** Vertical does not scale to zero; that is event/serverless behavior.
+**Why C is wrong:** Vertical is often chosen precisely because an app is NOT stateless.
+**Why D is wrong:** A single resized instance typically sits behind an existing LB; adding one is not the downside.
+
+</details>
 
 19. On AWS, the primary construct for horizontal EC2 scaling is:
-    A. Lambda
-    B. Auto Scaling Group (ASG)
-    C. CloudTrail
-    D. X-Ray
+   - **A.** Lambda
+   - **B.** Auto Scaling Group (ASG)
+   - **C.** CloudTrail
+   - **D.** X-Ray
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** An ASG maintains a desired instance count and applies load/trending/scheduled/manual policies plus health replacement.
-> **Why A is wrong:** Lambda scales concurrency per invocation, not EC2 instance count.
-> **Why C is wrong:** CloudTrail is audit logging, unrelated to scaling.
-> **Why D is wrong:** X-Ray is tracing, unrelated to scaling.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** An ASG maintains a desired instance count and applies load/trending/scheduled/manual policies plus health replacement.
+
+**Why A is wrong:** Lambda scales concurrency per invocation, not EC2 instance count.
+**Why C is wrong:** CloudTrail is audit logging, unrelated to scaling.
+**Why D is wrong:** X-Ray is tracing, unrelated to scaling.
+
+</details>
 
 20. For a quarter-end reporting DB that can't be sharded, the right move is:
-    A. Horizontal ASG
-    B. Vertical scale-up (bigger instance)
-    C. Event scaling
-    D. Scheduled to zero
+   - **A.** Horizontal ASG
+   - **B.** Vertical scale-up (bigger instance)
+   - **C.** Event scaling
+   - **D.** Scheduled to zero
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** An unshardable single-writer DB bottleneck is relieved by resizing to a larger instance (vertical scale-up) over a maintenance window.
-> **Why A is wrong:** Horizontal ASGs cannot shard a single primary DB's state.
-> **Why C is wrong:** Event scaling adds task count, not DB capacity, and the DB is not event-driven.
-> **Why D is wrong:** Scaling a production DB to zero would destroy availability.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** An unshardable single-writer DB bottleneck is relieved by resizing to a larger instance (vertical scale-up) over a maintenance window.
+
+**Why A is wrong:** Horizontal ASGs cannot shard a single primary DB's state.
+**Why C is wrong:** Event scaling adds task count, not DB capacity, and the DB is not event-driven.
+**Why D is wrong:** Scaling a production DB to zero would destroy availability.
+
+</details>

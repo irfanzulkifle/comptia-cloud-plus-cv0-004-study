@@ -140,261 +140,381 @@ This section maps the vendor-neutral 1.10 sub-objectives to the AWS-specific ser
 ## SECTION 6 — PRACTICE QUESTIONS
 
 1. A workload runs steadily at 20% CPU on an 8-vCPU VM. The cheapest optimization is to:
-   A. Add a second VM behind a load balancer
-   B. Right-size to a smaller VM (vertical scale down)
-   C. Convert to containers immediately
-   D. Switch to provisioned IOPS storage
+   - **A.** Add a second VM behind a load balancer
+   - **B.** Right-size to a smaller VM (vertical scale down)
+   - **C.** Convert to containers immediately
+   - **D.** Switch to provisioned IOPS storage
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** Vertical scaling down to a smaller VM removes wasted capacity without an architectural change.
-> **Why A is wrong:** Adding a second VM increases cost and is horizontal scaling, not cheapest.
-> **Why C is wrong:** Containers are a rewrite, not the cheapest first step for steady load.
-> **Why D is wrong:** Provisioned IOPS addresses storage, not CPU over-provisioning.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** Vertical scaling down to a smaller VM removes wasted capacity without an architectural change.
+
+**Why A is wrong:** Adding a second VM increases cost and is horizontal scaling, not cheapest.
+**Why C is wrong:** Containers are a rewrite, not the cheapest first step for steady load.
+**Why D is wrong:** Provisioned IOPS addresses storage, not CPU over-provisioning.
+
+</details>
 
 2. An unpredictable, event-driven task runs only a few times daily. The best compute choice is:
-   A. Always-on large VM
-   B. Reserved container cluster
-   C. Serverless function
-   D. Manual bare-metal
+   - **A.** Always-on large VM
+   - **B.** Reserved container cluster
+   - **C.** Serverless function
+   - **D.** Manual bare-metal
 
-> [!note]- Reveal Answer
-> **Correct: C**
-> **Why correct:** Serverless scales to zero and bills only on execution, ideal for rare events.
-> **Why A is wrong:** An always-on VM bills 720 hours regardless of idle time.
-> **Why B is wrong:** A reserved cluster is expensive for few daily runs.
-> **Why D is wrong:** Bare metal is costly and not event-driven.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: C**
+
+**Why correct:** Serverless scales to zero and bills only on execution, ideal for rare events.
+
+**Why A is wrong:** An always-on VM bills 720 hours regardless of idle time.
+**Why B is wrong:** A reserved cluster is expensive for few daily runs.
+**Why D is wrong:** Bare metal is costly and not event-driven.
+
+</details>
 
 3. Which metric best indicates a database volume bottleneck from many small random writes?
-   A. Network throughput
-   B. IOPS
-   C. Latency of the CDN
-   D. Container count
+   - **A.** Network throughput
+   - **B.** IOPS
+   - **C.** Latency of the CDN
+   - **D.** Container count
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** IOPS measures small random read and write operations per second, the DB bottleneck signal.
-> **Why A is wrong:** Network throughput is bulk data rate, not small random writes.
-> **Why C is wrong:** CDN latency is content delivery, not a storage volume metric.
-> **Why D is wrong:** Container count is orchestration, not a storage metric.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** IOPS measures small random read and write operations per second, the DB bottleneck signal.
+
+**Why A is wrong:** Network throughput is bulk data rate, not small random writes.
+**Why C is wrong:** CDN latency is content delivery, not a storage volume metric.
+**Why D is wrong:** Container count is orchestration, not a storage metric.
+
+</details>
 
 4. A user in Kuala Lumpur sees 280 ms page loads from a distant region. Best fix:
-   A. Provisioned IOPS
-   B. Larger VM
-   C. Edge cache / CDN
-   D. More containers
+   - **A.** Provisioned IOPS
+   - **B.** Larger VM
+   - **C.** Edge cache / CDN
+   - **D.** More containers
 
-> [!note]- Reveal Answer
-> **Correct: C**
-> **Why correct:** A CDN or edge cache serves content from nearby edges, cutting network latency.
-> **Why A is wrong:** Provisioned IOPS helps storage, not geographic latency.
-> **Why B is wrong:** A larger VM does not move content closer to users.
-> **Why D is wrong:** More containers do not reduce round-trip distance.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: C**
+
+**Why correct:** A CDN or edge cache serves content from nearby edges, cutting network latency.
+
+**Why A is wrong:** Provisioned IOPS helps storage, not geographic latency.
+**Why B is wrong:** A larger VM does not move content closer to users.
+**Why D is wrong:** More containers do not reduce round-trip distance.
+
+</details>
 
 5. Container orchestration primarily optimizes for:
-   A. Single-VM performance
-   B. Placement, scaling, and self-healing
-   C. Database IOPS
-   D. Network throughput
+   - **A.** Single-VM performance
+   - **B.** Placement, scaling, and self-healing
+   - **C.** Database IOPS
+   - **D.** Network throughput
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** Orchestration automates placement, scaling, and self-healing of containers.
-> **Why A is wrong:** It manages fleets, not single-VM performance.
-> **Why C is wrong:** Database IOPS is storage tuning, not orchestration.
-> **Why D is wrong:** Network throughput is separate from container orchestration.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** Orchestration automates placement, scaling, and self-healing of containers.
+
+**Why A is wrong:** It manages fleets, not single-VM performance.
+**Why C is wrong:** Database IOPS is storage tuning, not orchestration.
+**Why D is wrong:** Network throughput is separate from container orchestration.
+
+</details>
 
 6. A nightly 2 TB backup misses its window on a 1 Gbps link. Primary fix:
-   A. Increase network throughput / bandwidth
-   B. Reduce IOPS
-   C. Use serverless
-   D. Add a CDN
+   - **A.** Increase network throughput / bandwidth
+   - **B.** Reduce IOPS
+   - **C.** Use serverless
+   - **D.** Add a CDN
 
-> [!note]- Reveal Answer
-> **Correct: A**
-> **Why correct:** Throughput or bandwidth limits bulk transfer speed, so increase the link rate.
-> **Why B is wrong:** Reducing IOPS is wrong; it is a throughput-bound bulk job.
-> **Why C is wrong:** Serverless does not speed a 2 TB backup transfer.
-> **Why D is wrong:** A CDN is for content delivery, not backups.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: A**
+
+**Why correct:** Throughput or bandwidth limits bulk transfer speed, so increase the link rate.
+
+**Why B is wrong:** Reducing IOPS is wrong; it is a throughput-bound bulk job.
+**Why C is wrong:** Serverless does not speed a 2 TB backup transfer.
+**Why D is wrong:** A CDN is for content delivery, not backups.
+
+</details>
 
 7. Which is a managed service benefit?
-   A. You patch the OS yourself
-   B. Provider handles HA, patching, backups
-   C. Full bare-metal control
-   D. No vendor involved
+   - **A.** You patch the OS yourself
+   - **B.** Provider handles HA, patching, backups
+   - **C.** Full bare-metal control
+   - **D.** No vendor involved
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** Managed services offload operations such as HA, patching, and backups to the provider.
-> **Why A is wrong:** With managed services the provider patches, not you.
-> **Why C is wrong:** Managed services trade away bare-metal control.
-> **Why D is wrong:** A vendor, the CSP, is involved.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** Managed services offload operations such as HA, patching, and backups to the provider.
+
+**Why A is wrong:** With managed services the provider patches, not you.
+**Why C is wrong:** Managed services trade away bare-metal control.
+**Why D is wrong:** A vendor, the CSP, is involved.
+
+</details>
 
 8. Vertical scaling means:
-   A. Adding more VMs
-   B. Changing the size of one VM
-   C. Using containers
-   D. Removing all capacity
+   - **A.** Adding more VMs
+   - **B.** Changing the size of one VM
+   - **C.** Using containers
+   - **D.** Removing all capacity
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** Vertical scaling changes the size of a single instance up or down.
-> **Why A is wrong:** Adding more VMs is horizontal scaling.
-> **Why C is wrong:** Containers are a packaging model, not vertical scaling.
-> **Why D is wrong:** Removing all capacity is not scaling, it is shutdown.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** Vertical scaling changes the size of a single instance up or down.
+
+**Why A is wrong:** Adding more VMs is horizontal scaling.
+**Why C is wrong:** Containers are a packaging model, not vertical scaling.
+**Why D is wrong:** Removing all capacity is not scaling, it is shutdown.
+
+</details>
 
 9. A workflow engine is best for:
-   A. Running one long VM
-   B. Sequencing multi-step tasks with retries
-   C. Caching static files
-   D. Measuring IOPS
+   - **A.** Running one long VM
+   - **B.** Sequencing multi-step tasks with retries
+   - **C.** Caching static files
+   - **D.** Measuring IOPS
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** Workflow engines sequence multi-step tasks with branching, retries, and state tracking.
-> **Why A is wrong:** A long VM is not a workflow; it has no step chaining.
-> **Why C is wrong:** Caching static files is a CDN or cache, not a workflow.
-> **Why D is wrong:** Measuring IOPS is storage, not workflow.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** Workflow engines sequence multi-step tasks with branching, retries, and state tracking.
+
+**Why A is wrong:** A long VM is not a workflow; it has no step chaining.
+**Why C is wrong:** Caching static files is a CDN or cache, not a workflow.
+**Why D is wrong:** Measuring IOPS is storage, not workflow.
+
+</details>
 
 10. For high, guaranteed IOPS on AWS, choose:
-   A. EBS gp3
-   B. EBS io2 Provisioned IOPS
-   C. S3
-   D. CloudFront
+   - **A.** EBS gp3
+   - **B.** EBS io2 Provisioned IOPS
+   - **C.** S3
+   - **D.** CloudFront
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** EBS io2 Provisioned IOPS gives guaranteed, high, low-latency IOPS for databases.
-> **Why A is wrong:** gp3 has adjustable but not guaranteed peak IOPS like io2.
-> **Why C is wrong:** S3 is object storage for throughput, not guaranteed IOPS.
-> **Why D is wrong:** CloudFront is a CDN, not a block volume.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** EBS io2 Provisioned IOPS gives guaranteed, high, low-latency IOPS for databases.
+
+**Why A is wrong:** gp3 has adjustable but not guaranteed peak IOPS like io2.
+**Why C is wrong:** S3 is object storage for throughput, not guaranteed IOPS.
+**Why D is wrong:** CloudFront is a CDN, not a block volume.
+
+</details>
 
 11. Serverless cold starts refer to:
-   A. A VM rebooting
-   B. Initial delay when a function initializes after idle
-   C. Network latency
-   D. Disk IOPS drop
+   - **A.** A VM rebooting
+   - **B.** Initial delay when a function initializes after idle
+   - **C.** Network latency
+   - **D.** Disk IOPS drop
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** A cold start is the initial delay while a function initializes after idle.
-> **Why A is wrong:** A VM reboot is not a serverless cold start.
-> **Why C is wrong:** Network latency is separate from function init.
-> **Why D is wrong:** Disk IOPS is storage, not function init.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** A cold start is the initial delay while a function initializes after idle.
+
+**Why A is wrong:** A VM reboot is not a serverless cold start.
+**Why C is wrong:** Network latency is separate from function init.
+**Why D is wrong:** Disk IOPS is storage, not function init.
+
+</details>
 
 12. Horizontal scaling requires the app to be:
-   A. Stateful on one host
-   B. Stateless / share-nothing behind a load balancer
-   C. Single-threaded
-   D. Container-only
+   - **A.** Stateful on one host
+   - **B.** Stateless / share-nothing behind a load balancer
+   - **C.** Single-threaded
+   - **D.** Container-only
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** Horizontal scaling adds instances, so state must be stateless or shared, not on one host.
-> **Why A is wrong:** Stateful single-host fights horizontal scaling.
-> **Why C is wrong:** Single-threaded is unrelated to scaling-out design.
-> **Why D is wrong:** Containers are not required for horizontal scaling.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** Horizontal scaling adds instances, so state must be stateless or shared, not on one host.
+
+**Why A is wrong:** Stateful single-host fights horizontal scaling.
+**Why C is wrong:** Single-threaded is unrelated to scaling-out design.
+**Why D is wrong:** Containers are not required for horizontal scaling.
+
+</details>
 
 13. Throughput-optimized storage suits:
-   A. Small random DB writes
-   B. Large sequential backups and media
-   C. Edge caching
-   D. Serverless code
+   - **A.** Small random DB writes
+   - **B.** Large sequential backups and media
+   - **C.** Edge caching
+   - **D.** Serverless code
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** Bulk sequential transfers such as backups and media are throughput-bound, not IOPS-bound.
-> **Why A is wrong:** Small random writes are IOPS-bound, not throughput.
-> **Why C is wrong:** Edge caching is network latency, not storage type.
-> **Why D is wrong:** Serverless code is compute, not storage class.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** Bulk sequential transfers such as backups and media are throughput-bound, not IOPS-bound.
+
+**Why A is wrong:** Small random writes are IOPS-bound, not throughput.
+**Why C is wrong:** Edge caching is network latency, not storage type.
+**Why D is wrong:** Serverless code is compute, not storage class.
+
+</details>
 
 14. AWS Fargate is best described as:
-   A. A virtual machine
-   B. Serverless compute for containers
-   C. A database
-   D. A CDN
+   - **A.** A virtual machine
+   - **B.** Serverless compute for containers
+   - **C.** A database
+   - **D.** A CDN
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** Fargate runs containers without you managing the underlying nodes, serverless compute.
-> **Why A is wrong:** Fargate is not a VM; it is container compute.
-> **Why C is wrong:** Fargate is not a database.
-> **Why D is wrong:** Fargate is not a CDN.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** Fargate runs containers without you managing the underlying nodes, serverless compute.
+
+**Why A is wrong:** Fargate is not a VM; it is container compute.
+**Why C is wrong:** Fargate is not a database.
+**Why D is wrong:** Fargate is not a CDN.
+
+</details>
 
 15. To reduce round-trip delay between regions, use:
-   A. EBS io2
-   B. Global Accelerator / CloudFront
-   C. Auto Scaling
-   D. S3
+   - **A.** EBS io2
+   - **B.** Global Accelerator / CloudFront
+   - **C.** Auto Scaling
+   - **D.** S3
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** Global Accelerator and CloudFront route over the optimized AWS backbone or edge.
-> **Why A is wrong:** EBS io2 is a storage volume, not inter-region routing.
-> **Why C is wrong:** Auto Scaling adjusts capacity, not round-trip delay.
-> **Why D is wrong:** S3 is storage, not a latency-reduction network service.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** Global Accelerator and CloudFront route over the optimized AWS backbone or edge.
+
+**Why A is wrong:** EBS io2 is a storage volume, not inter-region routing.
+**Why C is wrong:** Auto Scaling adjusts capacity, not round-trip delay.
+**Why D is wrong:** S3 is storage, not a latency-reduction network service.
+
+</details>
 
 16. Bin-packing in orchestration:
-   A. Wastes nodes
-   B. Places containers densely to use fewer hosts
-   C. Increases IOPS
-   D. Reduces network latency
+   - **A.** Wastes nodes
+   - **B.** Places containers densely to use fewer hosts
+   - **C.** Increases IOPS
+   - **D.** Reduces network latency
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** Bin-packing places containers densely to use fewer hosts, lowering node count and cost.
-> **Why A is wrong:** Bin-packing reduces, not wastes, nodes.
-> **Why C is wrong:** Bin-packing affects placement, not IOPS.
-> **Why D is wrong:** It reduces latency indirectly but is about density.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** Bin-packing places containers densely to use fewer hosts, lowering node count and cost.
+
+**Why A is wrong:** Bin-packing reduces, not wastes, nodes.
+**Why C is wrong:** Bin-packing affects placement, not IOPS.
+**Why D is wrong:** It reduces latency indirectly but is about density.
+
+</details>
 
 17. The main trade-off of managed services is:
-   A. Higher IOPS only
-   B. Less low-level control / possible lock-in
-   C. No high availability
-   D. Manual patching
+   - **A.** Higher IOPS only
+   - **B.** Less low-level control / possible lock-in
+   - **C.** No high availability
+   - **D.** Manual patching
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** The trade-off of managed services is less low-level control and possible vendor lock-in.
-> **Why A is wrong:** Managed services also help IOPS indirectly via options.
-> **Why C is wrong:** Managed services provide HA, not remove it.
-> **Why D is wrong:** Managed services patch automatically, not manually.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** The trade-off of managed services is less low-level control and possible vendor lock-in.
+
+**Why A is wrong:** Managed services also help IOPS indirectly via options.
+**Why C is wrong:** Managed services provide HA, not remove it.
+**Why D is wrong:** Managed services patch automatically, not manually.
+
+</details>
 
 18. Autoscaling helps optimize by:
-   A. Keeping fixed capacity always
-   B. Matching capacity to demand, saving cost at low load
-   C. Removing all VMs
-   D. Increasing latency
+   - **A.** Keeping fixed capacity always
+   - **B.** Matching capacity to demand, saving cost at low load
+   - **C.** Removing all VMs
+   - **D.** Increasing latency
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** Autoscaling matches capacity to demand, saving cost when load is low.
-> **Why A is wrong:** It changes capacity with demand, not fixed always-on.
-> **Why C is wrong:** It does not remove all VMs; it scales to demand.
-> **Why D is wrong:** It reduces, not increases, latency under load.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** Autoscaling matches capacity to demand, saving cost when load is low.
+
+**Why A is wrong:** It changes capacity with demand, not fixed always-on.
+**Why C is wrong:** It does not remove all VMs; it scales to demand.
+**Why D is wrong:** It reduces, not increases, latency under load.
+
+</details>
 
 19. A spiky batch job best maps to:
-   A. Always-on VM
-   B. Serverless or autoscaled containers
-   C. Provisioned IOPS only
-   D. Single region static VM
+   - **A.** Always-on VM
+   - **B.** Serverless or autoscaled containers
+   - **C.** Provisioned IOPS only
+   - **D.** Single region static VM
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** Elastic serverless or autoscaled containers handle bursts without idle waste.
-> **Why A is wrong:** An always-on VM sits idle and wastes money between bursts.
-> **Why C is wrong:** Provisioned IOPS is storage, not burst compute.
-> **Why D is wrong:** A single static VM cannot absorb spikes without waste.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** Elastic serverless or autoscaled containers handle bursts without idle waste.
+
+**Why A is wrong:** An always-on VM sits idle and wastes money between bursts.
+**Why C is wrong:** Provisioned IOPS is storage, not burst compute.
+**Why D is wrong:** A single static VM cannot absorb spikes without waste.
+
+</details>
 
 20. Caching at the edge primarily improves:
-   A. IOPS
-   B. Network latency for repeated content
-   C. Storage throughput
-   D. Container density
+   - **A.** IOPS
+   - **B.** Network latency for repeated content
+   - **C.** Storage throughput
+   - **D.** Container density
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** Edge caches serve repeated content close to users, cutting network latency.
-> **Why A is wrong:** IOPS is a storage metric, not edge caching.
-> **Why C is wrong:** Storage throughput is separate from edge caching.
-> **Why D is wrong:** Container density is orchestration, not edge caching.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** Edge caches serve repeated content close to users, cutting network latency.
+
+**Why A is wrong:** IOPS is a storage metric, not edge caching.
+**Why C is wrong:** Storage throughput is separate from edge caching.
+**Why D is wrong:** Container density is orchestration, not edge caching.
+
+</details>

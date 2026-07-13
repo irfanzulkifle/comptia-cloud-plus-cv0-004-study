@@ -160,261 +160,381 @@ AWS-native services that map to Objective 5.2 CI/CD concepts:
 ## SECTION 6 — PRACTICE QUESTIONS
 
 1. Which practice merges code frequently and builds/tests on every push?
-   A. Continuous Deployment
-   B. Continuous Integration
-   C. Blue/green
-   D. Canary
+   - **A.** Continuous Deployment
+   - **B.** Continuous Integration
+   - **C.** Blue/green
+   - **D.** Canary
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** CI = merge to a shared branch frequently and build + test automatically on every push.
-> **Why A is wrong:** Continuous Deployment auto-ships to prod; the question describes integration, not deploy.
-> **Why C is wrong:** Blue/green is a deployment strategy, not the build/test-on-merge practice.
-> **Why D is wrong:** Canary is a deployment rollout tactic, not the integration practice.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** CI = merge to a shared branch frequently and build + test automatically on every push.
+
+**Why A is wrong:** Continuous Deployment auto-ships to prod; the question describes integration, not deploy.
+**Why C is wrong:** Blue/green is a deployment strategy, not the build/test-on-merge practice.
+**Why D is wrong:** Canary is a deployment rollout tactic, not the integration practice.
+
+</details>
 
 2. SAST analyzes which of the following?
-   A. A running application
-   B. Source code without executing it
-   C. Dependencies only
-   D. Network traffic
+   - **A.** A running application
+   - **B.** Source code without executing it
+   - **C.** Dependencies only
+   - **D.** Network traffic
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** SAST is static analysis of source code (no execution), run at build time.
-> **Why A is wrong:** A running app is the target of DAST, not SAST.
-> **Why C is wrong:** Dependencies are checked by SCA, not SAST.
-> **Why D is wrong:** Network traffic is not analyzed by SAST; it is static code only.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** SAST is static analysis of source code (no execution), run at build time.
+
+**Why A is wrong:** A running app is the target of DAST, not SAST.
+**Why C is wrong:** Dependencies are checked by SCA, not SAST.
+**Why D is wrong:** Network traffic is not analyzed by SAST; it is static code only.
+
+</details>
 
 3. DAST is best described as:
-   A. Static code analysis
-   B. Dynamic testing of a running app
-   C. Dependency scanning
-   D. Secret detection
+   - **A.** Static code analysis
+   - **B.** Dynamic testing of a running app
+   - **C.** Dependency scanning
+   - **D.** Secret detection
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** DAST attacks/tests a running application from the outside, post-deploy.
-> **Why A is wrong:** Static code analysis is SAST, not DAST.
-> **Why C is wrong:** Dependency scanning is SCA.
-> **Why D is wrong:** Secret detection is a separate scan type.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** DAST attacks/tests a running application from the outside, post-deploy.
+
+**Why A is wrong:** Static code analysis is SAST, not DAST.
+**Why C is wrong:** Dependency scanning is SCA.
+**Why D is wrong:** Secret detection is a separate scan type.
+
+</details>
 
 4. SCA primarily checks for:
-   A. SQL injection in code
-   B. Vulnerable open-source dependencies
-   C. Hardcoded keys
-   D. Runtime auth flaws
+   - **A.** SQL injection in code
+   - **B.** Vulnerable open-source dependencies
+   - **C.** Hardcoded keys
+   - **D.** Runtime auth flaws
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** SCA scans third-party libraries for known CVEs and license issues.
-> **Why A is wrong:** SQL injection in code is a SAST finding, not SCA.
-> **Why C is wrong:** Hardcoded keys are caught by secret scanning, not SCA.
-> **Why D is wrong:** Runtime auth flaws are DAST's domain, not SCA.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** SCA scans third-party libraries for known CVEs and license issues.
+
+**Why A is wrong:** SQL injection in code is a SAST finding, not SCA.
+**Why C is wrong:** Hardcoded keys are caught by secret scanning, not SCA.
+**Why D is wrong:** Runtime auth flaws are DAST's domain, not SCA.
+
+</details>
 
 5. Secret scanning detects:
-   A. CVEs in libraries
-   B. Hardcoded credentials/API keys
-   C. SQL injection
-   D. Slow queries
+   - **A.** CVEs in libraries
+   - **B.** Hardcoded credentials/API keys
+   - **C.** SQL injection
+   - **D.** Slow queries
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** Secret-scan flags credentials/keys committed into the repo.
-> **Why A is wrong:** CVEs in libraries are SCA findings.
-> **Why C is wrong:** SQL injection is found by SAST on source code.
-> **Why D is wrong:** Slow queries are a performance concern, not a secret-scan target.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** Secret-scan flags credentials/keys committed into the repo.
+
+**Why A is wrong:** CVEs in libraries are SCA findings.
+**Why C is wrong:** SQL injection is found by SAST on source code.
+**Why D is wrong:** Slow queries are a performance concern, not a secret-scan target.
+
+</details>
 
 6. Which deployment strategy runs two identical environments and switches traffic?
-   A. Rolling
-   B. Canary
-   C. Blue/green
-   D. Immutable
+   - **A.** Rolling
+   - **B.** Canary
+   - **C.** Blue/green
+   - **D.** Immutable
 
-> [!note]- Reveal Answer
-> **Correct: C**
-> **Why correct:** Blue/green keeps identical blue (old) + green (new) envs and cuts traffic over.
-> **Why A is wrong:** Rolling replaces instances gradually in one environment, not two parallel envs.
-> **Why B is wrong:** Canary shifts a small percentage first, not a full switch between two envs.
-> **Why D is wrong:** Immutable just means don't edit in place; it is not a two-env switch strategy.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: C**
+
+**Why correct:** Blue/green keeps identical blue (old) + green (new) envs and cuts traffic over.
+
+**Why A is wrong:** Rolling replaces instances gradually in one environment, not two parallel envs.
+**Why B is wrong:** Canary shifts a small percentage first, not a full switch between two envs.
+**Why D is wrong:** Immutable just means don't edit in place; it is not a two-env switch strategy.
+
+</details>
 
 7. A canary deployment sends what portion of traffic to the new version first?
-   A. 100%
-   B. A small percentage
-   C. None
-   D. Only internal
+   - **A.** 100%
+   - **B.** A small percentage
+   - **C.** None
+   - **D.** Only internal
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** Canary routes a small slice (e.g. 10%) to the new version before ramping up.
-> **Why A is wrong:** 100% is a full cutover, not canary.
-> **Why C is wrong:** Canary does send some traffic, not none.
-> **Why D is wrong:** Canary is about percentage, not audience; it is not restricted to internal users.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** Canary routes a small slice (e.g. 10%) to the new version before ramping up.
+
+**Why A is wrong:** 100% is a full cutover, not canary.
+**Why C is wrong:** Canary does send some traffic, not none.
+**Why D is wrong:** Canary is about percentage, not audience; it is not restricted to internal users.
+
+</details>
 
 8. "Build once, deploy many" promotes which principle?
-   A. Bake config into the build
-   B. Same immutable artifact across environments
-   C. Rebuild per environment
-   D. Manual config
+   - **A.** Bake config into the build
+   - **B.** Same immutable artifact across environments
+   - **C.** Rebuild per environment
+   - **D.** Manual config
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** It means building one artifact and promoting that identical, immutable artifact everywhere to avoid drift.
-> **Why A is wrong:** Baking config into the build breaks environment-specific promotion.
-> **Why C is wrong:** Rebuilding per environment defeats "build once" and risks drift.
-> **Why D is wrong:** Manual config per env reintroduces drift, contrary to the principle.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** It means building one artifact and promoting that identical, immutable artifact everywhere to avoid drift.
+
+**Why A is wrong:** Baking config into the build breaks environment-specific promotion.
+**Why C is wrong:** Rebuilding per environment defeats "build once" and risks drift.
+**Why D is wrong:** Manual config per env reintroduces drift, contrary to the principle.
+
+</details>
 
 9. Which artifact format is OS-specific with dependency resolution on RHEL?
-   A. tar
-   B. ZIP
-   C. RPM
-   D. CSV
+   - **A.** tar
+   - **B.** ZIP
+   - **C.** RPM
+   - **D.** CSV
 
-> [!note]- Reveal Answer
-> **Correct: C**
-> **Why correct:** RPM is the RHEL/CentOS/Fedora package with yum/dnf dependency resolution.
-> **Why A is wrong:** tar is a generic archive with no dependency metadata.
-> **Why B is wrong:** ZIP is a cross-platform archive without dependency resolution.
-> **Why D is wrong:** CSV is a flat data file, not an OS package.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: C**
+
+**Why correct:** RPM is the RHEL/CentOS/Fedora package with yum/dnf dependency resolution.
+
+**Why A is wrong:** tar is a generic archive with no dependency metadata.
+**Why B is wrong:** ZIP is a cross-platform archive without dependency resolution.
+**Why D is wrong:** CSV is a flat data file, not an OS package.
+
+</details>
 
 10. Debian packages use which toolset?
-    A. yum/dnf
-    B. apt/dpkg
-    C. npm
-    D. pip
+   - **A.** yum/dnf
+   - **B.** apt/dpkg
+   - **C.** npm
+   - **D.** pip
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** Debian/Ubuntu uses apt/dpkg for package management.
-> **Why A is wrong:** yum/dnf is the RPM (Red Hat) toolset.
-> **Why C is wrong:** npm is for Node.js packages, not OS deb packages.
-> **Why D is wrong:** pip installs Python packages, not Debian system packages.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** Debian/Ubuntu uses apt/dpkg for package management.
+
+**Why A is wrong:** yum/dnf is the RPM (Red Hat) toolset.
+**Why C is wrong:** npm is for Node.js packages, not OS deb packages.
+**Why D is wrong:** pip installs Python packages, not Debian system packages.
+
+</details>
 
 11. A container image shares what with the host?
-    A. Nothing
-    B. The OS kernel
-    C. The disk
-    D. The network only
+   - **A.** Nothing
+   - **B.** The OS kernel
+   - **C.** The disk
+   - **D.** The network only
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** Containers share the host kernel (unlike VMs), enabling light weight and fast start.
-> **Why A is wrong:** Containers are not fully isolated; they share the host kernel.
-> **Why C is wrong:** Containers have their own filesystems, not the host's entire disk.
-> **Why D is wrong:** Networking is namespaced; the kernel (not just network) is shared.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** Containers share the host kernel (unlike VMs), enabling light weight and fast start.
+
+**Why A is wrong:** Containers are not fully isolated; they share the host kernel.
+**Why C is wrong:** Containers have their own filesystems, not the host's entire disk.
+**Why D is wrong:** Networking is namespaced; the kernel (not just network) is shared.
+
+</details>
 
 12. Compared to a VM image, a container image is:
-    A. Heavier and slower
-    B. Lighter and faster to start
-    C. Strongly isolated
-    D. Not portable
+   - **A.** Heavier and slower
+   - **B.** Lighter and faster to start
+   - **C.** Strongly isolated
+   - **D.** Not portable
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** Containers share the kernel and ship only app + libs, so they are small and quick.
-> **Why A is wrong:** Containers are lighter/smaller, not heavier.
-> **Why C is wrong:** Containers have weaker isolation (shared kernel), not stronger.
-> **Why D is wrong:** Containers are highly portable across hosts.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** Containers share the kernel and ship only app + libs, so they are small and quick.
+
+**Why A is wrong:** Containers are lighter/smaller, not heavier.
+**Why C is wrong:** Containers have weaker isolation (shared kernel), not stronger.
+**Why D is wrong:** Containers are highly portable across hosts.
+
+</details>
 
 13. A flat file artifact is best described as:
-    A. A full VM image
-    B. A plain/config file like JSON or CSV
-    C. An RPM package
-    D. A running container
+   - **A.** A full VM image
+   - **B.** A plain/config file like JSON or CSV
+   - **C.** An RPM package
+   - **D.** A running container
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** A flat file is a simply structured plain file (JSON/CSV/text) used as an artifact.
-> **Why A is wrong:** A full VM image is an image artifact, not a flat file.
-> **Why C is wrong:** An RPM is a packaged binary, not a plain flat file.
-> **Why D is wrong:** A running container is a process, not a file artifact.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** A flat file is a simply structured plain file (JSON/CSV/text) used as an artifact.
+
+**Why A is wrong:** A full VM image is an image artifact, not a flat file.
+**Why C is wrong:** An RPM is a packaged binary, not a plain flat file.
+**Why D is wrong:** A running container is a process, not a file artifact.
+
+</details>
 
 14. Which AWS service orchestrates the pipeline stages?
-    A. CodeBuild
-    B. CodeDeploy
-    C. CodePipeline
-    D. CodeCommit
+   - **A.** CodeBuild
+   - **B.** CodeDeploy
+   - **C.** CodePipeline
+   - **D.** CodeCommit
 
-> [!note]- Reveal Answer
-> **Correct: C**
-> **Why correct:** CodePipeline defines and orchestrates the ordered source → build → test → deploy stages.
-> **Why A is wrong:** CodeBuild runs the build/test stage, not orchestration.
-> **Why B is wrong:** CodeDeploy handles deployment, not overall orchestration.
-> **Why D is wrong:** CodeCommit is the source repo, not the pipeline orchestrator.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: C**
+
+**Why correct:** CodePipeline defines and orchestrates the ordered source → build → test → deploy stages.
+
+**Why A is wrong:** CodeBuild runs the build/test stage, not orchestration.
+**Why B is wrong:** CodeDeploy handles deployment, not overall orchestration.
+**Why D is wrong:** CodeCommit is the source repo, not the pipeline orchestrator.
+
+</details>
 
 15. Which AWS service performs the build and test stage?
-    A. CodePipeline
-    B. CodeBuild
-    C. CodeDeploy
-    D. ECR
+   - **A.** CodePipeline
+   - **B.** CodeBuild
+   - **C.** CodeDeploy
+   - **D.** ECR
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** CodeBuild compiles, runs tests, and executes scans to produce artifacts.
-> **Why A is wrong:** CodePipeline orchestrates but does not run the build itself.
-> **Why C is wrong:** CodeDeploy deploys artifacts; it does not build.
-> **Why D is wrong:** ECR is a registry for storing images, not a build service.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** CodeBuild compiles, runs tests, and executes scans to produce artifacts.
+
+**Why A is wrong:** CodePipeline orchestrates but does not run the build itself.
+**Why C is wrong:** CodeDeploy deploys artifacts; it does not build.
+**Why D is wrong:** ECR is a registry for storing images, not a build service.
+
+</details>
 
 16. Which AWS service handles deployment with rollback?
-    A. CodeDeploy
-    B. CodeBuild
-    C. CodePipeline
-    D. CodeCommit
+   - **A.** CodeDeploy
+   - **B.** CodeBuild
+   - **C.** CodePipeline
+   - **D.** CodeCommit
 
-> [!note]- Reveal Answer
-> **Correct: A**
-> **Why correct:** CodeDeploy pushes artifacts using rolling/blue-green/canary and auto-rolls back on failed health checks.
-> **Why B is wrong:** CodeBuild builds, it does not deploy.
-> **Why C is wrong:** CodePipeline orchestrates; the deployment is done by CodeDeploy.
-> **Why D is wrong:** CodeCommit is source control.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: A**
+
+**Why correct:** CodeDeploy pushes artifacts using rolling/blue-green/canary and auto-rolls back on failed health checks.
+
+**Why B is wrong:** CodeBuild builds, it does not deploy.
+**Why C is wrong:** CodePipeline orchestrates; the deployment is done by CodeDeploy.
+**Why D is wrong:** CodeCommit is source control.
+
+</details>
 
 17. An immutable artifact should be:
-    A. Editable after creation
-    B. Never changed after creation
-    C. Deleted nightly
-    D. Rebuilt each deploy
+   - **A.** Editable after creation
+   - **B.** Never changed after creation
+   - **C.** Deleted nightly
+   - **D.** Rebuilt each deploy
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** Immutable artifacts are sealed at build time and promoted unchanged across envs.
-> **Why A is wrong:** Editing after creation breaks immutability and reproducibility.
-> **Why C is wrong:** Deletion cadence is not the point; immutability is about not changing.
-> **Why D is wrong:** Rebuilding each deploy defeats the "same artifact" principle.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** Immutable artifacts are sealed at build time and promoted unchanged across envs.
+
+**Why A is wrong:** Editing after creation breaks immutability and reproducibility.
+**Why C is wrong:** Deletion cadence is not the point; immutability is about not changing.
+**Why D is wrong:** Rebuilding each deploy defeats the "same artifact" principle.
+
+</details>
 
 18. A manual approval gate in a workflow is typically placed:
-    A. Before the build
-    B. Before production deploy
-    C. After rollback
-    D. Inside a unit test
+   - **A.** Before the build
+   - **B.** Before production deploy
+   - **C.** After rollback
+   - **D.** Inside a unit test
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** Approval gates pause the pipeline before the risky prod deploy for human sign-off.
-> **Why A is wrong:** Build runs automatically; you do not gate before building.
-> **Why C is wrong:** Rollback happens after a failure, not as a pre-gate.
-> **Why D is wrong:** Unit tests are not a place for a manual approval gate.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** Approval gates pause the pipeline before the risky prod deploy for human sign-off.
+
+**Why A is wrong:** Build runs automatically; you do not gate before building.
+**Why C is wrong:** Rollback happens after a failure, not as a pre-gate.
+**Why D is wrong:** Unit tests are not a place for a manual approval gate.
+
+</details>
 
 19. Public vs. private repositories primarily differ in:
-    A. Build speed
-    B. Access/restriction
-    C. Image size
-    D. Test coverage
+   - **A.** Build speed
+   - **B.** Access/restriction
+   - **C.** Image size
+   - **D.** Test coverage
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** Public repos are internet-accessible; private repos restrict access to authorized users.
-> **Why A is wrong:** Build speed is not determined by public vs private.
-> **Why C is wrong:** Image size is unrelated to repo visibility.
-> **Why D is wrong:** Test coverage is not a function of repo access level.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** Public repos are internet-accessible; private repos restrict access to authorized users.
+
+**Why A is wrong:** Build speed is not determined by public vs private.
+**Why C is wrong:** Image size is unrelated to repo visibility.
+**Why D is wrong:** Test coverage is not a function of repo access level.
+
+</details>
 
 20. The main risk of using `:latest` image tags is:
-    A. Faster startup
-    B. Non-reproducible deployments
-    C. Smaller size
-    D. Better security
+   - **A.** Faster startup
+   - **B.** Non-reproducible deployments
+   - **C.** Smaller size
+   - **D.** Better security
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** `:latest` floats to whatever was last pushed, so deploys are not reproducible/pinnable.
-> **Why A is wrong:** Faster startup is not a real benefit of `:latest`; it is a pinning problem.
-> **Why C is wrong:** Tag choice does not change image size.
-> **Why D is wrong:** `:latest` hurts—not helps—security (no pinned, auditable version).
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** `:latest` floats to whatever was last pushed, so deploys are not reproducible/pinnable.
+
+**Why A is wrong:** Faster startup is not a real benefit of `:latest`; it is a pinning problem.
+**Why C is wrong:** Tag choice does not change image size.
+**Why D is wrong:** `:latest` hurts—not helps—security (no pinned, auditable version).
+
+</details>

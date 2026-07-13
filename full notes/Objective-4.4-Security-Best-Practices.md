@@ -193,281 +193,381 @@ Note: KMS also underpins Secrets Manager encryption, and IAM governs who can use
 ## SECTION 6 — PRACTICE QUESTIONS
 
 1. Which principle states "never trust, always verify" and refuses to trust a request just because it came from the internal network?
-   A. Defense in depth
-   B. Zero Trust
-   C. Hashing
-   D. Salting
-   Answer: B — Zero Trust denies implicit trust by network location.
+   - **A.** Defense in depth
+   - **B.** Zero Trust
+   - **C.** Hashing
+   - **D.** Salting
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** Zero Trust enforces "never trust, always verify" — no implicit trust based on network location.
-> **Why A is wrong:** Defense in depth layers controls but still can rely on perimeter trust; it is not the "never trust location" model.
-> **Why C is wrong:** Hashing is a one-way data integrity/Password-storage function, unrelated to trust models.
-> **Why D is wrong:** Salting hardens password hashes; it is not a network-trust principle.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** Zero Trust enforces "never trust, always verify" — no implicit trust based on network location.
+
+**Why A is wrong:** Defense in depth layers controls but still can rely on perimeter trust; it is not the "never trust location" model.
+**Why C is wrong:** Hashing is a one-way data integrity/Password-storage function, unrelated to trust models.
+**Why D is wrong:** Salting hardens password hashes; it is not a network-trust principle.
+
+</details>
 
 2. A company wants a standardized, vendor-neutral hardening checklist for its Linux servers. Which should it apply?
-   A. A vendor-specific benchmark only
-   B. CIS Benchmark
-   C. A marketing whitepaper
-   D. The default OS image with no changes
-   Answer: B — CIS Benchmarks are the neutral, consensus hardening baselines.
+   - **A.** A vendor-specific benchmark only
+   - **B.** CIS Benchmark
+   - **C.** A marketing whitepaper
+   - **D.** The default OS image with no changes
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** CIS Benchmarks are the vendor-neutral, consensus hardening baselines used as a universal starting point.
-> **Why A is wrong:** Vendor-specific benchmarks (e.g., AWS FSBP) are layered on top of CIS, not a neutral baseline alone.
-> **Why C is wrong:** A marketing whitepaper is not a vetted, standardized hardening checklist.
-> **Why D is wrong:** The default OS image with no changes is unhardened and not a benchmark.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** CIS Benchmarks are the vendor-neutral, consensus hardening baselines used as a universal starting point.
+
+**Why A is wrong:** Vendor-specific benchmarks (e.g., AWS FSBP) are layered on top of CIS, not a neutral baseline alone.
+**Why C is wrong:** A marketing whitepaper is not a vetted, standardized hardening checklist.
+**Why D is wrong:** The default OS image with no changes is unhardened and not a benchmark.
+
+</details>
 
 3. A new internet-facing server exposes extra services and unused ports. What is the best first step?
-   A. Install antivirus
-   B. Harden it (close ports, disable services, remove defaults)
-   C. Increase the instance size
-   D. Add a second NIC
-   Answer: B — hardening removes attack surface; patching alone is not enough.
+   - **A.** Install antivirus
+   - **B.** Harden it (close ports, disable services, remove defaults)
+   - **C.** Increase the instance size
+   - **D.** Add a second NIC
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** Hardening removes attack surface (close ports, disable unused services, remove defaults) before other measures.
-> **Why A is wrong:** Antivirus helps but does not close exposed ports — the core issue is attack surface.
-> **Why C is wrong:** A bigger instance does not reduce exposed ports or services.
-> **Why D is wrong:** A second NIC adds connectivity; it does not shrink the attack surface.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** Hardening removes attack surface (close ports, disable unused services, remove defaults) before other measures.
+
+**Why A is wrong:** Antivirus helps but does not close exposed ports — the core issue is attack surface.
+**Why C is wrong:** A bigger instance does not reduce exposed ports or services.
+**Why D is wrong:** A second NIC adds connectivity; it does not shrink the attack surface.
+
+</details>
 
 4. A critical CVE is announced. Production cannot break. What is the correct patching approach?
-   A. Patch production immediately, no testing
-   B. Ignore it until next year
-   C. Test in non-prod, then stage and roll out on a schedule
-   D. Only patch non-critical systems
-   Answer: C — staged, tested patching balances security with stability.
+   - **A.** Patch production immediately, no testing
+   - **B.** Ignore it until next year
+   - **C.** Test in non-prod, then stage and roll out on a schedule
+   - **D.** Only patch non-critical systems
 
-> [!note]- Reveal Answer
-> **Correct: C**
-> **Why correct:** A tested, staged rollout (validate in non-prod, then schedule) balances security with production stability.
-> **Why A is wrong:** Patching immediately without testing risks breaking production.
-> **Why B is wrong:** Ignoring a critical CVE leaves a known exploitable hole open.
-> **Why D is wrong:** Patching only non-critical systems leaves the critical exposure unaddressed.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: C**
+
+**Why correct:** A tested, staged rollout (validate in non-prod, then schedule) balances security with production stability.
+
+**Why A is wrong:** Patching immediately without testing risks breaking production.
+**Why B is wrong:** Ignoring a critical CVE leaves a known exploitable hole open.
+**Why D is wrong:** Patching only non-critical systems leaves the critical exposure unaddressed.
+
+</details>
 
 5. Traffic between two microservices is being sniffed on the network. Which control fixes this?
-   A. Encryption at rest
-   B. Encryption in transit (TLS/mTLS)
-   C. Object versioning
-   D. Rate limiting
-   Answer: B — encrypt data moving between endpoints with TLS/mTLS.
+   - **A.** Encryption at rest
+   - **B.** Encryption in transit (TLS/mTLS)
+   - **C.** Object versioning
+   - **D.** Rate limiting
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** Encryption in transit (TLS/mTLS) protects data moving over the network from eavesdropping/MITM.
-> **Why A is wrong:** At-rest encryption protects stored data, not traffic on the wire.
-> **Why C is wrong:** Object versioning preserves file history; it does not encrypt network traffic.
-> **Why D is wrong:** Rate limiting throttles volume; it does not stop sniffing of unencrypted traffic.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** Encryption in transit (TLS/mTLS) protects data moving over the network from eavesdropping/MITM.
+
+**Why A is wrong:** At-rest encryption protects stored data, not traffic on the wire.
+**Why C is wrong:** Object versioning preserves file history; it does not encrypt network traffic.
+**Why D is wrong:** Rate limiting throttles volume; it does not stop sniffing of unencrypted traffic.
+
+</details>
 
 6. A stolen EBS snapshot exposes customer data. Which best practice was missing?
-   A. Encryption at rest
-   B. Encryption in transit
-   C. Container isolation
-   D. Micro-segmentation
-   Answer: A — at-rest encryption protects stored volumes and snapshots.
+   - **A.** Encryption at rest
+   - **B.** Encryption in transit
+   - **C.** Container isolation
+   - **D.** Micro-segmentation
 
-> [!note]- Reveal Answer
-> **Correct: A**
-> **Why correct:** Encryption at rest (e.g., EBS KMS) protects data on a stolen volume/snapshot.
-> **Why B is wrong:** In-transit encryption protects moving data, not a stored snapshot at rest.
-> **Why C is wrong:** Container isolation limits container escape, not snapshot data exposure.
-> **Why D is wrong:** Micro-segmentation limits lateral movement, not theft of a stored volume.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: A**
+
+**Why correct:** Encryption at rest (e.g., EBS KMS) protects data on a stolen volume/snapshot.
+
+**Why B is wrong:** In-transit encryption protects moving data, not a stored snapshot at rest.
+**Why C is wrong:** Container isolation limits container escape, not snapshot data exposure.
+**Why D is wrong:** Micro-segmentation limits lateral movement, not theft of a stored volume.
+
+</details>
 
 7. A developer hardcoded the production DB password in a Dockerfile committed to Git. The fix is to:
-   A. Rotate and move it to a secrets vault
-   B. Base64-encode it
-   C. Put it in a config file
-   D. Share it in chat
-   Answer: A — secrets belong in a vault (Secrets Manager/Key Vault), fetched at runtime.
+   - **A.** Rotate and move it to a secrets vault
+   - **B.** Base64-encode it
+   - **C.** Put it in a config file
+   - **D.** Share it in chat
 
-> [!note]- Reveal Answer
-> **Correct: A**
-> **Why correct:** Rotate the secret and store it in a managed vault, fetched at runtime with short-lived credentials.
-> **Why B is wrong:** Base64 is encoding, not encryption — the secret is still recoverable in the image.
-> **Why C is wrong:** A config file is still static and often committed; a vault is the right store.
-> **Why D is wrong:** Sharing in chat spreads the secret and creates more exposure.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: A**
+
+**Why correct:** Rotate the secret and store it in a managed vault, fetched at runtime with short-lived credentials.
+
+**Why B is wrong:** Base64 is encoding, not encryption — the secret is still recoverable in the image.
+**Why C is wrong:** A config file is still static and often committed; a vault is the right store.
+**Why D is wrong:** Sharing in chat spreads the secret and creates more exposure.
+
+</details>
 
 8. A public API is being hammered and leaking data. Which two controls should be added?
-   A. AuthN/AuthZ and rate limiting
-   B. More CPU only
-   C. A bigger subnet
-   D. Disabling logs
-   Answer: A — API security requires authentication and throttling.
+   - **A.** AuthN/AuthZ and rate limiting
+   - **B.** More CPU only
+   - **C.** A bigger subnet
+   - **D.** Disabling logs
 
-> [!note]- Reveal Answer
-> **Correct: A**
-> **Why correct:** API security needs AuthN/AuthZ on every call plus rate limiting to stop abuse and data leakage.
-> **Why B is wrong:** More CPU does not authenticate callers or throttle abuse.
-> **Why C is wrong:** A bigger subnet adds address space, not API protection.
-> **Why D is wrong:** Disabling logs removes visibility and makes leakage worse.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: A**
+
+**Why correct:** API security needs AuthN/AuthZ on every call plus rate limiting to stop abuse and data leakage.
+
+**Why B is wrong:** More CPU does not authenticate callers or throttle abuse.
+**Why C is wrong:** A bigger subnet adds address space, not API protection.
+**Why D is wrong:** Disabling logs removes visibility and makes leakage worse.
+
+</details>
 
 9. A service has full admin but only needs to read one bucket. The best fix is:
-   A. Give it more permissions
-   B. Apply least privilege (scope the role down)
-   C. Share the admin creds
-   D. Remove all permissions
-   Answer: B — least privilege grants only what is needed.
+   - **A.** Give it more permissions
+   - **B.** Apply least privilege (scope the role down)
+   - **C.** Share the admin creds
+   - **D.** Remove all permissions
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** Least privilege scopes the role to only the required permissions (read that bucket), reducing blast radius.
-> **Why A is wrong:** More permissions widens the over-privilege problem.
-> **Why C is wrong:** Sharing admin creds removes accountability and increases risk.
-> **Why D is wrong:** Removing all permissions breaks the service's legitimate read need.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** Least privilege scopes the role to only the required permissions (read that bucket), reducing blast radius.
+
+**Why A is wrong:** More permissions widens the over-privilege problem.
+**Why C is wrong:** Sharing admin creds removes accountability and increases risk.
+**Why D is wrong:** Removing all permissions breaks the service's legitimate read need.
+
+</details>
 
 10. A container runs `--privileged` "for convenience." On the exam this is:
-    A. The recommended default
-    B. A red flag — prefer unprivileged
-    C. Required for all apps
-    D. More secure than non-root
-    Answer: B — privileged breaks isolation; use unprivileged containers.
+   - **A.** The recommended default
+   - **B.** A red flag — prefer unprivileged
+   - **C.** Required for all apps
+   - **D.** More secure than non-root
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** `--privileged` gives near-root host access and breaks isolation — a red flag; prefer unprivileged.
-> **Why A is wrong:** Unprivileged is the secure default, not privileged.
-> **Why C is wrong:** Privileged is rarely required (e.g., some CNI plugins), not for all apps.
-> **Why D is wrong:** Privileged is *less* secure because it escapes container isolation.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** `--privileged` gives near-root host access and breaks isolation — a red flag; prefer unprivileged.
+
+**Why A is wrong:** Unprivileged is the secure default, not privileged.
+**Why C is wrong:** Privileged is rarely required (e.g., some CNI plugins), not for all apps.
+**Why D is wrong:** Privileged is *less* secure because it escapes container isolation.
+
+</details>
 
 11. The secure container pattern is:
-    A. Root user, read-write FS, all caps
-    B. Non-root, dropped caps, read-only FS
-    C. Privileged, host /proc mounted
-    D. No SecurityContext
-    Answer: B — unprivileged + non-root + dropped caps + read-only FS.
+   - **A.** Root user, read-write FS, all caps
+   - **B.** Non-root, dropped caps, read-only FS
+   - **C.** Privileged, host /proc mounted
+   - **D.** No SecurityContext
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** The secure pattern is unprivileged + non-root UID + dropped caps + read-only root filesystem.
-> **Why A is wrong:** Root with all caps and writable FS maximizes escape risk.
-> **Why C is wrong:** Privileged with host /proc mounted breaks isolation.
-> **Why D is wrong:** No SecurityContext means defaults that are weaker than the restricted pattern.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** The secure pattern is unprivileged + non-root UID + dropped caps + read-only root filesystem.
+
+**Why A is wrong:** Root with all caps and writable FS maximizes escape risk.
+**Why C is wrong:** Privileged with host /proc mounted breaks isolation.
+**Why D is wrong:** No SecurityContext means defaults that are weaker than the restricted pattern.
+
+</details>
 
 12. An S3 bucket holding PII is found publicly readable. The correct response is:
-    A. Leave it; S3 is private by default
-    B. Block public access, lock policy, enable SSE, enable logs
-    C. Delete the data only
-    D. Add a larger instance
-    Answer: B — disable public access, enforce TLS/SSE, and audit.
+   - **A.** Leave it; S3 is private by default
+   - **B.** Block public access, lock policy, enable SSE, enable logs
+   - **C.** Delete the data only
+   - **D.** Add a larger instance
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** Block public access, lock the policy, enable SSE-KMS, and turn on access/audit logging.
-> **Why A is wrong:** "Private by default" is not "secure by default" — a misconfig still exposed it; act.
-> **Why C is wrong:** Deleting data does not fix the insecure configuration for future writes.
-> **Why D is wrong:** Instance size is irrelevant to bucket access control.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** Block public access, lock the policy, enable SSE-KMS, and turn on access/audit logging.
+
+**Why A is wrong:** "Private by default" is not "secure by default" — a misconfig still exposed it; act.
+**Why C is wrong:** Deleting data does not fix the insecure configuration for future writes.
+**Why D is wrong:** Instance size is irrelevant to bucket access control.
+
+</details>
 
 13. A file share (EFS) is mounted world-readable (777). The fix is:
-    A. Keep it open for all apps
-    B. Restrictive mount permissions + private networking
-    C. Encrypt only in transit
-    D. Disable encryption
-    Answer: B — lock mount permissions and use private subnets/endpoints.
+   - **A.** Keep it open for all apps
+   - **B.** Restrictive mount permissions + private networking
+   - **C.** Encrypt only in transit
+   - **D.** Disable encryption
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** Apply restrictive mount permissions and keep the share on private subnets/endpoints.
-> **Why A is wrong:** World-readable (777) exposes the share to every client — the problem, not a fix.
-> **Why C is wrong:** In-transit encryption alone does not fix over-broad POSIX permissions.
-> **Why D is wrong:** Disabling encryption reduces protection rather than fixing permissions.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** Apply restrictive mount permissions and keep the share on private subnets/endpoints.
+
+**Why A is wrong:** World-readable (777) exposes the share to every client — the problem, not a fix.
+**Why C is wrong:** In-transit encryption alone does not fix over-broad POSIX permissions.
+**Why D is wrong:** Disabling encryption reduces protection rather than fixing permissions.
+
+</details>
 
 14. Which is a vendor-specific benchmark example?
-    A. CIS Ubuntu Benchmark
-    B. AWS Well-Architected Security Pillar / FSBP
-    C. NIST CSF (general)
-    D. OWASP Top 10
-    Answer: B — vendor-specific benchmarks like AWS FSBP tailor to one provider.
+   - **A.** CIS Ubuntu Benchmark
+   - **B.** AWS Well-Architected Security Pillar / FSBP
+   - **C.** NIST CSF (general)
+   - **D.** OWASP Top 10
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** AWS Well-Architected Security Pillar / Foundations Benchmark is tailored to AWS's controls.
-> **Why A is wrong:** The CIS Ubuntu Benchmark is vendor-neutral (CIS), not cloud-vendor-specific.
-> **Why C is wrong:** NIST CSF is a general framework, not a single cloud vendor's benchmark.
-> **Why D is wrong:** OWASP Top 10 is a web-app risk list, not a hardening benchmark.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** AWS Well-Architected Security Pillar / Foundations Benchmark is tailored to AWS's controls.
+
+**Why A is wrong:** The CIS Ubuntu Benchmark is vendor-neutral (CIS), not cloud-vendor-specific.
+**Why C is wrong:** NIST CSF is a general framework, not a single cloud vendor's benchmark.
+**Why D is wrong:** OWASP Top 10 is a web-app risk list, not a hardening benchmark.
+
+</details>
 
 15. Tightening file access permissions inside a container primarily protects against:
-    A. DDoS
-    B. One tenant reading another tenant's files
-    C. Over-provisioning
-    D. Slow builds
-    Answer: B — restrictive file/volume perms limit cross-tenant exposure.
+   - **A.** DDoS
+   - **B.** One tenant reading another tenant's files
+   - **C.** Over-provisioning
+   - **D.** Slow builds
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** Restrictive in-container and mounted-volume permissions limit one tenant reading another's files.
-> **Why A is wrong:** DDoS is a flood/availability attack, not addressed by file permissions.
-> **Why C is wrong:** Over-provisioning is a sizing/cost issue, not a file-permission issue.
-> **Why D is wrong:** Build speed is unrelated to runtime file-access permissions.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** Restrictive in-container and mounted-volume permissions limit one tenant reading another's files.
+
+**Why A is wrong:** DDoS is a flood/availability attack, not addressed by file permissions.
+**Why C is wrong:** Over-provisioning is a sizing/cost issue, not a file-permission issue.
+**Why D is wrong:** Build speed is unrelated to runtime file-access permissions.
+
+</details>
 
 16. To force encrypted transit to an S3 bucket, you deny requests where:
-    A. SourceIp is internal
-    B. aws:SecureTransport is false
-    C. UserAgent is curl
-    D. Principal is *
-    Answer: B — deny when aws:SecureTransport is false to require TLS.
+   - **A.** SourceIp is internal
+   - **B.** aws:SecureTransport is false
+   - **C.** UserAgent is curl
+   - **D.** Principal is *
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** A bucket policy that denies when `aws:SecureTransport` is false forces all requests to use TLS.
-> **Why A is wrong:** Denying internal SourceIp would block legitimate internal TLS traffic.
-> **Why C is wrong:** UserAgent is not a reliable or relevant signal for transit encryption.
-> **Why D is wrong:** Denying Principal `*` blocks all access entirely, not just non-TLS access.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** A bucket policy that denies when `aws:SecureTransport` is false forces all requests to use TLS.
+
+**Why A is wrong:** Denying internal SourceIp would block legitimate internal TLS traffic.
+**Why C is wrong:** UserAgent is not a reliable or relevant signal for transit encryption.
+**Why D is wrong:** Denying Principal `*` blocks all access entirely, not just non-TLS access.
+
+</details>
 
 17. Customer-managed encryption keys in AWS are managed by:
-    A. IAM
-    B. KMS
-    C. CloudTrail
-    D. Route 53
-    Answer: B — KMS issues and controls the CMKs used for at-rest encryption.
+   - **A.** IAM
+   - **B.** KMS
+   - **C.** CloudTrail
+   - **D.** Route 53
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** AWS KMS creates and controls customer-managed keys (CMKs) used for at-rest encryption (S3, EBS, RDS).
-> **Why A is wrong:** IAM governs who can use keys, but KMS manages the keys themselves.
-> **Why C is wrong:** CloudTrail logs key usage; it does not create/manage keys.
-> **Why D is wrong:** Route 53 is DNS, unrelated to encryption keys.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** AWS KMS creates and controls customer-managed keys (CMKs) used for at-rest encryption (S3, EBS, RDS).
+
+**Why A is wrong:** IAM governs who can use keys, but KMS manages the keys themselves.
+**Why C is wrong:** CloudTrail logs key usage; it does not create/manage keys.
+**Why D is wrong:** Route 53 is DNS, unrelated to encryption keys.
+
+</details>
 
 18. Placing a WAF in front of an API primarily helps with:
-    A. OWASP injection, XSS, and L7 abuse
-    B. Encrypting disks
-    C. Rotating secrets
-    D. Container scheduling
-    Answer: A — a WAF blocks injection/XSS and enforces L7 controls.
+   - **A.** OWASP injection, XSS, and L7 abuse
+   - **B.** Encrypting disks
+   - **C.** Rotating secrets
+   - **D.** Container scheduling
 
-> [!note]- Reveal Answer
-> **Correct: A**
-> **Why correct:** A WAF operates at Layer 7, blocking OWASP Top 10 attacks like SQLi/XSS and L7 abuse.
-> **Why B is wrong:** Disk encryption is at-rest (KMS/EBS), not a WAF function.
-> **Why C is wrong:** Secret rotation is a secrets-management task, not a WAF function.
-> **Why D is wrong:** Container scheduling is an orchestration concern, not a WAF function.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: A**
+
+**Why correct:** A WAF operates at Layer 7, blocking OWASP Top 10 attacks like SQLi/XSS and L7 abuse.
+
+**Why B is wrong:** Disk encryption is at-rest (KMS/EBS), not a WAF function.
+**Why C is wrong:** Secret rotation is a secrets-management task, not a WAF function.
+**Why D is wrong:** Container scheduling is an orchestration concern, not a WAF function.
+
+</details>
 
 19. The most secure way for a CI runner to access a secret is:
-    A. A long-lived static IAM key in the repo
-    B. Assume a role via OIDC and fetch at runtime
-    C. Hardcode in the Dockerfile
-    D. Email it to the team
-    Answer: B — short-lived, role-based creds avoid static-key leakage.
+   - **A.** A long-lived static IAM key in the repo
+   - **B.** Assume a role via OIDC and fetch at runtime
+   - **C.** Hardcode in the Dockerfile
+   - **D.** Email it to the team
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** The runner assumes a role via OIDC and fetches the secret at runtime — short-lived, no static key in the repo.
-> **Why A is wrong:** A long-lived static key in the repo leaks via the repo/image/history.
-> **Why C is wrong:** Hardcoding in the Dockerfile bakes the secret into an image layer.
-> **Why D is wrong:** Emailing the secret spreads it and creates more exposure.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** The runner assumes a role via OIDC and fetches the secret at runtime — short-lived, no static key in the repo.
+
+**Why A is wrong:** A long-lived static key in the repo leaks via the repo/image/history.
+**Why C is wrong:** Hardcoding in the Dockerfile bakes the secret into an image layer.
+**Why D is wrong:** Emailing the secret spreads it and creates more exposure.
+
+</details>
 
 20. "Internal subnet = trusted" violates which model?
-    A. Perimeter / castle-and-moat
-    B. Zero Trust
-    C. Hashing
-    D. RAID
-    Answer: B — Zero Trust says network location is never a trust signal.
+   - **A.** Perimeter / castle-and-moat
+   - **B.** Zero Trust
+   - **C.** Hashing
+   - **D.** RAID
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** Zero Trust rejects "internal subnet = trusted"; network location is never a trust signal.
-> **Why A is wrong:** The perimeter model *relies* on internal = trusted, so the statement matches it, not violates it.
-> **Why C is wrong:** Hashing is a data-integrity function, unrelated to trust models.
-> **Why D is wrong:** RAID is disk redundancy, unrelated to network trust.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** Zero Trust rejects "internal subnet = trusted"; network location is never a trust signal.
+
+**Why A is wrong:** The perimeter model *relies* on internal = trusted, so the statement matches it, not violates it.
+**Why C is wrong:** Hashing is a data-integrity function, unrelated to trust models.
+**Why D is wrong:** RAID is disk redundancy, unrelated to network trust.
+
+</details>

@@ -198,262 +198,382 @@ tags: [certification, cloud-plus, comptia, domain-1.7, virtualization, hyperviso
 
 ## SECTION 6 — PRACTICE QUESTIONS
 
-**1. A single VM runs on one physical host with no resource pool and no HA. This is best described as:**
-A. A cluster
-B. A stand-alone VM
-C. An overlay network
-D. A SAN LUN
+1. A single VM runs on one physical host with no resource pool and no HA. This is best described as:**
+   - **A.** A cluster
+   - **B.** A stand-alone VM
+   - **C.** An overlay network
+   - **D.** A SAN LUN
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** A stand-alone VM runs alone on one physical host with no clustering or HA.
-> **Why A is wrong:** A cluster pools multiple hosts for HA, the opposite of a single isolated VM.
-> **Why C is wrong:** An overlay is a logical L2 fabric spanning hosts, not a single VM deployment.
-> **Why D is wrong:** A SAN LUN is block storage, not a VM placement model.
+<details>
+<summary>Reveal Answer</summary>
 
-**2. Which feature lets a running VM move from one host to another with zero downtime for maintenance?**
-A. Snapshot
-B. Clone
-C. Live migration
-D. Template
+**Correct: B**
 
-> [!note]- Reveal Answer
-> **Correct: C**
-> **Why correct:** Live migration (vMotion) moves a running VM to another host with zero downtime.
-> **Why A is wrong:** A snapshot is a point-in-time state, not movement of the running VM.
-> **Why B is wrong:** A clone is a copy/deployment, not live motion of the running instance.
-> **Why D is wrong:** A template is a gold-image source, not a running-VM move.
+**Why correct:** A stand-alone VM runs alone on one physical host with no clustering or HA.
 
-**3. You need 10 identical web servers fast and consistent. The BEST approach is:**
-A. Hand-build each VM
-B. Clone from a template
-C. Use local storage only
-D. Disable DRS
+**Why A is wrong:** A cluster pools multiple hosts for HA, the opposite of a single isolated VM.
+**Why C is wrong:** An overlay is a logical L2 fabric spanning hosts, not a single VM deployment.
+**Why D is wrong:** A SAN LUN is block storage, not a VM placement model.
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** Cloning from a gold template deploys many identical VMs quickly and consistently.
-> **Why A is wrong:** Hand-building is slow, inconsistent, and error-prone versus templated cloning.
-> **Why C is wrong:** Local storage is a disk location, not a fast consistent deployment method.
-> **Why D is wrong:** Disabling DRS hurts balancing; it does not deploy servers.
+</details>
 
-**4. To ensure two database replicas never run on the same failed host, you configure:**
-A. Affinity
-B. Anti-affinity
-C. Pass-through
-D. Overlay
+2. Which feature lets a running VM move from one host to another with zero downtime for maintenance?**
+   - **A.** Snapshot
+   - **B.** Clone
+   - **C.** Live migration
+   - **D.** Template
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** Anti-affinity keeps VMs on separate hosts so one host failure cannot kill both replicas.
-> **Why A is wrong:** Affinity keeps VMs together on one host, the opposite of what is wanted.
-> **Why C is wrong:** Pass-through grants direct device access, unrelated to placement separation.
-> **Why D is wrong:** An overlay is a network fabric, not a placement rule.
+<details>
+<summary>Reveal Answer</summary>
 
-**5. Giving a VM exclusive direct access to a physical GPU is an example of:**
-A. VM network
-B. Hardware pass-through
-C. NAS
-D. Affinity
+**Correct: C**
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** Hardware pass-through gives a VM exclusive direct access to a physical device such as a GPU.
-> **Why A is wrong:** A VM network is virtual switching, not direct device access.
-> **Why C is wrong:** NAS is file storage, unrelated to GPU or device access.
-> **Why D is wrong:** Affinity is a placement rule, not device assignment.
+**Why correct:** Live migration (vMotion) moves a running VM to another host with zero downtime.
 
-**6. A logical network that encapsulates traffic and spans hosts/racks is a:**
-A. VM network
-B. Local disk
-C. Overlay network
-D. SAN
+**Why A is wrong:** A snapshot is a point-in-time state, not movement of the running VM.
+**Why B is wrong:** A clone is a copy/deployment, not live motion of the running instance.
+**Why D is wrong:** A template is a gold-image source, not a running-VM move.
 
-> [!note]- Reveal Answer
-> **Correct: C**
-> **Why correct:** An overlay network such as VXLAN encapsulates traffic and spans hosts or racks logically.
-> **Why A is wrong:** A VM network is host-local virtual switching without encapsulation.
-> **Why B is wrong:** Local disk is storage attached to one host, not a network.
-> **Why D is wrong:** A SAN is block storage, not an encapsulated logical network.
+</details>
 
-**7. Raw block devices delivered over Fibre Channel or iSCSI describe:**
-A. NAS
-B. SAN
-C. Local storage
-D. Overlay
+3. You need 10 identical web servers fast and consistent. The BEST approach is:**
+   - **A.** Hand-build each VM
+   - **B.** Clone from a template
+   - **C.** Use local storage only
+   - **D.** Disable DRS
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** A SAN delivers raw block devices over Fibre Channel or iSCSI, seen as local disks.
-> **Why A is wrong:** NAS is file-level over NFS or SMB, not raw block devices.
-> **Why C is wrong:** Local storage is physically in the host, not a shared block network.
-> **Why D is wrong:** An overlay is a network, not a storage protocol.
+<details>
+<summary>Reveal Answer</summary>
 
-**8. File-level storage accessed via NFS or SMB is characteristic of:**
-A. SAN
-B. Local disk
-C. NAS
-D. Instance store
+**Correct: B**
 
-> [!note]- Reveal Answer
-> **Correct: C**
-> **Why correct:** NAS exposes file shares over NFS or SMB, file-level storage over standard networks.
-> **Why A is wrong:** SAN is block-level, not file shares.
-> **Why B is wrong:** Local disk is host-attached, not a network file share.
-> **Why D is wrong:** Instance store is ephemeral local block storage, not file-level NAS.
+**Why correct:** Cloning from a gold template deploys many identical VMs quickly and consistently.
 
-**9. Storage physically inside the host that is NOT shareable across hosts is:**
-A. SAN
-B. NAS
-C. Local storage
-D. EFS
+**Why A is wrong:** Hand-building is slow, inconsistent, and error-prone versus templated cloning.
+**Why C is wrong:** Local storage is a disk location, not a fast consistent deployment method.
+**Why D is wrong:** Disabling DRS hurts balancing; it does not deploy servers.
 
-> [!note]- Reveal Answer
-> **Correct: C**
-> **Why correct:** Local storage is physically inside the host and cannot be shared across hosts.
-> **Why A is wrong:** SAN LUNs are shared across hosts, enabling live migration.
-> **Why B is wrong:** NAS is network-mounted and shareable across hosts.
-> **Why D is wrong:** EFS is AWS file storage shared across instances.
+</details>
 
-**10. A vSwitch port group tagged with a VLAN inside a hypervisor represents a:**
-A. Overlay network
-B. VM network
-C. SAN LUN
-D. Pass-through device
+4. To ensure two database replicas never run on the same failed host, you configure:**
+   - **A.** Affinity
+   - **B.** Anti-affinity
+   - **C.** Pass-through
+   - **D.** Overlay
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** A vSwitch port group tagged with a VLAN is part of the host-level VM network fabric.
-> **Why A is wrong:** An overlay spans hosts via encapsulation; a port group is local L2.
-> **Why C is wrong:** A SAN LUN is storage, not a network port group.
-> **Why D is wrong:** Pass-through is direct device access, not virtual switching.
+<details>
+<summary>Reveal Answer</summary>
 
-**11. In AWS, the closest match to "hardware pass-through" is:**
-A. EC2 bare metal
-B. EBS
-C. EFS
-D. Placement group
+**Correct: B**
 
-> [!note]- Reveal Answer
-> **Correct: A**
-> **Why correct:** EC2 bare metal removes the hypervisor, giving direct hardware access closest to pass-through.
-> **Why B is wrong:** EBS is block storage, not hardware pass-through.
-> **Why C is wrong:** EFS is file storage, not pass-through.
-> **Why D is wrong:** Placement groups control placement, not device access.
+**Why correct:** Anti-affinity keeps VMs on separate hosts so one host failure cannot kill both replicas.
 
-**12. Which AWS feature keeps instances on separate physical hardware for fault isolation?**
-A. Dedicated Host
-B. Spread placement group
-C. Instance store
-D. Subnet
+**Why A is wrong:** Affinity keeps VMs together on one host, the opposite of what is wanted.
+**Why C is wrong:** Pass-through grants direct device access, unrelated to placement separation.
+**Why D is wrong:** An overlay is a network fabric, not a placement rule.
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** A spread placement group distributes instances across distinct hardware for fault isolation.
-> **Why A is wrong:** A Dedicated Host pins to one physical server; it does not spread across hardware.
-> **Why C is wrong:** Instance store is ephemeral local disk, not a placement strategy.
-> **Why D is wrong:** A subnet is a network range, not a hardware-isolation construct.
+</details>
 
-**13. In AWS, EBS is the mapping for which CV0-004 storage concept?**
-A. NAS
-B. Local
-C. SAN (block)
-D. Overlay
+5. Giving a VM exclusive direct access to a physical GPU is an example of:**
+   - **A.** VM network
+   - **B.** Hardware pass-through
+   - **C.** NAS
+   - **D.** Affinity
 
-> [!note]- Reveal Answer
-> **Correct: C**
-> **Why correct:** EBS is network block storage, the AWS analog of a SAN LUN, attachable in the AZ.
-> **Why A is wrong:** NAS or file maps to EFS or FSx, not EBS.
-> **Why B is wrong:** Local maps to instance store, not EBS.
-> **Why D is wrong:** Overlay maps to VPC, not block storage.
+<details>
+<summary>Reveal Answer</summary>
 
-**14. AMI / instance cloning in AWS maps to which concept?**
-A. Clustering
-B. Cloning
-C. Affinity
-D. Pass-through
+**Correct: B**
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** AMIs let you launch identical instances, matching the cloning concept.
-> **Why A is wrong:** Clustering is pooled HA compute, not image-based cloning.
-> **Why C is wrong:** Affinity is placement, not image cloning.
-> **Why D is wrong:** Pass-through is device access, not cloning.
+**Why correct:** Hardware pass-through gives a VM exclusive direct access to a physical device such as a GPU.
 
-**15. Which storage type BEST supports live migration because any host can attach it?**
-A. Local
-B. SAN
-C. Instance store
-D. None
+**Why A is wrong:** A VM network is virtual switching, not direct device access.
+**Why C is wrong:** NAS is file storage, unrelated to GPU or device access.
+**Why D is wrong:** Affinity is a placement rule, not device assignment.
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** Shared SAN LUNs let the VM disk follow it to another host, enabling live migration.
-> **Why A is wrong:** Local storage is host-bound and breaks live migration.
-> **Why C is wrong:** Instance store is ephemeral and host-attached, cannot follow the VM.
-> **Why D is wrong:** SAN specifically supports it, so not none.
+</details>
 
-**16. VPC with SDN in AWS maps to which networking concept?**
-A. VM network
-B. Overlay networks
-C. Local storage
-D. Clustering
+6. A logical network that encapsulates traffic and spans hosts/racks is a:**
+   - **A.** VM network
+   - **B.** Local disk
+   - **C.** Overlay network
+   - **D.** SAN
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** A VPC with SDN is a logical overlay isolating tenants regardless of physical rack.
-> **Why A is wrong:** A VM network is host-local switching, not a tenant-spanning overlay.
-> **Why C is wrong:** Local storage is unrelated to a networking overlay.
-> **Why D is wrong:** Clustering is compute pooling, not a network.
+<details>
+<summary>Reveal Answer</summary>
 
-**17. EC2 Auto Scaling groups and EMR map to which concept?**
-A. Stand-alone
-B. Cloning
-C. Clustering
-D. Pass-through
+**Correct: C**
 
-> [!note]- Reveal Answer
-> **Correct: C**
-> **Why correct:** Auto Scaling groups and EMR provide pooled, highly available clustered compute.
-> **Why A is wrong:** Stand-alone is single-host with no clustering.
-> **Why B is wrong:** Cloning is image copy, not pooled HA compute.
-> **Why D is wrong:** Pass-through is device access, not clustering.
+**Why correct:** An overlay network such as VXLAN encapsulates traffic and spans hosts or racks logically.
 
-**18. A trade-off of hardware pass-through is that it usually:**
-A. Improves sharing
-B. Blocks live migration
-C. Reduces performance
-D. Requires NAS
+**Why A is wrong:** A VM network is host-local virtual switching without encapsulation.
+**Why B is wrong:** Local disk is storage attached to one host, not a network.
+**Why D is wrong:** A SAN is block storage, not an encapsulated logical network.
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** Exclusive device access typically prevents live migration of that VM.
-> **Why A is wrong:** Pass-through is exclusive, not shared.
-> **Why C is wrong:** Pass-through improves performance with near-native access.
-> **Why D is wrong:** NAS is storage, unrelated to the trade-off.
+</details>
 
-**19. Placement groups and Dedicated Hosts in AWS map to which concept?**
-A. Host affinity
-B. Overlay
-C. NAS
-D. Stand-alone
+7. Raw block devices delivered over Fibre Channel or iSCSI describe:**
+   - **A.** NAS
+   - **B.** SAN
+   - **C.** Local storage
+   - **D.** Overlay
 
-> [!note]- Reveal Answer
-> **Correct: A**
-> **Why correct:** Placement groups and Dedicated Hosts control VM-to-host placement, matching host affinity.
-> **Why B is wrong:** Overlay is networking, not placement.
-> **Why C is wrong:** NAS is storage, not placement.
-> **Why D is wrong:** Stand-alone is single-host; placement rules span hosts.
+<details>
+<summary>Reveal Answer</summary>
 
-**20. Which combination is MOST appropriate for a production database needing HA and shared disks?**
-A. Stand-alone + local storage
-B. Cluster + SAN
-C. Overlay + NAS only
-D. Pass-through + instance store
+**Correct: B**
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** Cluster plus SAN gives HA and shared block storage suited to production databases.
-> **Why A is wrong:** Stand-alone plus local has no HA and no shared disk.
-> **Why C is wrong:** NAS is file-level, not ideal for shared DB block, and no explicit HA.
-> **Why D is wrong:** Pass-through plus instance store is ephemeral with no clustering or HA.
+**Why correct:** A SAN delivers raw block devices over Fibre Channel or iSCSI, seen as local disks.
+
+**Why A is wrong:** NAS is file-level over NFS or SMB, not raw block devices.
+**Why C is wrong:** Local storage is physically in the host, not a shared block network.
+**Why D is wrong:** An overlay is a network, not a storage protocol.
+
+</details>
+
+8. File-level storage accessed via NFS or SMB is characteristic of:**
+   - **A.** SAN
+   - **B.** Local disk
+   - **C.** NAS
+   - **D.** Instance store
+
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: C**
+
+**Why correct:** NAS exposes file shares over NFS or SMB, file-level storage over standard networks.
+
+**Why A is wrong:** SAN is block-level, not file shares.
+**Why B is wrong:** Local disk is host-attached, not a network file share.
+**Why D is wrong:** Instance store is ephemeral local block storage, not file-level NAS.
+
+</details>
+
+9. Storage physically inside the host that is NOT shareable across hosts is:**
+   - **A.** SAN
+   - **B.** NAS
+   - **C.** Local storage
+   - **D.** EFS
+
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: C**
+
+**Why correct:** Local storage is physically inside the host and cannot be shared across hosts.
+
+**Why A is wrong:** SAN LUNs are shared across hosts, enabling live migration.
+**Why B is wrong:** NAS is network-mounted and shareable across hosts.
+**Why D is wrong:** EFS is AWS file storage shared across instances.
+
+</details>
+
+10. A vSwitch port group tagged with a VLAN inside a hypervisor represents a:**
+   - **A.** Overlay network
+   - **B.** VM network
+   - **C.** SAN LUN
+   - **D.** Pass-through device
+
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** A vSwitch port group tagged with a VLAN is part of the host-level VM network fabric.
+
+**Why A is wrong:** An overlay spans hosts via encapsulation; a port group is local L2.
+**Why C is wrong:** A SAN LUN is storage, not a network port group.
+**Why D is wrong:** Pass-through is direct device access, not virtual switching.
+
+</details>
+
+11. In AWS, the closest match to "hardware pass-through" is:**
+   - **A.** EC2 bare metal
+   - **B.** EBS
+   - **C.** EFS
+   - **D.** Placement group
+
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: A**
+
+**Why correct:** EC2 bare metal removes the hypervisor, giving direct hardware access closest to pass-through.
+
+**Why B is wrong:** EBS is block storage, not hardware pass-through.
+**Why C is wrong:** EFS is file storage, not pass-through.
+**Why D is wrong:** Placement groups control placement, not device access.
+
+</details>
+
+12. Which AWS feature keeps instances on separate physical hardware for fault isolation?**
+   - **A.** Dedicated Host
+   - **B.** Spread placement group
+   - **C.** Instance store
+   - **D.** Subnet
+
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** A spread placement group distributes instances across distinct hardware for fault isolation.
+
+**Why A is wrong:** A Dedicated Host pins to one physical server; it does not spread across hardware.
+**Why C is wrong:** Instance store is ephemeral local disk, not a placement strategy.
+**Why D is wrong:** A subnet is a network range, not a hardware-isolation construct.
+
+</details>
+
+13. In AWS, EBS is the mapping for which CV0-004 storage concept?**
+   - **A.** NAS
+   - **B.** Local
+   - **C.** SAN (block)
+   - **D.** Overlay
+
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: C**
+
+**Why correct:** EBS is network block storage, the AWS analog of a SAN LUN, attachable in the AZ.
+
+**Why A is wrong:** NAS or file maps to EFS or FSx, not EBS.
+**Why B is wrong:** Local maps to instance store, not EBS.
+**Why D is wrong:** Overlay maps to VPC, not block storage.
+
+</details>
+
+14. AMI / instance cloning in AWS maps to which concept?**
+   - **A.** Clustering
+   - **B.** Cloning
+   - **C.** Affinity
+   - **D.** Pass-through
+
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** AMIs let you launch identical instances, matching the cloning concept.
+
+**Why A is wrong:** Clustering is pooled HA compute, not image-based cloning.
+**Why C is wrong:** Affinity is placement, not image cloning.
+**Why D is wrong:** Pass-through is device access, not cloning.
+
+</details>
+
+15. Which storage type BEST supports live migration because any host can attach it?**
+   - **A.** Local
+   - **B.** SAN
+   - **C.** Instance store
+   - **D.** None
+
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** Shared SAN LUNs let the VM disk follow it to another host, enabling live migration.
+
+**Why A is wrong:** Local storage is host-bound and breaks live migration.
+**Why C is wrong:** Instance store is ephemeral and host-attached, cannot follow the VM.
+**Why D is wrong:** SAN specifically supports it, so not none.
+
+</details>
+
+16. VPC with SDN in AWS maps to which networking concept?**
+   - **A.** VM network
+   - **B.** Overlay networks
+   - **C.** Local storage
+   - **D.** Clustering
+
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** A VPC with SDN is a logical overlay isolating tenants regardless of physical rack.
+
+**Why A is wrong:** A VM network is host-local switching, not a tenant-spanning overlay.
+**Why C is wrong:** Local storage is unrelated to a networking overlay.
+**Why D is wrong:** Clustering is compute pooling, not a network.
+
+</details>
+
+17. EC2 Auto Scaling groups and EMR map to which concept?**
+   - **A.** Stand-alone
+   - **B.** Cloning
+   - **C.** Clustering
+   - **D.** Pass-through
+
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: C**
+
+**Why correct:** Auto Scaling groups and EMR provide pooled, highly available clustered compute.
+
+**Why A is wrong:** Stand-alone is single-host with no clustering.
+**Why B is wrong:** Cloning is image copy, not pooled HA compute.
+**Why D is wrong:** Pass-through is device access, not clustering.
+
+</details>
+
+18. A trade-off of hardware pass-through is that it usually:**
+   - **A.** Improves sharing
+   - **B.** Blocks live migration
+   - **C.** Reduces performance
+   - **D.** Requires NAS
+
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** Exclusive device access typically prevents live migration of that VM.
+
+**Why A is wrong:** Pass-through is exclusive, not shared.
+**Why C is wrong:** Pass-through improves performance with near-native access.
+**Why D is wrong:** NAS is storage, unrelated to the trade-off.
+
+</details>
+
+19. Placement groups and Dedicated Hosts in AWS map to which concept?**
+   - **A.** Host affinity
+   - **B.** Overlay
+   - **C.** NAS
+   - **D.** Stand-alone
+
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: A**
+
+**Why correct:** Placement groups and Dedicated Hosts control VM-to-host placement, matching host affinity.
+
+**Why B is wrong:** Overlay is networking, not placement.
+**Why C is wrong:** NAS is storage, not placement.
+**Why D is wrong:** Stand-alone is single-host; placement rules span hosts.
+
+</details>
+
+20. Which combination is MOST appropriate for a production database needing HA and shared disks?**
+   - **A.** Stand-alone + local storage
+   - **B.** Cluster + SAN
+   - **C.** Overlay + NAS only
+   - **D.** Pass-through + instance store
+
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** Cluster plus SAN gives HA and shared block storage suited to production databases.
+
+**Why A is wrong:** Stand-alone plus local has no HA and no shared disk.
+**Why C is wrong:** NAS is file-level, not ideal for shared DB block, and no explicit HA.
+**Why D is wrong:** Pass-through plus instance store is ephemeral with no clustering or HA.
+
+</details>

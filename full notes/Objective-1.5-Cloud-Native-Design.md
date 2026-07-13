@@ -157,262 +157,382 @@ This section maps the generic cloud-native concepts from Objective 1.5 onto conc
 
 ## SECTION 6 — PRACTICE QUESTIONS
 
-**Q1.** Which cloud-native concept describes breaking an application into small, independently deployable services that each own a single business capability?
-A. Monolith
-B. Microservices
-C. Fan-out
-D. Service discovery
+1. Designing an app where components scale and fail independently, communicating via events, is called:
+   - **A.** Monolith
+   - **B.** Microservices / loosely coupled architecture
+   - **C.** Mainframe
+   - **D.** Client-server only
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** Microservices decompose apps into small autonomous, independently deployable services.
-> **Why A is wrong:** Monolith is one single unit.
-> **Why C is wrong:** Fan-out is a messaging pattern.
-> **Why D is wrong:** Service discovery locates instances.
+<details>
+<summary>Reveal Answer</summary>
 
-**Q2.** A company wants to stop patching database servers and handling failover themselves. Which approach best meets this goal?
-A. Self-managed EC2 with PostgreSQL
-B. Cloud-provided managed services
-C. Tightly coupled architecture
-D. Hard-coded endpoints
+**Correct: B**
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** Managed services have the provider handle patching, HA, and backups.
-> **Why A is wrong:** Self-managed EC2 means you patch.
-> **Why C is wrong:** Tight coupling increases outage risk.
-> **Why D is wrong:** Hard-coded endpoints break in dynamic environments.
+**Why correct:** Microservices are independently deployable, loosely coupled, and communicate via APIs/events.
 
-**Q3.** An e-commerce site splits checkout, payments, and shipping into separate services that scale and deploy independently. This is an example of:
-A. A monolith
-B. Loose coupling only
-C. Microservices
-D. Fan-out
+**Why A is wrong:** Monolith is tightly coupled.
+**Why C is wrong:** Mainframe is centralized.
+**Why D is wrong:** Client-server is a topology, not the decoupling principle.
 
-> [!note]- Reveal Answer
-> **Correct: C**
-> **Why correct:** Separate, independently deployable/scalable services describe microservices.
-> **Why A is wrong:** Monolith is one deployable.
-> **Why B is wrong:** It is more than loose coupling - it owns a business capability.
-> **Why D is wrong:** Fan-out is pub/sub.
+</details>
 
-**Q4.** A web app writes "order placed" to a queue and returns immediately; workers process later. This design primarily demonstrates:
-A. Tight coupling
-B. Loosely coupled architecture
-C. Service discovery
-D. Monolithic deployment
+2. You want one service to asynchronously notify many subscribers when an event occurs, without knowing them. Use:
+   - **A.** Direct function call
+   - **B.** SNS pub/sub fan-out
+   - **C.** NAT gateway
+   - **D.** Route 53
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** Queue-based decoupling lets producers and consumers operate independently.
-> **Why A is wrong:** A queue decouples, not tightens.
-> **Why C is wrong:** Discovery locates services.
-> **Why D is wrong:** Monolith is a single-unit deploy.
+<details>
+<summary>Reveal Answer</summary>
 
-**Q5.** One uploaded file must trigger transcoding, thumbnail generation, and a virus scan at the same time. Which pattern is this?
-A. Point-to-point queue
-B. Fan-out
-C. Service discovery
-D. Monolith
+**Correct: B**
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** Fan-out delivers one event to multiple independent subscribers simultaneously.
-> **Why A is wrong:** Point-to-point sends to one consumer.
-> **Why C is wrong:** Discovery locates services.
-> **Why D is wrong:** Monolith is a single unit.
+**Why correct:** SNS is a pub/sub topic that fans a message out to all subscribers decoupled from the publisher.
 
-**Q6.** In AWS, which service is the managed implementation of a pub/sub fan-out topic?
-A. Amazon SQS
-B. Amazon SNS
-C. Amazon RDS
-D. AWS Cloud Map
+**Why A is wrong:** Direct calls couple services.
+**Why C is wrong:** NAT is egress.
+**Why D is wrong:** Route 53 is DNS.
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** SNS is the AWS pub/sub service that fans messages out to many subscribers.
-> **Why A is wrong:** SQS is point-to-point.
-> **Why C is wrong:** RDS is a database.
-> **Why D is wrong:** Cloud Map is service discovery.
+</details>
 
-**Q7.** As container instances are created and destroyed with new IPs, a client must find the current healthy address at runtime. The needed concept is:
-A. Fan-out
-B. Service discovery
-C. Microservices
-D. Managed services
+3. A service must place work items on a queue so another service processes them at its own pace. Which?
+   - **A.** SQS
+   - **B.** SNS
+   - **C.** CloudFront
+   - **D.** ALB
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** Service discovery dynamically locates live, healthy service instances.
-> **Why A is wrong:** Fan-out broadcasts events.
-> **Why C is wrong:** Microservices are an architecture style.
-> **Why D is wrong:** Managed services are provider-run infra.
+<details>
+<summary>Reveal Answer</summary>
 
-**Q8.** Which AWS service provides managed service discovery and registration by name?
-A. Amazon Route 53
-B. AWS Cloud Map
-C. Amazon SQS
-D. Amazon ECS
+**Correct: A**
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** Cloud Map is AWS's managed service registry and discovery service.
-> **Why A is wrong:** Route 53 is DNS-based discovery.
-> **Why C is wrong:** SQS is a queue.
-> **Why D is wrong:** ECS is container orchestration.
+**Why correct:** SQS is a message queue that decouples producers and consumers and buffers work.
 
-**Q9.** Compared with a monolith, microservices primarily improve:
-A. Simpler initial deployment
-B. Independent scaling and failure isolation
-C. Single shared database
-D. Lower networking complexity
+**Why B is wrong:** SNS is push pub/sub, not a buffer.
+**Why C is wrong:** CloudFront is CDN.
+**Why D is wrong:** ALB distributes HTTP, not queues.
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** Microservices allow per-service scaling and isolate failures.
-> **Why A is wrong:** Microservices are harder to start than a monolith.
-> **Why C is wrong:** They often use per-service databases.
-> **Why D is wrong:** They add networking complexity.
+</details>
 
-**Q10.** A team uses S3 event notifications to trigger three separate Lambda functions. This is an example of:
-A. Fan-out
-B. Tight coupling
-C. Monolith
-D. Service discovery
+4. Service discovery in a cloud-native microservice mesh is handled by:
+   - **A.** Elastic IP
+   - **B.** A service registry / discovery service (e.g., Cloud Map)
+   - **C.** NAT gateway
+   - **D.** Security group
 
-> [!note]- Reveal Answer
-> **Correct: A**
-> **Why correct:** One event triggering multiple independent functions is fan-out.
-> **Why B is wrong:** Lambda triggers are loosely coupled, not tight.
-> **Why C is wrong:** Monolith is a single unit.
-> **Why D is wrong:** Discovery locates services.
+<details>
+<summary>Reveal Answer</summary>
 
-**Q11.** Which is a downside of microservices relative to a monolith?
-A. Cannot scale
-B. Increased distributed-systems complexity
-C. No failure isolation
-D. Must deploy everything together
+**Correct: B**
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** Microservices add networking, discovery, and consistency complexity.
-> **Why A is wrong:** They scale well.
-> **Why C is wrong:** They isolate failures.
-> **Why D is wrong:** They deploy independently.
+**Why correct:** Service discovery registers service instances and lets others find them by name as they scale.
 
-**Q12.** Amazon RDS is an example of which Objective 1.5 concept?
-A. Microservices
-B. Cloud-provided managed services
-C. Fan-out
-D. Service discovery
+**Why A is wrong:** EIP is a static IP, not discovery.
+**Why C is wrong:** NAT is egress.
+**Why D is wrong:** SG is a firewall.
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** RDS is a managed database service operated by the provider.
-> **Why A is wrong:** It is not microservices.
-> **Why C is wrong:** It is not fan-out.
-> **Why D is wrong:** It is not discovery.
+</details>
 
-**Q13.** A banking app emits one "transaction completed" event consumed by ledger, fraud, and notification services. The event bus demonstrates:
-A. Fan-out via pub/sub
-B. Monolithic coupling
-C. Hard-coded endpoints
-D. Microservices only
+5. You want to run code in response to events (S3 upload, HTTP) with no servers to manage. Which is MOST cloud-native?
+   - **A.** EC2 always-on
+   - **B.** Lambda (serverless FaaS)
+   - **C.** ECS cluster
+   - **D.** Bare metal
 
-> [!note]- Reveal Answer
-> **Correct: A**
-> **Why correct:** One event delivered to many subscribers is fan-out over an event bus.
-> **Why B is wrong:** Pub/sub is loosely coupled, not monolithic.
-> **Why C is wrong:** Hard-coded endpoints are not used.
-> **Why D is wrong:** It is the event pattern, not just microservices.
+<details>
+<summary>Reveal Answer</summary>
 
-**Q14.** Which AWS compute option is serverless and commonly used for small event-driven microservices?
-A. Amazon ECS
-B. AWS Lambda
-C. Amazon EC2
-D. AWS Cloud Map
+**Correct: B**
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** Lambda is serverless and ideal for event-driven microservices.
-> **Why A is wrong:** ECS runs containers, not serverless functions.
-> **Why C is wrong:** EC2 is virtual machines.
-> **Why D is wrong:** Cloud Map is discovery.
+**Why correct:** Lambda is event-driven serverless compute — no server management, scales to zero.
 
-**Q15.** Route 53 health checks that remove failing endpoints and route to healthy ones best illustrate:
-A. Fan-out
-B. Service discovery
-C. Microservices
-D. Managed services
+**Why A is wrong:** EC2 always-on is not serverless.
+**Why C is wrong:** ECS still manages containers/cluster.
+**Why D is wrong:** Bare metal is opposite of cloud-native.
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** DNS-based health checking and routing is a service-discovery mechanism.
-> **Why A is wrong:** That describes fan-out.
-> **Why C is wrong:** That is an architecture style.
-> **Why D is wrong:** That describes managed services.
+</details>
 
-**Q16.** The main benefit of loosely coupled architecture is:
-A. Components must be available simultaneously
-B. Failures are isolated and components scale independently
-C. One bug crashes everything
-D. Shared single database
+6. The principle 'design for failure' means:
+   - **A.** Assume components will fail and build retry/health-check/failover
+   - **B.** Never test failure
+   - **C.** Use single instances
+   - **D.** Disable monitoring
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** Loose coupling isolates failures and enables independent scaling.
-> **Why A is wrong:** Loosely coupled components need not be available simultaneously.
-> **Why C is wrong:** That is tight coupling's failure mode.
-> **Why D is wrong:** Shared DB is monolith-style.
+<details>
+<summary>Reveal Answer</summary>
 
-**Q17.** Which AWS service pair is the classic "fan-out" pattern where one message feeds multiple independent worker queues?
-A. SNS → multiple SQS
-B. RDS → Lambda
-C. Cloud Map → ECS
-D. EC2 → S3
+**Correct: A**
 
-> [!note]- Reveal Answer
-> **Correct: A**
-> **Why correct:** SNS publishing to several SQS queues is the canonical fan-out topology.
-> **Why B is wrong:** RDS to Lambda is a single trigger.
-> **Why C is wrong:** Cloud Map to ECS is discovery.
-> **Why D is wrong:** EC2 to S3 is storage access.
+**Why correct:** Cloud-native design assumes failure and adds redundancy, health checks, and graceful degradation.
 
-**Q18.** A retailer auto-scales only its Payment service during a traffic spike while Recommendation stays baseline. This shows microservices enable:
-A. Whole-app scaling only
-B. Independent per-service scaling
-C. Tight coupling
-D. Monolithic deployment
+**Why B is wrong:** Testing failure is essential.
+**Why C is wrong:** Single instances are an anti-pattern.
+**Why D is wrong:** Monitoring is required.
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** Scaling one service independently is a core microservices benefit.
-> **Why A is wrong:** Microservices scale per-service, not whole-app.
-> **Why C is wrong:** That is tight coupling.
-> **Why D is wrong:** Monolith deploys everything together.
+</details>
 
-**Q19.** EventBridge is best classified under which Objective 1.5 concept in AWS?
-A. Managed relational database
-B. Loosely coupled / event-driven decoupling (and fan-out target)
-C. Service discovery registry
-D. Container orchestration
+7. Which is a managed, cloud-native relational database that handles patching, backups, and failover for you?
+   - **A.** Self-managed MySQL on EC2
+   - **B.** RDS
+   - **C.** DynamoDB
+   - **D.** Redis on a VM
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** EventBridge is an event bus that decouples and fans out to targets.
-> **Why A is wrong:** It is not a relational database.
-> **Why C is wrong:** It is not a discovery registry.
-> **Why D is wrong:** It is not container orchestration.
+<details>
+<summary>Reveal Answer</summary>
 
-**Q20.** Hard-coding service IP addresses in a dynamic auto-scaling environment is problematic because:
-A. It improves resilience
-B. Addresses change as instances come and go, causing outages
-C. It enables service discovery automatically
-D. It reduces operational effort
+**Correct: B**
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** Static addresses break when instances change; discovery solves this.
-> **Why A is wrong:** It hurts resilience.
-> **Why C is wrong:** It disables discovery.
-> **Why D is wrong:** It increases operational effort.
+**Why correct:** RDS is a managed relational DB service handling maintenance, backups, and Multi-AZ failover.
+
+**Why A is wrong:** Self-managed means you do the patching.
+**Why C is wrong:** DynamoDB is NoSQL.
+**Why D is wrong:** Self-run Redis is not managed.
+
+</details>
+
+8. To avoid tight coupling, services should communicate via:
+   - **A.** Shared in-memory variables
+   - **B.** Well-defined APIs / asynchronous messages
+   - **C.** Direct database table sharing
+   - **D.** Hardcoded IPs
+
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** Loose coupling uses contracts (APIs, queues) so services change independently.
+
+**Why A is wrong:** Shared memory couples them.
+**Why C is wrong:** Sharing DB tables couples schemas.
+**Why D is wrong:** Hardcoded IPs break on scale.
+
+</details>
+
+9. A container orchestration service that auto-heals and scales containers is:
+   - **A.** ECS / EKS
+   - **B.** S3
+   - **C.** Route 53
+   - **D.** NAT gateway
+
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: A**
+
+**Why correct:** ECS/EKS schedule containers, replace failed ones, and scale replicas.
+
+**Why B is wrong:** S3 is storage.
+**Why C is wrong:** Route 53 is DNS.
+**Why D is wrong:** NAT is egress.
+
+</details>
+
+10. Statelessness in cloud-native design helps because:
+   - **A.** State must live in the instance
+   - **B.** Any instance can serve any request, enabling horizontal scale
+   - **C.** It forces single-instance
+   - **D.** It prevents scaling
+
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** Stateless services keep state in a store (DB/cache), so any replica can handle a request.
+
+**Why A is wrong:** State should be external.
+**Why C is wrong:** It enables scale-out.
+**Why D is wrong:** It enables scaling, not prevents.
+
+</details>
+
+11. An API Gateway in front of Lambda provides:
+   - **A.** Raw EC2 access
+   - **B.** Managed HTTP endpoints, auth, throttling, and routing to functions
+   - **C.** A database
+   - **D.** A CDN only
+
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** API Gateway exposes managed REST/HTTP endpoints with auth, rate limits, and Lambda integration.
+
+**Why A is wrong:** Not EC2.
+**Why C is wrong:** Not a database.
+**Why D is wrong:** CDN is CloudFront.
+
+</details>
+
+12. You need to decouple and buffer spikes between a web tier and a worker tier. Best pattern:
+   - **A.** Synchronous direct calls
+   - **B.** Queue (SQS) between tiers
+   - **C.** Hardcoded retries
+   - **D.** Single instance
+
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** A queue absorbs spikes so workers process at their own rate; web tier is not blocked.
+
+**Why A is wrong:** Sync calls couple and can overwhelm.
+**Why C is wrong:** Hardcoded retries are fragile.
+**Why D is wrong:** Single instance is a bottleneck.
+
+</details>
+
+13. Cloud-native apps favor managed services over self-managed because:
+   - **A.** More operational burden
+   - **B.** Less undifferentiated heavy lifting (patching, HA)
+   - **C.** No scalability
+   - **D.** Vendor lock is always bad
+
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** Managed services offload undifferentiated ops (patching, replication) so teams focus on product.
+
+**Why A is wrong:** They reduce burden.
+**Why C is wrong:** They scale.
+**Why D is wrong:** Lock-in is a tradeoff, not the reason.
+
+</details>
+
+14. Event-driven architecture's main benefit is:
+   - **A.** Tight coupling
+   - **B.** Producers and consumers scale and deploy independently
+   - **C.** Single deploy
+   - **D.** No async
+
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** Events let producers emit and consumers react independently, improving resilience and scale.
+
+**Why A is wrong:** It is loose coupling.
+**Why C is wrong:** Services deploy separately.
+**Why D is wrong:** It is async by nature.
+
+</details>
+
+15. For a globally low-latency read of static assets, use:
+   - **A.** A single EC2 in one region
+   - **B.** CloudFront CDN
+   - **C.** A NAT gateway
+   - **D.** Direct Connect
+
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** CloudFront caches content at edge locations near users for low-latency global reads.
+
+**Why A is wrong:** One region is high latency far away.
+**Why C is wrong:** NAT is egress.
+**Why D is wrong:** DX is a private link.
+
+</details>
+
+16. Twelve-factor app guidance says config should be:
+   - **A.** Hardcoded in source
+   - **B.** Stored in the environment / external config
+   - **C.** In the database only
+   - **D.** Ignored
+
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** Twelve-factor keeps config in the environment so the same build runs in every environment.
+
+**Why A is wrong:** Hardcoding breaks portability.
+**Why C is wrong:** Config is not app data.
+**Why D is wrong:** Config must exist.
+
+</details>
+
+17. A circuit breaker pattern is used to:
+   - **A.** Always retry forever
+   - **B.** Stop calling a failing dependency to fail fast and recover
+   - **C.** Increase coupling
+   - **D.** Disable scaling
+
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** Circuit breakers trip on repeated failures, avoiding cascading outages and allowing recovery.
+
+**Why A is wrong:** Endless retry causes storms.
+**Why C is wrong:** It reduces coupling risk.
+**Why D is wrong:** Scaling is unrelated.
+
+</details>
+
+18. Which is NOT a cloud-native characteristic?
+   - **A.** Horizontal scalability
+   - **B.** Tightly coupled monolith with shared local state
+   - **C.** Managed services
+   - **D.** Automated recovery
+
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** A tightly coupled monolith with local state resists the elasticity and resilience of cloud-native design.
+
+**Why A is wrong:** Horizontal scale is core.
+**Why C is wrong:** Managed services are core.
+**Why D is wrong:** Auto-recovery is core.
+
+</details>
+
+19. You want to run containers without managing the cluster control plane. Choose:
+   - **A.** EKS with self-managed control plane
+   - **B.** Fargate (serverless containers)
+   - **C.** Bare metal
+   - **D.** EC2 with manual Docker
+
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** Fargate runs containers serverless — no control plane or worker nodes to manage.
+
+**Why A is wrong:** Self-managed control plane is more work.
+**Why C is wrong:** Bare metal is not serverless.
+**Why D is wrong:** Manual Docker is undifferentiated toil.
+
+</details>
+
+20. The Twelve-Factor method says backing services (DB, cache, queue) should be treated as:
+   - **A.** Hardcoded endpoints in code
+   - **B.** Attached resources addressed via config/env
+   - **C.** Embedded libraries
+   - **D.** Global singletons
+
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** Twelve-factor treats backing services as attached resources referenced by config so they are swappable.
+
+**Why A is wrong:** Hardcoding couples and blocks swap.
+**Why C is wrong:** Embedding kills portability.
+**Why D is wrong:** Singletons couple services.
+
+</details>

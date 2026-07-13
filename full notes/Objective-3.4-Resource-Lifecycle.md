@@ -152,261 +152,381 @@ This section maps the vendor-neutral 3.4 sub-objectives to AWS-specific services
 ## SECTION 6 — PRACTICE QUESTIONS
 
 1. A vendor releases a small fix that corrects a specific security flaw in your current OS version without changing the version number. This is best described as a:
-   A. Major update
-   B. Minor update
-   C. Patch
-   D. End-of-life event
+   - **A.** Major update
+   - **B.** Minor update
+   - **C.** Patch
+   - **D.** End-of-life event
 
-> [!note]- Reveal Answer
-> **Correct: C**
-> **Why correct:** A patch is a targeted fix within the same version; it repairs a flaw without changing major/minor numbers.
-> **Why A is wrong:** A major update jumps the first digit and adds breaking changes, not a same-version fix.
-> **Why B is wrong:** A minor update changes the middle digit with new features; a patch changes no version number.
-> **Why D is wrong:** EOL is a vendor discontinuation milestone, not a fix to the running version.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: C**
+
+**Why correct:** A patch is a targeted fix within the same version; it repairs a flaw without changing major/minor numbers.
+
+**Why A is wrong:** A major update jumps the first digit and adds breaking changes, not a same-version fix.
+**Why B is wrong:** A minor update changes the middle digit with new features; a patch changes no version number.
+**Why D is wrong:** EOL is a vendor discontinuation milestone, not a fix to the running version.
+
+</details>
 
 2. Which task is MOST appropriate to automate with a patch manager across a large EC2 fleet?
-   A. Migrating from Java 8 to Java 21
-   B. Applying the latest Linux security hotfix monthly
-   C. Decommissioning an end-of-support server
-   D. Archiving data to object storage
+   - **A.** Migrating from Java 8 to Java 21
+   - **B.** Applying the latest Linux security hotfix monthly
+   - **C.** Decommissioning an end-of-support server
+   - **D.** Archiving data to object storage
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** Patches are routine, frequent fixes ideal for scheduled automation (e.g., SSM Patch Manager) across a fleet.
-> **Why A is wrong:** A Java 8→21 jump is a major update requiring a project, testing, and rollback — not a patch.
-> **Why C is wrong:** Decommissioning is a lifecycle/retirement task, not a patch to install.
-> **Why D is wrong:** Archiving data is a storage/retention task, unrelated to patching.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** Patches are routine, frequent fixes ideal for scheduled automation (e.g., SSM Patch Manager) across a fleet.
+
+**Why A is wrong:** A Java 8→21 jump is a major update requiring a project, testing, and rollback — not a patch.
+**Why C is wrong:** Decommissioning is a lifecycle/retirement task, not a patch to install.
+**Why D is wrong:** Archiving data is a storage/retention task, unrelated to patching.
+
+</details>
 
 3. A version change from v2 to v3 of an application that removes old APIs is a:
-   A. Patch
-   B. Minor update
-   C. Major update
-   D. Canary deployment
+   - **A.** Patch
+   - **B.** Minor update
+   - **C.** Major update
+   - **D.** Canary deployment
 
-> [!note]- Reveal Answer
-> **Correct: C**
-> **Why correct:** A first-digit jump with removed/breaking APIs defines a major update — highest-risk, planned change.
-> **Why A is wrong:** A patch keeps the same version number and breaks nothing.
-> **Why B is wrong:** A minor update is backward-compatible; removing APIs is not.
-> **Why D is wrong:** A canary is a deployment strategy, not a version-change type.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: C**
+
+**Why correct:** A first-digit jump with removed/breaking APIs defines a major update — highest-risk, planned change.
+
+**Why A is wrong:** A patch keeps the same version number and breaks nothing.
+**Why B is wrong:** A minor update is backward-compatible; removing APIs is not.
+**Why D is wrong:** A canary is a deployment strategy, not a version-change type.
+
+</details>
 
 4. Upgrading PostgreSQL from 14.4 to 14.6 is an example of a:
-   A. Major update
-   B. Minor update
-   C. Patch
-   D. End-of-support action
+   - **A.** Major update
+   - **B.** Minor update
+   - **C.** Patch
+   - **D.** End-of-support action
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** A middle-digit change (14.4→14.6) with backward-compatible fixes is a minor update.
-> **Why A is wrong:** The first digit (14) did not change, so it is not major.
-> **Why C is wrong:** Patches do not change the version number at all; this did.
-> **Why D is wrong:** EOS is a support-stop date, not an in-support version bump.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** A middle-digit change (14.4→14.6) with backward-compatible fixes is a minor update.
+
+**Why A is wrong:** The first digit (14) did not change, so it is not major.
+**Why C is wrong:** Patches do not change the version number at all; this did.
+**Why D is wrong:** EOS is a support-stop date, not an in-support version bump.
+
+</details>
 
 5. What is the KEY difference between a minor update and a major update?
-   A. Minor updates change the first digit
-   B. Major updates are backward-compatible
-   C. Major updates can include breaking changes
-   D. Minor updates are never tested
+   - **A.** Minor updates change the first digit
+   - **B.** Major updates are backward-compatible
+   - **C.** Major updates can include breaking changes
+   - **D.** Minor updates are never tested
 
-> [!note]- Reveal Answer
-> **Correct: C**
-> **Why correct:** Major updates may break compatibility (removed APIs, schema changes); minor updates stay backward-compatible.
-> **Why A is wrong:** Minor updates change the middle digit, not the first.
-> **Why B is wrong:** Major updates are NOT reliably backward-compatible; that is what makes them risky.
-> **Why D is wrong:** Minor updates should still be tested in staging before production.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: C**
+
+**Why correct:** Major updates may break compatibility (removed APIs, schema changes); minor updates stay backward-compatible.
+
+**Why A is wrong:** Minor updates change the middle digit, not the first.
+**Why B is wrong:** Major updates are NOT reliably backward-compatible; that is what makes them risky.
+**Why D is wrong:** Minor updates should still be tested in staging before production.
+
+</details>
 
 6. Before promoting a new deployment to production, a team validates it in an environment that mirrors production. This practice is called:
-   A. Decommissioning
-   B. Testing in staging/QA
-   C. Ephemeral storage
-   D. End-of-life planning
+   - **A.** Decommissioning
+   - **B.** Testing in staging/QA
+   - **C.** Ephemeral storage
+   - **D.** End-of-life planning
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** Staging/QA environments that mirror production are the core of pre-production testing before cutover.
-> **Why A is wrong:** Decommissioning retires resources; it is not validation of a new deploy.
-> **Why C is wrong:** Ephemeral storage is temporary data, unrelated to validation environments.
-> **Why D is wrong:** EOL planning is about migration off a discontinued version, not deploy testing.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** Staging/QA environments that mirror production are the core of pre-production testing before cutover.
+
+**Why A is wrong:** Decommissioning retires resources; it is not validation of a new deploy.
+**Why C is wrong:** Ephemeral storage is temporary data, unrelated to validation environments.
+**Why D is wrong:** EOL planning is about migration off a discontinued version, not deploy testing.
+
+</details>
 
 7. A deployment exposes a new version to 5% of users first to watch for errors. This is a:
-   A. Blue/green cutover
-   B. Canary deployment
-   C. Patch baseline
-   D. Major update
+   - **A.** Blue/green cutover
+   - **B.** Canary deployment
+   - **C.** Patch baseline
+   - **D.** Major update
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** A canary releases to a small live slice first to limit blast radius; blue/green switches all at once.
-> **Why A is wrong:** Blue/green runs two full environments and cuts over 100% at once, not 5% gradually.
-> **Why C is wrong:** A patch baseline defines which patches apply, not a rollout strategy.
-> **Why D is wrong:** A major update is a version type, not a deployment method.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** A canary releases to a small live slice first to limit blast radius; blue/green switches all at once.
+
+**Why A is wrong:** Blue/green runs two full environments and cuts over 100% at once, not 5% gradually.
+**Why C is wrong:** A patch baseline defines which patches apply, not a rollout strategy.
+**Why D is wrong:** A major update is a version type, not a deployment method.
+
+</details>
 
 8. Why should a tested rollback path be part of every update plan?
-   A. It removes the need for staging
-   B. It lets you revert quickly if the change fails
-   C. It makes patches unnecessary
-   D. It extends end-of-support dates
+   - **A.** It removes the need for staging
+   - **B.** It lets you revert quickly if the change fails
+   - **C.** It makes patches unnecessary
+   - **D.** It extends end-of-support dates
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** A tested rollback (snapshot/old AMI) minimizes downtime and data risk when an update goes wrong.
-> **Why A is wrong:** Rollback complements staging; it does not replace it.
-> **Why C is wrong:** Rollback does not eliminate the need to patch; it recovers from a bad change.
-> **Why D is wrong:** Rollback has no effect on vendor EOS dates.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** A tested rollback (snapshot/old AMI) minimizes downtime and data risk when an update goes wrong.
+
+**Why A is wrong:** Rollback complements staging; it does not replace it.
+**Why C is wrong:** Rollback does not eliminate the need to patch; it recovers from a bad change.
+**Why D is wrong:** Rollback has no effect on vendor EOS dates.
+
+</details>
 
 9. Which of the following is EPHPEMERAL data?
-   A. A database on EBS
-   B. User files in object storage
-   C. Temp files in /tmp
-   D. A shared NFS volume
+   - **A.** A database on EBS
+   - **B.** User files in object storage
+   - **C.** Temp files in /tmp
+   - **D.** A shared NFS volume
 
-> [!note]- Reveal Answer
-> **Correct: C**
-> **Why correct:** /tmp and similar temp spaces are lost when the instance stops — non-durable ephemeral data.
-> **Why A is wrong:** EBS is persistent block storage that survives stops/termination.
-> **Why B is wrong:** Object storage is durable persistent storage, not ephemeral.
-> **Why D is wrong:** NFS/EFS file shares are persistent and shared, not ephemeral.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: C**
+
+**Why correct:** /tmp and similar temp spaces are lost when the instance stops — non-durable ephemeral data.
+
+**Why A is wrong:** EBS is persistent block storage that survives stops/termination.
+**Why B is wrong:** Object storage is durable persistent storage, not ephemeral.
+**Why D is wrong:** NFS/EFS file shares are persistent and shared, not ephemeral.
+
+</details>
 
 10. Persistent data is best defined as data that:
-    A. Disappears when the instance terminates
-    B. Survives reboots and termination on durable storage
-    C. Lives only in RAM during a process
-    D. Is always stored on instance store
+   - **A.** Disappears when the instance terminates
+   - **B.** Survives reboots and termination on durable storage
+   - **C.** Lives only in RAM during a process
+   - **D.** Is always stored on instance store
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** Persistent data lives on durable storage (EBS/EFS/S3/DB) independent of any single instance, surviving stops.
-> **Why A is wrong:** That describes ephemeral data, the opposite of persistent.
-> **Why C is wrong:** RAM/process-local data is ephemeral, not persistent.
-> **Why D is wrong:** Instance store is ephemeral; it does not provide persistence.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** Persistent data lives on durable storage (EBS/EFS/S3/DB) independent of any single instance, surviving stops.
+
+**Why A is wrong:** That describes ephemeral data, the opposite of persistent.
+**Why C is wrong:** RAM/process-local data is ephemeral, not persistent.
+**Why D is wrong:** Instance store is ephemeral; it does not provide persistence.
+
+</details>
 
 11. A high-speed cache that is lost if the VM stops should be placed on:
-    A. An EBS volume
-    B. Instance store
-    C. An EFS file system
-    D. Object storage
+   - **A.** An EBS volume
+   - **B.** Instance store
+   - **C.** An EFS file system
+   - **D.** Object storage
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** Instance store is fast and ephemeral, ideal for caches you can afford to lose on stop.
-> **Why A is wrong:** EBS is persistent and slower; overkill for a disposable cache.
-> **Why C is wrong:** EFS is persistent shared file storage, not the fastest ephemeral option.
-> **Why D is wrong:** Object storage is durable and not suited to a high-speed local cache.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** Instance store is fast and ephemeral, ideal for caches you can afford to lose on stop.
+
+**Why A is wrong:** EBS is persistent and slower; overkill for a disposable cache.
+**Why C is wrong:** EFS is persistent shared file storage, not the fastest ephemeral option.
+**Why D is wrong:** Object storage is durable and not suited to a high-speed local cache.
+
+</details>
 
 12. A web app's customer records should be stored on:
-    A. Instance store for speed
-    B. /tmp for convenience
-    C. A managed database with backups
-    D. Swap space
+   - **A.** Instance store for speed
+   - **B.** /tmp for convenience
+   - **C.** A managed database with backups
+   - **D.** Swap space
 
-> [!note]- Reveal Answer
-> **Correct: C**
-> **Why correct:** Customer records are persistent and must be durable and backed up — a managed DB with backups fits.
-> **Why A is wrong:** Instance store is ephemeral; records would be lost on stop.
-> **Why B is wrong:** /tmp is ephemeral temp space, not for business records.
-> **Why D is wrong:** Swap is volatile memory overflow, not durable storage.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: C**
+
+**Why correct:** Customer records are persistent and must be durable and backed up — a managed DB with backups fits.
+
+**Why A is wrong:** Instance store is ephemeral; records would be lost on stop.
+**Why B is wrong:** /tmp is ephemeral temp space, not for business records.
+**Why D is wrong:** Swap is volatile memory overflow, not durable storage.
+
+</details>
 
 13. End of life (EOL) for a software version means the vendor:
-    A. Stops providing security patches immediately
-    B. No longer develops or sells that version
-    C. Requires you to upgrade today
-    D. Deletes your data
+   - **A.** Stops providing security patches immediately
+   - **B.** No longer develops or sells that version
+   - **C.** Requires you to upgrade today
+   - **D.** Deletes your data
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** EOL is the "no longer developed/sold" milestone; EOS (later) is when patches/support actually stop.
-> **Why A is wrong:** Patches usually continue until EOS, which follows EOL.
-> **Why C is wrong:** EOL is a planning signal, not an immediate forced upgrade.
-> **Why D is wrong:** The vendor does not delete your data at EOL.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** EOL is the "no longer developed/sold" milestone; EOS (later) is when patches/support actually stop.
+
+**Why A is wrong:** Patches usually continue until EOS, which follows EOL.
+**Why C is wrong:** EOL is a planning signal, not an immediate forced upgrade.
+**Why D is wrong:** The vendor does not delete your data at EOL.
+
+</details>
 
 14. End of support (EOS) is best described as the date when the vendor:
-    A. Releases a new major version
-    B. Stops providing patches and technical support
-    C. Announces the product
-    D. Starts charging more
+   - **A.** Releases a new major version
+   - **B.** Stops providing patches and technical support
+   - **C.** Announces the product
+   - **D.** Starts charging more
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** EOS is the hard stop for security patches and support, usually after EOL — staying on is a risk.
-> **Why A is wrong:** A new major version may appear anytime; it is not the definition of EOS.
-> **Why C is wrong:** Announcing the product is its beginning, not end of support.
-> **Why D is wrong:** EOS is about support, not a price change.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** EOS is the hard stop for security patches and support, usually after EOL — staying on is a risk.
+
+**Why A is wrong:** A new major version may appear anytime; it is not the definition of EOS.
+**Why C is wrong:** Announcing the product is its beginning, not end of support.
+**Why D is wrong:** EOS is about support, not a price change.
+
+</details>
 
 15. Which statement correctly orders the two milestones?
-    A. EOS comes before EOL
-    B. EOL comes before EOS
-    C. They happen on the same day
-    D. EOL and EOS are the same thing
+   - **A.** EOS comes before EOL
+   - **B.** EOL comes before EOS
+   - **C.** They happen on the same day
+   - **D.** EOL and EOS are the same thing
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** Vendors typically announce EOL (stop developing/selling) first, then later reach EOS (stop patching/support).
-> **Why A is wrong:** EOS follows EOL; it does not come first.
-> **Why C is wrong:** They are distinct dates, not the same day.
-> **Why D is wrong:** They are different milestones with different meanings.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** Vendors typically announce EOL (stop developing/selling) first, then later reach EOS (stop patching/support).
+
+**Why A is wrong:** EOS follows EOL; it does not come first.
+**Why C is wrong:** They are distinct dates, not the same day.
+**Why D is wrong:** They are different milestones with different meanings.
+
+</details>
 
 16. As part of decommissioning an end-of-support server, you should FIRST:
-    A. Terminate the instance immediately
-    B. Archive its data to durable storage and verify
-    C. Increase its instance size
-    D. Apply a new patch
+   - **A.** Terminate the instance immediately
+   - **B.** Archive its data to durable storage and verify
+   - **C.** Increase its instance size
+   - **D.** Apply a new patch
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** Preserve and verify data (archive + checksums) before destroying the resource to avoid permanent loss.
-> **Why A is wrong:** Terminating first risks irreversible data loss before archival.
-> **Why C is wrong:** Resizing an EOS server is wasteful and does not retire it.
-> **Why D is wrong:** Patching an EOS version is moot; it is being retired.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** Preserve and verify data (archive + checksums) before destroying the resource to avoid permanent loss.
+
+**Why A is wrong:** Terminating first risks irreversible data loss before archival.
+**Why C is wrong:** Resizing an EOS server is wasteful and does not retire it.
+**Why D is wrong:** Patching an EOS version is moot; it is being retired.
+
+</details>
 
 17. Storing a batch job's intermediate frames on instance store is acceptable because:
-    A. They must survive termination
-    B. They are reproducible and loss is acceptable
-    C. Instance store is durable
-    D. They are customer records
+   - **A.** They must survive termination
+   - **B.** They are reproducible and loss is acceptable
+   - **C.** Instance store is durable
+   - **D.** They are customer records
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** Ephemeral, reproducible temp data is fine on instance store; only the final output needs durability.
-> **Why A is wrong:** They do NOT need to survive termination — that is why instance store is acceptable.
-> **Why C is wrong:** Instance store is non-durable, not durable.
-> **Why D is wrong:** Customer records must be persistent, not on ephemeral store.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** Ephemeral, reproducible temp data is fine on instance store; only the final output needs durability.
+
+**Why A is wrong:** They do NOT need to survive termination — that is why instance store is acceptable.
+**Why C is wrong:** Instance store is non-durable, not durable.
+**Why D is wrong:** Customer records must be persistent, not on ephemeral store.
+
+</details>
 
 18. The BEST reason to schedule patches during a maintenance window is to:
-    A. Avoid changing the version number
-    B. Minimize user impact from brief restarts
-    C. Make the patch a major update
-    D. Extend EOL
+   - **A.** Avoid changing the version number
+   - **B.** Minimize user impact from brief restarts
+   - **C.** Make the patch a major update
+   - **D.** Extend EOL
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** Maintenance windows reduce disruption from the restarts/patches may require, protecting users.
-> **Why A is wrong:** Patches never change the version number anyway; that is not the window's purpose.
-> **Why C is wrong:** A patch is by definition not a major update.
-> **Why D is wrong:** Maintenance scheduling does not affect vendor EOL dates.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** Maintenance windows reduce disruption from the restarts/patches may require, protecting users.
+
+**Why A is wrong:** Patches never change the version number anyway; that is not the window's purpose.
+**Why C is wrong:** A patch is by definition not a major update.
+**Why D is wrong:** Maintenance scheduling does not affect vendor EOL dates.
+
+</details>
 
 19. Before a minor database upgrade, taking a snapshot primarily supports:
-    A. Ephemeral storage cleanup
-    B. A fast rollback if the upgrade fails
-    C. End-of-life tracking
-    D. Removing IAM roles
+   - **A.** Ephemeral storage cleanup
+   - **B.** A fast rollback if the upgrade fails
+   - **C.** End-of-life tracking
+   - **D.** Removing IAM roles
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** A pre-upgrade snapshot enables instant rollback, a key testing/safety step if the upgrade regresses.
-> **Why A is wrong:** Snapshots are about recovery, not ephemeral cleanup.
-> **Why C is wrong:** EOL tracking is an inventory/Config task, not snapshot purpose.
-> **Why D is wrong:** IAM role removal is a decommissioning step, not snapshot purpose.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** A pre-upgrade snapshot enables instant rollback, a key testing/safety step if the upgrade regresses.
+
+**Why A is wrong:** Snapshots are about recovery, not ephemeral cleanup.
+**Why C is wrong:** EOL tracking is an inventory/Config task, not snapshot purpose.
+**Why D is wrong:** IAM role removal is a decommissioning step, not snapshot purpose.
+
+</details>
 
 20. A complete resource-lifecycle plan includes patching, updating, testing, data handling, and:
-    A. Vulnerability scanning (CVE assessment)
-    B. Decommissioning at EOL/EOS
-    C. Writing new application code
-    D. Purchasing new hardware
+   - **A.** Vulnerability scanning (CVE assessment)
+   - **B.** Decommissioning at EOL/EOS
+   - **C.** Writing new application code
+   - **D.** Purchasing new hardware
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** Decommissioning at end-of-life/end-of-support closes the lifecycle; CVE scanning belongs to Objective 4.1, not 3.4.
-> **Why A is wrong:** Vulnerability/CVE scanning is explicitly Objective 4.1, not the 3.4 lifecycle.
-> **Why C is wrong:** Writing application code is development, not resource lifecycle operations.
-> **Why D is wrong:** Purchasing hardware is procurement, not a lifecycle management action.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** Decommissioning at end-of-life/end-of-support closes the lifecycle; CVE scanning belongs to Objective 4.1, not 3.4.
+
+**Why A is wrong:** Vulnerability/CVE scanning is explicitly Objective 4.1, not the 3.4 lifecycle.
+**Why C is wrong:** Writing application code is development, not resource lifecycle operations.
+**Why D is wrong:** Purchasing hardware is procurement, not a lifecycle management action.
+
+</details>

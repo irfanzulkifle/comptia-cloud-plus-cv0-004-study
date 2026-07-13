@@ -142,261 +142,381 @@ AWS-native services that map to Objective 5.4 DevOps tools (per the prescribed m
 ## SECTION 6 — PRACTICE QUESTIONS
 
 1. Ansible is described as agentless because it connects via:
-   A. A installed daemon
-   B. SSH (no agent)
-   C. HTTP only
-   D. SMTP
+   - **A.** A installed daemon
+   - **B.** SSH (no agent)
+   - **C.** HTTP only
+   - **D.** SMTP
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** Ansible pushes tasks over SSH/WinRM with no agent installed on targets.
-> **Why A is wrong:** An installed daemon is the agent model (Chef/Puppet), the opposite of Ansible.
-> **Why C is wrong:** It uses SSH, not HTTP-only, to reach nodes.
-> **Why D is wrong:** SMTP is email; unrelated to config management.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** Ansible pushes tasks over SSH/WinRM with no agent installed on targets.
+
+**Why A is wrong:** An installed daemon is the agent model (Chef/Puppet), the opposite of Ansible.
+**Why C is wrong:** It uses SSH, not HTTP-only, to reach nodes.
+**Why D is wrong:** SMTP is email; unrelated to config management.
+
+</details>
 
 2. The property that lets Ansible be safely re-run is:
-   A. Stateful
-   B. Idempotent
-   C. Agent-based
-   D. Procedural
+   - **A.** Stateful
+   - **B.** Idempotent
+   - **C.** Agent-based
+   - **D.** Procedural
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** Ansible is idempotent—re-running converges to the same state without duplicates.
-> **Why A is wrong:** "Stateful" is not the term; Ansible does not keep a state file.
-> **Why C is wrong:** Agent-based describes Chef/Puppet, not Ansible's re-run safety.
-> **Why D is wrong:** Procedural is not the property; idempotency is.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** Ansible is idempotent—re-running converges to the same state without duplicates.
+
+**Why A is wrong:** "Stateful" is not the term; Ansible does not keep a state file.
+**Why C is wrong:** Agent-based describes Chef/Puppet, not Ansible's re-run safety.
+**Why D is wrong:** Procedural is not the property; idempotency is.
+
+</details>
 
 3. Docker containers share which with the host?
-   A. Nothing
-   B. The OS kernel
-   C. The disk entirely
-   D. The network card
+   - **A.** Nothing
+   - **B.** The OS kernel
+   - **C.** The disk entirely
+   - **D.** The network card
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** Containers share the host kernel (unlike VMs), enabling portability/speed.
-> **Why A is wrong:** Containers are not fully isolated; they share the kernel.
-> **Why C is wrong:** Containers have their own layered filesystem, not the host disk entirely.
-> **Why D is wrong:** Only the kernel is shared; networking is namespaced.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** Containers share the host kernel (unlike VMs), enabling portability/speed.
+
+**Why A is wrong:** Containers are not fully isolated; they share the kernel.
+**Why C is wrong:** Containers have their own layered filesystem, not the host disk entirely.
+**Why D is wrong:** Only the kernel is shared; networking is namespaced.
+
+</details>
 
 4. In the ELK stack, Kibana is used for:
-   A. Storing logs
-   B. Searching/indexing
-   C. Dashboards/visualization
-   D. Collecting logs
+   - **A.** Storing logs
+   - **B.** Searching/indexing
+   - **C.** Dashboards/visualization
+   - **D.** Collecting logs
 
-> [!note]- Reveal Answer
-> **Correct: C**
-> **Why correct:** Kibana is the web UI for searching, dashboarding, and visualizing logs.
-> **Why A is wrong:** Elasticsearch stores the logs, not Kibana.
-> **Why B is wrong:** Search/indexing is Elasticsearch's role.
-> **Why D is wrong:** Collecting/shipping logs is Logstash/Beats' job.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: C**
+
+**Why correct:** Kibana is the web UI for searching, dashboarding, and visualizing logs.
+
+**Why A is wrong:** Elasticsearch stores the logs, not Kibana.
+**Why B is wrong:** Search/indexing is Elasticsearch's role.
+**Why D is wrong:** Collecting/shipping logs is Logstash/Beats' job.
+
+</details>
 
 5. In ELK, Elasticsearch's role is:
-   A. Collect/transform
-   B. Search and index
-   C. Dashboard
-   D. Alerting
+   - **A.** Collect/transform
+   - **B.** Search and index
+   - **C.** Dashboard
+   - **D.** Alerting
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** Elasticsearch stores, indexes, and queries logs for fast search.
-> **Why A is wrong:** Collect/transform is Logstash/Beats.
-> **Why C is wrong:** Dashboards are Kibana.
-> **Why D is wrong:** Alerting is built on top (Kibana/Watcher), not Elasticsearch's core role.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** Elasticsearch stores, indexes, and queries logs for fast search.
+
+**Why A is wrong:** Collect/transform is Logstash/Beats.
+**Why C is wrong:** Dashboards are Kibana.
+**Why D is wrong:** Alerting is built on top (Kibana/Watcher), not Elasticsearch's core role.
+
+</details>
 
 6. Git is best described as:
-   A. A CI server
-   B. Distributed version control
-   C. A container runtime
-   D. A dashboard
+   - **A.** A CI server
+   - **B.** Distributed version control
+   - **C.** A container runtime
+   - **D.** A dashboard
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** Git is a distributed VCS giving every dev a full local history (Objective 5.1).
-> **Why A is wrong:** Git is not a CI server; that is Jenkins/Actions.
-> **Why C is wrong:** A container runtime is Docker, not Git.
-> **Why D is wrong:** A dashboard tool is Grafana/Kibana, not Git.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** Git is a distributed VCS giving every dev a full local history (Objective 5.1).
+
+**Why A is wrong:** Git is not a CI server; that is Jenkins/Actions.
+**Why C is wrong:** A container runtime is Docker, not Git.
+**Why D is wrong:** A dashboard tool is Grafana/Kibana, not Git.
+
+</details>
 
 7. GitHub Actions workflows are defined as:
-   A. Jenkinsfile
-   B. YAML in .github/workflows
-   C. HCL
-   D. XML
+   - **A.** Jenkinsfile
+   - **B.** YAML in .github/workflows
+   - **C.** HCL
+   - **D.** XML
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** Actions workflows are YAML files under .github/workflows/ in the repo.
-> **Why A is wrong:** Jenkinsfile is Jenkins's pipeline definition, not Actions.
-> **Why C is wrong:** HCL is Terraform's language, not Actions.
-> **Why D is wrong:** Actions does not use XML for workflows.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** Actions workflows are YAML files under .github/workflows/ in the repo.
+
+**Why A is wrong:** Jenkinsfile is Jenkins's pipeline definition, not Actions.
+**Why C is wrong:** HCL is Terraform's language, not Actions.
+**Why D is wrong:** Actions does not use XML for workflows.
+
+</details>
 
 8. Grafana primarily visualizes:
-   A. Raw log lines
-   B. Metrics/time-series
-   C. Source code
-   D. Containers
+   - **A.** Raw log lines
+   - **B.** Metrics/time-series
+   - **C.** Source code
+   - **D.** Containers
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** Grafana renders metrics and time-series from Prometheus/CloudWatch/etc.
-> **Why A is wrong:** Raw log search is Kibana/ELK's strength, not Grafana's.
-> **Why C is wrong:** Source code is not what Grafana charts.
-> **Why D is wrong:** Containers are orchestrated by K8s; Grafana charts their metrics.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** Grafana renders metrics and time-series from Prometheus/CloudWatch/etc.
+
+**Why A is wrong:** Raw log search is Kibana/ELK's strength, not Grafana's.
+**Why C is wrong:** Source code is not what Grafana charts.
+**Why D is wrong:** Containers are orchestrated by K8s; Grafana charts their metrics.
+
+</details>
 
 9. Grafana vs. Kibana: Grafana focuses on:
-   A. Log search
-   B. Metric dashboards, multi-source
-   C. Container build
-   D. IaC
+   - **A.** Log search
+   - **B.** Metric dashboards, multi-source
+   - **C.** Container build
+   - **D.** IaC
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** Grafana is metric/dashboard-focused and source-agnostic; Kibana is log-focused.
-> **Why A is wrong:** Log search is Kibana/ELK's domain, not Grafana's.
-> **Why C is wrong:** Container build is Docker's job, not Grafana's.
-> **Why D is wrong:** IaC is Terraform/Ansible, not Grafana.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** Grafana is metric/dashboard-focused and source-agnostic; Kibana is log-focused.
+
+**Why A is wrong:** Log search is Kibana/ELK's domain, not Grafana's.
+**Why C is wrong:** Container build is Docker's job, not Grafana's.
+**Why D is wrong:** IaC is Terraform/Ansible, not Grafana.
+
+</details>
 
 10. Jenkins is best characterized as:
-    A. A managed GitHub service
-    B. A self-hosted CI/CD server with plugins
-    C. A container orchestrator
-    D. A log store
+   - **A.** A managed GitHub service
+   - **B.** A self-hosted CI/CD server with plugins
+   - **C.** A container orchestrator
+   - **D.** A log store
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** Jenkins is a self-hosted automation server with a huge plugin ecosystem.
-> **Why A is wrong:** It is not a managed GitHub service; you host it yourself.
-> **Why C is wrong:** Kubernetes orchestrates containers; Jenkins is CI/CD.
-> **Why D is wrong:** A log store is ELK/OpenSearch, not Jenkins.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** Jenkins is a self-hosted automation server with a huge plugin ecosystem.
+
+**Why A is wrong:** It is not a managed GitHub service; you host it yourself.
+**Why C is wrong:** Kubernetes orchestrates containers; Jenkins is CI/CD.
+**Why D is wrong:** A log store is ELK/OpenSearch, not Jenkins.
+
+</details>
 
 11. Kubernetes' smallest deployable unit is a:
-    A. Container
-    B. Pod
-    C. Node
-    D. Service
+   - **A.** Container
+   - **B.** Pod
+   - **C.** Node
+   - **D.** Service
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** A Pod (one or more containers) is the smallest deployable K8s unit.
-> **Why A is wrong:** A container runs inside a Pod; the Pod is the unit.
-> **Why C is wrong:** A Node is a worker machine, not the deploy unit.
-> **Why D is wrong:** A Service is a stable network endpoint, not a deployable unit.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** A Pod (one or more containers) is the smallest deployable K8s unit.
+
+**Why A is wrong:** A container runs inside a Pod; the Pod is the unit.
+**Why C is wrong:** A Node is a worker machine, not the deploy unit.
+**Why D is wrong:** A Service is a stable network endpoint, not a deployable unit.
+
+</details>
 
 12. Kubernetes differs from Docker in that it:
-    A. Builds images
-    B. Orchestrates many containers across nodes
-    C. Is a single runtime
-    D. Has no YAML
+   - **A.** Builds images
+   - **B.** Orchestrates many containers across nodes
+   - **C.** Is a single runtime
+   - **D.** Has no YAML
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** K8s schedules, scales, and heals many containers across a cluster; Docker runs singles.
-> **Why A is wrong:** Docker builds images; K8s does not build them.
-> **Why C is wrong:** K8s is multi-node, not a single runtime.
-> **Why D is wrong:** K8s is declarative YAML-driven, not "no YAML."
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** K8s schedules, scales, and heals many containers across a cluster; Docker runs singles.
+
+**Why A is wrong:** Docker builds images; K8s does not build them.
+**Why C is wrong:** K8s is multi-node, not a single runtime.
+**Why D is wrong:** K8s is declarative YAML-driven, not "no YAML."
+
+</details>
 
 13. Terraform uses which language?
-    A. YAML
-    B. HCL
-    C. Groovy
-    D. XML
+   - **A.** YAML
+   - **B.** HCL
+   - **C.** Groovy
+   - **D.** XML
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** Terraform uses HCL (HashiCorp Configuration Language) to declare resources.
-> **Why A is wrong:** YAML is used by Ansible/Actions, not Terraform.
-> **Why C is wrong:** Groovy is Jenkinsfile's language.
-> **Why D is wrong:** Terraform is not defined in XML.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** Terraform uses HCL (HashiCorp Configuration Language) to declare resources.
+
+**Why A is wrong:** YAML is used by Ansible/Actions, not Terraform.
+**Why C is wrong:** Groovy is Jenkinsfile's language.
+**Why D is wrong:** Terraform is not defined in XML.
+
+</details>
 
 14. Terraform maintains a record of real resources called:
-    A. Inventory
-    B. State
-    C. Playbook
-    D. Manifest
+   - **A.** Inventory
+   - **B.** State
+   - **C.** Playbook
+   - **D.** Manifest
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** Terraform tracks actual infrastructure in a state file for drift detection/planning.
-> **Why A is wrong:** Inventory is an Ansible concept, not Terraform.
-> **Why C is wrong:** Playbook is Ansible automation, not Terraform's record.
-> **Why D is wrong:** Manifest usually refers to Kubernetes, not Terraform state.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** Terraform tracks actual infrastructure in a state file for drift detection/planning.
+
+**Why A is wrong:** Inventory is an Ansible concept, not Terraform.
+**Why C is wrong:** Playbook is Ansible automation, not Terraform's record.
+**Why D is wrong:** Manifest usually refers to Kubernetes, not Terraform state.
+
+</details>
 
 15. Terraform is spelled with how many 'r's?
-    A. Two
-    B. One
-    C. Three
-    D. Four
+   - **A.** Two
+   - **B.** One
+   - **C.** Three
+   - **D.** Four
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** "Terraform" has a single 'r'—a common exam trick (Terraform, not Terravorm).
-> **Why A is wrong:** There are not two r's; it is spelled Terraform.
-> **Why C is wrong:** Three r's is incorrect; only one appears.
-> **Why D is wrong:** Four r's is wrong; the word has one 'r'.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** "Terraform" has a single 'r'—a common exam trick (Terraform, not Terravorm).
+
+**Why A is wrong:** There are not two r's; it is spelled Terraform.
+**Why C is wrong:** Three r's is incorrect; only one appears.
+**Why D is wrong:** Four r's is wrong; the word has one 'r'.
+
+</details>
 
 16. Terraform vs. Ansible: Terraform is primarily for:
-    A. Configuring servers
-    B. Provisioning infrastructure with state
-    C. Building images
-    D. Logging
+   - **A.** Configuring servers
+   - **B.** Provisioning infrastructure with state
+   - **C.** Building images
+   - **D.** Logging
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** Terraform declaratively provisions cloud resources and tracks them via state.
-> **Why A is wrong:** Configuring servers is Ansible's agentless job, not Terraform's.
-> **Why C is wrong:** Building images is Docker/Packer, not Terraform.
-> **Why D is wrong:** Logging is ELK/CloudWatch, not Terraform.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** Terraform declaratively provisions cloud resources and tracks them via state.
+
+**Why A is wrong:** Configuring servers is Ansible's agentless job, not Terraform's.
+**Why C is wrong:** Building images is Docker/Packer, not Terraform.
+**Why D is wrong:** Logging is ELK/CloudWatch, not Terraform.
+
+</details>
 
 17. AWS EKS provides managed:
-    A. Docker daemon
-    B. Kubernetes control plane
-    C. Jenkins
-    D. Grafana
+   - **A.** Docker daemon
+   - **B.** Kubernetes control plane
+   - **C.** Jenkins
+   - **D.** Grafana
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** EKS runs the managed Kubernetes control plane (etcd/API server) for you.
-> **Why A is wrong:** EKS manages K8s, not a bare Docker daemon.
-> **Why C is wrong:** Jenkins is a separate CI server, not part of EKS.
-> **Why D is wrong:** Grafana is a separate monitoring tool, not provided by EKS.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** EKS runs the managed Kubernetes control plane (etcd/API server) for you.
+
+**Why A is wrong:** EKS manages K8s, not a bare Docker daemon.
+**Why C is wrong:** Jenkins is a separate CI server, not part of EKS.
+**Why D is wrong:** Grafana is a separate monitoring tool, not provided by EKS.
+
+</details>
 
 18. Amazon ECR is a:
-    A. Compute service
-    B. Container image registry
-    C. Log store
-    D. CI server
+   - **A.** Compute service
+   - **B.** Container image registry
+   - **C.** Log store
+   - **D.** CI server
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** ECR is a managed registry storing Docker images that ECS/EKS pull from.
-> **Why A is wrong:** ECR stores images, not compute; compute is EC2/ECS.
-> **Why C is wrong:** A log store is CloudWatch/ELK, not ECR.
-> **Why D is wrong:** A CI server is CodePipeline/Jenkins, not ECR.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** ECR is a managed registry storing Docker images that ECS/EKS pull from.
+
+**Why A is wrong:** ECR stores images, not compute; compute is EC2/ECS.
+**Why C is wrong:** A log store is CloudWatch/ELK, not ECR.
+**Why D is wrong:** A CI server is CodePipeline/Jenkins, not ECR.
+
+</details>
 
 19. CloudWatch on AWS fulfills the role of:
-    A. IaC
-    B. Logging/monitoring (ELK+Grafana)
-    C. Source control
-    D. Container runtime
+   - **A.** IaC
+   - **B.** Logging/monitoring (ELK+Grafana)
+   - **C.** Source control
+   - **D.** Container runtime
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** CloudWatch collects logs, metrics, and traces and powers dashboards/alarms.
-> **Why A is wrong:** IaC is Terraform/CloudFormation, not CloudWatch.
-> **Why C is wrong:** Source control is CodeCommit, not CloudWatch.
-> **Why D is wrong:** Container runtime is Docker/ECS, not CloudWatch.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** CloudWatch collects logs, metrics, and traces and powers dashboards/alarms.
+
+**Why A is wrong:** IaC is Terraform/CloudFormation, not CloudWatch.
+**Why C is wrong:** Source control is CodeCommit, not CloudWatch.
+**Why D is wrong:** Container runtime is Docker/ECS, not CloudWatch.
+
+</details>
 
 20. CodeDeploy automates which activity?
-    A. Building images
-    B. Application deployment (rolling/blue-green)
-    C. Writing Terraform
-    D. Collecting logs
+   - **A.** Building images
+   - **B.** Application deployment (rolling/blue-green)
+   - **C.** Writing Terraform
+   - **D.** Collecting logs
 
-> [!note]- Reveal Answer
-> **Correct: B**
-> **Why correct:** CodeDeploy automates rolling, blue/green, and canary application deployments.
-> **Why A is wrong:** Building images is CodeBuild's job, not CodeDeploy.
-> **Why C is wrong:** Writing Terraform is a developer/IaC task, not CodeDeploy.
-> **Why D is wrong:** Collecting logs is CloudWatch/ELK, not CodeDeploy.
+<details>
+<summary>Reveal Answer</summary>
+
+**Correct: B**
+
+**Why correct:** CodeDeploy automates rolling, blue/green, and canary application deployments.
+
+**Why A is wrong:** Building images is CodeBuild's job, not CodeDeploy.
+**Why C is wrong:** Writing Terraform is a developer/IaC task, not CodeDeploy.
+**Why D is wrong:** Collecting logs is CloudWatch/ELK, not CodeDeploy.
+
+</details>
