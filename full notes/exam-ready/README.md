@@ -6,7 +6,7 @@ Enhanced, exam-focused rewrite of the notes in [`../`](../). The originals are u
 
 ## What "exam-ready" means here
 
-Every file in this folder follows the same 12-section structure so you can study, drill, and revise the same way for every objective:
+Every file follows the same section *sequence* so you can study, drill, and revise the same way for every objective. The count flexes with the objective's size — larger objectives split "concepts in depth" across several sections (1.3 has 13, most have 12):
 
 | Section | Purpose |
 |---|---|
@@ -53,17 +53,50 @@ Diagrams are ASCII (always renders) plus **Mermaid** (renders natively on GitHub
 | Obj | Title | Status |
 |---|---|---|
 | 1.1 | [Cloud service models & shared responsibility](./Objective-1.1-Cloud-Service-Models.md) | ✅ Done |
-| 1.2 | Service availability | ⬜ |
-| 1.3 | Cloud networking | ⬜ |
-| 1.4 | Storage resources & technologies | ⬜ |
-| 1.5 | Cloud-native design | ⬜ |
-| 1.6 | Containerization | ⬜ |
-| 1.7 | Virtualization | ⬜ |
-| 1.8 | Cost considerations | ⬜ |
-| 1.9 | Database concepts | ⬜ |
-| 1.10 | Optimizing workloads | ⬜ |
-| 1.11 | Evolving technologies (AI/ML, IoT) | ⬜ |
+| 1.2 | [Service availability](./Objective-1.2-Service-Availability.md) | ✅ Done |
+| 1.3 | [Cloud networking](./Objective-1.3-Cloud-Networking.md) | ✅ Done |
+| 1.4 | [Storage resources & technologies](./Objective-1.4-Storage-Resources.md) | ✅ Done |
+| 1.5 | [Cloud-native design](./Objective-1.5-Cloud-Native-Design.md) | ✅ Done |
+| 1.6 | [Containerization](./Objective-1.6-Containerization.md) | ✅ Done |
+| 1.7 | [Virtualization](./Objective-1.7-Virtualization.md) | ✅ Done |
+| 1.8 | [Cost considerations](./Objective-1.8-Cost-Considerations.md) | ✅ Done |
+| 1.9 | [Database concepts](./Objective-1.9-Database-Concepts.md) | ✅ Done |
+| 1.10 | [Optimizing workloads](./Objective-1.10-Optimizing-Workloads.md) | ✅ Done |
+| 1.11 | [Evolving technologies (AI/ML, IoT)](./Objective-1.11-Evolving-Technologies.md) | ✅ Done |
 
-### Domains 2.0 – 6.0
+**Domain 1.0 complete — 11 / 11 objectives.**
+
+### Domain 2.0 — Deployment (19%)
+
+| Obj | Title | Status |
+|---|---|---|
+| 2.1 | Cloud deployment models | ⬜ |
+| 2.2 | Deployment strategies | ⬜ |
+| 2.3 | Cloud migration | ⬜ |
+| 2.4 | Code, deploy & configure | ⬜ |
+| 2.5 | Provision cloud resources | ⬜ |
+
+### Domains 3.0 – 6.0
 
 ⬜ Not started — see [`../`](../) for the v1 notes covering 2.1 – 6.3.
+
+| Domain | Objectives | Weight | Status |
+|---|---:|---:|---|
+| 3.0 Operations | 4 | 17% | ⬜ |
+| 4.0 Security | 6 | 19% | ⬜ |
+| 5.0 DevOps Fundamentals | 4 | 10% | ⬜ |
+| 6.0 Troubleshooting | 3 | 12% | ⬜ |
+
+---
+
+## The five objective verbs in Domain 1
+
+CompTIA's verb tells you how deeply to study each objective. Calibrate accordingly:
+
+| Verb | Objectives | Depth demanded |
+|---|---|---|
+| "Given a scenario" | 1.1 | Apply judgement to a situation |
+| "Explain" | 1.2, 1.3, 1.5, 1.9 | Precise definitions and mechanisms |
+| "Compare and contrast" | 1.4, 1.6, 1.7, 1.10 | Differences along specific axes — study the contrast tables |
+| "Summarize" | 1.8 | Describe at a high level |
+| "Identify" | 1.11 | Recognise the technology and what it does |
