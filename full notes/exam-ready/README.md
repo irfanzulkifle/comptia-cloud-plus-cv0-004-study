@@ -70,15 +70,17 @@ Diagrams are ASCII (always renders) plus **Mermaid** (renders natively on GitHub
 
 | Obj | Title | Status |
 |---|---|---|
-| 2.1 | Cloud deployment models | ⬜ |
-| 2.2 | Deployment strategies | ⬜ |
-| 2.3 | Cloud migration | ⬜ |
-| 2.4 | Code, deploy & configure | ⬜ |
-| 2.5 | Provision cloud resources | ⬜ |
+| 2.1 | [Cloud deployment models](./Objective-2.1-Cloud-Deployment-Models.md) | ✅ Done |
+| 2.2 | [Deployment strategies](./Objective-2.2-Deployment-Strategies.md) | ✅ Done |
+| 2.3 | [Cloud migration](./Objective-2.3-Cloud-Migration.md) | ✅ Done |
+| 2.4 | [Code, deploy & configure](./Objective-2.4-Code-Deploy-Configure.md) | ✅ Done |
+| 2.5 | [Provision cloud resources](./Objective-2.5-Provision-Cloud-Resources.md) | ✅ Done |
+
+**Domain 2.0 complete — 5 / 5 objectives.**
 
 ### Domains 3.0 – 6.0
 
-⬜ Not started — see [`../`](../) for the v1 notes covering 2.1 – 6.3.
+⬜ Not started — see [`../`](../) for the v1 notes covering 3.1 – 6.3.
 
 | Domain | Objectives | Weight | Status |
 |---|---:|---:|---|
