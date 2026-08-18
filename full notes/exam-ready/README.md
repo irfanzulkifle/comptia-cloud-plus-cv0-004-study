@@ -78,13 +78,23 @@ Diagrams are ASCII (always renders) plus **Mermaid** (renders natively on GitHub
 
 **Domain 2.0 complete — 5 / 5 objectives.**
 
-### Domains 3.0 – 6.0
+### Domain 3.0 — Operations (17%)
 
-⬜ Not started — see [`../`](../) for the v1 notes covering 3.1 – 6.3.
+| Obj | Title | Status |
+|---|---|---|
+| 3.1 | [Observability](./Objective-3.1-Observability.md) | ✅ Done |
+| 3.2 | [Scaling approaches](./Objective-3.2-Scaling-Approaches.md) | ✅ Done |
+| 3.3 | [Backup and recovery](./Objective-3.3-Backup-Recovery.md) | ✅ Done |
+| 3.4 | [Resource life cycle](./Objective-3.4-Resource-Lifecycle.md) | ✅ Done |
+
+**Domain 3.0 complete — 4 / 4 objectives.**
+
+### Domains 4.0 – 6.0
+
+⬜ Not started — see [`../`](../) for the v1 notes covering 4.1 – 6.3.
 
 | Domain | Objectives | Weight | Status |
 |---|---:|---:|---|
-| 3.0 Operations | 4 | 17% | ⬜ |
 | 4.0 Security | 6 | 19% | ⬜ |
 | 5.0 DevOps Fundamentals | 4 | 10% | ⬜ |
 | 6.0 Troubleshooting | 3 | 12% | ⬜ |
