@@ -11,8 +11,8 @@
 |---|---|---|
 | **1st (learn)** | Sections 1 → 9 in order | ~55 min |
 | **2nd (drill)** | Section 3.6 (billing model decision) + Section 7 (hidden costs) | ~20 min |
-| **3rd (test)** | Section 12 (practice) + Section 13 (PBQ drills) | ~30 min |
-| **Exam eve** | Section 14 (60-second recall sheet) only | ~5 min |
+| **3rd (test)** | Section 11 (practice) + Section 12 (PBQ drills) | ~30 min |
+| **Exam eve** | Section 13 (60-second recall sheet) only | ~5 min |
 
 > 📌 **This is the shortest objective in Domain 1 and the easiest to score on.** The four billing models are almost free marks if you learn the commitment/discount/interruption trade-off precisely. Do not over-study it — but do not skip it either.
 

@@ -89,13 +89,23 @@ Diagrams are ASCII (always renders) plus **Mermaid** (renders natively on GitHub
 
 **Domain 3.0 complete — 4 / 4 objectives.**
 
-### Domains 4.0 – 6.0
+### Domain 4.0 — Security (19%)
 
-⬜ Not started — see [`../`](../) for the v1 notes covering 4.1 – 6.3.
+| Obj | Title | Status |
+|---|---|---|
+| 4.1 | [Vulnerability management](./Objective-4.1-Vulnerability-Management.md) | ✅ Done |
+| 4.2 | [Compliance and regulation](./Objective-4.2-Compliance-Regulation.md) | ✅ Done |
+| 4.3 | [Identity and access management](./Objective-4.3-Identity-Access-Management.md) | ✅ Done |
+| 4.4 | [Security best practices](./Objective-4.4-Security-Best-Practices.md) | ✅ Done |
+| 4.5 | [Security controls](./Objective-4.5-Security-Controls.md) | ✅ Done |
+| 4.6 | Monitor suspicious activities | ⬜ |
+
+### Domains 5.0 – 6.0
+
+⬜ Not started — see [`../`](../) for the v1 notes covering 5.1 – 6.3.
 
 | Domain | Objectives | Weight | Status |
 |---|---:|---:|---|
-| 4.0 Security | 6 | 19% | ⬜ |
 | 5.0 DevOps Fundamentals | 4 | 10% | ⬜ |
 | 6.0 Troubleshooting | 3 | 12% | ⬜ |
 

@@ -10,7 +10,7 @@
 | Pass | What to read | Time |
 |---|---|---|
 | **1st (learn)** | Sections 1 → 7 in order | ~50 min |
-| **2nd (drill)** | Section 2.3 (the constraint hierarchy) + Section 4 (trade-offs) + Section 5 (worked example) | ~20 min |
+| **2nd (drill)** | Section 2.3 (the constraint hierarchy) + Section 2.4 (the trade-off web) + Section 5 (worked example) | ~20 min |
 | **3rd (test)** | Section 10 (practice) + Section 11 (PBQ drills) | ~30 min |
 | **Exam eve** | Section 12 (60-second recall sheet) only | ~4 min |
 
