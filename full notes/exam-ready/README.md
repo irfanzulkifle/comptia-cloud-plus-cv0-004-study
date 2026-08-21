@@ -98,27 +98,69 @@ Diagrams are ASCII (always renders) plus **Mermaid** (renders natively on GitHub
 | 4.3 | [Identity and access management](./Objective-4.3-Identity-Access-Management.md) | ✅ Done |
 | 4.4 | [Security best practices](./Objective-4.4-Security-Best-Practices.md) | ✅ Done |
 | 4.5 | [Security controls](./Objective-4.5-Security-Controls.md) | ✅ Done |
-| 4.6 | Monitor suspicious activities | ⬜ |
+| 4.6 | [Monitor suspicious activities](./Objective-4.6-Monitor-Suspicious-Activities.md) | ✅ Done |
 
-### Domains 5.0 – 6.0
+**Domain 4.0 complete — 6 / 6 objectives.**
 
-⬜ Not started — see [`../`](../) for the v1 notes covering 5.1 – 6.3.
+### Domain 5.0 — DevOps Fundamentals (10%)
 
-| Domain | Objectives | Weight | Status |
-|---|---:|---:|---|
-| 5.0 DevOps Fundamentals | 4 | 10% | ⬜ |
-| 6.0 Troubleshooting | 3 | 12% | ⬜ |
+| Obj | Title | Status |
+|---|---|---|
+| 5.1 | [Source control](./Objective-5.1-Source-Control.md) | ✅ Done |
+| 5.2 | [CI/CD pipelines](./Objective-5.2-CI-CD.md) | ✅ Done |
+| 5.3 | [Integration of systems](./Objective-5.3-Integration-Systems.md) | ✅ Done |
+| 5.4 | [DevOps tools](./Objective-5.4-DevOps-Tools.md) | ✅ Done |
+
+**Domain 5.0 complete — 4 / 4 objectives.**
+
+### Domain 6.0 — Troubleshooting (12%)
+
+| Obj | Title | Status |
+|---|---|---|
+| 6.1 | [Troubleshoot deployment issues](./Objective-6.1-Troubleshoot-Deployment.md) | ✅ Done |
+| 6.2 | [Network troubleshooting](./Objective-6.2-Network-Troubleshooting.md) | ✅ Done |
+| 6.3 | [Security troubleshooting](./Objective-6.3-Security-Troubleshooting.md) | ✅ Done |
+
+**Domain 6.0 complete — 3 / 3 objectives.**
 
 ---
 
-## The five objective verbs in Domain 1
+## 🏁 Set complete — 33 / 33 objectives
 
-CompTIA's verb tells you how deeply to study each objective. Calibrate accordingly:
+Every objective in the CV0-004 blueprint has an exam-ready note.
 
-| Verb | Objectives | Depth demanded |
+| Domain | Objectives | Weight |
+|---|---:|---:|
+| 1.0 Cloud Architecture | 11 / 11 | 23% |
+| 2.0 Deployment | 5 / 5 | 19% |
+| 3.0 Operations | 4 / 4 | 17% |
+| 4.0 Security | 6 / 6 | 19% |
+| 5.0 DevOps Fundamentals | 4 / 4 | 10% |
+| 6.0 Troubleshooting | 3 / 3 | 12% |
+| **Total** | **33 / 33** | **100%** |
+
+---
+
+## Objective verbs — how deeply to study each one
+
+CompTIA's verb tells you the depth demanded. Calibrate accordingly:
+
+| Verb | Depth demanded | Where it appears |
 |---|---|---|
-| "Given a scenario" | 1.1 | Apply judgement to a situation |
-| "Explain" | 1.2, 1.3, 1.5, 1.9 | Precise definitions and mechanisms |
-| "Compare and contrast" | 1.4, 1.6, 1.7, 1.10 | Differences along specific axes — study the contrast tables |
-| "Summarize" | 1.8 | Describe at a high level |
-| "Identify" | 1.11 | Recognise the technology and what it does |
+| **"Given a scenario"** | **Apply judgement** — the hardest verb, and the home of performance-based questions | 1.1 · 2.2 · 2.3 · 2.4 · 2.5 · 3.1 · 3.2 · 3.3 · 3.4 · 4.1 · 4.3 · 4.4 · 4.5 · 4.6 · 5.1 · 5.2 · **6.1 · 6.2 · 6.3** |
+| **"Explain"** | Precise definitions and mechanisms | 1.2 · 1.3 · 1.5 · 1.9 · 2.1 · 4.2 · 5.3 · 5.4 |
+| **"Compare and contrast"** | Differences along specific axes — study the contrast tables | 1.4 · 1.6 · 1.7 · 1.10 |
+| **"Summarize"** | Describe at a high level | 1.8 |
+| **"Identify"** | Recognise the technology and what it does | 1.11 |
+
+> ★ **Note the distribution.** More than half the blueprint uses **"Given a scenario"** — the exam is weighted toward applying knowledge, not reciting it. All of Domain 6 is scenario-based.
+
+---
+
+## Suggested revision order for the final week
+
+1. **The six 60-second recall sheets for the heaviest domains** — 1.x, 4.x, 6.x (the last section of each note)
+2. **The contrast tables** — every "compare and contrast" objective (1.4, 1.6, 1.7, 1.10) plus the confusion clusters in 6.1 and 6.2
+3. **The symptom → cause tables** in 6.1, 6.2, and 6.3 — pure scenario practice
+4. **The exam traps section** of any objective you scored poorly on
+5. **HTTP status codes (6.2 §3.5)** and **deprecated vs current ciphers (6.3 §3)** — cheap, guaranteed marks
