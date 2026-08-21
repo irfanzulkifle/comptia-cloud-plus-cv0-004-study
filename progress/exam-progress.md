@@ -4,14 +4,20 @@
 
 ## Overall Status
 
+Domains and weights follow the **CV0-004 V4 objectives document (v5.0)**: six domains, 33 objectives.
+Completion below tracks the **exam-ready set** at [`full notes/exam-ready/`](../full%20notes/exam-ready/README.md).
+
 | Domain | Weight | Objectives | Completed | Progress |
 |---|---:|---:|---:|:---:|
-| 1 — Cloud Architecture & Design | 23% | 11 | 11 | ▓▓▓▓▓▓▓▓▓▓ 100% |
-| 2 — Cloud Operations | 17% | TBD | 0 | ░░░░░░░░░░ 0% |
-| 3 — Cloud Security | 20% | TBD | 0 | ░░░░░░░░░░ 0% |
-| 4 — DevOps Fundamentals | 17% | TBD | 0 | ░░░░░░░░░░ 0% |
-| 5 — Troubleshooting | 23% | TBD | 0 | ░░░░░░░░░░ 0% |
-| **Total** | **100%** | **11+** | **11** | **~23%** |
+| 1 — Cloud Architecture | 23% | 11 | 11 | ▓▓▓▓▓▓▓▓▓▓ 100% |
+| 2 — Deployment | 19% | 5 | 5 | ▓▓▓▓▓▓▓▓▓▓ 100% |
+| 3 — Operations | 17% | 4 | 4 | ▓▓▓▓▓▓▓▓▓▓ 100% |
+| 4 — Security | 19% | 6 | 6 | ▓▓▓▓▓▓▓▓▓▓ 100% |
+| 5 — DevOps Fundamentals | 10% | 4 | 4 | ▓▓▓▓▓▓▓▓▓▓ 100% |
+| 6 — Troubleshooting | 12% | 3 | 3 | ▓▓▓▓▓▓▓▓▓▓ 100% |
+| **Total** | **100%** | **33** | **33** | **▓▓▓▓▓▓▓▓▓▓ 100%** |
+
+> ⚠️ Do not compare these numbers against **CV0-003** material — that retired version had five domains with different names and weights.
 
 ## Domain 1 Detail
 

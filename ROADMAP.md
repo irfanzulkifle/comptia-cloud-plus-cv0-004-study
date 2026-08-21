@@ -6,27 +6,32 @@ Build a portfolio-quality, complete CompTIA Cloud+ CV0-004 study repository that
 
 ## Status Snapshot
 
+Domain names and weights below follow the **CV0-004 V4 objectives document (v5.0)** — six domains, 33 objectives.
+
 | Phase | Scope | Status |
 |---|---|:---:|
-| Phase 1 | Domain 1 — Cloud Architecture (23%) | ✅ Complete |
-| Phase 2 | Domain 2 — Cloud Operations (17%) | ⏳ Planned |
-| Phase 3 | Domain 3 — Cloud Security (20%) | ⏳ Planned |
-| Phase 4 | Domain 4 — DevOps Fundamentals (17%) | ⏳ Planned |
-| Phase 5 | Domain 5 — Troubleshooting (23%) | ⏳ Planned |
-| Phase 6 | Study aids — flashcards, quizzes, exam-cram | 🟡 In Progress |
-| Phase 7 | Portfolio polish — badges, screenshots, social preview | 🟡 In Progress |
+| Phase 1 | Domain 1 — Cloud Architecture (23%, 11 objectives) | ✅ Complete |
+| Phase 2 | Domain 2 — Deployment (19%, 5 objectives) | ✅ Complete |
+| Phase 3 | Domain 3 — Operations (17%, 4 objectives) | ✅ Complete |
+| Phase 4 | Domain 4 — Security (19%, 6 objectives) | ✅ Complete |
+| Phase 5 | Domain 5 — DevOps Fundamentals (10%, 4 objectives) | ✅ Complete |
+| Phase 6 | Domain 6 — Troubleshooting (12%, 3 objectives) | ✅ Complete |
+| Phase 7 | Study aids — flashcards, quizzes, exam-cram | 🟡 In Progress |
+| Phase 8 | Portfolio polish — badges, screenshots, social preview | 🟡 In Progress |
+
+> All six domains are covered by the **exam-ready set** at [`full notes/exam-ready/`](./full%20notes/exam-ready/README.md) — 33 / 33 objectives.
 
 ## Short-Term (Next 30 Days)
 
-- [ ] Complete Domain 2 notes
+- [ ] Mirror the exam-ready set's inline flashcards into `flashcards/`
 - [ ] Convert flashcards to Anki `.apkg`
-- [ ] Add 5+ Mermaid diagrams per remaining domain
+- [ ] Extend `cheatsheets/` beyond Domain 1
 - [ ] Publish a GitHub Pages mini-quiz
 
 ## Medium-Term (30–90 Days)
 
-- [ ] Complete Domains 3, 4, 5
-- [ ] Build a domain-weighted practice exam (90 questions)
+- [ ] Verify every Mermaid diagram renders correctly on GitHub
+- [ ] Build a domain-weighted practice exam (90 questions, matching the real weightings)
 - [ ] Add cloud-provider hands-on labs (AWS Free Tier, Azure Sandbox)
 - [ ] Create architecture comparison tables (AWS vs Azure vs GCP)
 
@@ -39,7 +44,7 @@ Build a portfolio-quality, complete CompTIA Cloud+ CV0-004 study repository that
 
 ## Success Criteria
 
-- All 5 domains covered with the same depth as Domain 1.
+- All **6** domains (33 objectives) covered with the same depth as Domain 1.
 - Recruiter can identify cloud skills in <60 seconds from the README.
 - All notes render correctly on GitHub with no broken links.
 - Commit history tells a clean, conventional-commits story.
