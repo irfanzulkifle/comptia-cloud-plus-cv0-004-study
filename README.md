@@ -1,7 +1,7 @@
 # CompTIA Cloud+ CV0-004: Study Repository
 
 [![CompTIA Cloud+](https://img.shields.io/badge/Certification-CompTIA%20Cloud%2B%20CV0--004-0078D4?style=for-the-badge&logo=comptia&logoColor=white)](https://www.comptia.org/certifications/cloud)
-[![Domain Status](https://img.shields.io/badge/Domain%201-Complete-brightgreen?style=for-the-badge)](./progress/exam-progress.md)
+[![Objectives](https://img.shields.io/badge/Exam--Ready%20Set-33%20%2F%2033%20Objectives-brightgreen?style=for-the-badge)](./full%20notes/exam-ready/README.md)
 [![Status](https://img.shields.io/badge/Status-Active%20Study-yellow?style=for-the-badge)](./ROADMAP.md)
 [![Maintenance](https://img.shields.io/badge/Maintained-Yes-blueviolet?style=for-the-badge)](./CHANGELOG.md)
 [![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](./LICENSE)
@@ -61,8 +61,14 @@ It is designed to be readable by **Cloud Engineers, DevOps Engineers, Network En
 ├── docs/                                  ← High-level study guidance
 │   └── STUDY-GUIDE.md
 │
-├── objectives/                            ← All exam objectives
-│   ├── domain-1/                          ← Cloud Architecture & Design (23%) ✅
+├── full notes/                            ← v1 notes, all 33 objectives
+│   ├── Objective-1.1-*.md … Objective-6.3-*.md
+│   └── exam-ready/                        ← ★ v2 EXAM-READY SET (33 / 33) ✅
+│       ├── README.md                      ← Index, exam facts, revision order
+│       └── Objective-1.1-*.md … Objective-6.3-*.md
+│
+├── objectives/                            ← Earlier structured notes
+│   ├── domain-1/                          ← Cloud Architecture (23%)
 │   │   ├── 1.1-cloud-service-models-and-shared-responsibility.md
 │   │   ├── 1.2-service-availability-concepts.md
 │   │   ├── 1.3-cloud-networking-concepts.md
@@ -74,10 +80,11 @@ It is designed to be readable by **Cloud Engineers, DevOps Engineers, Network En
 │   │   └── 1.9-database-concepts.md
 │   ├── CloudPlus_Objective_1.10_Notes.md  ← Domain 1.10 (Methods for Optimizing Workloads)
 │   ├── CloudPlus_Objective_1.11_Notes.md  ← Domain 1.11 (Evolving Technologies in the Cloud)
-│   ├── domain-2/                          ← Cloud Operations (Coming)
-│   ├── domain-3/                          ← Cloud Security (Coming)
-│   ├── domain-4/                          ← DevOps Fundamentals (Coming)
-│   └── domain-5/                          ← Troubleshooting (Coming)
+│   ├── domain-2/                          ← Deployment (19%)
+│   ├── domain-3/                          ← Operations (17%)
+│   ├── domain-4/                          ← Security (19%)
+│   ├── domain-5/                          ← DevOps Fundamentals (10%)
+│   └── domain-6/                          ← Troubleshooting (12%)
 │
 ├── diagrams/                              ← Mermaid architecture diagrams
 │   ├── README.md
@@ -109,24 +116,59 @@ It is designed to be readable by **Cloud Engineers, DevOps Engineers, Network En
 
 ---
 
-## Exam Progress Tracker
+## Exam Facts
 
-> Updated automatically as objectives are completed. See [`progress/exam-progress.md`](./progress/exam-progress.md) for details.
+Source of truth: **CompTIA Cloud+ CV0-004 V4 Exam Objectives, document version 5.0**.
 
-| Domain | Topic | Weight | Status | Notes |
-|---|---|---:|:---:|---|
-| **1.0** | Cloud Architecture & Design | 23% | ✅ Complete | 11 / 11 objectives |
-| **2.0** | Cloud Operations | 17% | ⏳ Planned | See [ROADMAP.md](./ROADMAP.md) |
-| **3.0** | Cloud Security | 20% | ⏳ Planned | |
-| **4.0** | DevOps Fundamentals | 17% | ⏳ Planned | |
-| **5.0** | Troubleshooting | 23% | ⏳ Planned | |
-| | **Exam scheduled** | | 🎯 TBD | |
-
-**Legend:** Complete · In Progress · ⏳ Planned · Target
+| | |
+|---|---|
+| Exam code | **CV0-004** (V4) |
+| Number of questions | Maximum of **90** |
+| Question types | Multiple-choice **and performance-based (PBQs)** |
+| Length | **90 minutes** |
+| Passing score | **750** (on a scale of 100–900) |
+| Recommended experience | 2–3 years as a systems administrator or cloud engineer; CompTIA Network+ and Server+ or equivalent |
 
 ---
 
-## Key Learning Areas (Domain 1: Complete)
+## Exam Progress Tracker
+
+> CV0-004 has **six** domains and **33** objectives. See [`progress/exam-progress.md`](./progress/exam-progress.md) for detail.
+
+| Domain | Topic | Weight | Objectives | Status |
+|---|---|---:|:---:|:---:|
+| **1.0** | Cloud Architecture | 23% | 11 (1.1 – 1.11) | ✅ Complete |
+| **2.0** | Deployment | 19% | 5 (2.1 – 2.5) | ✅ Complete |
+| **3.0** | Operations | 17% | 4 (3.1 – 3.4) | ✅ Complete |
+| **4.0** | Security | 19% | 6 (4.1 – 4.6) | ✅ Complete |
+| **5.0** | DevOps Fundamentals | 10% | 4 (5.1 – 5.4) | ✅ Complete |
+| **6.0** | Troubleshooting | 12% | 3 (6.1 – 6.3) | ✅ Complete |
+| | **Total** | **100%** | **33 / 33** | ✅ |
+| | **Exam scheduled** | | | 🎯 TBD |
+
+> ⚠️ **Note for anyone comparing against older material:** CV0-004 restructured the blueprint. The retired **CV0-003** had five domains (Architecture & Design 13%, Security 20%, Deployment 23%, Operations & Support 22%, Troubleshooting 22%). Domain numbers, names and weights are **not** interchangeable between the two versions.
+
+---
+
+## ★ Exam-Ready Note Set — [`full notes/exam-ready/`](./full%20notes/exam-ready/README.md)
+
+A v2 rewrite of every objective, built directly against the official objectives document. The v1 notes in [`full notes/`](./full%20notes/) are preserved unchanged.
+
+| | |
+|---|---|
+| Coverage | **33 / 33 objectives**, all six domains |
+| Size | ~31,600 lines |
+| Practice questions | **825**, each with an explanation of why every wrong answer is wrong |
+| Per note | Verbatim CompTIA bullets + coverage checklist · core mental model · concepts in depth · comparison tables · exam traps · keyword triggers · 25 scenario questions · PBQ-style drills · 60-second recall sheet · cross-references |
+| Diagrams | ASCII (always renders) plus native **Mermaid** |
+
+**Start here:** the [set index](./full%20notes/exam-ready/README.md) carries the exam facts, the objective-verb table, and a suggested final-week revision order.
+
+---
+
+## Key Learning Areas — Domain 1.0 Cloud Architecture (23%)
+
+> Domains 2.0 – 6.0 are covered in full by the [exam-ready set](./full%20notes/exam-ready/README.md).
 
 ### 1.1: Cloud Service Models & Shared Responsibility
 IaaS, PaaS, SaaS, FaaS and the **shared responsibility model** that defines who secures what. Foundation for every cloud decision. → [notes](./objectives/domain-1/1.1-cloud-service-models-and-shared-responsibility.md)
@@ -195,7 +237,7 @@ All diagrams are native **Mermaid**, render directly on GitHub without extra too
 
 > I believe the best way to learn something is to **document it as if I were teaching it** to someone joining the team tomorrow. This repository comes from that belief.
 
-- For **recruiters** open the [Domain 1.1 notes](./objectives/domain-1/1.1-cloud-service-models-and-shared-responsibility.md) to see the depth and structure of my technical writing.
+- For **recruiters** open any note in the [exam-ready set](./full%20notes/exam-ready/README.md) — for example [6.2 Network Troubleshooting](./full%20notes/exam-ready/Objective-6.2-Network-Troubleshooting.md) — to see the depth and structure of my technical writing.
 - For **hiring managers** review the [diagrams](./diagrams/) and [cheatsheets](./cheatsheets/) to assess how I synthesize and apply cloud knowledge.
 - For **peers** [open an issue](../../issues) if you spot an error or [submit a PR](../../pulls) with improvements.
 
